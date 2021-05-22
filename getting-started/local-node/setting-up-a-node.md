@@ -1,19 +1,19 @@
 ---
-title: Setting Up a Node
-description: Follow this tutorial to learn how to set up your first Moonbeam node. You’ll also learn how to connect it to and control it with the Polkadot JS GUI.
+title: Настройка ноды
+description: Воспользуйтесь данным руководством, для настройки своего первого узла Moonbeam. Вы также узнаете, как его подключить и управлять с помощью пользовательского графического интерфейса Polkadot JS.
 ---
 
-# Setting Up a Moonbeam Node and Connecting to the Polkadot JS GUI
+# Настройка ноды Moonbeam и подключение к графическому интерфейсу Polkadot JS
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## Introduction
+## Вступление
 
-This guide outlines the steps needed to create a development node for testing the Ethereum compatibility features of Moonbeam.
+В этом руководстве описаны шаги, необходимые для создания ноды для тестирования совместимости с Ethereum и функциональности Moonbeam.
 
-!!! note
-    This tutorial was created using the {{ networks.development.build_tag }} tag of [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.development.build_tag }}). The Moonbeam platform and the [Frontier](https://github.com/paritytech/frontier) components it relies on for Substrate-based Ethereum compatibility are still under very active development.
+!!! Примечание
+    Это руководство было создано с использованием {{ networks.development.build_tag }} тега [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.development.build_tag }}). Платформа Moonbeam и компоненты [Frontier](https://github.com/paritytech/frontier) которые она использует для совместимости с Ethereum на основе Substrate, все еще находятся в стадии активной разработки.
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 A Moonbeam development node is your own personal development environment for building and testing applications on Moonbeam. For Ethereum developers, it is comparable to Ganache. It enables you to get started quickly and easily without the overhead of a relay chain. You can spin up your node with the `--sealing` option to author blocks instantly, manually, or at a custom interval after transactions are received. By default a block will be created when a transaction is received, which is similar to Ganache's instamine feature. 
