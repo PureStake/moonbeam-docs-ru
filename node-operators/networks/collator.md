@@ -1,76 +1,74 @@
 ---
-title: Collators
-description: Instructions on how to become a collator in the Moonbeam Network once you are running a node
+title: Коллаторы
+description: Инструкции о том, как стать коллатором в сети Moonbeam Network после того, как вы запустите ноду
 ---
 
-# Run a Collator on Moonbeam
+# Запуск коллатора на Moonbeam
 
 ![Collator Moonbeam Banner](/images/fullnode/collator-banner.png)
 
-## Introduction
+## Введение
 
-Collators are members of the network that maintain the parachains they take part in. They run a full node (for both their particular parachain and the relay chain), and they produce the state transition proof for relay chain validators.
+Коллаторами являются члены сети, которые поддерживают парачейны в которых участвуют. Они запускают полную ноду (как для своего конкретного парачейна, так и для Relay Chain), и они создают доказательство перехода состояния для валидаторов Relay Chain.
 
-With the release of Moonbase Alpha v6, users can spin up not only full nodes but they can also activate the `collate` feature and participate in the ecosystem as collators.
+С выпуском Moonbase Alpha v6 пользователи могут запускать не только полные ноды, но также активировать функцию сопоставления и участвовать в экосистеме в качестве коллаторов.
 
-This guide will take you through the steps of spinning up your collator node, which is an extension of a full node.
+Это руководство проведет вас через этапы развертывания ноды коллатора, который является расширением полной ноды.
 
-## Tech Requirements
+## Технические требования
 
-From a technical perspective, collators must meet the following requirements:
+С технической точки зрения коллаторы должны соответствовать следующим требованиям:
 
- - Have a full node running with the collation options. To do so, follow [this tutorial](/node-operators/networks/full-node/) considering the specific code snippets for collators
- - Enable the telemetry server for your full node. To do so, follow [this tutorial](/node-operators/networks/telemetry/)
+ - Запустите полную ноду с параметрами сортировки. Для этого следуйте [этому руководству](/node-operators/networks/full-node/) учитывая конкретные фрагменты кода для коллаторов
+ - Включите сервер телеметрии для вашей полной ноды. Для этого следуйте [этому руководству](/node-operators/networks/telemetry/)
 
-## Account and Staking Requirements
+## Требования к учетной записи и стейкингу
 
-Similar to Polkadot validators, you need to create an account (although in this case, it's an H160 account) and have a nominated stake (DEV tokens) in order to collate. The slots are currently limited to {{ networks.moonbase.collators_slots }}, but may be increased over time.  
+Как и в случае с валидаторами Polkadot, вам необходимо создать учетную запись (хотя в данном случае это учетная запись H160) и иметь номинальную ставку (токены DEV) для коллации. В настоящее время количество слотов ограничено {{ networks.moonbase.collators_slots }}, но со временем они могут быть увеличены. 
 
-Collators need to have a minimum of {{ networks.moonbase.staking.collator_min_stake }} DEV to be considered eligible (become a candidate). Only the top {{ networks.moonbase.staking.max_collators }} collators by nominated stake will be in the active set.  
+Коллаторы должны иметь как  минимум {{ networks.moonbase.staking.collator_min_stake }} DEV для того, чтобы быть получить возможность стать кандидатом. Только Топ {{ networks.moonbase.staking.max_collators }} коллаторов по номинированной ставке будут в активном наборе.  
 
-!!! note
-    Currently, creating or importing an account in PolkadotJS via a mnemonic seed will result in a different public address if you later try to import this account to an Ethereum wallet such as MetaMask. This is because PolkadotJS uses BIP39, whereas Ethereum uses BIP32 or BIP44. 
+!!! Примечание
+    В настоящее время создание или импорт учетной записи в PolkadotJS через мнемоническую фразу приведет к другому общедоступному адресу, если вы позже попытаетесь импортировать эту учетную запись в кошелек Ethereum, такой как MetaMask. Это связано с тем, что PolkadotJS использует BIP39, тогда как Ethereum использует BIP32 или BIP44. 
 
-## Account in PolkadotJS
+## Учетная запись в PolkadotJS
 
-A collator has an account associated with its collation activities. This account is used to identify him as a block producer and send the payouts from block rewards.
+У коллатора есть учетная запись, связанная с его деятельностью по коллации. Эта учетная запись используется для идентификации его как производителя блоков и отправки выплат из вознаграждений за блоки.
 
-Currently, you have two ways of proceeding in regards having an account in [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
+В настоящее время у вас есть два способа получить учетную запись в [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
 
- - Importing an existing (or create a new) H160 account from external wallets or services such as [MetaMask](/integrations/wallets/metamask/) and [MathWallet](/integrations/wallets/mathwallet/)
- - Create a new H160 account with [PolkadotJS](/integrations/wallets/polkadotjs/)
+ - Импорт существующей (или создание новой) учетной записи H160 из внешних кошельков или сервисов, таких как  [MetaMask](/integrations/wallets/metamask/) и [MathWallet](/integrations/wallets/mathwallet/)
+ - Создайте новую учетную запись H160 с [PolkadotJS](/integrations/wallets/polkadotjs/)
 
-Once you have an H160 account imported to PolkadotJS, you should see it under the "Accounts" tab. Make sure you have your public address at hand (`PUBLIC_KEY`), as it is needed to configure your [deploy your full node](/node-operators/networks/full-node/) with the collation options.
+Кaк только у вас появится учетная запись H160, импортированная в PolkadotJS,  вы должны увидеть ее на вкладке «Accounts». Убедитесь, что у вас есть публичный адрес (`PUBLIC_KEY`), к как он необходим для настройки вашей  [полной ноды](/node-operators/networks/full-node/) с параметрами коллации.
 
-![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
+![Учетная запись в PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
 
-## Become a Collator Candidate
+## Стать кандидатом в коллаторы
 
-Once your node is running, and in sync with the network, you become a collator candidate by following the steps below in [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
+Как только ваша нода будет запущена и синхронизирована с сетью, вы станете кандидатом в коллаторы, выполнив следующие шаги в [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/accounts):
 
- 1. Navigate to the "Developers" tab and click on "Extrinsics"
- 2. Select the account you want associated with your collation activities
- 3. Confirm your collator account is funded with at least {{ networks.moonbase.staking.collator_min_stake }} DEV tokens plus some extra for transaction fees 
- 4. Select `parachainStaking` pallet under the "submit the following extrinsics" menu
- 5. Open the drop-down menu, which lists all the possible extrinsics related to staking, and select the `joinCandidates()` function
- 6. Set the bond to at least {{ networks.moonbase.staking.collator_min_stake }}, which is the minimum amount to be considered a collator candidate. Only collator bond counts for this check. Additional nominations do not count
- 7. Submit the transaction. Follow the wizard and sign the transaction using the password you set for the account
+ 1. Перейдите на вкладку "Developers" и нажмите "Extrinsics"
+ 2. Выберите учетную запись, которую вы хотите связать с вашими действиями по сопоставлению
+ 3. Подтвердите, что ваша учетная запись Collator имеет как минимум {{ networks.moonbase.staking.collator_min_stake }} DEV токенов некоторое колличество для оплаты транзакций 
+ 4. Выберите `parachainStaking` в меню "submit the following extrinsics" 
+ 5. Откройте выпадающее меню, в котором перечислены все возможные внешние элементы, связанные со стекингом, и выберите функцию `joinCandidates()`
+ 6. Установите сумму по меньшей мере { networks.moonbase.staking.collator_min_stake }}, что является минимальной суммой для того, чтобы считаться кандидатом в коллаторы. Для этой проверки засчитывается только сумма оплаты  коллатора. Дополнительные номинации не учитываются
+ 7. Подтвердите транзакцию. Следуйте указаниям мастера, подпишите транзакцию, используя пароль, который вы установили для учетной записи.
 
-![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs2.png)
+![Присоединяйтесь к пулу коллаторов PolkadotJS](/images/fullnode/collator-polkadotjs2.png)
 
-!!! note
-    Function names and the minimum bond requirement are subject to change in future releases.
+!!! Примечание
+    Названия функций и требования к минимальному залогу могут быть изменены в будущих релизах.
 
-As mentioned before, only the top {{ networks.moonbase.staking.max_collators }} collators by nominated stake will be in the active set. 
+Как упоминалось ранее, только  {{ networks.moonbase.staking.max_collators }} лучших коллаторов по номинированной ставке будут в активном наборе. 
 
-## Stop Collating
+## Прекращение коллаторства
+Подобно Polkadot функции  `chill()`, тобы выйти из пула кандидатов коллаторов, выполните те же шаги, что и раньше, но выберите функцию `leaveCandidates()` на шаге 5.
 
-Similar to Polkadot's `chill()` function, to leave the collator's candidate pool, follow the same steps as before but select the `leaveCandidates()` function in step 5.
+## Сроки
 
-
-## Timings
-
-The following table presents some of the timings in regards to different actions related to collation activities:
+В следующей таблице представлены некоторые моменты времени для различных действий, связанных с действиями по коллаторству:
 
 |                Action               |   |   Rounds  |   |   Hours  |
 |:-----------------------------------:|:-:|:---------:|:-:|:--------:|
@@ -79,6 +77,6 @@ The following table presents some of the timings in regards to different actions
 |Rewards payouts (after current round)|   |     2     |   |    4     |
 
 
-!!! note 
-    The values presented in the previous table are subject to change in future releases.
+!!! Примечание 
+     Значения, представленные в предыдущей таблице, могут быть изменены в будущих версиях.
 
