@@ -1,39 +1,39 @@
 ---
-title: Unified Accounts
-description: Moonbeam now uses the Ethereum based H160 account system natively and is supported by Polkadot JS Apps
+title: Унифицированные учетные записи
+description: Moonbeam теперь использует систему учетных записей H160 на базе Ethereum и поддерживается Polkadot JS Apps.
 ---
-# Unified Accounts
+# Унифицированные учетные записи
 
-![Intro diagram](/images/learn/unifiedaccounts-banner.png)
+![Вводная диаграмма](/images/learn/unifiedaccounts-banner.png)
 
-## Introduction
+## Введение
 
-With the [release of the v3 upgrade](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/) for the Moonbase Alpha TestNet, we have made significant updates to the underlying account system on Moonbeam, replacing the default Substrate-style accounts and keys with Ethereum-style accounts and keys.
+С [release of the v3 upgrade](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/) для Moonbase Alpha TestNet, мы внесли значительные изменения в систему учетных записей Moonbeam, заменив дефолтные Substrate-подобные учетные записи и ключи на Ethereum-подобные учетные записи и ключи.
 
-The Polkadot JS Apps interface was updated as well so that it natively supports H160 addresses and ECDSA keys. You can check out [this tutorial](/integrations/wallets/polkadotjs/) to see more about this integration.
+Интерфейс Polkadot JS Apps также был обновлен, так что теперь он нативно поддерживает H160 адреса и ключи ECDSA. Чтобы узнать больше об этой интеграции вы можете ознакомиться с [этим руководством](/integrations/wallets/polkadotjs/) .
 
-## Substrate EVM Compatible Blockchain
+## Блокчейн, совместимый с Substrate EVM
 
-Any parachain in the Polkadot ecosystem can offer a full EVM implementation, which provides the possibility of executing Solidity-based smart contracts with minimal to no changes. Substrate makes this integration possible - just plug the [EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/) into your runtime for EVM support, and the [Ethereum Pallet with Frontier](https://github.com/paritytech/frontier) to have Ethereum RPC compatibility. The availability of these open-source modules that Moonbeam has developed with Parity has led multiple parachains to offer Ethereum compatibility on their chains.
+Любой парачейн в экосистеме Polkadot может предложить полную реализацию EVM, которая обеспечивает возможность выполнения смарт-контрактов на базе Solidity с минимальными изменениями или без таковых. Substrate делает эту интеграцию возможной, для этого подключите [EVM pallet](https://docs.rs/pallet-evm/2.0.1/pallet_evm/) к своей среде выполнения для поддержки EVM и  [Ethereum Pallet с Frontier](https://github.com/paritytech/frontier) для обеспечения совместимости с Ethereum RPC. Доступность данных модулей с открытым исходным кодом, над которыми мы работали вместе с Parity, привела к тому, что несколько парачейнов предложили совместимость с Ethereum в своих сетях.
 
-But there is an important catch. With the configuration described above, a user (let’s say Alice) can have an Ethereum-style address (H160 format), which is 40+2 hex-characters long, in a Substrate based chain. This address matches a private key, which can be used to sign transactions in the Ethereum side of the chain. Furthermore, the address is mapped into a storage slot inside the Substrate Balance pallet to a Substrate-style address (H256 format). 
+Но есть важная загвоздка. При конфигурации, описанной выше, пользователь (скажем, Алиса) может иметь Ethereum подобный адрес (формат H160), который состоит из 40 + 2 шестнадцатеричных символов в цепочке на базе Substrate. Этот адрес соответствует приватному ключу, который можно использовать для подписи транзакций на стороне Ethereum в цепочке. Кроме того, адрес преобразуется, в слоте для хранения внутри Substrate Balance pallet, в Substrate подобный адрес (формат H256). 
 
-However, Alice only knows the private key of the H160 address, and not of the mapped version. Therefore, she is unable to send transactions with her H256 address and is limited only to do read-only operations through Substrate’s API. As a consequence, Alice needs another H256 address matching a different private key to be able to operate in the Substrate side of the chain, which include, among others, staking, balances, and governance. 
+Однако Алисе известен только приватный ключ H160 адреса, а не преобразованная версия. Следовательно, она не может отправлять транзакции со своим H256 адресом и может выполнять только операции чтения через Substrate API. Как следствие, чтобы иметь возможность работать на стороне Substrate чейна, включающего, среди прочего, стейкинг, балансы и управление, Алисе нужен другой H256 адрес, соответствующий другому приватному ключу. 
 
-The following diagram illustrates this configuration.
+Следующая диаграмма иллюстрирует эту конфигурацию.
 
-![Old account system diagram](/images/learn/unifiedaccounts-images-1.png)
+![Схема системы старых учетных записей](/images/learn/unifiedaccounts-images-1.png)
 
-This can creates friction and a poor user experience for Alice. First, she has to move tokens to her H160 mapped H256 address to be able to make transactions and deploy contracts through the EVM. Second, she also needs to hold a balance in her other H256 address (which she has a different private key for) to use Substrate-based features. So in short, Alice needs a minimum of two private keys to have the best of both worlds.
+Это может создать недопонимание и ухудшить пользовательский опыт для Алисы. Во-первых, она должна переместить токены в свой H256 адрес, преобразованный из H160, чтобы иметь возможность совершать транзакции и размещать контракты через EVM. Во-вторых, ей также необходимо постоянно иметь средства на своем другом H256 адресе (для которого у нее есть другой приватный ключ), чтобы использовать функции на базе Substrate. Короче говоря, Алисе нужны как минимум два приватных ключа, чтобы почувствовать все преимущества.
 
-## Moonbeam Unified Accounts
+## Унифицированные учетные записи Moonbeam
 
-Moonbeam’s focus is to create a fully Ethereum-compatible environment on Polkadot with the best user experience possible. This extends beyond the base Ethereum feature set, with additional features such as on-chain governance, staking, and cross-chain integrations.
+Moonbeam фокусируется на создании полностью совместимой с Ethereum среды с максимальным удобством для пользователей на Polkadot. Что выходит за рамки базового набора функций Ethereum -  дополнительные функции, такие как управление чейнами, стейкинг и кроссчейн-интеграция.
 
-With Unified Accounts, a user (let's call him Bob) will only need a single H160 address, with its corresponding private key, to do everything we mentioned above including both EVM and Substrate functions.
+В Унифицированных Учетных Записях пользователю (назовем его Боб) понадобится только один H160 адрес с соответствующим приватным ключом, чтобы делать все, что мы упомянули выше, включая функции EVM и Substrate.
 
-The diagram for this new configuration looks as follows.
+Схема этой конфигурации выглядит следующим образом:
 
-![New account system diagram](/images/learn/unifiedaccounts-images-2.png)
+![Схема новой системы учетных записей](/images/learn/unifiedaccounts-images-2.png)
 
-That is it, Bob only holds one private key that matches one address. He does not need to move balances between 2 different accounts and is able to access all the features with a single account and private key. We have standardized this single account to conform to the Ethereum-style H160 address and ECDSA key standards.
+У Боба есть только один приватный ключ, соответствующий одному адресу. Ему не нужно перемещать средства между двумя учетными записями, и он может получить доступ ко всем функциям с помощью одной учетной записи и приватного ключа. Мы стандартизировали эту единую учетную запись в соответствии с Ethereum подобным H160 адресом и ключевыми стандартами ECDSA.
