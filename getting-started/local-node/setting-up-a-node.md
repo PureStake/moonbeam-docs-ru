@@ -20,23 +20,23 @@ description: Воспользуйтесь данным руководством,
 
 Следуя данной инструкции от начала и до конца, Вы получите узел разработки Moonbeam, работающий в Вашей локальной среде, с 10-ю [предварительно финансируемыми счетами](#pre-funded-development-accounts),и сможет подключить его к стандартному графическому интерфейсу Polkadot JS.
 
-Есть два способа запустить узел Moonbeam: Вы можете использовать [докер для запуска предварительно созданного бинарного файла](#getting-started-with-docker) или Вы можете [скомпилировать бинарный файл локально](#getting-started-with-the-binary-file) и самостоятельно настроить узел для разработки. Using Docker is a quick and convenient way to get started as you won't have to install Substrate and all the dependencies, and you can skip the building the node process as well. It does require you to [install Docker](https://docs.docker.com/get-docker/). On the other hand, if you decide you want to go through the process of building your own development node, it could take roughly 30 minutes or longer to complete depending on your hardware.
+Есть два способа запустить узел Moonbeam: Вы можете использовать [докер для запуска предварительно созданного бинарного файла](#getting-started-with-docker) или Вы можете [скомпилировать бинарный файл локально](#getting-started-with-the-binary-file) и самостоятельно настроить узел для разработки. Использование Docker - это быстрый и удобный способ для того чтобы начать работу, так как Вам не нужно устанавливать Substrate и все зависимости, и Вы также можете пропустить процесса создание ноды вручную. Это поттребует от Вас [установить докер](https://docs.docker.com/get-docker/).С другой стороны, если Вы решите, пройти процесс создания собственного узла для разработки, это может занять около 30 минут или больше в зависимости от Вашего оборудования.
 
-## Getting Started with Docker
+## Начало работы с Docker
 
-Using Docker enables you to spin up a node in a matter of seconds. Once you have Docker installed, then you can execute the following command to download the corresponding image:
+Использование Docker позволяет развернуть ноду за считанные секунды. После того, как Вы установили Docker, Вы можете выполнить следующую команду, чтобы загрузить необходимый образ:
 
 ```
 docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 ```
 
-The tail end of the console log should look like this:
+Последние строки журнала событий в консоли должен выглядеть так:
 
 ![Docker - imaged pulled](/images/setting-up-a-node/setting-up-node-1.png)
 
-Once the Docker image is downloaded, the next step is to run the image.
+После загрузки Docker-образа следующим шагом будет его запуск.
 
-You can run the Docker image using the following:
+Вы можете запустить образ Docker, используя следующую команду:
 
 === "Ubuntu"
     ```
@@ -59,12 +59,12 @@ You can run the Docker image using the following:
     --dev --ws-external --rpc-external
     ```
 
-This should spin up a Moonbeam development node in instant seal mode for local testing, so that blocks are authored instantly as transactions are received.
-If successful, you should see an output showing an idle state waiting for blocks to be authored:
+Данная команда запустит узел разработки Moonbeam в режиме локального тестирования, таким образом блоки создаются мгновенно по мере получения транзакций.
+В случае успеха Вы должны увидеть вывод, отображающий режим ожидания, ожидание для создания новых блоков:
 
-![Docker - output shows blocks being produced](/images/setting-up-a-node/setting-up-node-2.png)
+![Docker - вывод показывает создаваемые блоки](/images/setting-up-a-node/setting-up-node-2.png)
 
-For more information on some of the flags and options used in the example, check out [Common Flags and Options](#common-flags-and-options). If you want to see a complete list of all of the flags, options, and subcommands, open the help menu by running:
+Для получения дополнительной информации о некоторых флагах и параметрах, использованных в примере, ознакомьтесь с [общие флаги и параметры](#common-flags-and-options). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
 
 ```
 docker run --rm --name {{ networks.development.container_name }} \
@@ -72,7 +72,7 @@ purestake/moonbeam \
 --help
 ```
 
-To continue on with the tutorial, the next section is not necessary as you've already spun up a node with Docker. You can skip ahead to [Connecting Polkadot JS Apps to a Local Moonbeam Node](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
+Для продолжения изучения, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключеню приложений Polkadot JS к локальному узлу Moonbeam](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
 
 ## Getting Started with the Binary File
 
