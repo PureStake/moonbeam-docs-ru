@@ -100,7 +100,7 @@ cd moonbeam
 --8<-- 'code/setting-up-node/build.md'
 ```
 
-Если в терминале появляется _cargo not found error_, Вам необходимо будет вручную добавить Rust в системные пути (или перезапустить систему):
+Если в терминале появляется сообщение _cargo not found error_, Вам необходимо будет вручную добавить Rust в системные пути (или перезапустить сервер):
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
@@ -138,29 +138,29 @@ cd moonbeam
  - HTTP: `http://127.0.0.1:9933`
  - WS: `ws://127.0.0.1:9944` 
 
-Начнем с подключения к нему с помощью Polkadot JS Apps. Откройте браузер: [https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer). This will open Polkadot JS Apps, which automatically connects to Polkadot MainNet.
+Начнем с подключения к нему с помощью Polkadot JS Apps. Откройте браузер: [https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer). Откроется приложение Polkadot JS Apps, которое автоматически подключается к Polkadot MainNet.
 
 ![Polkadot JS Apps](/images/setting-up-a-node/setting-up-node-5.png)
 
-Click on the top left corner to open the menu to configure the networks, and then navigate down to open the Development sub-menu. In there, you will want to toggle the "Local Node" option, which points Polkadot JS Apps to `ws://127.0.0.1:9944`. Next, select the Switch button, and the site should connect to your Moonbeam development node.
+Щелкните в верхнем левом углу, чтобы открыть меню для настройки сетей, а затем перейдите вниз, чтобы открыть меню «Разработка» (Development sub-menu). ам вы должны переключить опцию «Локальная нода»(Local Node), которая указывает приложениям Polkadot JS на `ws://127.0.0.1:9944`. Затем нажмите кнопку «Переключить»(Switch), и сайт должен подключиться к вашей ноде Moonbeam.
 
 ![Select Local Node](/images/setting-up-a-node/setting-up-node-6.png)
 
-With Polkadot JS Apps connected, you will see the Moonbeam development node waiting for transactions to arrive to begin producing blocks.
+При подключении Polkadot JS Apps Вы увидите ноду Moonbeam, создающую блоки.
 
 ![Select Local Node](/images/setting-up-a-node/setting-up-node-7.png)
 
-## Querying Account State
+## Запрос состояния учетной записи
 
-With the release of [Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/), Moonbeam now works under a single account format, which is the Ethereum-styled H160 and is now also supported in Polkadot JS Apps. To check the balance of an address, you can simply import your account in the Accounts tab. You can find more information in the [Unified Accounts](/learn/unified-accounts/) section.
+С выпуском [Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/), Moonbeam теперь работает в формате единой учетной записи, который представляет собой H160 в стиле Ethereum и теперь также поддерживается в приложениях Polkadot JS. Чтобы проверить баланс адреса, вы можете просто импортировать свою учетную запись на вкладку «Учетные записи»(Accounts tab). Вы можете найти более подробную информацию в секции [Единые учетные записи](/learn/unified-accounts/).
  
-Nevertheless, leveraging the Ethereum full RPC capabilities of Moonbeam, you can use [MetaMask](/getting-started/local-node/using-metamask/) to check the balance of that address as well. In addition, you can also use other development tools, such as [Remix](/getting-started/local-node/using-remix/) and [Truffle](/getting-started/local-node/using-truffle/).
+Тем не менее, используя все возможности Ethereum RPC Moonbeam, Вы также можете использовать [MetaMask](/getting-started/local-node/using-metamask/) для проверки баланса этого адреса. Кроме того, Вы также можете использовать другие инструменты разработки, такие как [Remix](/getting-started/local-node/using-remix/) и [Truffle](/getting-started/local-node/using-truffle/).
 
-## Common Commands, Flags and Options
+## Общие команды, флаги и параметры
 
-### Purging the Chain
+### Очистка цепи
 
-When running a node via the binary file, data is stored in a local directory typically located in `~/.local/shared/moonbeam/chains/development/db`. If you want to start a fresh instance of the node, you can either delete the content of the folder, or run the following command inside the `moonbeam` folder:
+При запуске узла с помощью бинарного файла, данные хранятся в директории, которая обычно расположена в `~/.local/shared/moonbeam/chains/development/db`. If you want to start a fresh instance of the node, you can either delete the content of the folder, or run the following command inside the `moonbeam` folder:
 
 ```
 ./target/release/moonbeam purge-chain --dev -y
