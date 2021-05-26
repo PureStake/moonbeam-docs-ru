@@ -166,51 +166,51 @@ cd moonbeam
 ./target/release/moonbeam purge-chain --dev -y
 ```
 
-This will remove the data folder, note that all chain data is now lost.
+Это приведет к удалению папки с данными, обратите внимание, что с этого момента все данные цепочки потеряны.
 
-If you used Docker, the data folder is related to the Docker container itself.
-### Node Flags
+Если Вы использовали Docker, в этом случае папка данных связана с самим контейнером Docker.
+### Флаги узлов
 
-Flags do not take an argument. To use a flag, add it to the end of a command. For example:
+Флаги не принимают аргументы, чтобы использовать флаг, добавьте его в конец команды. Например:
 
 ```
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
-- `--dev`: Specifies the development chain
-- `--no-telemetry`: Disable connecting to the Substrate telemetry server. For global chains, telemetry is on by default. Telemetry is unavailable if you are running a development (`--dev`) node.
-- `--tmp`: Runs a temporary node in which all of the configuration will be deleted at the end of the process
-- `--rpc-external`: Listen to all RPC interfaces
-- `--ws-external`: Listen to all Websocket interfaces
+- `--dev`: Определяет цепь разработки
+- `--no-telemetry`: Отключить подключение к серверу телеметрии Substrate. Для глобальных сетей, телеметрия включена по умолчанию. Телеметрия недоступна, если Вы работаете в   режиме разработке (`--dev`).
+- `--tmp`: Запустить временный узел, в котором вся конфигурация будет удалена по окончанию работы процесса.
+- `--rpc-external`: Прослушивать все RPC интерфейсы
+- `--ws-external`: Прослушивать все Websocket интерфейсы 
 
-### Node Options
+### Параметры узла
 
-Options accept an argument to the right side of the option. For example:
+Опции принимают аргумент справа от опции. Например:
 
 ```
 --8<-- 'code/setting-up-node/runnodewithsealinginterval.md'
 ```
 
-- `-l <log pattern>` or `--log <log pattern>`: Sets a custom logging filter. The syntax for the log pattern is `<target>=<level>`. For example, to print all of the RPC logs, the command would look like this: `-l rpc=trace`.
-- `--sealing <interval>`: When blocks should be sealed in the dev service. Accepted arguments for interval: `instant`, `manual`, or a number representing the timer interval in milliseconds (for example, `6000` will have the node produce blocks every 6 seconds). The default is `instant`.
-- `--rpc-port <port>`: Sets the HTTP RPC server TCP port. Accepts a port as the argument.
-- `--ws-port <port>`: Sets the WebSockets RPC server TCP port. Accepts a port as the argument.
+- `-l <log pattern>` или `--log <log pattern>`: Устанавливает настраиваемый фильтр ведения журнала. Синтаксис шаблона для журнала событий: `<target>=<level>`. Например, чтобы распечатать все RPC журналы, команда будет выглядеть так: `-l rpc=trace`.
+- `--sealing <interval>`: Когда блоки должны быть запечатаны в сервисе разработки. Допустимые аргументы для значения интервала: `instant`, `manual`, или число, представляющее интервал таймера в миллисекундах (например, `6000` узел будет производить блоки каждые 6 секунд). По умолчанию `instant`.
+- `--rpc-port <port>`: Устанавливает TCP-порт для HTTP RPC-сервера. Принимает порт в качестве аргумента.
+- `--ws-port <port>`: Устанавливает TCP-порт для WebSockets RPC-сервера. Принимает порт в качестве аргумента.
 
-For a complete list of flags and options, spin up your Moonbeam development node with `--help` added to the end of the command.
+Чтобы получить полный список всех флагов и параметров, для Вашей Moonbeam ноды, добавьте в конце команды `--help`.
 
-## Advanced Flags and Options
+## Расширенные флаги и параметры
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
-For example, when running the binary:
+Например, при запуске бинарного файла:
 
 ```
 ./target/release/moonbeam --dev --execution=Native --ethapi=debug,trace
 ```
 
-## Pre-funded Development Accounts
+## Предварительно профинансированные счета разработки
 
-Your Moonbeam development node comes with ten pre-funded accounts for development. The addresses are derived from Substrate's canonical development mnemonic: 
+Ваш узел разработки Moonbeam поставляется с десятью предварительно профинансированными учетными записями для разработки. Адреса взяты из substrate в виде мнемоник фраз:
 
 ```
 bottom drive obey lake curtain smoke basket hold race lonely fit walk
@@ -218,8 +218,8 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk
 
 --8<-- 'code/setting-up-node/dev-accounts.md'
 
-Checkout the [Using MetaMask](/getting-started/local-node/using-metamask/) section to get started interacting with your accounts.
+Ознакомьтесь с разделом [Использовать MetaMask](/getting-started/local-node/using-metamask/) для начала работы со своими аккаунтами.
 
-Also, included with the development node is a prefunded account used for testing purposes:
+Кроме того, в узел разработки входит предварительно профинансированная учетная запись, используемая в тестовых целях:
 
 --8<-- 'code/setting-up-node/dev-testing-account.md'
