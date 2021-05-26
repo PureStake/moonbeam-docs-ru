@@ -22,7 +22,7 @@ description: Воспользуйтесь данным руководством,
 
 Есть два способа запустить узел Moonbeam: Вы можете использовать [докер для запуска предварительно созданного бинарного файла](#getting-started-with-docker) или Вы можете [скомпилировать бинарный файл локально](#getting-started-with-the-binary-file) и самостоятельно настроить узел для разработки. Использование Docker - это быстрый и удобный способ для того чтобы начать работу, так как Вам не нужно устанавливать Substrate и все зависимости, и Вы также можете пропустить процесса создание ноды вручную. Это потребует от Вас [установить докер](https://docs.docker.com/get-docker/). С другой стороны, если Вы решите, пройти процесс создания собственного узла для разработки, это может занять около 30 минут или больше в зависимости от Вашего оборудования.
 
-## Начало работы с Docker
+## Запуск Moonbeam с ипользованием Docker
 
 Использование Docker позволяет развернуть ноду за считанные секунды. После того, как Вы установили Docker, Вы можете выполнить следующую команду, чтобы загрузить необходимый образ:
 
@@ -60,11 +60,11 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
     ```
 
 Данная команда запустит узел разработки Moonbeam в режиме локального тестирования, таким образом блоки создаются мгновенно по мере получения транзакций.
-В случае успеха Вы должны увидеть вывод, отображающий режим ожидания, ожидание для создания новых блоков:
+В случае положительного результата Вы должны увидеть вывод, отражающий режим ожидания для создания новых блоков:
 
 ![Docker - вывод показывает создаваемые блоки](/images/setting-up-a-node/setting-up-node-2.png)
 
-Для получения дополнительной информации о некоторых флагах и параметрах, использованных в примере, ознакомьтесь с [общие флаги и параметры](#common-flags-and-options). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
+Для получения дополнительной информации о некоторых флагах и параметрах, использованных в примере, ознакомьтесь с [общими флагами и параметрами](#common-flags-and-options). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
 
 ```
 docker run --rm --name {{ networks.development.container_name }} \
@@ -72,14 +72,14 @@ purestake/moonbeam \
 --help
 ```
 
-Для продолжения изучения, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключеню приложений Polkadot JS к локальному узлу Moonbeam](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
+Чтобы продолжить изучение, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключеню приложений Polkadot JS к локальному узлу Moonbeam](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
 
-## Getting Started with the Binary File
+## Запуск Moonbeam из исходного кода
 
-!!! note
-    If you know what you are doing, you can directly download the precompiled binaries attached to each release on the [Moonbeam-release page](https://github.com/PureStake/moonbeam/releases). These will not work in all systems. For example, the binaries only work with x86-64 Linux with specific versions of dependencies. The safest way to ensure compatibility is to compile the binary in the system where it will be run from.
+!!! обратите внимание
+    Если Вы знаете, что делаете, Вы можете напрямую загрузить предварительно скомпилированные бинарные файлы, поставляемые к каждому выпуску, на [Moonbeam-release page](https://github.com/PureStake/moonbeam/releases). Данные файлы не будут работать во всех системах. Например, двоичные файлы работают только в Linux x86-64 версиях и с определенными версиями зависимостей. Самый безопасный способ обеспечить совместимость - это скомпилировать бинарный файл непосредственно в той системе, в которой будет происходить запуск.
 
-First, start by cloning a specific tag of the Moonbeam repo that you can find here:
+Во-первых, начните с клонирования определенного тега репозитория Moonbeam, который Вы можете найти здесь:
 
 [https://github.com/PureStake/moonbeam/](https://github.com/PureStake/moonbeam/)
 
@@ -88,57 +88,57 @@ git clone -b {{ networks.development.build_tag }} https://github.com/PureStake/m
 cd moonbeam
 ```
 
-Next, install Substrate and all its prerequisites (including Rust) by executing:
+Затем установите Substrate и все необходимые компоненты (включая Rust), выполнив:
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-Once you have followed all of the procedures above, it's time to build the development node by running:
+После того, как Вы выполнили все описанные выше шаги, Вы можете создать узел для разработки, запустив:
 
 ```
 --8<-- 'code/setting-up-node/build.md'
 ```
 
-If a _cargo not found error_ shows up in the terminal, manually add Rust to your system path (or restart your system):
+Если в терминале появляется _cargo not found error_, Вам необходимо будет вручную добавить Rust в системные пути (или перезапустить систему):
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-!!! note
-    The initial build will take a while. Depending on your hardware, you should expect approximately 30 minutes for the build process to finish.
+!!! обратите внимание
+    Первоначальная сборка продлится некоторое время. Время сборки будет зависить от Вашего оборудования, примерное время ожидания будет составлять около 30 минут.
 
-Here is what the tail end of the build output should look like:
+Вот как должен выглядеть процесс окончания сборки:
 
 ![End of build output](/images/setting-up-a-node/setting-up-node-3.png)
 
-Then, you will want to run the node in dev mode using the following command:
+Затем Вам необходимо будет запустить узел в режиме разработки, используя следующую команду:
 
 ```
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
-!!! note
-    For people not familiar with Substrate, the `--dev` flag is a way to run a Substrate-based node in a single node developer configuration for testing purposes. You can learn more about `--dev` in [this Substrate tutorial](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact).
+!!! обратите внимание
+    Для людей, не знакомых с Substrate, `--dev` флаг позволяет запустить узел на основе substrate в режиме разработчика с одним узлом в целях тестирования. Вы можете узнать больше о `--dev` режиме в [этом реководстве по Substrate](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact).
 
-You should see an output that looks like the following, showing an idle state waiting for blocks to be produced:
+Вы должны увидеть следующий вывод, который будет отображать состояние ожидания, до тех пор пока не будут созданы блоки:
 
 ![Output shows blocks being produced](/images/setting-up-a-node/setting-up-node-4.png)
 
-For more information on some of the flags and options used in the example, check out [Common Flags and Options](#common-flags-and-options). If you want to see a complete list of all of the flags, options, and subcommands, open the help menu by running:
+Для получения дополнительной информации о некоторых флагах и параметрах, которые использовались в примерах, посетите страницу [Общие флаги и Опции](#common-flags-and-options). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
 
 ```
 ./target/release/moonbeam --help
 ```
-## Connecting Polkadot JS Apps to a Local Moonbeam Node
+## Подключение приложений Polkadot JS к локальному узлу Moonbeam
 
-The development node is a Substrate-based node, so you can interact with it using standard Substrate tools. The two provided RPC endpoints are:
+Узел разработки - это узел на основе substrate, поэтому Вы можете взаимодействовать с ним, используя стандартные инструменты substrate. Ниже представлены два RPC адреса, которые Вы можете использовать для подключения: 
 
  - HTTP: `http://127.0.0.1:9933`
  - WS: `ws://127.0.0.1:9944` 
 
-Start by connecting to it with Polkadot JS Apps. Open a browser to: [https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer). This will open Polkadot JS Apps, which automatically connects to Polkadot MainNet.
+Начнем с подключения к нему с помощью Polkadot JS Apps. Откройте браузер: [https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer). This will open Polkadot JS Apps, which automatically connects to Polkadot MainNet.
 
 ![Polkadot JS Apps](/images/setting-up-a-node/setting-up-node-5.png)
 
