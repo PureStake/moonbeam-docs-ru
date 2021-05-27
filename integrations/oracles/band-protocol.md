@@ -1,45 +1,45 @@
 ---
 title: Band Protocol
-description: How to use request data from a Band Protocol Oracle in your Moonbeam Ethereum DApp using smart contracts or javascript
+description: Как использовать данные запроса от Oracle Band Protocol в вашем DApp Moonbeam Ethereum с помощью смарт-контрактов или javascript
 ---
-# Band Protocol Oracle
+# Оракул Band Protocol
 
 ![Band Protocol Moonbeam Diagram](/images/band/band-banner.png)
 
-## Introduction
-Developers have two ways to fetch prices from Band’s oracle infrastructure. On one hand, they can use Band’s smart contracts on Moonbeam. Doing so, they access data that is on-chain and is updated either at regular intervals or when price slippage is more than a target amount (different for each token). On the other hand, devs can use the Javascript helper library, which uses an API endpoint to fetch the data using similar functions as those from the smart contracts, but this implementation bypasses the blockchain entirely.  This can be useful if your DApp front-end needs direct access to the data.
+## Вступление
+У разработчиков есть два способа получить цены из инфраструктуры Oracle . С одной стороны, они могут использовать смарт-контракты Band на Moonbeam. При этом они получают доступ к данным, которые находятся в цепочке и обновляются либо через регулярные промежутки времени, либо когда проскальзывание цены превышает целевое значение (разное для каждого токена). С другой стороны, разработчики могут использовать вспомогательную библиотеку Javascript, которая использует конечную точку API для извлечения данных с использованием функций, аналогичных функциям смарт-контрактов, но эта реализация полностью обходит блокчейн. Это может быть полезно, если Вашему интерфейсу DApp требуется прямой доступ к данным.
 
-The Aggregator Contract address can be found in the following table:
+Адрес контракта агрегатора можно найти в следующей таблице:
 
 |     Network    | |         Aggregator Contract Address        |
 |:--------------:|-|:------------------------------------------:|
 | Moonbase Alpha | | 0xDA7a001b254CD22e46d3eAB04d937489c93174C3 |
 
-## Supported Token
-Price queries with any denomination are available as long as the base and quote symbols are supported (_base_/_quote_). For example:
+## Поддерживаемый токен
+Ценовые запросы любого номинала доступны при условии, что поддерживаются базовые символы и символы котировки (_основание_/_котировка_). Например:
 
  - `BTC/USD`
  - `BTC/ETH`
  - `ETH/EUR`
 
-At the time of writing, the list of supported symbols can be found by following [this link](https://data.bandprotocol.com). There are more than 146 price pairs available to query.
+На момент написания статьи список поддерживаемых символов можно найти по [этой ссылке](https://data.bandprotocol.com). Для запроса доступно более 146 пар.
 
-## Querying Prices
-As stated before, developers can leverage two methods to query prices from Band's oracle: 
+## Запрос цен
+Как указывалось ранее, разработчики могут использовать два метода для запроса цен у оракула Band:
 
- - Band's smart contract on Moonbeam (deployed to Moonbase Alpha TestNet for now)
- - Javascript helper library
+ - Смарт-контракт Band на Moonbeam (на данный момент развернут в Moonbase Alpha TestNet)
+ - Вспомогательная библиотека Javascript
 
-## Get Data Using Smart Contracts
-Contracts can query on-chain data, such as token prices, from Band's oracle by implementing the interface of the `StdReference` contract, which exposes the `getReferenceData` and `getReferenceDataBulk` functions.
+## Получение данных с помощью смарт-контрактов
+Контракты могут запрашивать данные в цепочке, такие как цены токенов, из оракула Band, реализуя интерфейс контракта `StdReference` который предоставляет функции `getReferenceData` и `getReferenceDataBulk`
 
-The first function, `getReferenceData`, takes two strings (the base and the quote symbol) as the inputs. The function queries the `StdReference` contract for the latest rates available for those two tokens. It returns a `ReferenceData` struct.
+Первая функция, `getReferenceData`, принимает в качестве входных данных две строки (основание и символ кавычки). Функция запрашивает у контракта `StdReference` последние доступные ставки для этих двух токенов. Он возвращает структуру `ReferenceData`
 
-The `ReferenceData` struct has the following elements:
+Структура `ReferenceData` имеет следующие элементы:
 
- - Rate: the exchange rate in terms of _base/quote_. The value returned is multiplied by 10<sup>18</sup>
- - Last updated base: the last time when the base price was updated (since UNIX epoch)
- - Last updated quote: the last time when the quoted price was updated (since UNIX epoch)
+ - Курс: обменный курс с точки зрения базы / котировки. Возвращаемое значение умножается на 10<sup>18 степень</sup>
+ - Последняя обновленная база: последний раз, когда обновлялась базовая цена (с эпохи UNIX)
+ - Последнее обновление котировки: последний раз, когда котировочная цена была обновлена ​​(с эпохи UNIX)
  
 ```
 struct ReferenceData {
@@ -49,15 +49,15 @@ struct ReferenceData {
 }
 ```
 
-The second function, `getReferenceDataBulk`, takes information as data arrays. For example, if we pass in `['BTC','BTC','ETH']` as base and `['USD','ETH','EUR']` as quote, the `ReferenceData`returned array contains the information regarding the following pairs:
+Вторая функция, `getReferenceDataBulk`, принимает информацию в виде массивов данных. Например, если мы передадим `['BTC','BTC','ETH']` в качестве базы и `['USD','ETH','EUR']` в качестве цитаты, массив будет `ReferenceData` содержать информацию о следующих парах:
 
  - `BTC/USD`
  - `BTC/ETH`
  - `ETH/EUR`
 
-### Example Contract
+### Пример контракта
 
-The following smart contract code provides some simple examples of the `StdReference` contract and the `getReferenceData` function - these are not meant for production. The `IStdReference.sol` interface defines ReferenceData structure and the functions available to make the queries.
+Следующий код смарт-контракта предоставляет несколько простых примеров контракта `StdReference` и функции `getReferenceData`  они не предназначены для производства. Интерфейс `IStdReference.sol` определяет структуру ReferenceData и функции, доступные для выполнения запросов.
 
 ```sol
 pragma solidity 0.6.11;
@@ -84,12 +84,12 @@ interface IStdReference {
         returns (ReferenceData[] memory);
 }
 ```
-Next, we can use the following `DemoOracle` script. It provides four functions:
+Далее мы можем использовать следующий скрипт `DemoOracle` Он предоставляет четыре функции:
 
- - getPrice: a _view_ function that queries a single base. In this example, the price of `BTC` quoted in `USD`
- - getMultiPrices: a _view_ function that queries multiple bases. In this example, the price of `BTC` and `ETH`, both quoted in `USD`
- - savePrice: a _public_ function that queries the _base/quote_ pair. Each element is provided as separate strings, for example `_base = "BTC", _quotes = "USD"`. This sends a transaction and modifies the `price` variable stored in the contract
- - saveMultiPrices: a _public_  function that queries each _base/quote_ pair. Each element is provided as a string array. For example, `_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`. This sends a transaction and modifies the `prices` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
+ - getPrice:  _view_ функция просмотра, которая запрашивает одну базу. В этом примере цена `BTC` указана в долларах `USD`
+ - getMultiPrices:  _view_ fфункция просмотра, которая запрашивает несколько баз. В этом примере цена `BTC` и `ETH`, оба указаны в долларах `USD`
+ - savePrice:  _public_ function that queries the _base/quote_ pair. Each element is provided as separate strings, for example `_base = "BTC", _quotes = "USD"`. This sends a transaction and modifies the `price` variable stored in the contract
+ - saveMultiPrices:  _public_  function that queries each _base/quote_ pair. Each element is provided as a string array. For example, `_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`. This sends a transaction and modifies the `prices` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
 
  When deployed, the constructor function needs the Aggregator Contract address for the target network.
 
