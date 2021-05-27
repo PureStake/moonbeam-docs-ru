@@ -72,7 +72,7 @@ purestake/moonbeam \
 --help
 ```
 
-Чтобы продолжить изучение, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключеню приложений Polkadot JS к локальному узлу Moonbeam](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
+Чтобы продолжить изучение, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключение приложений Polkadot JS к локальному узлу Moonbeam](#connecting-polkadot-js-apps-to-a-local-moonbeam-node).
 
 ## Запуск Moonbeam из исходного кода
 
