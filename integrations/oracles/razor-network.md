@@ -2,23 +2,23 @@
 title: Razor Network
 description: How to use request data from a Razor Network Oracle in your Moonbeam Ethereum DApp using smart contracts
 ---
-# Razor Network Oracle
+# Оракул сети Razor
 
 ![Razor Network Moonbeam Diagram](/images/razor/razor-banner.png)
 
-## Introduction
+## Вступление
 
-Developers can now fetch prices from Razor Network’s oracle using a Bridge contract deployed on the Moonbase Alpha TestNet. This Bridge acts as middleware, and events emitted by it are fetched by the Razor Network's oracle infrastructure, sending prices to the Bridge contract.
+Теперь разработчики могут получать цены из оракула Razor Network, используя контракт моста, развернутый в Moonbase Alpha TestNet. Этот мост действует как промежуточное программное обеспечение, и генерируемые им события извлекаются инфраструктурой оракула Razor Network, отправляя цены в контракт моста.
 
-To access these price feeds, we need to interact with the Bridge contract address, which can be found in the following table:
+Чтобы получить доступ к этим ценовым фидам, нам нужно взаимодействовать с адресом контракта моста, который можно найти в следующей таблице:
 
 |     Network    | |         Contract Address        |
 |:--------------:|-|:------------------------------------------:|
 | Moonbase Alpha | | 0x53f7660Ea48289B5DA42f1d79Eb9d4F5eB83D3BE |
 
-## Jobs
+## Работа
 
-Each data-feed has a Job ID attached to it. For example:
+К каждому каналу данных прикреплен идентификатор задания. Например:
 
 |    Job ID    | |    Underlying Price [USD]  |
 |:------------:|-|:--------------------------:|
@@ -26,11 +26,11 @@ Each data-feed has a Job ID attached to it. For example:
 |       2      | |            BTC             |
 |       3      | |      Microsoft Stocks      |
 
-You can check Job IDs for each data-feed at the following [link](https://razorscan.io/#/custom). Price feeds are updated every 5 minutes. More information can be found in [Razor's documentation website][https://docs.razor.network/].
+Вы можете проверить идентификаторы задачи для каждого потока данных по следующей [ссылке](https://razorscan.io/#/custom). Прайс-каналы обновляются каждые 5 минут. Дополнительную информацию можно найти на [веб-сайте документации Razor][https://docs.razor.network/].
 
-## Get Data From Bridge Contract
+## Получить данные из контракта моста
 
-Contracts can query on-chain data such as token prices, from Razor Network's oracle by implementing the interface of the Bridge contract, which exposes the `getResult` and `getJob` functions.
+Контракты могут запрашивать данные в цепочке, такие как цены на токены, из оракула сети Razor , реализуя интерфейс контракта Bridge, который предоставляет функции `getResult` и `getJob`.
 
 ```
 pragma solidity 0.6.11;
@@ -43,23 +43,23 @@ interface Razor {
 }
 ```
 
-The first function, `getResult`, takes the Job ID associated with the data-feed and fetches the price. For example, if we pass in `1`, we will receive the price of the data-feed related to the Job ID.
+Первая функция, `getResult`, берет идентификатор задания, связанный с потоком данных, и получает цену. Например, если мы передадим 1, мы получим цену потока данных, связанную с идентификатором задачи.
 
-The second function, `getJob`, takes the Job ID associated with the data-feed and fetches the general information regarding the data-feed, such as the name of the data-feed, the price, and the URL being used to fetch the prices.
+Вторая функция, `getJob`, принимает идентификатор задания, связанный с фидом данных, и извлекает общую информацию о фиде данных, такую как имя фида данных, цена и URL-адрес, используемый для получения цен.
 
-### Example Contract
+### Пример контракта
 
-We've deployed the bridge contract in the Moonbase Alpha TestNet (at address `{{ networks.moonbase.razor.bridge_address }}`) so you can quickly check the information fed from Razor Network's oracle. 
+Мы развернули контракт моста в Moonbase Alpha TestNet (по адресу `{{ networks.moonbase.razor.bridge_address }}`) чтобы Вы могли быстро проверить информацию, поступающую от оракула сети Razor .
 
-The only requirement is the Bridge interface, which defines `getResult` structure and makes the functions available to the contract for queries.
+Единственное требование — это интерфейс Bridge, который определяет структуру `getResult` и делает функции доступными контракту для запросов.
 
 
-We can use the following `Demo` script. It provides various functions:
+Мы можем использовать следующий `Demo` скрипт. Он предоставляет различные функции:
 
- - fetchPrice: a _view_ function that queries a single Job ID. For example, to fetch the price of `ETH` in `USD`, we will need to send the Job ID `1`
- - fetchMultiPrices: a _view_ function that queries multiple Job IDs. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the Job IDs `[1,2]`
- - savePrice: a _public_ function that queries a single Job ID. This sends a transaction and modifies the `price` variable stored in the contract.
- - saveMultiPrices: a _public_ function that queries multiple Job IDs. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the Job IDs `[1,2]`. This sends a transaction and modifies the `pricesArr` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
+ - fetchPrice:  _view_ функция просмотра, которая запрашивает один идентификатор задания. Например, чтобы получить цену `ETH` и `USD`,  нам нужно будет отправить идентификатор задачи `1`
+ - fetchMultiPrices:  _view_ функция просмотра, которая запрашивает несколько идентификаторов задач. Например, чтобы получить цену  `ETH` и `BTC` в `USD`, нам нужно будет отправить идентификаторы задач `[1,2]`
+ - savePrice:  _public_ общедоступная функция, которая запрашивает один идентификатор задачи. Это отправляет транзакцию и изменяет `price` переменную, хранящуюся в контракте.
+ - saveMultiPrices:  _public_ общедоступная функция, которая запрашивает несколько идентификаторов задач. Например, чтобы получить цену `ETH` и `BTC` в `USD`, нам нужно будет отправить идентификаторы задач `[1,2]`. Это отправляет транзакцию и изменяет массив `pricesArr` хранящийся в контракте, который будет содержать цену каждой пары в том же порядке, как указано во входных данных.
 
 ```sol
 pragma solidity 0.6.11;
@@ -109,9 +109,9 @@ contract Demo {
 }
 ```
 
-### Try it on Moonbase Alpha
+### Попробуйте на Moonbase Alpha
 
-The easiest way to try their Oracle implementation is by pointing the interface to the Bridge contract deployed at address `{{ networks.moonbase.razor.bridge_address }}`:
+Самый простой способ попробовать их реализацию Oracle — это указать интерфейс на контракт Bridge, развернутый по адресу `{{ networks.moonbase.razor.bridge_address }}`:
 
 ```sol
 pragma solidity 0.6.11;
@@ -122,20 +122,20 @@ interface Razor {
 }
 ```
 
-With it, you will have two view functions available, very similar to our previous examples:
+С его помощью Вам будут доступны две функции просмотра, очень похожие на наши предыдущие примеры:
 
- - getPrice: provides the price feed for a single job ID given as input to the function. For example, to fetch the price of `ETH` in `USD`, we will need to send the Job ID `1`
- - getMultiPrices: provides the price feed for multiple Job IDs given as an array input to the function. For example, to fetch the price of `ETH` and `BTC` in `USD`, we will need to send the job IDs `[1,2]`
+ - getPrice: предоставляет поток цен для одного идентификатора задачи, который вводится в функцию. Например, чтобы получить цену `ETH` в `USD`, нам нужно будет отправить идентификатор задачи `1`
+ - getMultiPrices: предоставляет поток цен для нескольких идентификаторов задач, заданных как входной массив функции. Например, чтобы получить цену `ETH` и `BTC` в `USD`, нам нужно будет отправить идентификаторы задач `[1,2]`
 
-Let's use [Remix](/integrations/remix/) to fetch the `BTC` price in `USD`.
+Давайте воспользуемся [Remix](/integrations/remix/) чтобы получить цену `BTC` в `USD`.
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the contract address (`{{ networks.moonbase.razor.bridge_address }}`), and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so that you are connected to Moonbase Alpha (through the Web3 provider of the wallet). 
+После создания файла и компиляции контракта перейдите на вкладку «Deploy and Run Transactions», введите адрес контракта (`{{ networks.moonbase.razor.bridge_address }}`), и нажмите "At Address." Убедитесь, что Вы установили "Environment" на "Injected Web3" чтобы Вы подключились к Moonbase Alpha (через провайдера Web3 кошелька). 
 
 ![Razor Remix deploy](/images/razor/razor-demo1.png)
 
-This will create an instance of the demo contract that you can interact with. Use the functions `getPrice()` and `getMultiPrices()` to query the data of the corresponding pair.
+Это создаст экземпляр демонстрационного контракта, с которым Вы можете взаимодействовать. Используйте функции `getPrice()` и `getMultiPrices()` для запроса данных соответствующей пары.
 
 ![Razor check price](/images/razor/razor-demo2.png)
 
 ## Contact Us
-If you have any feedback regarding implementing the Razor Network Oracle on your project or any other Moonbeam related topic, feel free to reach out through our official development [Discord server](https://discord.com/invite/PfpUATX).
+Если у Вас есть фидбек относительно реализации Razor Network Oracle в Vашем проекте или по любой другой теме, связанной с Moonbeam, не стесняйтесь обращаться к нам через наш официальный [Сервер Discord](https://discord.com/invite/PfpUATX).
