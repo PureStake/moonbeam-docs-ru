@@ -120,7 +120,7 @@ cd moonbeam
 ```
 
 !!! обратите внимание
-    Для людей, не знакомых с Substrate, `--dev` флаг позволяет запустить узел на основе substrate в режиме разработчика с одним узлом в целях тестирования. Вы можете узнать больше о `--dev` режиме в [этом реководстве по Substrate](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact).
+    Для людей, которые на знакомы с Substrate, `--dev` флаг позволяет запустить узел на основе substrate в режиме разработчика с одним узлом в целях тестирования. Вы можете узнать больше о `--dev` режиме в [этом реководстве по Substrate](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact).
 
 Вы должны увидеть следующий вывод, который будет отображать состояние ожидания, до тех пор пока не будут созданы блоки:
 
