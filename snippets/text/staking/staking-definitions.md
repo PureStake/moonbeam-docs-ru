@@ -1,11 +1,11 @@
-Some important parameters to understand in relation to the staking system in Moonbeam include:
+Некоторые важные параметры, которые необходимо понять в отношении системы ставок в Moonbeam, включают:
 
- - **Collators** — block producers. They collect transactions from users and produce state transition proofs for the Relay Chain to validate. Have a stake in the network that get slashed if they misbehave
- - **Nominators** — token holders who stake tokens, vouching for specific collators. Any user that holds a minimum amount of tokens as [free balance](https://wiki.polkadot.network/docs/en/learn-accounts#balance-types) can become a nominator
- - **Minimum nomination stake** — minimum amount of total tokens staked a user must have to be in the set of nominators
- - **Minimum nomination** — minimum amount of tokens to nominate other collators once a user is in the set of nominators
- - **Maximum nominators per collator** — maximum number of nominators a collator can have
- - **Maximum collators per nominator** — maximum number of collators a nominator can nominate
- - **Round** — number of blocks in a round. An important parameter for reward distribution
+ - **Коллаторы** — производители блоков. Они собирают транзакции от пользователей и создают доказательства перехода между состояниями для проверки цепочкой ретрансляции. Сделайте ставку в сети, которую сократят, если они плохо себя ведут
+ - **Номинаторы** — держатели токенов, которые делают стейкинг токенов, ручаются за определенных коллаторов. Номинатором может стать любой пользователь, имеющий минимальное количество токенов на [свободном балансе](https://wiki.polkadot.network/docs/en/learn-accounts#balance-types)
+ - **Минимальная номинальная ставка** — минимальная сумма всех поставленных токенов, которая должна быть у пользователя в наборе номинаторов.
+ - **Минимальная номинация** — минимальное количество токенов для номинирования других коллаторов , когда пользователь входит в набор номинаторов.
+ - **Максимальное количество номинаторов на коллатора** — максимальное количество номинаторов, которое может иметь колатор.
+ - **Максимальное количество коллаторов на одного номинатора** — максимальное количество коллаторов, которое может назначить номинатор.
+ - **Раунд** — количество блоков в раунде. Важный параметр для распределения вознаграждения.
 
- - **Bond duration** — number of rounds that the staking rewards are delayed
+ - **Длительность бонда** — количество раундов, на которые откладываются вознаграждения за стейкинг.
