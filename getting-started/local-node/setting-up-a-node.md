@@ -10,7 +10,7 @@ description: Воспользуйтесь данным руководством,
 
 ## Вступление
 
-В этом руководстве описаны шаги, необходимые для создания ноды для тестирования совместимости с Ethereum и функциональности Moonbeam.
+В этом руководстве описаны шаги, по созданию ноды для тестирования совместимости с Ethereum и функциональности Moonbeam.
 
 !!! Примечание
     Это руководство было создано с использованием {{ networks.development.build_tag }} тега [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.development.build_tag }}). Платформа Moonbeam и компоненты [Frontier](https://github.com/paritytech/frontier) которые она использует для совместимости с Ethereum на основе Substrate, все еще находятся в стадии активной разработки.
