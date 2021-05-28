@@ -1,122 +1,125 @@
 ---
-title: Using Remix
-description: Learn how to use one of the most popular Ethereum developer tools, the Remix IDE, to interact with a local Moonbeam node.
+title: Использование Remix
+description: В этом руководстве вы узнаете как использовать один из самых популярных инструментов разработчика Ethereum, Remix IDE, для взаимодействия с локальной нодой Moonbeam.
 ---
 
-# Interacting with Moonbeam Using Remix
+# Взаимодействие с Moonbeam с помощью Remix
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//RT_f1-ga_n4' frameborder='0' allowfullscreen></iframe></div>
-<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>You can find all of the relevant code for this tutorial on the <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
+<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>
+Вы можете найти весь необходимый код касающийся этого руководства в <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## Introduction
+## Введение
 
-Remix is one of the commonly used development environments for smart contracts on Ethereum. Given Moonbeam’s Ethereum compatibility features, Remix can be used directly with a Moonbeam development node or the Moonbase Alpha TestNet.
+Remix — одна из часто используемых сред разработки для смарт-контрактов на Ethereum. Учитывая особенности совместимости Moonbeam с Ethereum, Remix можно использовать напрямую с нодой Moonbeam.
 
-This guide walks through the process of creating and deploying a Solidity-based smart contract to a Moonbeam development node using the [Remix IDE](https://remix.ethereum.org/). 
-
-!!! note
-    This tutorial was created using the {{ networks.development.build_tag}} tag which is based on the {{ networks.moonbase.version }} release of [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}). The Moonbeam platform and the [Frontier](https://github.com/paritytech/frontier) components it relies on for Substrate-based Ethereum compatibility are still under very active development.
-
-This guide assumes that you have a local Moonbeam node running in `--dev` mode and that you have a [MetaMask](https://metamask.io/) installation configured to use this local node. You can find instructions for running a local Moonbeam node [here](/getting-started/local-node/setting-up-a-node/) and instructions to connect MetaMask to it [here](/getting-started/local-node/using-metamask/).
-## Checking Prerequisites
-
-If you followed the guides above, you should have a local Moonbeam node which will begin to author blocks as transactions arrive:
-
-![Local Moonbeam node producing blocks](/images/remix/using-remix-1.png)
-
-And you should have a MetaMask installation connected to your local Moonbeam dev node with at least one account that has a balance. It should look something like this (expanded view):
-
-![MetaMask installation with a balance](/images/remix/using-remix-2.png)
+В этом руководстве рассматривается процесс создания и размещения смарт-контракта на основе Solidity на ноде Moonbeam с использованием [Remix IDE](https://remix.ethereum.org/). 
 
 !!! note
-    Make sure you are connected to your Moonbeam node and not another network!
+    Это руководство было создано с использованием тега {{ networks.development.build_tag}}, который основан на {{ networks.moonbase.version }} версии [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}). Платформа Moonbeam и компоненты [Frontier](https://github.com/paritytech/frontier), которые используются для совместимости Ethereum на основе Substrate, все еще находятся в стадии активной разработки.
 
-## Getting Started with Remix
+В этом руководстве предполагается, что у вас уже есть нода Moonbeam, работающая в режиме `--dev` и что у вас установлен и настроен [MetaMask](https://metamask.io/) для использования с этой нодой. Вы можете найти инструкции по запуску ноды Moonbeam [здесь](/getting-started/local-node/setting-up-a-node/) и инструкции по подключению MetaMask [здесь](/getting-started/local-node/using-metamask/).
 
-Now, let’s fire up Remix to exercise more advanced functionalities in Moonbeam.
+## Проверка предварительных условий
 
-Launch Remix by navigating to [https://remix.ethereum.org/](https://remix.ethereum.org/). In the main screen, under Environments, select Solidity to configure Remix for Solidity development, then navigate to the File Explorers view:
+Если вы следовали приведенным ранее пунктам,то у вас уже должна быть нода Moonbeam, производящая блоки, которые выглядят следующим образом:
+
+![Локальная нода Moonbeam, производящая блоки](/images/remix/using-remix-1.png)
+
+И у вас должен быть установлен MetaMask, подключеный к вашей ноде Moonbeam, по крайней мере, с одной учетной записью, на балансе которой есть средства. Это должно выглядеть примерно так (развернутый вид):
+
+![Установленный MetaMask с балансом](/images/remix/using-remix-2.png)
+
+!!! note
+    Убедитесь, что вы подключены к своей ноде Moonbeam, а не к другой сети!
+
+## Начало работы с Remix
+
+Теперь давайте запустим Remix, чтобы использовать продвинутые функции Moonbeam.
+
+Запустите Remix, перейдя на [https://remix.ethereum.org/](https://remix.ethereum.org/). На главном экране, в разделе Environments, выберите Solidity, чтобы настроить Remix для разработки Solidity, а затем перейдите к вкладке File Explorer:
 
 ![File explorer](/images/remix/using-remix-3.png)
 
-We will create a new file to save the Solidity smart contract. Hit the + button under File Explorers and enter the name "MyToken.sol" in the popup dialog:
+Мы создадим новый файл для нашего смарт-контракта Solidity. Нажмите кнопку + под File Explorer и введите имя «MyToken.sol» во всплывающем окне:
 
-![Create a new file for your Solidity contract](/images/remix/using-remix-4.png)
+![Создание нового файла для вашего смарт-контракта Solidity](/images/remix/using-remix-4.png)
 
-Next, let's paste the following smart contract into the editor tab that comes up:
+Затем давайте вставим следующий смарт-контракт в открывшуюся вкладку редактора:
 
 ```solidity
 --8<-- 'code/remix-local/contract.md'
 ```
 
-This is a simple ERC-20 contract based on the current Open Zeppelin ERC-20 template. It creates MyToken with symbol MYTOK and mints the entirety of the initial supply to the creator of the contract.
+Это простой контракт ERC-20, основанный на текущем шаблоне Open Zeppelin ERC-20. Этот контракт создает MyToken с символом MYTOK и создает первичное предложение (токена) для эмитента контракта.
 
-Once you have pasted the contract into the editor, it should look like this:
+После того, как вы вставили контракт в редактор, он должен выглядеть так:
 
-![Paste the contract into the editor](/images/remix/using-remix-5.png)
+![Вставьте ваш контракт в редактор](/images/remix/using-remix-5.png)
 
-Now, navigate to the compile sidebar option to press the “Compile MyToken.sol” button:
+Теперь перейдите к боковой панели компиляции и нажмите кнопку «Compile MyToken.sol»:
 
 ![Compile MyToken.sol](/images/remix/using-remix-6.png)
 
-You will see Remix download all of the Open Zeppelin dependencies and compile the contract.
+Вы увидите, как Remix загрузит все Open Zeppelin и скомпилирует контракт.
 
-## Deploying a Contract to Moonbeam Using Remix
+## Размещение контракта на Moonbeam с помощью Remix
 
-Now we can deploy the contract by navigating to the Deployment sidebar option. You need to change the topmost “Environment” dropdown from “JavaScript VM” to “Injected Web3.” This tells Remix to use the MetaMask injected provider, which will point it to your Moonbeam development node. If you wanted to try this using the Moonbase Alpha TestNet, you would have to connect MetaMask to the TestNet instead of your local development node.
+Теперь мы можем разместить контракт, перейдя к опции Deployment в боковой панели. Вам необходимо изменить верхнее раскрывающееся меню "Environment" с "JavaScript VM" на "Injected Web3". Remix предлагает использовать MetaMask, который будет ссылаться на вашу ноду Moonbeam. 
 
-As soon as you select "Injected Web3", you will be prompted to allow Remix to connect to your MetaMask account.
+Как только вы выберете это, вам будет предложено разрешить Remix подключиться к вашей учетной записи MetaMask.
 
-![Replace](/images/remix/using-remix-7.png)
+![Изменить](/images/remix/using-remix-7.png)
 
-Press “Next” in Metamask to allow Remix to access the selected account.
+Нажмите "Next" в Metamask, чтобы позволить Remix получить доступ к выбранной учетной записи.
 
-Back on Remix, you should see that the account you wish to use for deployment is now managed by MetaMask. Next to the Deploy button, let’s specify an initial supply of 8M tokens. Since this contract uses the default of 18 decimals, the value to put in the box is `8000000000000000000000000`.
+Вернувшись к Remix, вы должны увидеть, что учетная запись, которую вы хотите использовать для размещения, теперь управляется MetaMask. Рядом с кнопкой Deploy укажите начальный баланс в 8 миллионов токенов. Поскольку в этом контракте по умолчанию используется 18 знаков после запятой, значение для ввода в поле составляет `8000000000000000000000000`.
 
-Once you have entered this value, select "Deploy."
+После того, как вы ввели это значение, выберите "Deploy".
 
-![Enter an account balance and deploy](/images/remix/using-remix-8.png)
+![Внести средства на баланс и разместить контракт](/images/remix/using-remix-8.png)
 
-You will be prompted in MetaMask to confirm the contract deployment transaction.
+MetaMask предложит вам подтвердить транзакцию размещения контракта.
 
-![Confirm the transaction message](/images/remix/using-remix-9.png)
+![Подтвердить транзакцию](/images/remix/using-remix-9.png)
 
 !!! note
-    If you have problems deploying any specific contract, you can try manually increasing the gas limit. You can do this under Settings -> Advanced -> Advanced Gas Controls = ON.
+    Если у вас возникли проблемы с размещением какого-либо контракта, вы можете попробовать вручную увеличить лимит газа. Вы можете сделать это в разделе Settings -> Advanced -> Advanced Gas Controls = ON.
 
-After you press confirm and the deployment is complete, you will see the transaction listed in MetaMask. The contract will appear under Deployed Contracts in Remix.
+После нажатия кнопки подтверждения и завершения размещения вы увидите транзакцию, указанную в MetaMask. Контракт появится в разделе Deployed Contracts in Remix.
 
-![Confirmed label on a transaction](/images/remix/using-remix-10.png)
+![Подтвержденная транзакция](/images/remix/using-remix-10.png)
 
-Once the contract is deployed, you can interact with it from within Remix.
+После размещения контракта вы можете взаимодействовать с ним с помощью Remix.
 
-Drill down on the contract under “Deployed Contracts.” Clicking on name, symbol, and totalSupply should return “MyToken,” “MYTOK,” and “8000000000000000000000000” respectively. If you copy the address from which you deployed the contract and paste it into the balanceOf field, you should see the entirety of the balance of the ERC20 as belonging to that user. Copy the contract address by clicking the button next to the contract name and address.
+Разверните контракт в разделе "Deployed Contracts". Нажмите на имя,символ и totalSupply, вам должны вернуться "MyToken", "MYTOK" и "8000000000000000000000000" соответственно. Если вы скопируете адрес, с которого вы разместили контракт, и вставите его в поле balanceOf, вы должны увидеть, что баланс ERC20 полностью принадлежит этому пользователю. Скопируйте адрес контракта, нажав кнопку рядом с названием и адресом контракта.
 
-![Interact with the contract from Remix](/images/remix/using-remix-11.png)
+![Взаимодействие с контрактом с помощью Remix](/images/remix/using-remix-11.png)
 
-## Interacting with a Moonbeam-based ERC-20 from MetaMask
+## Взаимодействие с ERC-20 на основе Moonbeam c помощью MetaMask
 
-Now, open MetaMask to add the newly deployed ERC-20 tokens. Before doing so, make sure you have copied the contract's address from Remix. Back in MetaMask, click on “Add Token” as shown below. Make sure you are in the account that deployed the token contract.
+Теперь откройте MetaMask, чтобы добавить недавно размещенные токены ERC-20. Перед этим убедитесь, что вы скопировали адрес контракта из Remix. Вернувшись в MetaMask, нажмите "Add Token", как показано ниже. Убедитесь, что вы находитесь в учетной записи, в которой был размещен контракт токена.
 
 ![Add a token](/images/remix/using-remix-12.png)
 
-Paste the copied contract address into the “Custom Token” field. The “Token Symbol” and “Decimals of Precision” fields should be automatically populated.
+Вставьте скопированный адрес контракта в поле "Custom Token". Поля "Token Symbol" и "Decimals of Precision" должны заполниться автоматически.
 
-![Paste the copied contract address](/images/remix/using-remix-13.png)
+![Вставьте скопированный адрес контракта](/images/remix/using-remix-13.png)
 
-After hitting “Next,” you will need to confirm that you want to add these tokens to your MetaMask account. Hit “Add Token” and you should see a balance of 8M MyTokens in MetaMask:
+После нажатия на "Next" вам нужно будет подтвердить, что вы хотите добавить эти токены в свою учетную запись MetaMask. Нажмите "Add Token" и вы должны увидеть баланс в 8 миллионов MyTokens в MetaMask:
 
-![Add the tokens to your MetaMask account](/images/remix/using-remix-14.png)
+![Добавьте токены в вашу учетную запись Metamask](/images/remix/using-remix-14.png)
 
-Now we can send some of these ERC-20 tokens to the other account that we have set up in MetaMask. Hit “send” to initiate the transfer of 500 MyTokens and select the destination account.
+Теперь мы можем отправить некоторые из этих токенов ERC-20 в другую учетную запись, которую мы настроили в MetaMask. Нажмите "Send", чтобы начать передачу 500 MyTokens и выберите учетную запись получателя.
 
-After hitting “next,” you will be asked to confirm (similar to what is pictured below).
+После нажатия "Next" вас попросят подтвердить отправку (аналогично тому, как показано на рисунке ниже).
 
-![Confirmation of the token transfer](/images/remix/using-remix-15.png)
+![Подтверждение отправки токенов](/images/remix/using-remix-15.png)
 
-Hit “Confirm” and, after the transaction is complete, you will see a confirmation and a reduction of the MyToken account balance from the sender account in MetaMask:
+Нажмите "Подтвердить" и после завершения транзакции вы увидите уменьшение баланса учетной записи MyToken со счета отправителя в MetaMask:
 
-![Verify the reduction in account balance](/images/remix/using-remix-16.png)
+![Подтвердить уменьшение баланса отпарвителя](/images/remix/using-remix-16.png)
 
-If you own the account that you sent the tokens to, you can add the token asset to verify that the transfer arrived.
+Если учетная запись, на которую вы отправили токены, принадлжеит вам, вы можете добавить актив токена, чтобы убедиться, что перевод получен.
+
 
