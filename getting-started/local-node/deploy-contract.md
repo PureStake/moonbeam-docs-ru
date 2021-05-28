@@ -1,21 +1,21 @@
 ---
-title: Deploy a Contract
-description: Learn how to deploy unmodified and unchanged Solidity-based smart contracts to a Moonbeam node with a simple script using Web3.js, Ethers.js, or Web3.py.
+title: Размещение контракта
+description: Узнайте  как разместить немодифицированные и неизмененные смарт-контракты на основе Solidity, на ноде Moonbeam с помощью простого скрипта с использованием Web3.js, Ethers.js или Web3.py.
 ---
 
-# Using Ethereum Libraries to Deploy Smart Contracts on Moonbeam
+# Использование библиотек Ethereum для размещения Smart-контрактов на Moonbeam
 
 ![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
 
-## Introduction
+## Введение
 
-This guide walks through using the Solidity compiler and three different Ethereum libraries to sign and send a transaction on Moonbeam manually. The three libraries covered by this tutorial are:
+В этом руководстве рассматривается использование компилятора Solidity и трех различных библиотек Ethereum для подписания и отправки транзакции в Moonbeam вручную. Данными библиотеками являются: 
 
  - [Web3.js](https://web3js.readthedocs.io/)
  - [Ethers.js](https://docs.ethers.io/)
  - [Web3.py](https://web3py.readthedocs.io/)
 
-Besides, two other libraries will be used to compile the smart contract:
+Кроме того, для составления смарт-контракта будут использованы еще две другие библиотеки:
 
  - [Solc-js](https://www.npmjs.com/package/solc) to compile Solidity smart contracts using JavaScript
  - [Py-solc-x](https://pypi.org/project/py-solc-x/) to compile Solidity smart contracts using Python
@@ -23,28 +23,28 @@ Besides, two other libraries will be used to compile the smart contract:
 !!! note
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
-## Checking Prerequisites
+## Проверяем необходимые требования
 
-The examples using both web3.js and ethers.js need you to install Node.js and NPM previously. For the web3.py, you need Python and PIP. As of the writing of this guide, the versions used were:
+К примеру, тем кто использует web3.js, ethers.js необходимо предварительно установить Node.js и NPM. Для web3.py Вам понадобятся Python и PIP. На момент написания этого руководства использовались следующие версии:
 
  - Node.js v15.10.0
  - NPM v7.5.3
  - Python v3.6.9 (web3 requires Python >= 3.5.3 and < 4)
  - PIP3 v9.0.1
 
-Next, create a directory to store all of the relevant files:
+Дальше, создайте папку для хранения всех соответствующих файлов: 
 
 ```
 mkdir incrementer && cd incrementer/
 ```
 
-For the JavaScript libraries, first, you can create a simple `package.json` file (not required):
+Для библиотек JavaScript сначала Вы можете создать простой файл package.json (не обязательно):
 
 ```
 npm init --yes
 ```
 
-In the directory, install the corresponding library and the Solidity compiler (_web3.py_ and _py-solc-x_ are installed in the default directory of PIP3):
+В каталоге установите соответствующую библиотеку и компилятор Solidity (_web3.py_ и _py-solc-x_ устанавливаются по умолчанию в каталог PIP3):
 
 === "Web3.js"
     ```
@@ -61,7 +61,7 @@ In the directory, install the corresponding library and the Solidity compiler (_
     pip3 install web3 pip3 install py-solc-x
     ```
 
-The versions used when this guide was published were
+На момент публикации этого руководства использовались следующие версии:
 
  - Web3.js v1.33 (`npm ls web3`)
  - Ethers.js v5.0.31 (`npm ls ethers`)
@@ -69,7 +69,7 @@ The versions used when this guide was published were
  - Web3.py v5.17.0 (`pip3 show web3`)
  - Py-solc-x v1.1.0 (`pip3 show py-solc-x`)
 
-The setup for this example will be relatively simple, and it'll contain the following files:
+Настройка для этого примера будет простой и будет содержать следующие файлы:
 
  - **_Incrementer.sol_** — the file with our Solidity code
  - **_compile.\*_** — compiles the contract with the Solidity compiler
@@ -78,29 +78,30 @@ The setup for this example will be relatively simple, and it'll contain the foll
  - **_increment.\*_** — it will make a transaction to increment the number stored on the Moonbeam node
  - **_reset.\*_** — the function to call that will reset the number stored to zero
 
-## The Contract File
+## Файл контракта
 
-The contract used is a simple incrementer, arbitrarily named _Incrementer.sol_, which you can find [here](/snippets/code/web3-contract-local/Incrementer.sol). The Solidity code is the following:
+Используемый контракт представляет собой простой инкрементатор, произвольно названный _Incrementer.sol_, который вы можете найти [здесь](/snippets/code/web3-contract-local/Incrementer.sol). Код Solidity будет выглядеть следующим образом:
 
 ```solidity
 --8<-- 'code/web3-contract-local/Incrementer.sol'
 ```
 
-The `constructor` function, which runs when the contract is deployed, sets the initial value of the number variable stored on-chain (default is 0). The `increment` function adds the `_value` provided to the current number, but a transaction needs to be sent, which modifies the stored data. Lastly, the `reset` function resets the stored value to zero.
+Функция `constructor` которая запускается при размещении контракта, устанавливает начальное значение числовой переменной, хранящейся в цепочке (по умолчанию 0). Функция `increment` добавляет предоставленное значение `_value` к текущему числу, для этого необходимо отправить транзакцию, которая изменяет сохраненные данные. Наконец, функция `reset` возвращает сохраненное значение к нулю.
 
 !!! note
-    This contract is a simple example for illustration purposes only and does not handle values wrapping around.
+    Этот контракт представляет собой только пример и не обрабатывает значения, оборачивающиеся вокруг.
 
-## Compiling the Contract
 
-The only purpose of the compile file is to use the Solidity compiler to output the bytecode and interface (ABI) our contract. You can find the code snippet for each library here (they were arbitrarily named `compile.*`):
+## Компиляция смарт-контракта
+
+Единственная цель файла компиляции - использовать компилятор Solidity для вывода байт-кода и интерфейса (ABI) нашего контракта. Вы можете найти фрагменты кода для каждой библиотеки здесь (они были произвольно названы `compile.*`):
 
  - Web3.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
  - Ethers.js: [_compile.js_](/snippets/code/web3-contract-local/compile.js)
  - Web3.py: [_compile.py_](/snippets/code/web3py-contract/compile.py)
 
 !!! note
-    The compile file for both JavaScript libraries is the same as they share the JavaScript bindings for the Solidity compiler (same package)
+    Файл компиляции для обеих библиотек JavaScript такой же, поскольку они используют привязки JavaScript для компилятора Solidity (один и тот же пакет)
 
 === "Web3.js"
     ```
@@ -117,34 +118,34 @@ The only purpose of the compile file is to use the Solidity compiler to output t
     --8<-- 'code/web3py-contract/compile.py'
     ```
 
-### Web3.js and Ethers.js
+### Web3.js и Ethers.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/compile.js), the contract's path is fetched, and its content read.
+В первой части [скрипта](/snippets/code/web3-contract-local/compile.js) выбирается путь к контракту и читается его содержимое.
 
-Next, the Solidity compiler's input object is built, and it is passed as input to the `solc.compile` function.
+Затем создается входной объект компилятора Solidity, который передается в качестве входных данных функции `solc.compile`.
 
-Lastly, extract the data of the `Incrementer` contract of the `Incrementer.sol` file, and export it so that the deployment script can use it.
+Наконец, извлеките данные контракта `Incrementer` из файла `Incrementer.sol`, затем экспортируйте их, чтобы сценарий размещения мог их использовать.
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/compile.py), the contract file is compiled using the `solcx.compile_files` function. Note that the contract file is in the same directory as the compile script.
+В первой части [скрипта](/snippets/code/web3py-contract/compile.py), файл контракта компилируется с помощью функции `solcx.compile_files`. Обратите внимание, что файл контракта находится в том же каталоге, что и сценарий компиляции.
 
 !!! note
-    When running the `compile.py` you might be get an error stating that `Solc` needs to be installed. If so, uncomment the line in the file that executes `solcx.install_solc()` and rerun the compile file again with `python3 compile.py`. More information can be found in [this link](https://pypi.org/project/py-solc-x/).
+    При запуске `compile.py` вы можете получить сообщение об ошибке, в котором говорится, что необходимо установить `Solc`. В таком случае, раскомментируйте строку в файле, которая выполняет `solcx.install_solc()` и повторно запустите файл компиляции с помощью `python3 compile.py`. Более подробную информацию можно найти по этой [ссылке](https://pypi.org/project/py-solc-x/).
 
-Next, and wrapping up the script, the contract data is exported. In this example, only the interface (ABI) and bytecode were defined.
+Затем, после завершения скрипта данные контракта экспортируются. В этом примере были определены только интерфейс (ABI) и байт-код.
 
-## Deploying the Contract
+## Размещение смарт-контракта
 
-Regardless of the library, the strategy to deploy the compiled smart contract is somewhat similar. A contract instance is created using its interface (ABI) and bytecode. From this instance, a deployment function is used to send a signed transaction that deploys the contract. You can find the code snippet for each library here (they were arbitrarily named `deploy.*`):
+Независимо от библиотеки, стратегия размещения скомпилированного смарт-контракта имеет схододство. Экземпляр контракта создается с использованием его интерфейса (ABI) и байт-кода. В этом экземпляре, функция размещения используется для отправки подписанной транзакции, которая размещает контракт. Здесь вы можете найти фрагменты кода для каждой библиотеки (они были произвольно названы `deploy.*`):
 
  - Web3.js: [_deploy.js_](/snippets/code/web3-contract-local/deploy.js)
  - Ethers.js: [_deploy.js_](/snippets/code/ethers-contract-local/deploy.js)
  - Web3.py: [_deploy.py_](/snippets/code/web3py-contract/deploy.py)
 
-For simplicity, the deploy file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI and bytecode of the contract are imported. Also, the provider and account from (with the private key) are defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+Файл размещения состоит из двух разделов. В первом разделе ("Define Provider & Variables") импортируется используемая библиотека, а также ABI и байт-код контракта. Также определяются провайдер и учетная запись (с закрытым ключом). Обратите внимание, что `providerRPC` имеет как стандартную конечную точку RPC узла разработки, так и конечную точку для [Moonbase Alpha](/networks/testnet/).
 
-The second section ("Deploy Contract") outlines the actual contract deployment part. Note that for this example, the initial value of the `number` variable was set to 5. Some of the key takeaways are discussed next.
+Во втором разделе ("Deploy Contract") описывается фактическая часть размещения контракта. Обратите внимание, что для этого примера начальное значение числовой переменной было установлено на 5. Некоторые из ключевых выводов будут рассмотрены далее.
 
 === "Web3.js"
     ```
@@ -162,7 +163,8 @@ The second section ("Deploy Contract") outlines the actual contract deployment p
     ```
 
 !!! note
-    The _deploy.\*_ script provides the contract address as an output. This comes in handy, as it is used for the contract interaction files.
+    Скрипт _deploy.\*_ предоставляет адрес контракта в качестве вывода. Это очень удобно, поскольку он используется для взаимодействия с контрактом.
+
 
 ### Web3.js
 
