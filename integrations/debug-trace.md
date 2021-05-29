@@ -1,57 +1,57 @@
 ---
-title: Debug & Trace
-description:  Learn how to leverage the Geth Debug API and OpenEthereum Trace module on Moonbeam
+title: Дебаг & Трассировка
+description:  Узнайте, как использовать Geth Debug API и модуль трассировки OpenEthereum на Moonbeam
 ---
 
-# Debug API & Trace Module
+# Дебаг API & Модуль Трассировки
 
 ![Full Node Moonbeam Banner](/images/debugtrace/debugtrace-banner.png)
 
-## Introduction
+## Вступление
 
-Both Geth's debug API and OpenEthereum's trace module provide non-standard RPC methods for getting a deeper insight into transaction processing.
+Geth Дебаг API и OpenEthereum Модуль Трассировки обеспечивают нестандартные RPC методы для более глубокого понимания обработки транзакций.
 
-With the release of Moonbase Alpha v7, as part of Moonbeam's goal of providing a seamless Ethereum experience for developers, both `debug_traceTransaction` and `trace_filter` RPC methods are now available.
+С релизом Moonbase Alpha v7 сделан еще один шаг в достижении основной цели Moonbeam, а именно предоставлении беспрепятственного взаимодействия разработчиков с Ethereum:`debug_traceTransaction` и `trace_filter` RPC методы стали доступны.
 
-Supporting both RPC methods is an important milestone because many projects, such as [The Graph](https://thegraph.com/) or [Blockscout](https://docs.blockscout.com/), rely on them to index blockchain data.
+Поддержка данных RPC методов является важнейшим этапом, ввиду того, что многие проекты, такие как [The Graph](https://thegraph.com/) и [Blockscout](https://docs.blockscout.com/), используют их для индексации блокчейн данных.
 
-Both calls are quite heavy on the node's side. Therefore, it is required to make this RPC against a locally running node with either the `--ethapi=debug` flag for `debug_traceTransaction`, and/or the `--ethapi=trace` flag for `trace_filter`. Currently, you can spin up two different kinds of nodes:
+Оба запроса являются довольно тяжелыми, со стороны ноды. Поэтому требуется запустить этот RPC со стороны ноды при помощи команды `--ethapi=debug`, флаг для `debug_traceTransaction`и/или `--ethapi=trace` флаг для `trace_filter`. На данный момент вы можете запустить 2 типа нод:
 
- - **Moonbeam development node** — run your own Moonbeam instance in your private environment. To do so, you can follow [this guide](/getting-started/local-node/setting-up-a-node/). Make sure to check the [advanced flags section](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
- - **Moonbase Alpha node** — run a full node of the TestNet and access your own private endpoints. To do so, you can follow [this guide](/node-operators/networks/full-node/). Make sure to check the [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
+ - **Moonbeam development node** — запустите собственную копию Moonbeam в своей приватной среде. Для этого следуйте [этому руководству](/getting-started/local-node/setting-up-a-node/). Обязательно проверьте расширенные настройки [секции флагов](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
+ - **Moonbase Alpha node** — запустите полную версию TestNet ноды и получите доступ к вашим приватным конечным точкам. Для этого следуйте [этому руководству](/node-operators/networks/full-node/). Обязательно проверьте расширенные настройки [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
 
-## Geth Debug API
+## Geth Дебаг API
 
-The `debug_traceTransaction` RPC implementation follows [Geth's debug API guidelines](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
+RPC имплементация `debug_traceTransaction` следует [данному Geth гайдлайну по дебагу API](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
 
-The RPC method requires the transaction hash to run. As optional parameters you can provide the following:
+Для запуска RPC метода вам понадобится hash транзакции, в качестве дополнительных параметров вы можете указать следующее:
 
- - **disableStorage** — one input: boolean (default: _false_). Setting this to true disables storage capture
- - **disableMemory** — one input: boolean (default: _false_). Setting this to true disables memory capture
- - **disableStack** — one input: boolean (default: _false_). Setting this to true disables stack capture
+ - **disableStorage** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват хранилища
+ - **disableMemory** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват памяти
+ - **disableStack** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват стека
 
-JavaScript based transaction tracing is not supported at the moment.
+На данный момент, трассировка транзакций на базе JavaScript не поддерживается.
 
-## Trace Module
+## Модуль Трассировки
 
-The `trace_filter` RPC implementation follows [OpenEthereum's trace module guidelines](https://openethereum.github.io/JSONRPC-trace-module#trace_filter).
+RPC имплементация `trace_filter` следует [данному OpenEthereum гайдлайну Модуля Трассировки.](https://openethereum.github.io/JSONRPC-trace-module#trace_filter).
 
-The RPC method requires any of the following optional parameters:
+Для RPC метода необходим ввод одного из следующих необязательных параметров:
 
- - **fromBlock** — one input: either block number (`hex`), `earliest` which is the genesis block or `latest` (default) best block available. Trace starting block
- - **toBlock** — one input: either block number (`hex`), `earliest` which is the genesis block or `latest` best block available. Trace ending block
- - **fromAddress** — one input: array of addresses. Filter transactions done from these addresses only. If an empty array is provided, no filtering is done with this field
- - **toAddress** — one input: array of addresses. Filter transactions done from these addresses only. If an empty array is provided, no filtering is done with this field
- - **after** — one input: offset (`uint`), default is `0`. Trace offset (or starting) number
- - **count** — one input: number of traces (`uint`). Number of traces to display in a batch
+ - **fromBlock** — один ввод: номер блока (`hex`), `earliest` который является генезис блоком или `latest` (по умолчанию) последний-лучший доступный блок. Начальный блок трассировки
+ - **toBlock** — один ввод: номер блока (`hex`), `earliest` который является генезис блоком или `latest` (по умолчанию) последний-лучший доступный блок. Конечный блок трассировки
+ - **fromAddress** — один ввод: список адресов. Фильтрация транзакций происходит только по заданным списком адресам. Если данный список не указан/поле не заполнено, то фильтрация по нему не выполняется
+ - **toAddress** — один ввод: список адресов. Фильтрация транзакций происходит только по заданным списком адресам. Если данный список не указан/поле не заполнено, то фильтрация по нему не выполняется
+ - **after** — oодин ввод: офсет (`uint`), по умолчанию - `0`. Номер офсет трассировки (или начальный номер)
+ - **count** — один ввод: количество трассировок (`uint`). Количество отображаемых трассировок в пакете
 
-## Try it on Moonbase Alpha
+## Попробуем на Moonbase Alpha
 
-As mentioned before, to use both features you need to have a node running with the `debug` and `trace` flags. For this example, a local Moonbase Alpha full node is used, with the RPC HTTP endpoint at `http://127.0.0.1:9933`. If you have a running node, you should see a similar terminal log:
+Как говорилось ранее, для использования обеих функций Вам необходимо запустить `debug` и `trace` флаги на Вашей ноде. В данном примере мы используем полную ноду Moonbase Alpha с RPC HTTP конечной точкой в `http://127.0.0.1:9933`. Если у Вас запущена нода Вы должны увидеть аналогичный лог в терминале:
 
 ![Debug API](/images/debugtrace/debugtrace-images1.png)
 
-For example, for the `debug_traceTransaction` call, you can make the following JSON RPC request in your terminal (in this case, for the transaction hash `0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`):
+Например, для вызова `debug_traceTransaction` Вы можете сделать следующий JSON RPC запрос в терминале (в данном примере для хэша`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`):
 
 ```
 curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
@@ -63,11 +63,11 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
   }'
 ```
 
-The node responds with the step-by-step replayed transaction information (response was cropped as it is quite long):
+На что нода ответит пошаговым воспроизведением информации о транзакции (ответ немного обрезан т.к. он достаточно длинный):
 
-![Trace Debug Node Running](/images/debugtrace/debugtrace-images2.png)
+![Запуск ноды Trace Debug](/images/debugtrace/debugtrace-images2.png)
 
-For the `trace_filter` call, you can make the following JSON RPC request in your terminal (in this case, the filter is from block 20000 to 25000, only for transactions where the recipient is  `0x4E0078423a39EfBC1F8B5104540aC2650a756577`, it will start with a zero offset and provide the first 20 traces):
+Для вызова `trace_filter` Вы можете сделать следующий JSON RPC запрос в терминале (в данном примере стоит фильтрация от блока 20000 до 25000, для транзакций где получателем является `0x4E0078423a39EfBC1F8B5104540aC2650a756577`, запрос начнется с нулевого офсета и предоставит первые 20 трассировок):
 
 ```
 curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
@@ -78,7 +78,7 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
   }'
 ```
 
-The node responds with the trace information corresponding to the filter (response was cropped as it is quite long).
+На что нода ответит информацией трассировки, соответствующей заданному фильтру (ответ немного обрезан т.к. он достаточно длинный).
 
-![Trace Filter Node Running](/images/debugtrace/debugtrace-images3.png)
+![Запуск ноды Trace Filter](/images/debugtrace/debugtrace-images3.png)
 
