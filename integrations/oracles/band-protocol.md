@@ -87,11 +87,11 @@ interface IStdReference {
 Далее мы можем использовать следующий скрипт `DemoOracle` Он предоставляет четыре функции:
 
  - getPrice:  _view_ функция просмотра, которая запрашивает одну базу. В этом примере цена `BTC` указана в долларах `USD`
- - getMultiPrices:  _view_ fфункция просмотра, которая запрашивает несколько баз. В этом примере цена `BTC` и `ETH`, оба указаны в долларах `USD`
- - savePrice:  _public_ function that queries the _base/quote_ pair. Each element is provided as separate strings, for example `_base = "BTC", _quotes = "USD"`. This sends a transaction and modifies the `price` variable stored in the contract
- - saveMultiPrices:  _public_  function that queries each _base/quote_ pair. Each element is provided as a string array. For example, `_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`. This sends a transaction and modifies the `prices` array stored in the contract, which will hold the price of each pair in the same order as specified in the input
+ - getMultiPrices:  _view_ функция просмотра, которая запрашивает несколько баз. В этом примере цена `BTC` и `ETH`, оба указаны в долларах `USD`
+ - savePrice:  _public_ oбщедоступная функция, которая запрашивает пару _base/quotes_ . Каждый элемент представлен в виде отдельных строк, например `_base = "BTC", _quotes = "USD"`. Это отправляет транзакцию и изменяет `ценовую`  переменную, хранящуюся в контракте.
+ - saveMultiPrices:  _public_  общедоступная функция, которая запрашивает каждую пару _base/quotes_. Каждый элемент представлен в виде массива строк. Например, `_bases = ["BTC","ETH"], _quotes = ["USD","USD"]`. Это отправляет транзакцию и изменяет массив цен, хранящийся в контракте, который будет содержать `цену` каждой пары в том же порядке, как указано во входных данных.
 
- When deployed, the constructor function needs the Aggregator Contract address for the target network.
+При развертывании функции конструктора требуется адрес контракта агрегатора для целевой сети.
 
 ```sol
 pragma solidity 0.6.11;
@@ -149,9 +149,9 @@ contract DemoOracle {
 }
 ```
 
-### Try it in Moonbase Alpha
+### Протестируйте в Moonbase Alpha
 
-We've deployed a contract available in the Moonbase Alpha TestNet (at address `0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) so you can easily check the information fed from Band Protocol's oracle. To do so, you need the following interface contract:
+Мы развернули контракт, доступный в Moonbase Alpha TestNet (по адресу `0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) поэтому Вы можете легко проверить информацию, поступающую из оракула Band Protocol. Для этого вам понадобится следующий интерфейсный контракт:
 
 ```sol
 pragma solidity 0.6.11;
@@ -164,36 +164,36 @@ interface TestInterface {
 }
 ```
 
-With it, you will have two view functions available - very similar to our previous examples:
+С его помощью Вам будут доступны две функции просмотра — очень похожие на наши предыдущие примеры:
 
- - getPrice: provides the price feed for a single base/quote pair that is given as input to the function, that is, "BTC", "USD"
- - getMultiPrices: provides the price feed for a multiple base/quote pairs that are given as input to the function, that is, ["BTC", "ETH", "ETH"], ["USD", "USD", "EUR"]
+ - getPrice: предоставляет ценовой поток для одной пары базовая цена / котировка, которая передается в качестве входных данных функции, то есть "BTC", "USD"
+ - getMultiPrices: предоставляет поток цен для нескольких пар базовая цена / котировка, которые передаются в качестве входных данных функции, то есть, ["BTC", "ETH", "ETH"], ["USD", "USD", "EUR"]
 
-For example, using [Remix](/integrations/remix/), we can easily query the `BTC/USD` price pair using this interface.
+Например, используя [Remix](/integrations/remix/), мы можем легко запросить ценовую пару `BTC/USD` с помощью этого интерфейса.
 
-After creating the file and compiling the contract, head to the "Deploy and Run Transactions" tab, enter the contract address (`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) and click on "At Address." Make sure you have set the "Environment" to "Injected Web3" so you are connected to Moonbase Alpha. 
+После создания файла и компиляции контракта перейдите на вкладку «Развертывание и выполнение транзакций», введите адрес контракта (`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) и нажмите «At Address». Убедитесь, что вы установили «Environment» на «Injected Web3», чтобы Вы подключились к Moonbase Alpha.
 
 ![Band Protocol Remix deploy](/images/band/band-demo1.png)
 
-This will create an instance of the demo contract that you can interact with. Use the functions `getPrice()` and `getMultiPrices()` to query the data of the corresponding pair.
+Это создаст экземпляр демонстрационного контракта, с которым Вы можете взаимодействовать. Используйте функции `getPrice()` и `getMultiPrices()` для запроса данных соответствующей пары.
 
 ![Band Protocol Remix check price](/images/band/band-demo2.png)
 
-## BandChain.js Javascript Helper Library
+## BandChain.js вспомогательная библиотека Javascript
 
-The helper library also supports a similar `getReferenceData` function. To get started, the library needs to be installed:
+Вспомогательная библиотека также поддерживает аналогичную функцию 'getReferenceData'. Для начала необходимо установить библиотеку:
 
 ```
 npm install @bandprotocol/bandchain.js
 ```
 
-The library provides a constructor function that requires an endpoint to point to. This returns an instance that then enables all the necessary methods, such as the `getReferenceData` function.  When querying for information, the function accepts an array where each element is the _base/quote_ pair needed. For example:
+Библиотека предоставляет функцию-конструктор, для которой требуется указать конечную точку. Это возвращает экземпляр, который затем включает все необходимые методы, такие как функция `getReferenceData`.  При запросе информации функция принимает массив, каждый элемент которого является необходимой парой _base/quote_. Например:
 
 ```
 getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 ```
 
-Then, it returns an array object with the following structure:
+Затем он возвращает объект массива со следующей структурой:
 
 ```
 [
@@ -214,11 +214,11 @@ Then, it returns an array object with the following structure:
   }
 ]
 ```
-Where `lastUpdatedBase` and `lastUpdatedQuote` are the last time when the base and quote prices were updated respectively (since UNIX epoch).
+Где `lastUpdatedBase` и `lastUpdatedQuote` это последний раз, когда базовая цена и котировка обновлялись соответственно (с эпохи UNIX).
 
-### Example Usage
+### Пример использования
 
-The following Javascript script provides a simple example of the `getReferenceData` function.
+Следующий сценарий Javascript предоставляет простой пример функции `getReferenceData`.
 
 ```js
 const BandChain = require('@bandprotocol/bandchain.js');
@@ -234,8 +234,9 @@ const queryData = async () => {
 queryData();
 ```
 
-We can execute this code with a node, and the following `dataQuery` output should look like this:
+Мы можем выполнить этот код с помощью ноды, и следующий вывод `dataQuery` должен выглядеть следующим образом:
+
 
 ![Band Protocol JavaScript Library](/images/band/band-console.png)
 
-Note that compared to the request done via smart contracts, the result is given directly in the correct units.
+Обратите внимание, что по сравнению с запросом, выполненным с помощью смарт-контрактов, результат отображается непосредственно в правильных единицах.
