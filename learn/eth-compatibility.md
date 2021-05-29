@@ -1,25 +1,25 @@
 ---
-title: Eth Compatibility
-description: It can seem daunting to move to a Polkadot parachain if you’re used to Ethereum. Here’s what to expect when using Moonbeam for the first time.
+title: Совместимость с Ethereum
+description: Если вы привыкли к Ethereum, переход на парачейн Polkadot может показаться сложным. Вот чего ожидать при первом использовании Moonbeam.
 ---
 
-# Ethereum Compatibility
+# Совместимость с Ethereum
 
-## Differences Between Moonbeam and Ethereum
+## Различия между Moonbeam и Ethereum
 
-While Moonbeam strives to be compatible with Ethereum’s Web3 API and EVM, there are a number of important Moonbeam differences.
+Хотя Moonbeam стремится быть совместимым с API-интерфейсом Ethereum Web3 и EVM, существует ряд важных отличий Moonbeam.
 
-First, Moonbeam uses a Proof of Stake-based consensus mechanism, which means that Proof of Work concepts, such as difficulty, uncles, hashrate, etc., generally don’t have meaning within Moonbeam.  For APIs that return values related to Ethereum’s Proof of Work, we return default values.  Existing Ethereum contracts that rely on Proof of Work internals (e.g., mining pool contracts) will almost certainly not work as expected on Moonbeam.
+Во-первых, Moonbeam использует механизм консенсуса на основе Proof of Stake, что означает, что концепции Proof of Work, такие как сложность, хешрейт и т. д., обычно не имеют значения в Moonbeam. Для API, которые возвращают значения, связанные с Proof of Work Ethereum, мы возвращаем значения по умолчанию. Существующие контракты Ethereum, которые полагаются на внутреннее устройство Proof of Work (например, контракты на майнинг-пул), почти наверняка не будут работать должным образом на Moonbeam.
 
-Another significant difference between Moonbeam and Ethereum is that Moonbeam includes an extensive set of on-chain governance features based on Substrate functionality.  These onchain governance modules include functionality to power upgrades to the blockchain itself based on token weighted voting.
+Еще одно существенное различие между Moonbeam и Ethereum заключается в том, что Moonbeam включает в себя обширный набор функций управления в цепи, основанный на функциональности субстрата (Substrate) . Эти модули управления цепочкой включают функциональные возможности для обновления мощности самого блокчейна на основе взвешенного по токену голосования.
 
-## What Stays the Same
+## Что остается прежним
 
-If you're moving portions of your existing workloads and state off of Ethereum Layer 1 to Moonbeam, you can expect minimal required changes (aside from the exceptions noted above). Your applications, contracts, and tools will largely remain unchanged.
+Если вы перемещаете части существующих рабочих нагрузок и состояние Ethereum Layer 1 на Moonbeam, вы можете ожидать минимально необходимых изменений (помимо исключений, указанных выше). Ваши приложения, контракты и инструменты в основном останутся без изменений.
 
-Moonbeam supports:
+Moonbeam поддерживает:
 
- - **Solidity-Based Smart Contracts**
- - **Ecosystem Tools** (e.g., block explorers, front-end development libraries, wallets)
- - **Development Tools** (e.g., Truffle, Remix, MetaMask)
- - **Ethereum Tokens via Bridges** (e.g., token movement, state visibility, message passing)
+ - **Смарт контракты на основе Solidity**
+ - **Экосистемные инструменты** (например, обозреватели блоков, библиотеки интерфейсной разработки, кошельки)
+ - **Инструменты разработки** (например, Truffle, Remix, MetaMask)
+ - **Токены Ethereum через мосты** (например, перемещение токенов, видимость состояния, передача сообщений)
