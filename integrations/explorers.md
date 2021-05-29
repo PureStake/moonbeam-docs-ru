@@ -1,30 +1,30 @@
 ---
-title: Block Explorers
-description: An overview of the currently available block explorers that may be used to navigate the Substrate and Ethereum layers of the Moonbeam TestNet.
+title: Обозреватель Блоков
+description: Обзор доступных в настоящее время обозревателей блоков, которые можно использовать для навигации по уровням Substrate и Ethereum в Moonbeam TestNet.
 ---
-# Block Explorers
+# Обозреватель Блоков
 
-![Explorer Banner](/images/explorers/explorers-banner.png)
+![Обозреватель Блоков](/images/explorers/explorers-banner.png)
 
-## Introduction 
+## Введение 
 
-Block explorers can be thought of as search engines for the blockchain. They allow users to search information such as balances, contracts, and transactions. More advanced block explorers even offer indexing capabilities, which enable them to provide a complete set of information, such as ERC20 tokens in the network. They might even offer API services to access it via external services.
+Обозреватель блоков можно рассматривать как поисковые системы для блокчейна. Они позволяют пользователям находить информацию о балансах, контрактах и транзакциях. Более продвинутые “поисковики” блоков даже предлагают возможности индексации, которые позволяют им предоставить полный набор информации, о токенах в сети ERC20. Они могут даже предлагать API службы для доступа к ним через внешние службы.
 
-Moonbeam provides two different sets of explorers: one to query the Ethereum API, and one for the Substrate API.
+В настоящее время мы предлагаем два обозревателя блоков: один для Ethereum API и второй это Substrate API.
 
 !!! note
-    If you are using Brave Browser and your explorer is not connecting to the Moonbeam instance you are pointing it to, try disabling Brave Shield.
+    Если вы используете Brave Browser и ваш проводник не подключается к экземпляру Moonbeam, на который вы ссылаетесь, попробуйте отключить Brave Shield.
 
 ## Ethereum API
 
 ### Expedition (Dev Node - TestNet)
 
-A Moonbeam-themed version of the [Expedition](https://github.com/etclabscore/expedition) explorer can be found in [this link](https://moonbeam-explorer.netlify.app/).
+Используя эту [ссылку](https://moonbeam-explorer.netlify.app/) Вы можете найти версию [Expedition](https://github.com/etclabscore/expedition).
 
-By default, the explorer is connected to the Moonbase Alpha TestNet. However, you can connect it following the next steps:
+По умолчанию проводник подключен к сети Moonbase Alpha TestNet. Однако вы можете подключить его, выполнив следующие шаги:
 
- 1. Click on the gear icon in the top right corner
- 2. Select "Development" if you have a node running on `http://localhost:9933` (default RPC location of a Moonbeam node running with `--dev`flag). You can also switch back to "Moonbase Alpha"
+ 1. Нажмите на значок шестеренки в правом верхнем углу.
+ 2. Выберите пункт "Development", если у вас есть нода, работающая по следующему адресу `http://localhost:9933` (default RPC location of a Moonbeam node running with `--dev`flag). You can also switch back to "Moonbase Alpha"(по умолчанию RPC узел Moonbeam, запущен с опцией --devflag). Вы также можете вернуться в режим "Moonbase Alpha"
  3. In the case you want to connect to a specific RPC URL, select "Custom RPC" and enter the URL. For example, `http://localhost:9937`
 
 ![Expedition Explorer](/images/explorers/explorers-images-1.png)
