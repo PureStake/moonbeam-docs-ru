@@ -1,42 +1,42 @@
 ---
 title: MetaMask
-description: This guide walks you through how to connect MetaMask, an browser-based Ethereum wallet, to Moonbeam.
+description: В этом руководстве вы узнаете, как подключить MetaMask - кошелек Ethereum на основе браузера, к Moonbeam.
 ---
 
-# Interacting with Moonbeam Using MetaMask
+# Взаимодействие с Moonbeam при помощи MetaMask
 
-![Intro diagram](/images/integrations/integrations-metamask-banner.png)
+![Вступительная диаграмма](/images/integrations/integrations-metamask-banner.png)
 
-## Introduction
+## Вступление
 
-Developers can leverage Moonbeam's Ethereum compatibility features to integrate tools, such as [MetaMask](https://metamask.io/), into their DApps. By doing so, they can use the injected library MetaMask provides to interact with the blockchain.
+Разработчики могут использовать функции совместимости Moonbeam с Ethereum для интеграции таких инструментов, как [MetaMask](https://metamask.io/), в свои DApps. Таким образом, они могут использовать встроенную библиотеку, которую предоставляет MetaMask, для взаимодействия с блокчейном.
 
-Currently, MetaMask can be configured to connect to two networks: a Moonbeam development node or the Moonbase Alpha TestNet.
+В настоящее время MetaMask можно настроить для подключения к двум сетям: автономной ноде Moonbeam или к Moonbase Alpha TestNet.
 
-If you already have MetaMask installed, you can easily connect MetaMask to the Moonbase Alpha TestNet:
+Если у вас уже установлен MetaMask, вы можете легко подключить MetaMask к Moonbase Alpha TestNet:
 
 <div class="button-wrapper">
     <a href="#" class="md-button connectMetaMask">Connect MetaMask</a>
 </div>
 
 !!! note
-    MetaMask will popup asking for permission to add Moonbase Alpha as a custom network. Once you approve permissions, MetaMask will switch your current network to Moonbase Alpha.
+    Вы увидите всплывающее окно MetaMask с запросом разрешения на добавление Moonbase Alpha в качестве используемой сети. Как только вы утвердите разрешения, MetaMask переключит вашу текущую сеть на Moonbase Alpha.
 
-Learn [how to integrate a Connect MetaMask button](#integrate-metamask-into-a-dapp) into your dapp, so that users can connect to Moonbase Alpha with a simple click of a button.
+Узнайте [как интегрировать кнопку Connect MetaMask](#integrate-metamask-into-a-dapp) в ваши DApps, чтобы пользователи могли подключаться к Moonbase Alpha простым нажатием кнопки.
 
-## Connect MetaMask to Moonbeam
+## Подключение MetaMask к Moonbeam
 
-Once you have [MetaMask](https://metamask.io/) installed, you can connect it to Moonbeam by clicking on the top right logo and opening the settings.
+После того, как вы установили [MetaMask](https://metamask.io/), вы можете подключить его к Moonbeam, нажав на верхний правый логотип, открыв настройки.
 
 ![MetaMask3](/images/testnet/testnet-metamask3.png)
 
-Next, navigate to the Networks tab and click on the "Add Network" button.
+Затем перейдите на вкладку Networks и нажмите кнопку "Add Network".
 
 ![MetaMask4](/images/testnet/testnet-metamask4.png)
 
-Here you can configure MetaMask for the following networks:
+Здесь вы можете настроить MetaMask для следующих сетей:
 
-Moonbeam development node:
+Автономная нода Moonbeam:
 
 --8<-- 'text/metamask-local/development-node-details.md'
 
@@ -44,28 +44,28 @@ Moonbase Alpha TestNet:
 
 --8<-- 'text/testnet/testnet-details.md'
 
-## Step-by-step Tutorials
+## Пошаговые инструкции
 
-In the case that you are interested in more detailed, step-by-step guides to configure MetaMask to Moonbeam, you can go to our specific tutorials:
+Если вас интересует более подробное пошаговое руководство, вы можете перейти к нашим подробным руководствам:
 
- - MetaMask on a [Moonbeam development node](/getting-started/local-node/using-metamask/)
- - MetaMask on [Moonbase Alpha](/getting-started/testnet/metamask/)
+ - MetaMask для [автономной ноды Moonbeam](/getting-started/local-node/using-metamask/)
+ - MetaMask для [Moonbase Alpha](/getting-started/testnet/metamask/)
 
-## Integrate MetaMask into a DApp
+## Интегрируйте MetaMask в DApp
 
-With the release of MetaMask's [Custom Networks API](https://consensys.net/blog/metamask/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api/), users can be prompted to add Moonbeam's Testnet, Moonbase Alpha. 
+С выпуском [Custom Networks API](https://consensys.net/blog/metamask/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api/) MetaMask, пользователям может быть предложено добавить Moonbeam's Testnet и Moonbase Alpha.
 
-This section will take you through the process of adding a "Connect to Moonbase Alpha" button that will prompt users to connect their MetaMask account(s) to Moonbase Alpha. Your users will no longer need to know or worry about Moonbase Alpha's network configurations and adding a custom network to MetaMask. To interact with Moonbeam from your dApp, all users will need to do is click a few buttons to connect to Moonbase Alpha and get started.
+Этот раздел проведет вас через процесс добавления кнопки "Connect to Moonbase Alpha", которая предлагает пользователям подключить свои учетные записи MetaMask к Moonbase Alpha. Вашим пользователям больше не нужно будет знать или беспокоиться о сетевых конфигурациях Moonbase Alpha и добавлении настраиваемой сети в MetaMask. Чтобы взаимодействовать с Moonbeam из вашего dApp, все, что пользователям нужно сделать, это нажать несколько кнопок, чтобы подключиться к Moonbase Alpha и начать работу.
+ 
+MetaMask внедряет глобальный API Ethereum в веб-сайты, которые пользователи посещают в `window.ethereum`, что позволяет веб-сайтам читать и запрашивать данные блокчейна пользователей. Вы будете использовать провайдера Ethereum, чтобы проводить ваших пользователей через процесс добавления Moonbase Alpha в качестве настраиваемой сети. Вам нужно будет:
 
-MetaMask injects a global Ethereum API into websites users visit at `window.ethereum`, which allows the websites to read and request the users' blockchain data. You'll be using the Ethereum provider to walk your users through the process of adding Moonbase Alpha as a custom network. In general, you will have to:
-
-- Check if the Ethereum provider exists and if it's MetaMask
-- Request the user's account address
-- Add Moonbase Alpha as a new chain
+- Проверить, существует ли провайдер Ethereum и есть ли он в MetaMask
+- Запросить адрес учетной записи пользователя
+- Добавить Moonbase Alpha в качестве новой цепи
 
 This guide is divided into two sections. First, it'll cover adding a button that will be used to trigger MetaMask to pop-up and connect to Moonbase Alpha. The second part of the guide will create the logic for connecting the user to MetaMask. This way when you click the button you can actually test the functionality as you go through the guide.
 
-### Checking Prerequisites
+### Проверка предварительных условий
 
 To add the Connect MetaMask button you'll need a JavaScript project and the MetaMask browser extension installed for local testing.
 
