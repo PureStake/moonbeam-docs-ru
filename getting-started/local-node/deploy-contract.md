@@ -168,51 +168,51 @@ npm init --yes
 
 ### Web3.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/deploy.js), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+В первой части [скрипта](/snippets/code/web3-contract-local/deploy.js), `web3` создается с помощью конструктора `Web3` с провайдером RPC. Изменяя RPC вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The private key, and the public address associated with it, are defined for signing the transaction and logging purposes. Only the private key is required. Also, the contract's bytecode and interface (ABI) are fetched from the compile's export.
+Закрытый ключ и связанный с ним общедоступный адрес определяются для подписания транзакции и ведения журнала. Требуется только закрытый ключ. Кроме того, байт-код и интерфейс контракта (ABI) извлекаются из экспорта компиляции.
 
-In the second section, a contract instance is created by providing the ABI. Next, the `deploy` function is used, which needs the bytecode and arguments of the constructor function. This will generate the constructor transaction object.
+Во второй части создается экземпляр контракта, путем предоставления ABI. Затем используется функция `deploy`, которой требуются байт-код и аргументы функции-конструктора. Это сгенерирует объект транзакции конструктора.
 
-Afterwards, the constructor transaction can be signed using the `web3.eth.accounts.signTransaction()` method. The data field corresponds to the bytecode, and the constructor input arguments are encoded together. Note that the value of gas is obtained using `estimateGas()` option inside the constructor transaction.
+После этого транзакцию можно подписать с помощью метода `web3.eth.accounts.signTransaction()`. Данные поля соответствуют байт-коду, а входные аргументы конструктора кодируются вместе. Обратите внимание, что значение газа получается с использованием опции `estimateGas()` внутри транзакции конструктора.
 
-Lastly, the signed transaction is sent, and the contract's address is displayed in the terminal.
+Наконец, отправляется подписанная транзакция, адрес контракта отображается в терминале.
 
 ### Ethers.js
 
-In the first part of [the script](/snippets/code/ethers-contract-local/deploy.js), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+В первой части [скрипта](/snippets/code/ethers-contract-local/deploy.js), можно указать разные сети с помощью имени, URL-адреса RPC (обязательно) и идентификатора цепочки. Провайдер (аналогичный экземпляру `web3`) создается с помощью метода `ethers.providers.StaticJsonRpcProvider`. Альтернативой является использование метода `ethers.providers.JsonRpcProvide(providerRPC)`, который требует только адрес конечной точки RPC поставщика. Но это может создать проблемы совместимости с индивидуальными спецификациями проекта.
 
-The private key is defined to create a wallet instance, which also requires the provider from the previous step. The wallet instance is used to sign transactions. Also, the contract's bytecode and interface (ABI) are fetched from the compile's export.
+Закрытый ключ определяется для создания экземпляра кошелька, для которого также требуется провайдер из предыдущего шага. Экземпляр кошелька используется для подписи транзакций. Кроме того, байт-код и интерфейс контракта (ABI) извлекаются из экспорта компиляции.
 
-In the second section, a contract instance is created with `ethers.ContractFactory()`, providing the ABI, bytecode, and wallet. Thus, the contract instance already has a signer. Next, the `deploy` function is used, which needs the constructor input arguments. This will send the transaction for contract deployment. To wait for a transaction receipt you can use the `deployed()` method of the contract deployment transaction.
+Во второй части создается экземпляр контракта с помощью `ethers.ContractFactory()`, предоставляющий ABI, байт-код и кошелек. Таким образом, у экземпляра контракта уже есть подписывающая сторона. Затем используется функция `deploy`, которой требуются входные аргументы конструктора. Это отправит транзакцию для размещения контракта. Чтобы дождаться получения транзакции, вы можете использовать метод `deployed()` транзакции размещения контракта.
 
-Lastly, the contract's address is displayed in the terminal.
+Наконец, адрес контрактав отображается в терминале.
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/deploy.py), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+В первой части [скрипта](/snippets/code/web3py-contract/deploy.py), экземпляр `web3` instance (или провайдер) создается с помощью метода `Web3(Web3.HTTPProvider(provider_rpc))` с RPC провайдера. Изменяя RPC провайдера, вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The private key and the public address associated with it are defined for signing the transaction and establishing the from address.
+Закрытый ключ и связанный с ним общедоступный адрес определяются для подписания транзакции и установления адреса отправителя.
 
-In the second section, a contract instance is created with `web3.eth.contract()`, providing the ABI and bytecode imported from the compile file. Next, the constructor transaction can be built using the `constructor().buildTransaction()` method of the contract instance. Note that inside the `constructor()`, you need to specify the constructor input arguments. The `from` account needs to be outlined as well. Make sure to use the one associated with the private key. Also, the transaction count can be obtained with the `web3.eth.getTransactionCount(address)` method.
+Во втором разделе экземпляр контракта создается с помощью `web3.eth.contract()`, предоставляя ABI и байт-код, импортированные из файла компиляции. Затем транзакцию конструктора можно построить с помощью метода `constructor().buildTransaction()`. Обратите внимание, что внутри `constructor()` вам необходимо указать входные аргументы конструктора. Также необходимо указать исходную (`from`) учетную запись. Обязательно используйте тот, который связан с закрытым ключом. Также количество транзакций можно получить с помощью метода `web3.eth.getTransactionCount(address)`.
 
-The constructor transaction can be signed using `web3.eth.account.signTransaction()`, passing the constructor transaction and the private key.
+Транзакцию конструктора можно подписать с помощью `web3.eth.account.signTransaction()`, передав транзакцию и закрытый ключ.
 
-Lastly, the signed transaction is sent, and the contract's address is displayed in the terminal.
+Наконец, подписанная транзакция отправляется, а адрес контракта отображается в терминале.
 
-## Reading from the Contract (Call Methods)
+## Чтение из смарт-контракта (методы вызова)
 
-Call methods are the type of interaction that don't modify the contract's storage (change variables), meaning no transaction needs to be sent.
+Методы вызова - это тип взаимодействия, который не изменяет хранилище контракта (изменяет переменные), то есть транзакцию отправлять не нужно.
 
-Let's overview the _get.\*_ file (the simplest of them all), which fetches the current value stored in the contract. You can find the code snippet for each library here (they were arbitrarily named `get.*`):
+Давайте рассмотрим файл _get.\*_ (самый простой из них), который извлекает текущее значение, хранящееся в контракте. Вы можете найти фрагменты кода для каждой библиотеки здесь (они были произвольно названы `get.*`):
 
  - Web3.js: [_get.js_](/snippets/code/web3-contract-local/get.js)
  - Ethers.js: [_get.js_](/snippets/code/ethers-contract-local/get.js)
  - Web3.py: [_get.py_](/snippets/code/web3py-contract/get.py)
 
-For simplicity, the get file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI of the contract are imported. Also, the provider and the contract's address are defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+Для простоты, файл get состоит из двух разделов. В первом разделе ("Define Provider & Variables") импортируются используемая библиотека и ABI контракта. Также определяется провайдер и адрес контракта. Обратите внимание, что `providerRPC` имеет как стандартную конечную точку RPC автономной ноды, так и конечную точку для [Moonbase Alpha](/networks/testnet/).
 
-The second section ("Call Function") outlines the actual call to the contract. Regardless of the library, a contract instance is created (linked to the contract's address), from which the call method is queried. Some of the key takeaways are discussed next.
+Во втором разделе ("Call Function") описывается фактический вызов контракта. Независимо от библиотеки создается экземпляр контракта (связанный с адресом контракта), из которого запрашивается метод вызова. Некоторые из основных выводов обсуждаются далее.
 
 === "Web3.js"
     ```
@@ -231,47 +231,47 @@ The second section ("Call Function") outlines the actual call to the contract. R
 
 ### Web3.js
 
-In the first part of [the script](/snippets/code/web3-contract-local/get.js), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+В первой части [скрипта](/snippets/code/web3-contract-local/get.js), экземпляр `web3` (провайдер) создается с помощью конструктора `Web3` с провайдером RPC. Изменяя RPC вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+Интерфейс контракта (ABI) и адрес также необходимы для взаимодействия с ним.
 
-In the second section, a contract instance is created with `web3.eth.Contract()` by providing the ABI and address. Next, the method to call can be queried with the `contract.methods.methodName(_input).call()` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). This promise, when resolved, will return the value requested.
+In the second section, a contract instance is created with `web3.eth.Contract()` by providing the ABI and address. Затем вызываемый метод может быть запрошен с помощью функции `contract.methods.methodName(_input).call()`, заменив `contract`, `methodName` и `_input` экземпляром контракта, функцией вызова и вводом функции (при необходимости). Функция вернет запрошенное значение.
 
-Lastly, the value is displayed in the terminal.
+Наконец, значение отображается в терминале.
 
 ### Ethers.js
 
-In the first part of [the script](/snippets/code/ethers-contract-local/get.js), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+В первой части [скрипта](/snippets/code/ethers-contract-local/get.js), можно указать разные сети с помощью имени, URL-адреса RPC (обязательно) и идентификатора цепочки. Провайдер (аналогичный экземпляру `web3`) создается с помощью метода `ethers.providers.StaticJsonRpcProvider`. Альтернативой является использование метода `ethers.providers.JsonRpcProvide(providerRPC)`, который требует только адрес конечной точки RPC провайдера. Но это может создать проблемы совместимости с индивидуальными спецификациями проекта.
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+Интерфейс контракта (ABI) и адрес также необходимы для взаимодействия с ним.
 
-In the second section, a contract instance is created with `ethers.Contract()`, providing its address, ABI, and the provider. Next, the method to call can be queried with the `contract.methodName(_input)` function, replacing `contract` `methodName`, and `_input` with the contract instance, function to call, and input of the function (if necessary). This promise, when resolved, will return the value requested.
+Во второй части экземпляр контракта создается с помощью `ethers.Contract()`, предоставляющий ABI, байт-код и кошелек. Затем, метод вызова можно запросить с помощью функции `contract.methodName(_input)`, заменив `contract`, `methodName` и `_input` экземпляром контракта, функцией вызова и вводом функции (при необходимости). Функция вернет запрошенное значение.
 
-Lastly, the value is displayed in the terminal.
+Наконец, значение отображается в терминале.
 
 ### Web3.py
 
-In the first part of [the script](/snippets/code/web3py-contract/get.py), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+В первой части [скрипта](/snippets/code/web3py-contract/get.py), экземпляр `web3` (провайдер) создается с помощью метода `Web3(Web3.HTTPProvider(provider_rpc))` с провайдером RPC. Изменяя RPC вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The contract's interface (ABI) and address are needed as well to interact with it.
+Интерфейс контракта (ABI) и адрес также необходимы для взаимодействия с ним.
 
-In the second section, a contract instance is created with `web3.eth.contract()` by providing the ABI and address. Next, the method to call can be queried with the `contract.functions.method_name(input).call()` function, replacing `contract`, `method_name` and `input` with the contract instance, function to call, and input of the function (if necessary). This returns the value requested.
+Во второй части экземпляр контракта создается с помощью `web3.eth.contract()`, путем предоставления адреса и ABI. Затем, метод вызова можно запросить с помощью функции `contract.functions.method_name(input).call()`, заменив `contract`, `methodName` и `_input` экземпляром контракта, функцией вызова и вводом функции (при необходимости). Функция вернет запрошенное значение.
 
-Lastly, the value is displayed in the terminal.
+Наконец, значение отображается в терминале.
 
-## Interacting with the Contract (Send Methods)
+## Взаимодействие со смарт-контрактом (методы отправки)
 
-Send methods are the type of interaction that modify the contract's storage (change variables), meaning a transaction needs to be signed and sent.
+Методы отправки - это тип взаимодействия, который изменяет хранилище контракта (изменяет переменные), то есть транзакцию необходимо подписать и отправить.
 
-First, let's overview the _increment.\*_ file, which increments the current number stored in the contract by a given value. You can find the code snippet for each library here (they were arbitrarily named `increment.*`):
+Во-первых, давайте рассмотрим файл _increment.\*_, который увеличивает текущее число, хранящееся в контракте, на заданное значение. Здесь вы можете найти фрагменты кода для каждой библиотеки (они были произвольно названы `increment.*`):
 
  - Web3.js: [_increment.js_](/snippets/code/web3-contract-local/increment.js)
  - Ethers.js: [_increment.js_](/snippets/code/ethers-contract-local/increment.js)
  - Web3.py: [_increment.py_](/snippets/code/web3py-contract/increment.py)
 
-For simplicity, the increment file is composed of two sections. In the first section ("Define Provider & Variables"), the library to use and the ABI of the contract are imported. The provider, the contract's address, and the value of the `increment` function are also defined. Note that `providerRPC` has both the standard development node RPC endpoint and the one for [Moonbase Alpha](/networks/testnet/).
+Для простоты, файл get состоит из двух разделов. В первом разделе ("Define Provider & Variables") импортируются используемая библиотека и ABI контракта. Также определяется провайдер, адрес контракта и значение функции `increment`. Обратите внимание, что `providerRPC` имеет как стандартную конечную точку RPC автономной ноды, так и конечную точку для [Moonbase Alpha](/networks/testnet/).
 
-The second section ("Send Function") outlines the actual function to be called with the transaction. Regardless of the library, a contract instance is created (linked to the contract's address), from which the function to be used is queried.
+Во втором разделе ("Send Function") описывается фактическая функция, которая должна быть вызвана с транзакцией. Независимо от библиотеки создается экземпляр контракта (связанный с адресом контракта), из которого запрашивается функция, которая будет использоваться.
 
 === "Web3.js"
     ```
@@ -288,13 +288,13 @@ The second section ("Send Function") outlines the actual function to be called w
     --8<-- 'code/web3py-contract/increment.py'
     ```
 
-The second file to interact with the contract is the _reset.\*_ file, which resets the number stored in the contract to zero. You can find the code snippet for each library here (they were arbitrarily named `reset.*`):
+Второй файл для взаимодействия с контрактом - это файл _reset.\*_, который сбрасывает число, хранящееся в контракте, на ноль. Вы можете найти фрагменты кода для каждой библиотеки здесь (они были произвольно названы `reset.*`):
 
  - Web3.js: [_reset.js_](/snippets/code/web3-contract-local/reset.js)
  - Ethers.js: [_reset.js_](/snippets/code/ethers-contract-local/reset.js)
  - Web3.py: [_reset.py_](/snippets/code/web3py-contract/reset.py)
 
-Each file's structure is very similar to his _increment.\*_ counterpart for each library. The main difference is the method being called.
+Структура каждого файла очень похожа на его аналог _increment.\*_ для каждой библиотеки. Основное отличие - это вызываемый метод.
 
 === "Web3.js"
     ```
@@ -313,45 +313,45 @@ Each file's structure is very similar to his _increment.\*_ counterpart for each
 
 ### Web3.js
 
-In the first part of the script ([increment](/snippets/code/web3-contract-local/increment.js) or [reset](/snippets/code/web3-contract-local/reset.js) files), the `web3` instance (or provider) is created using the `Web3` constructor with the provider RPC. By changing the provider RPC given to the constructor, you can choose which network you want to send the transaction to.
+В первой части скрипта ([increment](/snippets/code/web3-contract-local/increment.js) или [reset](/snippets/code/web3-contract-local/reset.js) files) экземпляр web3 (провайдер) создается с помощью конструктора Web3 с поставщиком RPC. Изменяя RPC поставщика, предоставленный конструктору, вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The private key, and the public address associated with it, are defined for signing the transaction and logging purposes. Only the private key is required. Also, the contract's interface (ABI) and address are needed to interact with it. If necessary, you can define any variable required as input to the function you are going to interact with.
+Закрытый ключ и связанный с ним общедоступный адрес определяются для подписания транзакции и ведения журнала. Требуется только закрытый ключ. Кроме того, для взаимодействия с ним необходимы интерфейс контракта (ABI) и адрес. При необходимости вы можете определить любую переменную, необходимую в качестве входных данных для функции, с которой вы собираетесь взаимодействовать.
 
-In the second section, a contract instance is created with `web3.eth.Contract()` by providing the ABI and address. Next, you can build the transaction object with the `contract.methods.methodName(_input)` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary).
+Во втором части экземпляр контракта создается с помощью `web3.eth.Contract()`, путем предоставления адреса и ABI. Затем вы можете создать объект транзакции с помощью функции `contract.methods.methodName(_input)`, заменив `contract`, `methodName` и `_input` экземпляром контракта, функцией для вызова и вводом функции (при необходимости).
 
-Afterwards, the transaction can be signed using the `web3.eth.accounts.signTransaction()` method. The data field corresponds to the transaction object from the previous step. Note that the value of gas is obtained using `estimateGas()` option inside the transaction object.
+После этого транзакцию можно подписать с помощью метода `web3.eth.accounts.signTransaction()`. Поле данных соответствует объекту транзакции из предыдущего шага. Обратите внимание на то, что стоимость газа получается с помощью опции `estimateGas()` внутри объекта транзакции.
 
-Lastly, the signed transaction is sent, and the transaction hash is displayed in the terminal.
+Наконец, подписанная транзакция отправляется и хеш транзакции отображается в терминале.
 
 ### Ethers.js
 
-In the first part of the script ([increment](/snippets/code/ethers-contract-local/increment.js) or [reset](/snippets/code/ethers-contract-local/reset.js) files), different networks can be specified with a name, RPC URL (required), and chain ID. The provider (similar to the `web3` instance) is created with the `ethers.providers.StaticJsonRpcProvider` method. An alternative is to use the `ethers.providers.JsonRpcProvide(providerRPC)` method, which only requires the provider RPC endpoint address. But this might created compatibility issues with individual project specifications.
+В первой части скрипта ([increment](/snippets/code/ethers-contract-local/increment.js) или [reset](/snippets/code/ethers-contract-local/reset.js) files) можно указать разные сети с помощью имени, URL-адреса RPC (обязательно) и идентификатора цепочки. Провайдер (аналогичный экземпляру web3) создается с помощью метода `ethers.providers.StaticJsonRpcProvider`. Альтернативой является использование метода `ethers.providers.JsonRpcProvide(providerRPC)`, для которого требуется только адрес конечной точки RPC провайдера. Но это может создать проблемы совместимости с индивидуальными спецификациями проекта.
 
-The private key is defined to create a wallet instance, which also requires the provider from the previous step. The wallet instance is used to sign transactions. Also, the contract's interface (ABI) and address are needed to interact with it. If necessary, you can define any variable required as input to the function you are going to interact with.
+Закрытый ключ определяется для создания экземпляра кошелька, для которого также требуется провайдер из предыдущего шага. Экземпляр кошелька используется для подписи транзакций. Кроме того, для взаимодействия с ним необходимы интерфейс контракта (ABI) и адрес. При необходимости вы можете определить любую переменную, необходимую в качестве входных данных для функции, с которой вы собираетесь взаимодействовать.
 
-In the second section, a contract instance is created with `ethers.Contract()`, providing its address, ABI, and wallet. Thus, the contract instance already has a signer. Next, transaction corresponding to a specific function can be send with the `contract.methodName(_input)` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). To wait for a transaction receipt, you can use the `wait()` method of the contract deployment transaction.
+Во второй части создается экземпляр контракта с помощью `ethers.Contract()`, с указанием его адреса, ABI и кошелька. Таким образом, у экземпляра контракта уже есть подписывающая сторона. Затем транзакция, соответствующая конкретной функции, может быть отправлена с помощью функции `contract.methodName(_input)`, для этого замените `contract`, `methodName` и `_input` экземпляром контракта, функцией для вызова и вводом функции (при необходимости). Чтобы дождаться получения транзакции, вы можете использовать метод `wait()` транзакции размещения контракта.
 
-Lastly, the transaction hash is displayed in the terminal.
+Наконец, в терминале отображается хеш транзакции.
 
 ### Web3.py
 
-In the first part of the script ([increment](/snippets/code/web3py-contract/increment.py) or [reset](/snippets/code/web3py-contract/reset.py) files), the `web3` instance (or provider) is created using the `Web3(Web3.HTTPProvider(provider_rpc))` method with the provider RPC. By changing the provider RPC, you can choose which network you want to send the transaction to.
+В первой части скрипта ([increment](/snippets/code/web3py-contract/increment.py) или [reset](/snippets/code/web3py-contract/reset.py) files), экземпляр `web3` (или провайдер) создается с использованием метода `Web3(Web3.HTTPProvider(provider_rpc))`с RPC провайдера. Изменяя RPC провайдера, вы можете выбрать, в какую сеть вы хотите отправить транзакцию.
 
-The private key and the public address associated with it are defined for signing the transaction and establishing the from address. Also, the contract's interface (ABI) and address are needed as well to interact with it.
+Закрытый ключ и связанный с ним общедоступный адрес определяются для подписания транзакции и ведения журнала. Требуется только закрытый ключ. Кроме того, для взаимодействия с ним необходимы интерфейс контракта (ABI) и адрес. 
 
-In the second section, a contract instance is created with `web3.eth.contract()` by providing the ABI and address. Next, you can build the transaction object with the `contract.functions.methodName(_input).buildTransaction` function, replacing `contract`, `methodName` and `_input` with the contract instance, function to call, and input of the function (if necessary). Inside `buildTransaction()`, the `from` account needs to be outlined. Make sure to use the one associated with the private key. Also, the transaction count can be obtained with the `web3.eth.getTransactionCount(address)` method.
+Во второй части создается экземпляр контракта с помощью `web3.eth.contract()`, путем предоставления его адреса и ABI. Затем вы можете создать объект транзакции с помощью функции `contract.functions.methodName(_input).buildTransaction`, заменив `contract`, `methodName` и `_input` экземпляром контракта, функцией для вызова и вводом функции (при необходимости). Внутри `buildTransaction()`, необходимо указать исходную учетную запись (`from`). Обязательно используйте ту, которая связана с закрытым ключом. Также количество транзакций можно получить с помощью метода `web3.eth.getTransactionCount(address)`. 
 
-The transaction can be signed using `web3.eth.account.signTransaction()`, passing the transaction object of the previous step and the private key.
+Транзакцию можно подписать с помощью `web3.eth.account.signTransaction()`, передав объект транзакции предыдущего шага и закрытый ключ.
 
-Lastly, the transaction hash is displayed in the terminal.
+Наконец, в терминале отображается хеш транзакции.
 
-## Running the Scripts
+## Запуск скриптов
 
-For this section, the code shown before was adapted to target a development node, which you can run by following [this tutorial](/getting-started/local-node/setting-up-a-node/). Also, each transaction was sent from the pre-funded account that comes with the node:
+В этом разделе показанный ранее код был адаптирован для работы с автономной нодой, которую вы можете запустить, следуя этому [руководству](/getting-started/local-node/setting-up-a-node/). Кроме того, каждая транзакция была отправлена с предварительно пополненной учетной записи, которая поставляется с нодой:
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-First, deploy the contract by running (note that the directory was renamed for each library):
+Сначала разместите контракт, запустив (обратите внимание, что каталог был переименован для каждой библиотеки):
 
 === "Web3.js"
     ```
@@ -368,18 +368,19 @@ First, deploy the contract by running (note that the directory was renamed for e
     python3 deploy.py
     ```
 
-This will deploy the contract and return the address:
+Это разместит контракт и вернет адрес:
 
 === "Web3.js"
-    ![Deploy Contract Web3js](/images/deploycontract/contract-deploy-web3js.png)
+    ![Разместить контракт Web3js](/images/deploycontract/contract-deploy-web3js.png)
 
 === "Ethers.js"
-    ![Deploy Contract Etherjs](/images/deploycontract/contract-deploy-ethers.png)
+    ![Разместить контракт Etherjs](/images/deploycontract/contract-deploy-ethers.png)
 
 === "Web3.py"
-    ![Deploy Contract Web3py](/images/deploycontract/contract-deploy-web3py.png)
+    ![Разместить контракт Web3py](/images/deploycontract/contract-deploy-web3py.png)
 
-Next, run the increment file. You can use the get file to verify the value of the number stored in the contract before and after increment it:
+Затем запустите _increment.\*_ файл. Вы можете использовать файл get для проверки значения числа, хранящегося в контракте, до и после его увеличения:
+
 
 === "Web3.js"
     ```
@@ -411,7 +412,7 @@ Next, run the increment file. You can use the get file to verify the value of th
     python3 get.py
     ```
 
-This will display the value before the increment transaction, the hash of the transaction, and the value after:
+Это отобразит значение до транзакции increment, хэш транзакции и значение после:
 
 === "Web3.js"
     ![Increment Contract Web3js](/images/deploycontract/contract-increment-web3js.png)
@@ -422,7 +423,7 @@ This will display the value before the increment transaction, the hash of the tr
 === "Web3.py"
     ![Increment Contract Web3py](/images/deploycontract/contract-increment-web3py.png)
 
-Lastly, run the reset file. Once again, you can use the get file to verify the value of the number stored in the contract before and after resetting it:
+Наконец, запустите файл сброса. Еще раз, вы можете использовать файл get для проверки значения числа, хранящегося в контракте, до и после его сброса:
 
 === "Web3.js"
     ```
@@ -454,7 +455,7 @@ Lastly, run the reset file. Once again, you can use the get file to verify the v
     python3 get.py
     ```
 
-This will display the value before the reset transaction, the hash of the transaction, and the value after:
+Это отобразит значение до сброса, хэш транзакции и значение после:
 
 === "Web3.js"
     ![Reset Contract Web3js](/images/deploycontract/contract-reset-web3js.png)
