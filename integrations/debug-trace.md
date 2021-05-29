@@ -9,26 +9,26 @@ description:  Узнайте, как использовать Geth Debug API и 
 
 ## Вступление
 
-Geth Дебаг API и OpenEthereum Модуль Трассировки обеспечивают нестандартные RPC методы для более глубокого понимания обработки транзакций.
+Geth Дебаг API и модуль трассировки OpenEthereum обеспечивают нестандартные RPC методы для более глубокого понимания обработки транзакций.
 
 С релизом Moonbase Alpha v7 сделан еще один шаг в достижении основной цели Moonbeam, а именно предоставлении беспрепятственного взаимодействия разработчиков с Ethereum:`debug_traceTransaction` и `trace_filter` RPC методы стали доступны.
 
 Поддержка данных RPC методов является важнейшим этапом, ввиду того, что многие проекты, такие как [The Graph](https://thegraph.com/) и [Blockscout](https://docs.blockscout.com/), используют их для индексации блокчейн данных.
 
-Оба запроса являются довольно тяжелыми, со стороны ноды. Поэтому требуется запустить этот RPC со стороны ноды при помощи команды `--ethapi=debug`, флаг для `debug_traceTransaction`и/или `--ethapi=trace` флаг для `trace_filter`. На данный момент вы можете запустить 2 типа нод:
+Оба запроса являются довольно тяжелыми, со стороны ноды. Поэтому требуется запустить этот RPC со стороны ноды при помощи команды `--ethapi=debug`, флаг для `debug_traceTransaction`и/или `--ethapi=trace` флаг для `trace_filter`. На данный момент Вы можете запустить 2 типа нод:
 
- - **Moonbeam development node** — запустите собственную копию Moonbeam в своей приватной среде. Для этого следуйте [этому руководству](/getting-started/local-node/setting-up-a-node/). Обязательно проверьте расширенные настройки [секции флагов](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
+ - **Автономная нода Moonbeam** — запустите собственную копию Moonbeam в своей приватной среде. Для этого следуйте [этому руководству](/getting-started/local-node/setting-up-a-node/). Обязательно проверьте расширенные настройки [секции флагов](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
  - **Moonbase Alpha node** — запустите полную версию TestNet ноды и получите доступ к вашим приватным конечным точкам. Для этого следуйте [этому руководству](/node-operators/networks/full-node/). Обязательно проверьте расширенные настройки [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
 
 ## Geth Дебаг API
 
 RPC имплементация `debug_traceTransaction` следует [данному Geth гайдлайну по дебагу API](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
 
-Для запуска RPC метода вам понадобится hash транзакции, в качестве дополнительных параметров вы можете указать следующее:
+Для запуска RPC метода Вам понадобится hash транзакции, в качестве дополнительных параметров Вы можете указать следующее:
 
  - **disableStorage** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват хранилища
  - **disableMemory** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват памяти
- - **disableStack** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват стека
+ - **disableStack** — один ввод, boolean (по умолчанию: _false_). Установка значения True отключает захват стейка
 
 На данный момент, трассировка транзакций на базе JavaScript не поддерживается.
 
