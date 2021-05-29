@@ -13,7 +13,7 @@ description: Обзор доступных в настоящее время об
 В настоящее время мы предлагаем два обозревателя блоков: один для Ethereum API и второй это Substrate API.
 
 !!! note
-    Если вы используете Brave Browser и ваш проводник не подключается к экземпляру Moonbeam, на который вы ссылаетесь, попробуйте отключить Brave Shield.
+    Если Вы используете Brave Browser и Ваш проводник не подключается к экземпляру Moonbeam, на который Вы ссылаетесь, попробуйте отключить Brave Shield.
 
 ## Ethereum API
 
@@ -21,46 +21,46 @@ description: Обзор доступных в настоящее время об
 
 Используя эту [ссылку](https://moonbeam-explorer.netlify.app/) Вы можете найти версию [Expedition](https://github.com/etclabscore/expedition).
 
-По умолчанию проводник подключен к сети Moonbase Alpha TestNet. Однако вы можете подключить его, выполнив следующие шаги:
+По умолчанию проводник подключен к сети Moonbase Alpha TestNet. Однако Вы можете подключить его, выполнив следующие шаги:
 
  1. Нажмите на значок шестеренки в правом верхнем углу.
- 2. Выберите пункт "Development", если у вас есть нода, работающая по следующему адресу `http://localhost:9933` (default RPC location of a Moonbeam node running with `--dev`flag). You can also switch back to "Moonbase Alpha"(по умолчанию RPC узел Moonbeam, запущен с опцией --devflag). Вы также можете вернуться в режим "Moonbase Alpha"
- 3. In the case you want to connect to a specific RPC URL, select "Custom RPC" and enter the URL. For example, `http://localhost:9937`
+ 2. Выберите пункт "Development", если у Вас есть нода, работающая по следующему адресу `http://localhost:9933` (по умолчанию RPC узел Moonbeam, запущен с опцией `--dev`flag). Вы также можете вернуться в режим "Moonbase Alpha".
+ 3. В случае если вы хотите подключиться к определенному RPC URL-адресу выберите «Custom RPC» и введите URL-адрес. Например, `http://localhost:9937`
 
-![Expedition Explorer](/images/explorers/explorers-images-1.png)
+![Обозреватель Expedition](/images/explorers/explorers-images-1.png)
 
 ### Blockscout (TestNet)
 
-Blockscout provides an easy-to-use interface for users to inspect and confirm transactions on EVM blockchains, including Moonbeam. It allows you to search transactions, view accounts, and balances, and verify smart contracts. More information can be found in their [documentation site](https://docs.blockscout.com/).
+Blockscout предоставляет пользователям простой в использовании интерфейс для проверки и подтверждения транзакций в блокчейнах EVM, включая Moonbeam. Это дает вам возможность искать транзакции, просматривать аккаунты, балансы и проверять смарт контракты. Более подробную информацию Вы можете найти в [документации Blockscout](https://docs.blockscout.com/).
 
-As main features, Blockscout offers:
+Blockscout предлагает следующие основные функции:
 
- - Open source development, meaning all code is open to the community to explore and improve. You can find the code [here](https://github.com/blockscout/blockscout)
- - Real-time transaction tracking
- - Smart contract interaction
- - ERC20 and ERC721 token support, listing all available token contract in a friendly interface
- - Full-featured API with GraphQL, where users can test API calls directly from a web interface
+ - Разработка с использованием открытого исходного кода, данный код является открытым для изучения и может быть доработан любым членом сообщества. Информацию о коде Вы можете найти [здесь](https://github.com/blockscout/blockscout)
+ - Отслеживание транзакций в реальном времени
+ - Взаимодействие со смарт контрактом
+ - Поддержка токенов сети ERC20 и ERC721, список всех доступных контрактов для токенов находится в удобном интерфейсе
+ - Полнофункциональный API с GraphQL, где пользователи могут тестировать вызовы API прямо из веб-интерфейса
 
-An instance of Blockscout running against the Moonbase Alpha TestNet can be found in [this link](https://moonbase-blockscout.testnet.moonbeam.network/).
+Экземпляр Blockscout, работающий против Moonbase Alpha TestNet, можно найти по [этой ссылке](https://moonbase-blockscout.testnet.moonbeam.network/).
 
-![Blockscout Explorer](/images/explorers/explorers-images-2.png)
+![Обозреватель Blockscout](/images/explorers/explorers-images-2.png)
 
 ## Substrate API
 
 ### PolkadotJS (Dev Node - TestNet)
 
-Polkadot JS Apps uses the WebSocket endpoint to interact with the Network. To connect it to a Moonbeam development node, you can follow the steps in [this tutorial](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node). The default port for this is `9944`.
+Polkadot JS Apps использует конечную точку WebSocket для взаимодействия с сетью. Чтобы подключить его к ноде разработчкика Moonbeam, вы можете выполнить действия, описанные [в этом руководстве](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node). Порт по умолчанию - `9944`.
 
 ![Polkadot JS Local Node](/images/explorers/explorers-images-3.png)
 
-To view and interact with Moonbase Alpha's substrate layer, go to [this URL](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer). This is the Polkadot JS Apps pointing to the TestNet. You can find more information in [this page](/integrations/wallets/polkadotjs/).
+Для просмотра и взаимодействия с уровнем Substrate Moonbase Alpha, воспользуйтесь следующей [ссылкой](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer). Это приложение Polkadot JS, ссылающееся на TestNet. Более подробную информацию Вы можете найти на этой странице](/integrations/wallets/polkadotjs/).
 
 ![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
 
 ### Subscan
 
-Subscan provides blockchain explorer capabilities for Substrate-based chains. It is capable of parsing standard or custom modules. For example, this is useful to display information regarding the Staking, Governance, and EVM pallets (or modules). Code is all open-source and can be found [here](https://github.com/itering/subscan-essentials).
+Subscan предоставляет возможности обозревателя блокчейнов для цепочек на основе Substrate. Он способен анализировать стандартные или настраиваемые модули. Например, это полезно для отображения информации, которая касается стейкинга, управления, EVM "модулей". Данный код полностью открыт, и его можно найти [здесь](https://github.com/itering/subscan-essentials).
 
-An instance of Subscan running against the Moonbase Alpha TestNet can be found in [this link](https://moonbase.subscan.io/).
+Используя [эту ссылку](https://moonbase.subscan.io/) Вы можете найти экземпляр Subscan, работающий с Moonbase Alpha TestNet.
 
 ![Subscan Moonbase Alpha](/images/explorers/explorers-images-5.png)
