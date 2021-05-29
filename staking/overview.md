@@ -3,57 +3,57 @@ title: Overview
 description: Moonbeam provides staking features where token holders nominate collators with their tokens and earn rewards
 ---
 
-# Staking in Moonbeam
+# Стейкинг в Moonbeam
 
 ![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
 
-## Introduction
+## Вступление
 
-Moonbeam uses a block production mechanism based on [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/en/learn-consensus) where there are collators and validators. [Collators](https://wiki.polkadot.network/docs/en/learn-collator) maintain parachains (in this case, Moonbeam) by collecting transactions from users and producing state transition proofs for the Relay Chain [validators](https://wiki.polkadot.network/docs/en/learn-validator).
+Moonbeam использует механизм производства блоков, основанный на модели  [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/en/learn-consensus) где есть коллаторы и валидаторы. [коллаторы](https://wiki.polkadot.network/docs/en/learn-collator) поддерживают парачейны (в данном случае Moonbeam), собирая транзакции от пользователей и создавая подтверждения состояния перехода для [валидаторов](https://wiki.polkadot.network/docs/en/learn-validator).
 
-The collators' set (nodes that produce blocks) are selected based on their stake in the network. And here is where staking comes in.
+TСортировщики (узлы, которые производят блоки) отбираются на основе их доли в сети. Как раз здесь нам на помощь приходит стейкинг.
 
-Collators (and token holders if they nominate) have a stake in the network from which they get slashed if they misbehave. Therefore, the higher the stake, the higher the network security. The higher the stake, the more likely the collator will get selected to produce a block and earn rewards, which they share with their nominators. In such a way, network members are incentivized to stake tokens to improve the overall security.
+Сортировщики (и держатели токенов, если они номинируют) имеют долю в сети, которая уменьшается, если они работают не правильно. Следовательно, чем больше доля, тем выше безопасность сети. Чем больше доля, тем больше вероятность того, что коллатор будет выбран для создания блока и получения вознаграждения, которым он поделится со своими номинаторами. Таким образом, участники сети заинтересованы в стейкинге токенов для повышения общей безопасности.
 
-## General Definitions
+## Общие определения
 
 --8<-- 'text/staking/staking-definitions.md'
 
 Currently, for Moonbase Alpha:
 
-|             Variable             |     |                                                  Value                                                  |
+|             Переменная           |     |                                                  Значение                                               |
 | :------------------------------: | :-: | :-----------------------------------------------------------------------------------------------------: |
-|     Minimum nomination stake     |     |                          {{ networks.moonbase.staking.min_nom_stake }} tokens                           |
-|        Minimum nomination        |     |                          {{ networks.moonbase.staking.min_nom_amount}} tokens                           |
-| Maximum nominators per collators |     |                             {{ networks.moonbase.staking.max_nom_per_col }}                             |
-| Maximum collators per nominator  |     |                             {{ networks.moonbase.staking.max_col_per_nom }}                             |
-|              Round               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
-|          Bond duration           |     |                            {{ networks.moonbase.staking.bond_lock }} rounds                             |
+|     Минимальная доля номинирования     |     |                          {{ networks.moonbase.staking.min_nom_stake }} tokens                           |
+|        Минимальная номинация         |     |                          {{ networks.moonbase.staking.min_nom_amount}} tokens                           |
+| Максимальное количество номинаторов на сортировщика  |     |                             {{ networks.moonbase.staking.max_nom_per_col }}                             |
+| Максимум сортировщиков на номинанта |     |                             {{ networks.moonbase.staking.max_col_per_nom }}                             |
+|              Раунд               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
+|          Длительность бонда      |     |                            {{ networks.moonbase.staking.bond_lock }} rounds                             |
 
-## Reward Distribution
+## Распределение вознаграждений
 
-At the end of every round ({{ networks.moonbase.staking.round_blocks }} blocks), collators are rewarded for their work from {{ networks.moonbase.staking.bond_lock }} rounds ago.
+В конце каждого раунда ({{ networks.moonbase.staking.round_blocks }} блоков),  коллаторы награждаются за работу проделанную {{ networks.moonbase.staking.bond_lock }} раунда назад.
 
-When collators join the set of collators, they establish a commission to charge their nominators for the service they provide. Therefore, the reward distribution goes as follows:
+Когда коллаторы отобраны, они устанавливают комиссию, которая взымается со своих номинаторов за оказываемые ими услуги. Следовательно, награда распределяется следующим образом:
 
- - The commission is taken out of the reward to be distributed
- - The collator gets the rewards corresponding to their stake in the network, plus the commission
- - The rest of the rewards are distributed among nominators by stake
+ - Комиссия вычитается из распределяемого вознаграждения.
+ - Коллатор получает вознаграждение, соответствующее его доле в сети, плюс комиссия.
+ - Остальные награды распределяются между номинантами в соответствии с их долей.
 
-Mathematically speaking, for collators, the reward would look like this:
+С математической точки зрения, для сортировщиков награда будет выглядеть так:
 
 ![Staking Collator Reward](/images/staking/staking-overview-1.png)
 
-Where the stake corresponds to the amount of tokens bonded by the collator in respect to the total stake of that collator (accounting nominations).
+Где доля соответствует количеству токенов, которые вложены сортировщиком, относительно общего количества токенов сортировщика (учитывая номинации).
 
-For each nominator, the reward would look like this:
+Для каждого номинатора награда будет выглядеть так:
 
 ![Staking Nominator Reward](/images/staking/staking-overview-2.png)
 
-Where the stake corresponds to the amount of tokens bonded by each nominator in respect to the total stake of that collator.
+Где доля соответствует количеству токенов, которые вложены каждым номинатором, относительно общей доли этого сортировщика.
 
-## Try it on Moonbase Alpha
+## Попробуйте на Moonbase Alpha
 
-In the Moonbase Alpha TestNet, token holders can stake and earn rewards (to get familiar with the system as the token doesn't have any actual value).
+В Moonbase Alpha TestNet холдеры токенов могут стейкать и получать вознаграждения (чтобы ознакомиться с системой, поскольку токен не имеет реальной стоимости).
 
-To do so, you can check [this guide](/staking/stake/).
+Чтобы сделать это, можете воспользоваться [этой статьей](/staking/stake/).
