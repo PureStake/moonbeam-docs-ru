@@ -1,13 +1,13 @@
 ---
-title: Chainlink Node
-description: How to set up a Chainlink Oracle node for the Moonbeam Network to feed data on-chain to be used by Smart Contracts
+title: Нода Chainlink
+description: Как настроить ноду Chainlink Oracle для Moonbeam Network, в целях передачи данных в цепочке, для использоваться смарт-контрактами
 ---
 
-# Run a Chainlink Oracle Node on Moonbeam
+# Запуск ноды Chainlink Oracle на Moonbeam
 
 ![Chainlink Moonbeam Banner](/images/chainlink/chainlinknode-banner.png)
 
-## Introduction
+## Вступление
 
 As an open, permissionless network, anyone may choose to operate an Oracle providing data to smart contracts running on Moonbeam.
 
@@ -204,9 +204,9 @@ Next, paste the following JSON. This will create a Job that will request the cur
 
 ![Chainlink New Job JSON Blob](/images/chainlink/chainlinknode-image7.png)
 
-And that is it! You have fully set up a Chainlink Oracle node that is running on Moonbase Alpha.
+Вот и все! Вы полностью настроили ноду Chainlink Oracle, работающую на Moonbase Alpha.
 
 ## Test the Oracle
 
-To verify the Oracle is up and answering requests, follow our [using an Oracle](/integrations/oracles/chainlink/) tutorial. The main idea is to deploy a client contract that requests to the Oracle, and the Oracle writes the requested data into the contract's storage.
+Чтобы убедиться, что Oracle работает и отвечает на запросы, то следуйте нашему руководству [с использованием Oracle](/integrations/oracles/chainlink/). Основная идея состоит в том, чтобы разместить клиентский контракт, который обращается к Oracle, а Oracle записывает запрошенные данные в хранилище контракта.
 
