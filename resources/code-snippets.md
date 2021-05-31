@@ -1,60 +1,60 @@
 ---
-title: Code Snippets
-description: In order to make it easier to get started with Moonbeam, here are code snippets for each of the tutorials we’ve created.
+title: Фрагменты кода
+description: Для того чтобы было легче начать работу с Moonbeam, здесь приведены фрагменты кода для каждого из созданных нами учебных пособий.
 ---
 
-# Code Snippets
+# Фрагменты кода
 
-## Setting up a Local Moonbeam Node
+## Настройка локальной ноды Moonbeam
 
-**Clone moonbeam-tutorials repo:**
+**Выполните клонирование “moonbeam-tutorials” репозитория:**
 
 ```
 git clone -b {{ networks.development.build_tag }} https://github.com/PureStake/moonbeam
 cd moonbeam
 ```
 
-**Install substrate and its pre-requisites:**
+**Выполните установку substrate и необходимых компонентов для его правильной работы:**
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-**Add Rust to system path:**
+**Укажите системный путь для утилиты Rust:**
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-**Build the development node:**
+**Создайте автономную ноду:**
 
 ```
 --8<-- 'code/setting-up-node/build.md'
 ```
 
-**Run node in dev mode:**
+**Запустите ноду в “dev” режиме:**
 
 ```
 --8<-- 'code/setting-up-node/runnode.md'
 ```
 
-**Purge chain, clean up any old data from running a ‘dev’ node in the past:**
+**Очистите цепь, удалите старые данные запуска ноды в ‘dev’ режиме которые могли остаться с прошлого раза:**
 
 ```
 ./target/release/moonbeam-development purge-chain --dev
 ```
 
-**Run node in dev mode suppressing block information but prints errors in console:**
+**Запустите ноду в ‘dev’ режиме, скрывая информацию о блоках и выводя на экран только ошибки:**
 
 ```
 ./target/release/moonbeam-development --dev -lerror
 ```
 
-## Genesis Account
+## Учетная запись Genesis
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-## Development Accounts
+## Учетная запись Development
 
 --8<-- 'code/setting-up-node/dev-accounts.md'
 
@@ -62,7 +62,7 @@ cd moonbeam
 
 ## MetaMask
 
-**Moonbeam Development node details:**
+**Детали ноды Moonbeam Development:**
 
 --8<-- 'text/metamask-local/development-node-details.md'
 

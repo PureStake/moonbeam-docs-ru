@@ -1,54 +1,54 @@
 ---
-title: Vision
-description: Moonbeam is designed to enable a multi-chain future, where users and assets can move freely across many specialized and heterogenous chains.
+title: Видение
+description: Moonbeam разработан для обеспечения мультичейн будущего, где пользователи и активы могут свободно перемещаться по множеству различных специализированных и разнообразных сетям.
 ---
 
-# Our Vision for Moonbeam
+# Наше видение Moonbeam
 
-We believe in a multi-chain future with many chains, and many users and assets on those chains. In this context, we have created Moonbeam: a smart contract platform that provides an Ethereum-compatible environment for building decentralized applications. Moonbeam was designed to serve these new kinds of assets and users that exist across two or more chains.
+Мы верим в мультичейн будущее со множеством сетей, множеством пользователей и активов в этих сетях. В этом контексте мы создали Moonbeam: платформу смарт-контрактов, которая обеспечивает совместимую с Ethereum среду для создания децентрализованных приложений. Moonbeam была разработана для обслуживания этих новых видов активов и пользователей, которые существуют в двух или более сетях.
 
-Existing smart contract platforms are designed to service the users and assets on a single, specific chain.  By providing cross-chain smart contract functionality, Moonbeam allows developers to shift existing workloads and logic to Moonbeam and extend the reach of their applications to new users and assets on other chains.
+Существующие платформы смарт-контрактов предназначены для обслуживания пользователей и активов в одном, конкретном блокчейне. Обеспечивая функциональность смарт-контрактов на разных сетях, Moonbeam позволяет разработчикам перенести существующие рабочие нагрузки и логику на Moonbeam и расширить сферу действия своих приложений на новых пользователей и активы в других блокчейнах.
 
-Moonbeam's cross-chain integration is accomplished by becoming a [parachain](/resources/glossary/#parachains) on the Polkadot network.  The [Polkadot network](/resources/glossary/#polkadot) provides integration and connectivity between parachains that are connected to the network and to other non-Polkadot-based chains, such as Ethereum and Bitcoin, via bridges.
+Мультичейн интеграция Moonbeam достигается за счет того, что он становится [параченом](/resources/glossary/#parachains) в сети Polkadot.  Сеть [Polkadot network](/resources/glossary/#polkadot) обеспечивает интеграцию и связь между парачейнами, которые подключены к сети, и с другими чейнами, не основанными на Polkadot, такими как Ethereum и Bitcoin через мосты.
 
-## Who Benefits From Moonbeam
+## Кому выгоден Moonbeam
 
-There are three main audiences who can most benefit from Moonbeam's cross-chain functionality:
+Функциональность кросс-чейна Moonbeam может принести наибольшую пользу трем основным аудиториям:
 
-### Existing Ethereum-Based Projects
+### Существующие проекты на основе Ethereum
 
-Projects that are struggling with cost and scalability challenges on Ethereum can use Moonbeam to: 
+Проекты, которые борются с проблемами стоимости и масштабируемости в Ethereum, могут использовать Moonbeam для: 
 
- - Move portions of their existing workloads and state off of Ethereum Layer 1 with minimal required changes.  
- - Implement a hybrid approach, where applications live on both Ethereum and Moonbeam simultaneously.  
- - Extend their reach to the Polkadot network and other chains that are connected to Polkadot.  
+ - Перемещения части существующих рабочих нагрузок и состояние Ethereum уровня 1 с минимальными необходимыми изменениями.  
+ - Реализации гибридного подхода, при котором приложения работают одновременно на Ethereum и Moonbeam.  
+ - Расширить охват сети Polkadot и других сетей, подключенных к Polkadot.  
 
-### Polkadot Ecosystem Projects
+### Проекты экосистемы Polkadot
 
-Ecosystem projects that need smart contract functionality can use Moonbeam to:  
+Проекты в экосистеме Polkadot, которым необходима функциональность смарт-контрактов, могут использовать Moonbeam для:  
 
- - Augment their existing parachains and parathreads.  
- - Add new functionality that is needed but not included on the main [Polkadot Relay Chain](/resources/glossary/#relay-chain). For example, they could create a place where teams can crowdfund their projects, implement lockdrops, and process other, more complex financial transactions than are provided by base [Substrate](/resources/glossary/#substrate) functionality.  
- - Leverage the mature and extensive Ethereum development toolchain.  
+ - Дополнения существующих парачейнов и parathreads.  
+ - Добавления новых функций, которые необходимы, но не включены в основной [Polkadot Relay Chain](/resources/glossary/#relay-chain). FoНапример, они могут создать место, где команды могут осуществлять краудфандинг своих проектов, внедрять блокировки и обрабатывать другие, более сложные финансовые транзакции, чем это предусмотрено базовой функциональностью [Substrate](/resources/glossary/#substrate).  
+ - Используйте развитый и обширный инструментарий для разработки Ethereum.  
 
-### Developers of New DApps
+### Разработчики новых DApps
 
-Individuals and teams that want to try building on Polkadot can use Moonbeam to: 
+Отдельные пользователи и команды, которые хотят попробовать свои силы на Polkadot, могут использовать Moonbeam, чтобы: 
 
- - Leverage the specialized functionality from Polkadot parachains while reaching users and assets on other chains.  
- - Compose functionality from Polkadot parachains by using Moonbeam as a lightweight integration layer that aggregates network services before presenting them to end users. Implementing a composed service using pre-built integrations on a smart contract platform will be a lot faster and easier (in many cases) than building a full Substrate runtime and performing the integrations yourself in the runtime.  
+ - Воспользоваться специализированной функциональностью парачейн  Polkadot для доступа к пользователям и активам в других сетях.  
+ - Создавать функциональные возможности из парачейнов Polkadot, используя Moonbeam в качестве облегченного уровня интеграции, который объединяет сетевые сервисы перед их предоставлениям конечным пользователям. Внедренные составные службы с использованием встроенных интеграций на платформе смарт-контрактов будет намного быстрее и проще (во многих случаях), чем создание полной среды выполнения субстрата и самостоятельное выполнение интеграции во время выполнения.  
 
-## Key Features and Functionality
+## Ключевые особенности и функциональность
 
-Moonbeam achieves these goals with the following key features:  
+Moonbeam достигает этих целей с помощью следующих основных функций:  
 
- - **Decentralized and Permissionless** , providing a base requirement for censorship resistance and support for many existing and future DApp use cases.  
- - **Contains a Full EVM Implementation** , enabling Solidity-based smart contracts to be migrated with minimal change and with expected execution results.  
- - **Implements the Web3 RPC API** so that existing DApp front-ends can be migrated with minimal change required, and so existing Ethereum-based tools, such as Truffle, Remix, and MetaMask, can be used without modification against Moonbeam.  
- - **Compatible with the Substrate Ecosystem Toolset** , including block explorers, front-end development libraries, and wallets, allowing developers and users to use the right tool for what they are trying to accomplish.  
- - **Native Cross-Chain Integration** via the Polkadot network and via token bridges, which allows for token movement, state visibility, and message passing with Ethereum and other chains.  
- - **On-Chain Governance** to allow stakeholders to quickly and forklessly evolve the base protocol according to developer and community needs.  
+ - **Децентрализованность и отсутствие разрешений** , базовое требование не поддающихся цензуре и поддержки многих существующих и будущих сценариев использования DApp.  
+ - **Содержание полной реализации EVM** , позволяющей переносить смарт-контракты на основе Solidity с минимальными изменениями и с ожидаемыми результатами выполнения.  
+ - **Реализует Web3 RPC API** так что существующие интерфейсы DApp могут быть перенесены с минимальными необходимыми изменениями, и поэтому существующие инструменты на основе Ethereum, такие как Truffle, Remix и MetaMask, могут использоваться без модификации с Moonbeam.  
+ - **Совместимость с набором инструментов Substrate Ecosystem Toolset** , включая обозревателей блоков, библиотеки интерфейсной разработки и кошельки, что позволяет разработчикам и пользователям использовать правильный инструмент для того, что они пытаются сделать.  
+ - **Встроенная кросс-чейн интеграция** через сеть Polkadot и через токен-мосты, позволяет перемещать токены, видеть состояние и передавать сообщения с Ethereum и другими блокчейнами.  
+ - **Управление в сети** позволяющее заинтересованным сторонам быстро и без дополнительных затрат развивать базовый протокол в соответствии с потребностями разработчиков и сообщества.  
 
-This unique combination of elements fills a strategic market gap, while allowing Moonbeam to address future developer needs as the Polkadot network grows over time.  Building your own chain with Substrate is powerful, but also comes with a number of additional responsibilities, such as learning and implementing the chain’s runtime in Rust, creating a token economy, and incentivizing a community of node operators.
+Эта уникальная комбинация элементов заполняет стратегический рыночный пробел, позволяя Moonbeam удовлетворять потребности будущих разработчиков по мере роста сети Polkadot со временем. Создание  собственного чейна с помощью Substrate — это хорошо, но также это связано с рядом дополнительных обязанностей, таких как изучение и реализация среды выполнения чейнов в Rust, создание экономики токенов и стимулирование сообщества операторов узлов.
 
-For many developers and projects, an Ethereum-compatible smart contract approach will be much simpler and faster to implement.  And by building these smart contracts on Moonbeam, developers can still integrate with other chains and get value from Polkadot-based network effects.
+Для многих разработчиков и проектов подход смарт-контрактов, совместимый с Ethereum, будет намного проще и быстрее реализовать. Создавая эти смарт-контракты на Moonbeam, разработчики по-прежнему могут интегрироваться с другими чейнами и получать выгоду от сетевых эффектов на основе Polkadot.

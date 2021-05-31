@@ -1,56 +1,56 @@
 ---
-title: Technology
-description: Moonbeam is built using Rust and the Substrate framework, enabling rich tools for implementation, but also allowing for specialization and optimization.
+title: Технологии
+description: Moonbeam построен с использованием Rust и фреймворка Substrate, что дает богатые инструменты для реализации, но также допускает детализацию и оптимизацию.
 ---
 
-# Technology
+# Технологии
 
-## The Moonbeam Development Stack
+## Стек разработки Moonbeam
 
-Moonbeam is a smart contract blockchain platform built in the Rust programming language using the Substrate framework.  
+Moonbeam — это децентрализованная платформа смарт-контрактов, построенная на языке программирования Rust с использованием фреймворка Substrate.  
 
-### Rust Programming Language
+### Язык программирования Rust
 
-Rust is a good language for implementing a blockchain, as it is highly performant like C and C++, but has built-in memory safety features that are enforced at compile time, which prevents many common bugs and security issues that can arise from C and C++ implementations.
+Rust — подходящий язык для реализации блокчейна, поскольку он сопоставим по скорости и возможностям с C++/С, однако, по своим функциям, которые применяются во время компиляции, дает бОльшую безопасность при работе с памятью, что предотвращает многие распространенные ошибки и проблемы безопасности, которые могут возникнуть из C++/С реализации.
 
-### Substrate Framework
+### Фреймворк Substrate
 
-Substrate provides a rich set of tools for creating blockchains, including a runtime execution environment that enables a generic state transition function, and a pluggable set of modules that provide implementations of various blockchain subsystems.
+Substrate дает богатый набор инструментов для создания блокчейн, включая среду выполнения, которая обеспечивает универсальную функцию перехода между состояниями, и подключаемый набор модулей, которые обеспечивают реализацию различных подсистем блокчейна.
 
-Moonbeam leverages multiple existing Substrate frame pallets to provide key blockchain services and functionality, including core blockchain data structures, peer-to-peer networking, consensus mechanisms, accounts, assets, and balances.  Custom pallets and logic in the runtime implement Moonbeam-specific behavior and functionality, such as cross-chain token integration.  For leveraged pallets, Moonbeam will strive to stay as close as possible to the upstream Substrate codebase and incorporate Substrate bug fixes, enhancements, and new features on an ongoing basis.
+Moonbeam использует несколько существующих структур Substrate для предоставления ключевых сервисов и функций блокчейна, включая основные структуры данных блокчейна, одноранговые сети, механизмы консенсуса, учетные записи, активы и балансы. Пользовательские модули и логика среды выполнения реализовывают специфичное для Moonbeam поведение и функции, такие как кросс-чейн интеграция токенов. Для модулей с усиленным использованием, Moonbeam будет стремиться максимально приблизиться к исходной кодовой базе Substrate, и на постоянной основе включать исправления ошибок, улучшения и новые функции Substrate.
 
-## Blockchain Runtime
+## Время выполнения Блокчейна
 
-The core Moonbeam runtime specifies the state transition function and behavior of the Moonbeam blockchain.  The Moonbeam runtime is built using [FRAME](/resources/glossary/#substrate-frame-pallets). It includes several standard pallets as well as several custom ones. The runtime is compiled to a [WebAssembly (Wasm)](/resources/glossary/#webassemblywasm) binary as well as a native binary. These compiled versions will be executed in the Polkadot Relay Chain and Moonbeam node environments.  
+Базовая среда выполнения Moonbeam определяет функцию перехода между состояниями и поведение блокчейна Moonbeam. Среда выполнения Moonbeam построена с использованием  [FRAME](/resources/glossary/#substrate-frame-pallets). Это включает в себя стандартные модули, а также несколько нестандартных. Среда выполнения скомпилирована в двоичный файл [WebAssembly (Wasm)](/resources/glossary/#webassemblywasm). а также в собственный двоичный файл. Эти скомпилированные версии будут выполняться в среде нод Relay Chain Polkadot и Moonbeam.  
 
-!!! note
-    Substrate Frame Pallets are a collection of Rust-based modules providing functionality that is required when building a blockchain.  WebAssembly is an open standard that defines a portable binary code format. It is supported by different programming languages, compilers, and browsers. Find more definitions [in our glossary](/resources/glossary/).
+!!! Примечание
+    это набор модулей на основе Rust, которые обеспечивают функциональность, необходимую для построения блокчейна. WebAssembly — это открытый стандарт, который устанавливает формат портативного бинарного кода. Он поддерживается различными языками программирования, компиляторами и браузерами. Найдите больше определений [в нашем глоссарии](/resources/glossary/).
 
-Some of the key Substrate Frame Pallets used in the Moonbeam runtime include:
+Некоторые из ключевых Substrate Frame Pallets, используемых в среде выполнения Moonbeam:
 
- - **Balances** — Support for accounts, balances, and transfers.
- - **EVM** — Full Rust-based EVM implementation based on SputnikVM.  Provides the state transition logic for Moonbeam-based smart contracts.
- - **Ethereum** — Provides emulation of Ethereum block processing for the EVM.
- - **RPC-Ethereum** — Web3 RPC implementation in Substrate.
- - **Council** — Includes governance mechanics around the council and proposals.
- - **Democracy** — Functionality for public stake-weighted token holder voting.
- - **Executive** — Orchestration layer that dispatches calls to other runtime modules.
- - **Indices** — Support for user-friendly shortnames for account addresses.
- - **System** — Provides low-level types, storage, and blockchain functions.
- - **Treasury** — On-chain treasury that can be used to fund public goods such as a parachain slot.
+ - **Balances** — Поддержка счетов, балансов и переводов.
+ - **EVM** — Это полная реализация EVM на основе Rust, основанная на SputnikVM. Предоставляет логику перехода для смарт-контрактов на основе Moonbeam.
+ - **Ethereum** — Обеспечивает точное выполнение обработки блоков Ethereum для EVM.
+ - **RPC-Ethereum** — Реализация Web3 RPC в Substrate.
+ - **Council** — Включает механизмы управления советами и предложениями.
+ - **Democracy** — Функционал для публичного, взвешенного по уровню застейканных токенов, голосования держателей токенов.
+ - **Executive** — Уровень оркестрации, который отправляет вызовы другим модулям среды выполнения.
+ - **Indices** — Поддержка удобных сокращенных имен для адресов учетных записей.
+ - **System** — Обеспечивает хранение низкоуровневых типов хранилищ и функций блокчейна.
+ - **Treasury** — Казначейство, которое можно использовать для финансирования общественных благ, таких как слот парачейна.
 
-Moonbeam also uses the Cumulus library to provide integration to the Polkadot relay chain.
+Moonbeam также использует библиотеку Cumulus для интеграции с Relay Chain Polkadot.
 
-In addition to these Substrate Frame Pallets, we will be implementing modules with Moonbeam-specific functionality, including collator mechanics and rewards and other developer building blocks.
+В дополнение к Substrate Frame Pallets будут внедряться модули со специфическими для Moonbeam функциями, включая механизм валидации и вознаграждения, а также другие инструменты для разработчиков.
 
-## Ethereum Compatibility Architecture
+## Архитектура совместимости с Ethereum
 
-Smart contracts on Moonbeam can be implemented using Solidity, Vyper, and any other language which can compile smart contracts to EVM-compatible bytecode.  Moonbean aims to provide a low-friction and secure environment for the development, testing, and execution of smart contracts that is compatible with the existing Ethereum developer toolchain.  
+Смарт-контракты Moonbeam могут быть реализованы с использованием Solidity, Vyper и любого другого языка, который может компилировать смарт-контракты в байт-код, совместимый с EVM. Moonbeam стремится предоставить безопасную среду для разработки, тестирования и выполнения смарт-контрактов, совместимую с существующим набором инструментов разработчика Ethereum.  
 
-The execution behavior and semantics of Moonbeam-based smart contracts will strive to be as close to Ethereum Layer 1 as possible.  Moonbeam is a single shard, so cross-contract calls have the same synchronous execution semantics as on Ethereum Layer 1.
+Поведение и семантика выполнения смарт-контрактов на основе Moonbeam будут стремиться быть как можно ближе к Ethereum Layer1. Moonbeam — это единый фрагмент, поэтому вызовы кросс-контрактов имеют ту же семантику синхронного выполнения, что и на уровне 1 Ethereum.
 
-![Diagram showing the interactions made possible through Moonbeam's Ethereum compatibility](/images/technology-diagram.png)
+![Диаграмма, показывающая взаимодействие, ставшее возможным благодаря совместимости Moonbeam с Ethereum](/images/technology-diagram.png)
 
-A high-level interaction flow is shown above.  A Web3 RPC call from a DApp or existing Ethereum developer tool, such as Truffle, is received by a Moonbeam node.  The node will have both Web3 RPCs and Substrate RPCs available, which means that you can use Ethereum or Substrate tools when interacting with a Moonbeam node.  These RPC calls are handled by associated Substrate runtime functions.  The Substrate runtime checks signatures and handles any extrinsics.  Smart contract calls are ultimately passed to the EVM to execute the state transitions.
+Выше показана высокоуровневая схема взаимодействия. Вызов Web3 RPC от DApp или существующего инструмента разработчика Ethereum, такого как Truffle, принимается нодой Moonbeam. На ноде будут доступны как Web3 RPC, так и Substrate RPC, что означает, что вы можете использовать инструменты Ethereum или Substrate при взаимодействии с нодой Moonbeam. Эти RPC-вызовы обрабатываются соответствующими функциями среды выполнения Substrate. Среда выполнения Substrate проверяет подписи и обрабатывает любые внешние данные. Вызовы смарт-контрактов в конечном итоге передаются в EVM для выполнения переходов между состояниями.
 
-By basing our EVM implementation on the Substrate Pallet-EVM, we get a full Rust-based EVM implementation and support from the Parity engineering team.
+Проводя реализацию EVM на Substrate Pallet-EVM, мы получаем полную реализацию EVM на основе Rust и поддержку от команды инженеров Parity.

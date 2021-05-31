@@ -1,33 +1,33 @@
 ---
-title: Cross-Chain Integration
-description: Moonbeam's cross-chain integrations will support both Polkadot-based parachains and non-Polkadot chains, like Ethereum.
+title: Планы по кросс-чейн интегрированию
+description: Кросс-чейн интеграция Moonbeam будет поддерживать как парачейны на базе Polkadot, так и чейны, отличные от Polkadot, например, Ethereum.
 ---
 
-# Cross-Chain Integration Plans
+# Планы по кросс-чейн интегрированию
 
-One of the key planned features for Moonbeam is to provide an easy way for developers to use smart contracts to integrate with other chains in the Polkadot ecosystem.
+Одна из ключевых запланированных функций Moonbeam — предоставить разработчикам простой способ использования смарт-контрактов для интеграции с другими чейнами в экосистеме Polkadot.
 
-Polkadot defines a low-level integration protocol, called cross-chain message passing (XCMP), that can be used to facilitate communication between parachains within the Polkadot network and share trusted logic between chains on the Polkadot network, called shared protected runtime execution enclaves (SPREE). Parity is in the process of implementing XCMP and is in the design phase of SPREE as of writing this document (July 2020). Post-Polkadot mainnet launch, XCMP and SPREE support will be released as upgrades to the Polkadot relay chain. We plan to implement and support integration scenarios based on these protocols when they are available.
+Polkadot определяет протокол интеграции низкого уровня, называемый кросс-чейновой передачей сообщений (XCMP), который может использоваться для облегчения связи между парачейнами в сети Polkadot и совместного использования доверенной логики между цепочками в сети Polkadot, называемых общими защищенными анклавами выполнения во время исполнения (SPREE). Parity находится в процессе реализации XCMP и находится на этапе проектирования SPREE на момент написания этого документа (июль 2020 г.). После запуска основной сети Polkadot, поддержка XCMP и SPREE будет выпущена в качестве обновлений чейна ретрансляции Polkadot. Мы планируем реализовать и поддерживать сценарии интеграции на основе этих протоколов, когда они будут доступны.
 
-## An Analogy: The "Bash of Linux"
+## Аналогия: «Bash of Polkadot»
 
-For us, Polkadot will serve a similar function to something like Linux. Both are developer-oriented platforms that come with libraries to make building applications easier. 
+Для нас Polkadot будет выполнять ту же функцию, что и Linux. Обе платформы ориентированы на разработчиков и поставляются с библиотеками, упрощающими создание приложений. 
 
-Recall the old Unix philosophy, where users build tools that do one job and do it well. This is similar to the specialization that we expect to happen to parachains on Polkadot. On Linux, you can combine and compose these purpose-built tools together to achieve higher order effects using a shell-like bash. We anticipate Moonbeam-based smart contracts will provide an analogous “bash-like” environment, where specialized smart contracts and parachain functionality can be composed to achieve higher order goals.
+Вспомните старую философию Unix, когда пользователи создают инструменты, которые выполняют одну работу и делают ее хорошо. Это похоже на специализацию, которую мы ожидаем от парачейнов на Polkadot. В Linux вы можете комбинировать и составлять эти специально созданные инструменты вместе для достижения эффектов более высокого порядка, используя оболочку bash. Мы ожидаем, что смарт-контракты на основе Moonbeam предоставят аналогичную «bash-подобную» среду, в которой могут быть составлены специализированные смарт-контракты и функциональность парачейна для достижения целей более высокого порядка.
 
-It may be the case that projects start as one or more Moonbeam smart contracts and migrate over time to be “native applications” — which could be parathreads or parachains in the Polkadot context — if they need more performance or more direct control over their economies.
+Может случиться так, что проекты запустятся как один или несколько смарт-контрактов Moonbeam и со временем перейдут в “нативные приложения”, которые могут быть параллельными потоками или парачейнами в контексте Polkadot — если им требуется более высокая производительность или более прямой контроль над своей экономикой.
 
-## Integration with Other Polkadot-Based Chains
+## Интеграция с другими ченами на основе Polkadot
 
-The initial scenario we are most interested in is to allow for the movement of tokens from other chains into Moonbeam-based tokens, such that they can be used within DeFi and other applications on the platform. Once their work is done, these assets can then move back or out to other chains.
+Первоначальный сценарий, который нас больше всего интересует, заключается в том, чтобы разрешить перемещение токенов из других чейнов в токены на основе Moonbeam, чтобы их можно было использовать в DeFi и других приложениях на платформе. Как только их работа будет завершена, эти активы могут быть возвращены или переведены в другие чейны.
 
-As the integration features of the Polkadot network evolve, we will continue to provide ways for developers to access those integrations from smart contracts and to compose features across chains in Moonbeam smart contracts.
+По мере развития интеграционных функций сети Polkadot мы продолжим предоставлять разработчикам способы доступа к этим интеграциям из смарт-контрактов и компоновки функций через чейны в смарт-контрактах Moonbeam.
 
-## Integration with Ethereum
+## Интеграция с Ethereum
 
-Connectivity to Ethereum is an important capability needed for Moonbeam to be able to support Ethereum-based projects, particularly in hybrid deployments where projects are simultaneously deployed to Ethereum and Moonbeam. There is at least one project under development, independent of Moonbeam, to build a parachain-based Ethereum bridge. Once this bridge is operational, it will provide a mechanism for moving tokens, state, and messages to and from Ethereum by leveraging Polkadot.
+Подключение к сети Ethereum — важный аспект, необходимый для Moonbeam, чтобы иметь возможность поддерживать проекты на основе Ethereum, особенно в гибридных развертываниях, когда проекты одновременно развертываются и в Ethereum и вMoonbeam. В настоящее время разрабатывается как минимум один проект, независимый от Moonbeam по созданию моста Ethereum на основе парачейна. Как только этот мост заработает, он предоставит механизм для перемещения токенов, состояния и сообщений в и из Ethereum с помощью Polkadot.
 
-Until there is a parachain-based bridge in production, we plan to provide two solutions for projects that want to integrate Ethereum and Moonbeam:
+До тех пор пока в не будет моста на основе парачейнов, мы планируем предоставить два решения для проектов, которые хотят интегрировать Ethereum и Moonbeam:
 
- 1. A utility that can export state from Ethereum into a binary file, where this binary file can be used to import that state into Moonbeam. Each use of this utility would be a one-time, one-way migration.
- 2. An integrated point-to-point Ethereum bridge directly incorporated into Moonbeam. This bridge would allow for token movement and cross-chain state queries and messages. As the Polkadot ecosystem develops, we expect multiple Ethereum integration options as choices for projects deploying to Moonbeam.
+ 1. Утилита, которая может экспортировать состояние из Ethereum в двоичный файл, где этот двоичный файл можно использовать для импорта этого состояния в Moonbeam. Каждое использование этой утилиты будет одноразовой односторонней миграцией.
+ 2. Интегрированный мост Ethereum точка-точка, напрямую включенный в Moonbeam. Этот мост позволит перемещать токены, а также выполнять запросы и сообщения о состоянии между цепями. По мере развития экосистемы Polkadot мы ожидаем, что для проектов, развертываемых в Moonbeam, будет несколько вариантов интеграции с Ethereum.

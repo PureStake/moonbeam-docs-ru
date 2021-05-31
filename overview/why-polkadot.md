@@ -1,21 +1,21 @@
 ---
-title: Why Polkadot
-description: Moonbeam is built on the Substrate framework and connected to the Polkadot network, adding speed and security to the platform.
+title: Почему Polkadot
+description: Moonbeam построен на фреймворке Substrate и подключен к сети Polkadot, что повышает скорость и безопасность платформы.
 ---
-# Why We're Building on Polkadot
+# Почему мы создаем на Polkadot
 
-After extensive research, we decided to build Moonbeam using the [Substrate development framework](/resources/glossary/#substrate) and to deploy Moonbeam as a [parachain](/resources/glossary/#parachains) on the [Polkadot network](/resources/glossary/#polkadot). 
+После обширного исследования мы решили создать Moonbeam с использованием [Substrate development framework](/resources/glossary/#substrate) и развернуть Moonbeam как [парачейн](/resources/glossary/#parachains) в [сети Polkadot](/resources/glossary/#polkadot). 
 
-## Substrate Blockchain Framework
+## Блокчейн-фреймворк Substrate
 
-Substrate is a good technical fit for Moonbeam. By building on top of this framework, we can leverage the extensive functionality that Substrate includes out-of-the-box, rather than building it ourselves. This includes peer-to-peer networking, consensus mechanisms, governance functionality, an EVM implementation, and more.
+Substrate хорошо подходит для Moonbeam с технической точки зрения. Создавая на основе этой платформы, мы можем использовать широкие функциональные возможности, которые Substrate включает в себя "из коробки", вместо того, чтобы создавать их самостоятельно. Сюда входят одноранговые сети, механизмы консенсуса, функции управления, реализация EVM и многое другое
 
-Overall, using Substrate will dramatically reduce the time and implementation effort needed to implement Moonbeam.  Substrate allows a great degree of customization, which is necessary in order to achieve our Ethereum compatibility goals.  And, by using Rust, we benefit from both safety guarantees and performance gains. 
+В целом, использование Substrate значительно сократит время и усилия, необходимые для внедрения Moonbeam. Substrate обеспечивает высокую точность настройки, что необходимо для достижения наших целей совместимости с Ethereum. А благодаря использованию Rust мы получаем как гарантии безопасности, так и прирост производительности. 
 
-## Polkadot Network and Ecosystem
+## Сеть и экосистема Polkadot
 
-The Polkadot network is also a good fit for Moonbeam.  As a parachain on Polkadot, Moonbeam will be able to directly integrate with — and move tokens between — any other parachains and parathreads on the network.
+Сеть Polkadot также хорошо подходит для Moonbeam. Как парачейн в Polkadot, Moonbeam сможет напрямую интегрироваться с любыми другими парачейнами и parathreads в сети и перемещать токены между ними.
 
-We can also leverage any of the bridges that are independently built to connect non-Polkadot chains to Polkadot, including bridges to Ethereum. Polkadot’s interoperability model uniquely supports Moonbeam’s cross-chain integration goals and is a key enabling technology to support the Moonbeam vision.
+Мы также можем использовать любые мосты, которые создаются независимо для подключения сетей, не входящих в Polkadot к Polkadot, включая мосты к Ethereum. Модель взаимодействия Polkadot уникальным образом поддерживает цели Moonbeam по мультичейн интеграции и является ключевой технологией для поддержки концепции Moonbeam.
 
-But perhaps just as important as the technical criteria above, we are impressed with the people in the Polkadot ecosystem.  This includes individuals at Parity, the Web3 Foundation, and other projects in the ecosystem.  We have built many valuable relationships and find the people to be both extremely talented and the kind of people we want to be around.
+Но, возможно, не менее важным, чем вышеуказанные технические критерии, является то, что мы впечатлены людьми в экосистеме Polkadot. Сюда входят специалисты  из Parity, Web3 Foundation и других проектов в экосистеме. Мы установили много ценных отношений и считаем этих людей чрезвычайно талантливыми и такими, которых мы хотим видеть рядом с собой.

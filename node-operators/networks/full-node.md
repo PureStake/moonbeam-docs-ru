@@ -1,78 +1,78 @@
 ---
-title: Run a Node
-description: How to run a full Parachain node for the Moonbeam Network to have your RPC Endpoint or produce blocks
+title: Запуск Ноды
+description: Как запустить полную парачейн ноду для сети Moonbeam, для получения конечной точки RPC или для производства блоков
 ---
 
-# Run a Node on Moonbeam
+# Запуск Ноды на Moonbeam
 
 ![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
 
-## Introduction
+## Введение
 
-With the release of Moonbase Alpha v6, you can spin up a node that connects to the Moonbase Alpha TestNet, syncs with a bootnode, provides local access your RPC endpoints, and even authors blocks on the parachain.
+С запуском Moonbase Alpha v6 Вы можете разворачивать ноду, которая подключается к тестовой сети Moonbase Alpha TestNet, синхронизируется с загрузочным узлом, обеспечивает локальный доступ к вашим конечным точкам RPC (remote procedure call) и даже создает блоки в парачейн (parachain).
 
-In our TestNet, the relay chain is hosted and run by PureStake. But as development progresses, there will also be deployments in Kusama and then Polkadot. Here's how these upcoming environments will be named and their corresponding [chain specification files](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec) name:
+В нашей тестовой сети хостинг и управление ретранслирующей цепью обеспечивает компания PureStake.  По мере развития, также будет организовано размещение на блокчейнах Kusama и Polkadot. Ниже представлены названия сетей и соответствующие им имена [файлов спецификации цепи](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec):
 
-|    Network     |     | Hosted By |     |   Chain Name    |
+|    Сеть     |     | Расположение |     |   Название цепи   |
 | :------------: | :-: | :-------: | :-: | :-------------: |
 | Moonbase Alpha |     | PureStake |     |    alphanet     |
-|   Moonriver    |     |  Kusama   |     | _not available_ |
-|    Moonbeam    |     | Polkadot  |     | _not available_ |
+|   Moonriver    |     |  Kusama   |     | _нет данных_ |
+|    Moonbeam    |     | Polkadot  |     | _нет данных_ |
 
-This guide is meant for people with experience running [Substrate](https://substrate.dev/) based chains. Running a parachain is similar to running a Substrate node with a few differences. A Substrate parachain node will run two processes: one to sync the relay chain and one to sync the parachain. As such, many things are doubled, for example, the database directory, the ports used, the log lines, and more.
+Это руководство предназначено для людей, имеющих опыт работы с сетями на основе Substrate. Запуск парачейн аналогичен запуску ноды Substrate с небольшими отличиями. Нода парачейна Substrate будет запускать два процесса: один для синхронизации ретранслирующей цепи, а другой - для синхронизации парачейн. Таким образом, многие вещи дублируются, например, каталог базы данных, используемые порты, строки записи и многое другое.
 
-!!! note
-    Moonbase Alpha is still considered an Alphanet, and as such _will not_ have 100% uptime. The parachain _will_ be purged from time to time. During the development of your application, make sure you implement a method to redeploy your contracts and accounts to a fresh parachain quickly. Chain purges will be announced via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
+!!! Примечание
+    Moonbase Alpha по-прежнему считается Alphanet и поэтому не обеспечивает 100% безотказной работы. Парачейн время от времени будет очищаться. Во время разработки Вашего приложения убедитесь, что Вы реализуете метод быстрого повторного развертывания Ваших контрактов и учетных записей в новом парачейне. Уведомление об очистке цепи будет опубликовано в нашем [Discord канале](https://discord.gg/PfpUATX) как минимум за 24 часа.
 
-## Requirements
+## Требования
 
-The minimum specs recommended to run a node are shown in the following table. For our Kusama and Polkadot MainNet deployments, disk requirements will be higher as the network grows.
+Ниже, в таблице,  представлены минимальные требования, рекомендуемые для запуска ноды. Для размещения нод основной сети (MainNet) на блокчейнах Kusama и Polkadot, требования к дискам будут больше, по мере роста сети.
 
-|  Component   |     | Requirement                                                                                                                |
+|  Компоненты   |     | Требования                                                                                                                |
 | :----------: | :-: | :------------------------------------------------------------------------------------------------------------------------- |
-|   **CPU**    |     | 8 Cores (early development phase - not optimized yet)                                                                      |
-|   **RAM**    |     | 16 GB (early development phase - not optimized yet)                                                                        |
-|   **SSD**    |     | 50 GB (to start in our TestNet)                                                                                            |
-| **Firewall** |     | P2P port must be open to incoming traffic:<br>&nbsp; &nbsp; - Source: Any<br>&nbsp; &nbsp; - Destination: 30333, 30334 TCP |
+|   **CPU**    |     | 8 Cores (на ранних стадиях размещения - еще не оптимизированы)                                                                      |
+|   **RAM**    |     | 16 GB (на ранних стадиях размещения - еще не оптимизированы)                                                                        |
+|   **SSD**    |     | 50 GB (Для запуска нашей TestNet)                                                                                            |
+| **Firewall** |     | P2P порт должен быть открыт для входящего трафика:<br>&nbsp; &nbsp; - Источник: Любой<br>&nbsp; &nbsp; - Получатель: 30333, 30334 TCP |
 
-!!! note
-    If you don't see an `Imported` message (without the `[Relaychain]` tag) when running a node, you might need to double-check your port configuration.
+!!! Примечание
+    Если Вы не видите сообщение Imported (без тега [Relaychain]), когда запускаете ноду, Вам может понадобиться перепроверить настройки портов.
 
-## Running Ports
+## Порты запуска
 
-As stated before, the relay/parachain nodes will listen on multiple ports. The default Substrate ports are used in the parachain, while the relay chain will listen on the next higher port.
+Как указывалось ранее, ретранслирующая сеть  и парачейн ноды будут обращаться ко многим портам. По умолчанию, порты Substrate используются в парачейн, в то время как ретранслирующая сеть обращается к следующему в порядке возрастания  порту.
 
-The only ports that need to be open for incoming traffic are those designated for P2P.
+Для входящего трафика должны быть открыты только те порты, которые назначены для Р2Р.
 
-### Default Ports for a Parachain Full-Node
+### Порты по умолчанию для полной парачейн ноды
 
-|  Description   |     |                Port                 |
+|  Описание   |     |                Порт                 |
 | :------------: | :-: | :---------------------------------: |
 |    **P2P**     |     | {{ networks.parachain.p2p }} (TCP)  |
 |    **RPC**     |     |    {{ networks.parachain.rpc }}     |
 |     **WS**     |     |     {{ networks.parachain.ws }}     |
 | **Prometheus** |     | {{ networks.parachain.prometheus }} |
 
-### Default Ports of Embedded Relay Chain
+### Порты по умолчанию встроенной основной ретранслирующей сети
 
-|  Description   |     |                 Port                  |
+|  Описание   |     |                 Порт                  |
 | :------------: | :-: | :-----------------------------------: |
 |    **P2P**     |     | {{ networks.relay_chain.p2p }} (TCP)  |
 |    **RPC**     |     |    {{ networks.relay_chain.rpc }}     |
 |     **WS**     |     |     {{ networks.relay_chain.ws }}     |
 | **Prometheus** |     | {{ networks.relay_chain.prometheus }} |
 
-## Installation Instructions - Docker
+## Инструкция по установке - Docker
 
-A Moonbase Alpha node can be spun up quickly using Docker. For more information on installing Docker, please visit [this page](https://docs.docker.com/get-docker/). At the time of writing, the Docker version used was 19.03.6.
+Нода Moonbase Alpha может быть быстро запущена с использованием Docker. Для большей информации по установке Docker, пожалуйста перейдите на [эту страницу](https://docs.docker.com/get-docker/). На момент написания, актуальная версия Docker - 19.03.6.
 
-First, create a local directory to store the chain data:
+Сначала создайте локальную папку для хранения данных цепи:
 
 ```
 mkdir {{ networks.moonbase.node_directory }}
 ```
 
-Next, set the necessary permissions either for a specific or current user (replace `DOCKER_USER` for the actual user that will run the `docker` command):
+Затем установите необходимые разрешения для каждого пользователя, определенного или текущего (замените `DOCKER_USER` на имя того пользователя, который будет запускать команду `docker`):
 
 ```
 # chown to a specific user
@@ -82,18 +82,18 @@ chown DOCKER_USER {{ networks.moonbase.node_directory }}
 sudo chown -R $(id -u):$(id -g) {{ networks.moonbase.node_directory }}
 ```
 
-!!! note
-    Make sure you set the ownership and permissions accordingly for the local directory that stores the chain data.
+!!! Примечание
+    Убедитесь, что Вы установили соответствующие права  и необходимые разрешения для локальной папки, в которой хранятся данные цепи.
 
-Now, execute the docker run command. Note that you have to:
+Теперь выполните Docker командой запуска. Имейте в виду, что Вы должны:
 
- - Replace `YOUR-NODE-NAME` in two different places.
- - For collators, replace `PUBLIC_KEY` with the public address that will be associated with collation activities.
+ - Заменить `YOUR-NODE-NAME` в двух различных местах.
+ - Для коллаторов, замените `PUBLIC_KEY` открытым адресом, который привязан к деятельности коллатора.
 
-!!! note
-    If you are setting up a collator node, make sure to follow the code snippets for "Collator".
+!!! Примечание
+    Если Вы устанавливаете ноду коллатора, убедитесь что вы используете фрагменты кода для “Коллатора”.
 
-### Full Node
+### Полная Нода
 
 === "Ubuntu"
     ```
@@ -136,7 +136,7 @@ Now, execute the docker run command. Note that you have to:
     --pruning archive \
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
-### Collator
+### Коллатор
 
 === "Ubuntu"
     ```
@@ -182,107 +182,107 @@ Now, execute the docker run command. Note that you have to:
     --name="YOUR-NODE-NAME (Embedded Relay)"
     ```
 
-Once Docker pulls the necessary images, your Moonbase Alpha full node will start, displaying lots of information, such as the chain specification, node name, role, genesis state, and more:
+Как только Docker получит необходимые данные, Ваша полная нода Moonbase Alpha запустится, выдавая большое количество информации, такой как, спецификация цепи, имя ноды, ее роль, прогресс работы и так далее:
 
-![Full Node Starting](/images/fullnode/fullnode-docker1.png)
+![Запуск Полной Ноды](/images/fullnode/fullnode-docker1.png)
 
-!!! note
-    If you are having issues with the default telemetry, you can add the flag `--no-telemetry` to run the full node without telemetry activated.
+!!! Примечание
+    Если Вы столкнулись со сложностями с телеметрией по умолчанию, Вы можете добавить метку `--no-telemetry` для запуска основной ноды без активирования телеметрии.
 
-!!! note
-    You can specify a custom Prometheus port with the `--prometheus-port XXXX` flag (replacing `XXXX` with the actual port number). This is possible for both the parachain and embedded relay chain.
+!!! Примечание
+    Вы можете задать порт Prometheus по собственному выбору, добавив метку `--prometheus-port XXXX`  (заменив `XXXX` актуальным номером порта). Это возможно и для парачейн и для встроенной ретранслирующей сети.
 
-The command above will enable all exposed ports, including the P2P, RPC, and Prometheus (telemetry) ports. This command is compatible to use with the Gantree Node Watchdog telemetry. If you want to expose specific ports, enable those on the Docker run command line as shown below. However, doing so will block the Gantree Node Watchdog (telemetry) container from accessing the moonbeam container, so don't do this when running a collator unless you understand [docker networking](https://docs.docker.com/network/).
+Команда, указанная выше, сделает доступными все открытые порты, включая P2P, RPC и Prometheus ( для телеметрии) порты. Эта команда совместима с телеметрией Gantree Node Watchdog. Если Вы хотите открыть определенные порты, сделайте их доступными в Docker, запустив командную строку как указано ниже. Тем не менее, это действие блокирует контейнеру Gantree Node Watchdog (телеметрия) доступ к контейнеру Moonbeam. Поэтому не делайте этого, когда запускаете ноду коллатора, если Вы не понимаете принципы сетевой работы Docker [docker networking](https://docs.docker.com/network/).
 
 ```
 docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {{ networks.parachain.p2p }}:{{ networks.parachain.p2p }} -p {{ networks.parachain.rpc }}:{{ networks.parachain.rpc }} -p {{ networks.parachain.ws }}:{{ networks.parachain.ws }} #rest of code goes here
 ```
 
-During the syncing process, you will see messages from both the embedded relay chain and the parachain (without a tag). These messages display a target block (TestNet) and a best block (local node synced state).
+Во время процесса синхронизации Вы увидите сообщения от встроенной ретранслирующей сетью и парачейна (без тегов). Эти сообщения отображают целевой блок (TestNet) и лучший блок (состояние синхронизации локальной ноды).
 
-![Full Node Starting](/images/fullnode/fullnode-docker2.png)
+![Запуск Полной Ноды](/images/fullnode/fullnode-docker2.png)
 
-Once synced, you have a node of the Moonbase Alpha TestNet running locally!
+После синхронизации, у Вас будет нода тестовой сети Moonbase Alpha  работающая локально!
 
-## Installation Instructions - Binary
+## Инструкция по установке - Бинарный файл
 
-This section goes through the process of compiling the binary and running a Moonbeam full node as a systemd service. The following steps were tested on an Ubuntu 18.04 installation. Moonbase Alpha may work with other Linux flavors, but Ubuntu is currently the only tested version.
+Этот раздел показывает процесс компиляции бинарного файла и запуск основной ноды Moonbeam в качестве сервиса systemd. Представленные шаги были протестированы на версии Ubuntu 18.04. Moonbase Alpha может работать и на других версиях Linux, но на данный момент, Ubuntu единственная протестированная версия.
 
-### Compiling the Binary
+### Компилирование бинарного файла
 
-The following commands will build the latest release of the Moonbeam parachain.
+Последующие команды установят самую последнюю версию парачейн Moonbeam.
 
-First, let's start by cloning the moonbeam repo.
+Начнем с клонирования репозитория Moonbeam.
 
 ```
 git clone https://github.com/PureStake/moonbeam
 cd moonbeam
 ```
 
-Let's check out the latest release:
+Давайте проверим последние обновления:
 
 ```
 git checkout tags/$(git tag | tail -1)
 ```
 
-Next, install Substrate and all its prerequisites, including Rust, by executing:
+Далее, инсталлируем Substrate и все его реквизиты, включая Rust, для этого выполним команду:
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-Lastly, build parachain binary:
+И в завершение компилируем бинарный файл:
 
 ```
 cargo build --release
 ```
 
-![Compiling Binary](/images/fullnode/fullnode-binary1.png)
+![Компилирование бинарного файла](/images/fullnode/fullnode-binary1.png)
 
-If a _cargo not found error_ shows up in the terminal, manually add Rust to your system path or restart your system:
+Если в терминале появилось сообщение _cargo not found error_ , необходимо вручную добавить Rust в вашу систему или перезагрузить ее:
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-### Running the Systemd Service
+### Запуск сервиса Systemd
 
-The following commands will set up everything regarding running the service.
+Нижеприведенные команды выполнят необходимую установку настроек для запуска сервиса.
 
-First, let's create a service account to run the service:
+Для начала создаем аккаунт для запуска сервиса:
 
 ```
 adduser moonbase_service --system --no-create-home
 ```
 
-Next, create a directory to store the binary and data and set the necessary permissions:
+Далее создаем папку для хранения бинарного файла и установки необходимых разрешений:
 
 ```
 mkdir {{ networks.moonbase.node_directory }}
 chown moonbase_service {{ networks.moonbase.node_directory }}
 ```
 
-!!! note
-    Make sure you set the ownership and permissions accordingly for the local directory that stores the chain data.
+!!! Примечание
+    Убедитесь, что вы установили соответствующие права владения и необходимые разрешения для локальной папки, в которой хранятся данные цепи.
 
-Now, copy the binary built in the last section to the created folder:
+Теперь копируем созданный бинарный файл в эту папку:
 
 ```
 cp ./target/release/{{ networks.moonbase.binary_name }} {{ networks.moonbase.node_directory }}
 ```
 
-The next step is to create the systemd configuration file. Note that you have to:
+Следующий шаг это создание файла конфигурации для systemd. Имейте в виду, что вам необходимо:
 
- - Replace `YOUR-NODE-NAME` in two different places
- - Double-check that the binary is in the proper path as described below (_ExecStart_)
- - Double-check the base path if you've used a different directory
- - For collators, replace `PUBLIC-KEY` with the public key of your H160 Ethereum address created above
- - Name the file `/etc/systemd/system/moonbeam.service`
+ - Заменить `YOUR-NODE-NAME` в двух различных местах
+ - Перепроверить путь к бинарному файлу, он должен быть таким как указано ниже (_ExecStart_)
+ - Перепроверить основной путь, если вы используете другую папку
+ - Для коллаторов, замените `PUBLIC-KEY` открытым ключом вашего адреса Ethereum  H160, который был создан в соответствии с инструкциями выше.
+ - Присвойте имя файлу `/etc/systemd/system/moonbeam.service`
 
-!!! note
-    If you are setting up a collator node, make sure to follow the code snippets for "Collator".
+!!! Примечание
+    Если вы устанавливаете ноду коллатора, убедитесь что вы используете фрагменты кода для “Коллатора”.
 
-=== "Full Node"
+=== "Полная Нода"
     ```
     [Unit]
     Description="Moonbase Alpha systemd service"
@@ -325,7 +325,7 @@ The next step is to create the systemd configuration file. Note that you have to
     WantedBy=multi-user.target
     ```
 
-=== "Collator"
+=== "Нода Коллатора"
     ```
     [Unit]
     Description="Moonbase Alpha systemd service"
@@ -369,58 +369,44 @@ The next step is to create the systemd configuration file. Note that you have to
     WantedBy=multi-user.target
     ```
 
-!!! note
-    If you are having issues with the default telemetry, you can add the flag `--no-telemetry` to run the full node without telemetry activated.
+!!! Примечание
+    Если Вы испытываете сложности с телеметрией по умолчанию, Вы можете добавить метку `--no-telemetry` для запуска основной ноды без активирования телеметрии.
 
-!!! note
-    You can specify a custom Prometheus port with the `--promethues-port XXXX` flag (replacing `XXXX` with the actual port number). This is possible for both the parachain and embedded relay chain.
+!!! Примечание
+    Вы можете задать порт Prometheus по собственному выбору, добавив метку `--promethues-port XXXX`  (заменив `XXXX` ктуальным номером порта). Это возможно и для парачейн и для встроенной ретранслирующей ноды.
 
-Almost there! Register and start the service by running:
+Почти готово! Регистрируем и запускаем сервис при помощи:
 
 ```
 systemctl enable moonbeam.service
 systemctl start moonbeam.service
 ```
 
-And lastly, verify the service is running:
+И последнее, убедитесь что сервис запущен:
 
 ```
 systemctl status moonbeam.service
 ```
 
-![Service Status](/images/fullnode/fullnode-binary2.png)
+![Статус сервиса](/images/fullnode/fullnode-binary2.png)
 
-You can also check the logs by executing:
+Вы также можете проверить логи, выполнив команду:
 
 ```
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/fullnode/fullnode-binary3.png)
+![Логи сервиса](/images/fullnode/fullnode-binary3.png)
 
-## Advanced Flags and Options
+## Дополнительные флаги и опции
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
-## Updating the Client
+## Обновление Клиента
 
-As Moonbeam development continues, it will sometimes be necessary to upgrade your node software. Node operators will be notified on our [Discord channel](https://discord.gg/PfpUATX) when upgrades are available and whether they are necessary (some client upgrades are optional). The upgrade process is straightforward and is the same for a full node or collator.
+Поскольку Moonbeam находится в разработке, время от времени необходимо обновлять Вашу ноду. По мере того, как обновления станут доступны и в зависимости от того насколько они необходимы (некоторые обновления клиентов не обязательны), операторы нод будут уведомлены в нашем [Discord канале](https://discord.gg/PfpUATX) . Процесс обновления прост и одинаков для основных нод и нод коллаторов.
 
-First, stop the docker container or systemd service:
-
-```
-sudo docker stop `CONTAINER_ID`
-# or
-sudo systemctl stop moonbeam
-```
-
-Then, install the new version by repeating the steps described before, making sure that you are using the latest tag available. After updating, you can start the service again.
-
-### Purging the Chain
-
-Occasionally Moonbase Alpha might be purged and reset around major upgrades. As always, node operators will be notified in advance (via our [Discord channel](https://discord.gg/PfpUATX)) if this upgrade is accompanied by a purge. You can also purge your node if your individual data directory becomes corrupted.
-
-To do so, first stop the docker container or systemd service:
+Для начала остановите контейнер Docker или сервис systemd:
 
 ```
 sudo docker stop `CONTAINER_ID`
@@ -428,44 +414,58 @@ sudo docker stop `CONTAINER_ID`
 sudo systemctl stop moonbeam
 ```
 
-Next, remove the content of the folder where the chain data is stored (both for the parachain and relay chain):
+Затем инсталлируйте новую версию путем повторения шагов указанных выше, убедившись что Вы используете последние доступные теги. После обновления, Вы можете запустить сервис снова.
+
+### Очистка цепи
+
+Изредка Moonbase Alpha может быть очищена и обнулена в связи со значительными обновлениями. Если это обновление сопровождается очисткой, операторы нод будут уведомлены заблаговременно (через наш [Discord канал](https://discord.gg/PfpUATX)) Вы также можете очистить Вашу ноду, если данные в вашей папке повреждены.
+
+Чтобы это сделать, для начала остановите контейнер Docker или сервис systemd:
+
+```
+sudo docker stop `CONTAINER_ID`
+# or
+sudo systemctl stop moonbeam
+```
+
+Затем удалите содержимое папки, в которой хранятся данные цепи (как для парачейна, так и для ретранслирующей цепи):
 
 ```
 sudo rm -rf {{ networks.moonbase.node_directory }}/*
 ```
 
-Lastly, install the newest version by repeating the steps described before, making sure you are using the latest tag available. If so, you can start a new node with a fresh data directory.
+Далее инсталлируйте последнюю версию путем повторения шагов,описанных выше, убедитесь что вы используете последние доступные теги. Если это все выполнено, вы можете запустить новую ноду с чистой папкой данных.
 
-## Telemetry
+## Телеметрия
 
-To enable your Moonbase Alpha node's telemetry server, you can follow [this tutorial](/node-operators/networks/telemetry/).
+Для включения сервера телеметрии Вашей ноды Moonbase Alpha, вы можете воспользоваться [этим руководством](/node-operators/networks/telemetry/).
 
-Running telemetry on a full node is not necessary. However, it is a requirement to do so for collators.
+Запуск телеметрии для полных нод не является обязательным. Однако, коллаторы должны выполнить это требование.
 
-Also, you can see current Moonbase Alpha telemetry information visiting [this link](https://telemetry.polkadot.io/#list/Moonbase%20Alpha).
+Также Вы можете увидеть текущую информацию по телеметрии Moonbase Alpha воспользовавшись [этой ссылкой](https://telemetry.polkadot.io/#list/Moonbase%20Alpha).
 
-## Logs and Troubleshooting
+## Логи и исправление проблем
 
-You will see logs from both the relay chain as well as the parachain. The relay chain will be prefixed by `[Relaychain]`, while the parachain has no prefix.
+Вы увидите логи как от ретранслирующей сети, так и от парачейна. Ретранслирующая сеть  имеет приставку `[Relaychain]`, в то время как парачейн не имеет приставки.
 
-### P2P Ports Not Open
+### P2P порты не открыты
 
-If you don't see an `Imported` message (without the `[Relaychain]` tag), you need to check the P2P port configuration. P2P port must be open to incoming traffic.
+Если Вы не видите сообщения `Imported` (без тега `[Relaychain]`), Вам необходимо проверить конфигурацию порта P2P. P2P порт должен быть открыт для входящего трафика.
 
-### In Sync
+### Синхронизация
 
-Both chains must be in sync at all times, and you should see either `Imported` or `Idle` messages and have connected peers.
+Обе цепи должны быть синхронизированы все время и Вы должны увидеть сообщение `Imported` или `Idle`  и иметь подключенные пиры.
 
-### Genesis Mismatching
+### Несоответствие генезиса
 
-The Moonbase Alpha TestNet is often upgraded. Consequently, you may see the following message:
+Тестовая сеть Moonbase Alpha часто обновляется. Как следствие, вы можете видеть такое сообщение:
 
 ```
 DATE [Relaychain] Bootnode with peer id `ID` is on a different
 chain (our genesis: GENESIS_ID theirs: OTHER_GENESIS_ID)
 ```
 
-This typically means that you are running an older version and will need to upgrade.
+Обычно это означает, что у Вас запущена старая версия и она требует обновления.
 
-We announce the upgrades (and corresponding chain purge) via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
+Мы уведомляем об обновлениях (и соответствующих очистках цепи) через наш [Discord канал](https://discord.gg/PfpUATX) как минимум за 24 часа.
 

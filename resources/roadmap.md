@@ -1,15 +1,14 @@
 ---
-title: Roadmap
-description: Moonbeam launched its first TestNet in September 2020, with a BetaNet on Kusama and MainNet on Polkadot to follow in early 2021.
+title: Дорожная карта
+description: Moonbeam запустил свою первую тестовую сеть в сентябре 2020 года, а бета-сеть на Kusama и основную сеть на Polkadot - в начале 2021 года.
 ---
 
-# Roadmap
+# Дорожная карта
 
-Moonbeam is still being actively developed. 
+Дорожная карта Moonbeam все еще находится в активной разработке. 
 
-On September 2020, we launched our [TestNet](/networks/overview/). Since then we have performed significants upgrades on almost a monthly basis. You can check the milestones achieved by each update in their corresponding [release notes](/networks/testnet/#release-notes).
+В сентябре 2020 года мы запустили [TestNet](/networks/overview/).  тех пор мы проводим значительные обновления почти ежемесячно. Вы можете проверить основные этапы в каждом обновлении в соответствующих [комментариях к релизу](/networks/testnet/#release-notes).
 
+Примерная дорожная карта включает в себя запуск Moonriver, наше развертывание в Kusama, к концу 2021 года, а Moonbeam в Polkadot MainNet во втором квартале 2021.
 
-The rough roadmap beyond that is to launch Moonriver, our Kusama deployment, by the end of Q1 2021, and Moonbeam on the Polkadot MainNet in Q2 2021.
-
-Our current focus is to make sure the Moonbeam EVM and Web3 compatibility features are feature-complete. A big part of this effort was completing the Web3 grant we received to implement a Web3-compatible RPC API. Details of the grant can be found [here](https://github.com/w3f/Open-Grants-Program/blob/master/applications/web3-compatible-api.md).  The work we did for this grant was completed and [approved in August 2020](https://www.purestake.com/news/purestake-awarded-web3-foundation-grant-moonbeam/).
+В настоящее время мы стремимся к тому, чтобы функции совместимости Moonbeam EVM и Web3 были полнофункциональными. Большая часть этих усилий заключалась в завершении полученного нами гранта Web3 на реализацию API RPC, совместимого с Web3. Подробную информацию о гранте можно найти [здесь](https://github.com/w3f/Open-Grants-Program/blob/master/applications/web3-compatible-api.md).  Работа, которую мы проделали по этому гранту, была завершена и  [утверждена в августе 2020 года](https://www.purestake.com/news/purestake-awarded-web3-foundation-grant-moonbeam/).
