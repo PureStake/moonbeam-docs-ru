@@ -1,38 +1,38 @@
 ---
 title: Faucet
-description: Learn how to use the automated faucet bot on Discord to get test tokens for the Moonbeam TestNet, nicknamed Moonbase Alpha.
+description: Узнайте, как использовать автоматический сборщик-бот на Discord, чтобы получить тестовые жетоны для Moonbeam TestNet, получившей название Moonbase Alpha.
 ---
 
-# Moonbase Alpha Faucet
+# Альфа-кран Moonbase
 
-## Introduction
+## Вступление
 
-Tokens on Moonbase Alpha, named DEV, will be issued on demand. Currently, there are two ways to get access to this token: through a Discord bot or manually.
+Токены на Moonbase Alpha под названием DEV будут выпускаться по запросу. В настоящее время есть два способа получить доступ к этому токену: через бота Discord или вручную.
 
 ## Discord - Mission Control
 
-To request tokens automatically, we've created a Discord bot (named Mission Control :sunglasses:) that will automatically send a maximum of 10 DEV tokens every 24 hours (per Discord user) when you enter your address. You can check it out on our [Discord channel](https://discord.gg/PfpUATX).
+Чтобы запрашивать токены автоматически, мы создали бота Discord (под названием Mission Control :sunglasses:) который будет автоматически отправлять максимум 10 токенов DEV каждые 24 часа (на пользователя Discord), когда вы вводите свой адрес. Вы можете проверить это на нашем канале в [Discord](https://discord.gg/PfpUATX).
  
-Under the category "Miscellaneous," you will find our AlphaNet bot channel. 
+В категории «Разное»(Miscellaneous) Вы найдете наш бот-канал AlphaNet.. 
 
 ![Discord1](/images/testnet/testnet-discord1.png)
 
-To check your balance, enter the following message, replacing `<enter-address-here->` with your H160 address:
+Чтобы проверить свой баланс, введите следующее сообщение заменив `<enter-address-here->` на свой адрес H160:
 
 ```
 !balance <enter-address-here->
 ```
 
-To get DEV tokens, enter the following message, replacing `<enter-address-here->` with your H160 address:
+Чтобы получить токены DEV, введите следующее сообщение, заменив `<enter-address-here->` на свой адрес H160:
  
 ```
 !faucet send <enter-address-here->
 ```
 
-Mission Control will send you 10 DEV tokens and display your current account balance. Remember that Mission Control is limited to dispense once every 24 hours per Discord user.
+Mission Control отправит вам 10 токенов DEV и отобразит текущий баланс вашего счета. Помните, что Mission Control может выдавать только один раз в 24 часа для каждого пользователя Discord.
 
 ![Discord2](/images/testnet/testnet-discord2.png)
 
-## Manual Procedure
+## Процедура получения токенов в ручную.
 
-For token requests of more than the limited account allowed by our Discord bot, contact a moderator directly via our [Discord channel](https://discord.gg/PfpUATX). We are happy to provide the tokens needed to test your applications.
+Для запросов токенов, ,больше чем разрешено нашим ботом Discord, свяжитесь с модератором напрямую через наш [Discord канал](https://discord.gg/PfpUATX).  Мы рады предоставить токены, необходимые для тестирования ваших приложений.

@@ -1,12 +1,12 @@
 ### HTTPS DNS
 
-To connect to Moonbase Alpha via HTTPS, simply point your provider to the following RPC DNS:
+Чтобы подключиться к Moonbase Alpha через HTTPS просто укажите своему провайдеру следующий RPC DNS:
 
 ```
 https://rpc.testnet.moonbeam.network
 ```
 
-For the web3.js library, you can create a local Web3 instance and set the provider to connect to Moonbase Alpha (both HTTP and WS are supported):
+Для библиотеки web3.js Вы можете создать локальный экземпляр Web3 и настроить провайдера для подключения к Moonbase Alpha (поддерживаются как HTTP, так и WS):
 
 ```js
 const Web3 = require('web3'); //Load Web3 library
@@ -16,7 +16,7 @@ const Web3 = require('web3'); //Load Web3 library
 //Create local Web3 instance - set Moonbase Alpha as provider
 const web3 = new Web3('https://rpc.testnet.moonbeam.network'); 
 ```
-For the ethers.js library, define the provider by using `ethers.providers.StaticJsonRpcProvider(providerURL, {object})` and setting the provider URL to Moonbase Alpha:
+Для библиотеки ethers.js определите поставщика, используя `ethers.providers.StaticJsonRpcProvider(providerURL, {object})` и задав URL-адрес поставщика Moonbase Alpha:
 
 ```js
 const ethers = require('ethers');
@@ -30,16 +30,16 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 });
 ```
 
-Any Ethereum wallet should be able to generate a valid address for Moonbeam (for example, [MetaMask](https://metamask.io/)).
+Любой кошелек Ethereum должен иметь возможность генерировать действительный адрес для Moonbeam (например, [MetaMask](https://metamask.io/)).
 
 ### WSS DNS
 
-For WebSocket connections, you can use the following DNS:
+Для подключений через WebSocket вы можете использовать следующий DNS:
 
 ```
 wss://wss.testnet.moonbeam.network
 ```
 
-### Chain ID
+### Идентификатор цепи
 
-For the Moonbase Alpha TestNet the chain ID is: `1287`.
+Для Moonbase Alpha TestNet идентификатор цепи:  `1287`.

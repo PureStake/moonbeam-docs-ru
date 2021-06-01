@@ -1,79 +1,79 @@
 ---
 title: MathWallet
-description: This guide walks you through how to connect Mathwallet, a browser-based wallet that works with Ethereum, to Moonbeam.
+description: В этом руководстве вы узнаете, как подключить Mathwallet, браузерный кошелек, работающий с Ethereum, к Moonbeam.
 ---
 
-# Interacting with Moonbeam Using MathWallet
+# Взаимодействие с Moonbeam при помощи MathWallet
  
 ![Intro banner](/images/mathwallet/mathwallet-banner.png)
 
-## Introduction
+## Вступление
 
-MathWallet [announced](https://mathwallet.org/moonbeam-wallet/en/) that is now natively supporting the [Moonbase Alpha TestNet](/networks/testnet/). This means that you are now able to interact with Moonbase Alpha using another wallet besides MetaMask.
+MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) что теперь он поддерживает тестовую сеть [Moonbase Alpha TestNet](/networks/testnet/). Это означает, что теперь Вы можете взаимодействовать с Moonbase Alpha, используя ещё один кошелек помимо MetaMask.
 
-In this tutorial, we'll go through how to setup MathWallet to connect to our TestNet. We'll also present a brief example of using MathWallet as a Web3 provider for other tools such as [Remix](/integrations/remix/).
+В этом руководстве мы рассмотрим, как настроить MathWallet для подключения к нашей “TestNet” сети. Мы также представим краткий пример использования MathWallet в качестве поставщика Web3 услуг для других инструментов, таких как [Remix](/integrations/remix/).
 
-## Connect MathWallet to Moonbeam
+## Подключение MathWallet к Moonbeam
 
-In this part, we'll go through the process of connecting MathWallet to Moonbase Alpha. 
+В этой части мы рассмотрим процесс подключения MathWallet к Moonbase Alpha.
 
-First, you need to install the MathWallet browser extension installed, which you can get from their [website](https://mathwallet.org/en-us/).
+Во-первых, Вам необходимо установить расширение браузера MathWallet, которое вы можете скачать с их [веб-сайта](https://mathwallet.org/en-us/).
 
-With the browser extension installed, please open it and set a password.
+Установив расширение для браузера, откройте его и установите пароль.
 
-![Set wallet password](/images/mathwallet/mathwallet-images-1.png)
+![Установите пароль кошелька](/images/mathwallet/mathwallet-images-1.png)
 
-Next, let's enable Moonbase Alpha under Settings (top right gear icon) -> Networks -> Ethereum.
+Затем давайте включим Moonbase Alpha в разделе «Настройки» (значок шестеренки вверху справа) -> Сети -> Ethereum.
 
 ![Enable Moonbase Alpha](/images/mathwallet/mathwallet-images-2.png)
 
-And lastly, on the main screen, click Switch Network and select Moonbase Alpha
+И, наконец, на главном экране нажмите Switch Network и выберите Moonbase Alpha.
 
 ![Connect to Moonbase Alpha](/images/mathwallet/mathwallet-images-3.png)
 
-And that is it, you now have MathWallet connected to the Moonbase Alpha TestNet! Your wallet should look like this:
+Теперь у Вас есть MathWallet, подключенный к Moonbase Alpha TestNet! Ваш кошелек должен выглядеть так:
 
 ![Wallet Connected to Moonbase Alpha](/images/mathwallet/mathwallet-images-4.png)
 
-## Adding a Wallet
+## Добавление кошелька
 
-Now that MathWallet is connected to Moonbase Alpha, we can now create a wallet to get an account and start interacting with the TestNet. Currently, there are three ways to add a wallet:
+Теперь, когда MathWallet подключен к Moonbase Alpha, мы можем создать кошелек, чтобы получить учетную запись и начать взаимодействие с TestNet. В настоящее время есть три способа добавить кошелек:
 
- - Create a wallet
- - Import an existing wallet using a mnemonic or private key
-- Connect hardware wallet (_not supported for now_)
+ - Создать кошелек
+ - Импортировать существующий кошелек с помощью мнемонического или закрытого ключа
+ - Подключить аппаратный кошелек (_пока не поддерживается_)
 
-### Create a wallet
+### Создание кошелька
 
-To create a new wallet, click the :heavy_plus_sign: sign next to "Moonbase Alpha" and select "Create Wallet".
+Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Создать кошелек».
 
 ![MathWallet create a wallet](/images/mathwallet/mathwallet-images-5.png)
 
-Set and confirm a wallet name. Next, make sure you safely store the mnemonic, as it provides direct access to your funds. Once you have completed the process, you should see your newly created wallet with its associated public address.
+Установите и подтвердите имя кошелька. Затем убедитесь, что Вы безопасно сохранили “мнемоник фразу”, поскольку она обеспечивает прямой доступ к вашим средствам. После завершения процесса Вы должны увидеть новый созданный кошелек с соответствующим публичным адресом.
 
 ![MathWallet wallet created](/images/mathwallet/mathwallet-images-6.png)
 
-### Import a wallet
+### Импортирование кошелька
 
-To create a new wallet, click the :heavy_plus_sign: sign next to "Moonbase Alpha" and select "Import Wallet".
+Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Импортировать кошелек».
 
 ![MathWallet import a wallet](/images/mathwallet/mathwallet-images-7.png)
 
-Next, select between importing using a mnemonic or a private key. For the first option, enter the mnemonic word by word, separated by spaces. For the second option, enter the private key (either with the `0x` prefix or not, it works both ways).
+Затем выберите вариант импорта с использованием мнемонического или закрытого ключа. Для первого варианта введите мнемоническую фразу (каждое слово через пробел). Для второго варианта введите закрытый ключ (либо с префиксом `0x`, либо без него, оба варианта рабочие).
 
 ![MathWallet private key or mnemonic import](/images/mathwallet/mathwallet-images-8.png)
 
-After clicking next, set a wallet name, and that is it! You should see your imported wallet with its associated public address.
+После нажатия кнопки «Далее» задайте имя кошелька, на этом импорт кошелька завершён! Вы должны увидеть импортированный кошелек со связанным публичным адресом.
 
 ![MathWallet imported wallet](/images/mathwallet/mathwallet-images-9.png)
 
-## Using MathWallet
+## Использование MathWallet
 
-MathWallet serves as a Web3 provider in tools such as [Remix](/integrations/remix/). By having MathWallet connected to Moonbase Alpha, you can deploy contracts as you would like using MetaMask, signing the transactions with MathWallet instead.
+MathWallet служит поставщиком Web3 в таких инструментах, как [Remix](/integrations/remix/). Подключив MathWallet к Moonbase Alpha, Вы можете развертывать контракты так, так же как используя MetaMask, вместо этого подписывая транзакции с помощью MathWallet.
 
-For example, in Remix, when deploying a smart contract, make sure you select the "Injected Web3" option in the "Environment" menu. If you have MathWallet connected, you will see the TestNet chain ID just below the box (_1287_) and your MathWallet account injected into Remix as well. When sending a transaction, you should see a similar pop-up from MathWallet:
+Например, в Remix, при развертывании смарт-контракта, убедитесь, что Вы выбрали опцию «Injected Web3» в меню «Environment». Если у Вас подключен MathWallet, вы увидите идентификатор цепочки TestNet чуть ниже поля (_1287_) а также вашу учетную запись MathWallet, введенную в Remix. При отправке транзакции Вы должны увидеть подобное всплывающее окно от MathWallet:
 
 ![MathWallet sign transaction](/images/mathwallet/mathwallet-images-10.png)
 
-By clicking on "Accept," you are signing this transaction, and the contract will be deployed to the Moonbase Alpha TestNet.
+Нажимая «Принять», Вы подписываете эту транзакцию, и контракт будет развернут на Moonbase Alpha TestNet.
 

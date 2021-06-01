@@ -1,24 +1,24 @@
 ---
 title: Ethers.js
-description: Follow this tutorial to learn how to use the Ethereum EtherJS Library to deploy Solidity smart contracts to Moonbeam.
+description: Следуйте этому руководству, чтобы узнать, как использовать библиотеку Ethereum EtherJS для развертывания смарт-контрактов Solidity на Moonbeam.
 ---
-# Ethers.js JavaScript Library
+# Библиотека JavaScript Ethers.js
 
 ![Intro diagram](/images/integrations/integrations-ethersjs-banner.png)
 
-## Introduction
+## Вступление
 
-The [ethers.js](https://docs.ethers.io/) library provides a set of tools to interact with Ethereum Nodes with JavaScript, similar to web3.js. Moonbeam has an Ethereum-like API available that is fully compatible with Ethereum-style JSON RPC invocations. Therefore, developers can leverage this compatibility and use the ethers.js library to interact with a Moonbeam node as if they were doing so on Ethereum. You can read more about ethers.js on this [blog post](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3).
+Библиотека [ethers.js](https://docs.ethers.io/) предоставляет набор инструментов для взаимодействия с нодами Ethereum с помощью JavaScript, аналогичных web3.js. Moonbeam имеет API-интерфейс, подобный Ethereum, который полностью совместим с вызовами JSON RPC в стиле Ethereum. Поэтому разработчики могут использовать эту совместимость и использовать библиотеку ethers.js для взаимодействия с нодой Moonbeam, как если бы они делали это в Ethereum. Вы можете узнать больше о ethers.js в этом [посте блога](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3).
 
-## Setup Ethers.js with Moonbeam
+## Установите Ethers.js с помощью Moonbeam
 
-To get started with the ethers.js library, install it using the following command:
+Чтобы начать работу с библиотекой ethers.js, установите ее с помощью следующей команды:
 
 ```
 npm install ethers
 ```
 
-Once done, the simplest setup to start using the library and its methods is the following:
+После этого простейшая настройка для начала использования библиотеки и ее методов следующая:
 
 ```js
 const ethers = require('ethers');
@@ -36,9 +36,9 @@ const provider = new ethers.providers.StaticJsonRpcProvider('RPC_URL', {
 let wallet = new ethers.Wallet(privKey, provider);
 ```
 
-Different methods are available inside `provider` and `wallet`. Depending on which network you want to connect to, you can set the `RPC_URL` to the following values:
+Внутри `provider` и `wallet` доступны разные методы. В зависимости от того, к какой сети Вы хотите подключиться, Вы можете установить для `RPC_URL` следующие значения:
 
-Moonbeam development node: 
+Нода Moonbeam: 
  - RPC_URL: `http://127.0.0.1:9933`"
  - ChainId: `1281`
  - NETWORK_NAME: `moonbeam-development`
@@ -48,6 +48,6 @@ Moonbase Alpha TestNet:
  - ChainId: `1287`
  - NETWORK_NAME: `moonbase-alpha`
 
-## Step-by-step Tutorials
+## Пошаговые инструкции
 
-If you are interested in a more detailed step-by-step guide, you can go to our specific tutorials on using ethers.js on Moonbeam to [send a transaction](/getting-started/local-node/send-transaction/) or [deploy a contract](/getting-started/local-node/deploy-contract/).
+Если Вас интересует более подробное пошаговое руководство, Вы можете перейти к нашим конкретным руководствам по использованию ethers.js на Moonbeam для [отправки транзакции](/getting-started/local-node/send-transaction/) или [развертывания контракта](/getting-started/local-node/deploy-contract/).
