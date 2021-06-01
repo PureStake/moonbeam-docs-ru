@@ -1,84 +1,84 @@
 ---
-title: Overview
-description: As a Polkadot parachain, Moonbeam will use an on-chain governance system, allowing for a stake-weighted vote on public referenda.
+title: Обзор
+description: Как парачейн Polkadot Moonbeam будет использовать систему on-chain управления, позволяющую проводить, взвешенное по уровню стекинга, голосование на публичных референдумах.
 ---
 
-# Governance in Moonbeam
+# Управление (Governance) в Moonbeam
 
 ![Governance Moonbeam Banner](/images/governance/governance-overview-banner.png)
 
-## Introduction
+## Вступление
 
-Moonbeam is a decentralized network that will be governed by a community of token holders, including core developers, application developers, collators, users, and other contributors. 
+Moonbeam — это децентрализованная сеть, которая будет управляться сообществом держателей токенов, включая основных разработчиков, разработчиков приложений, коллаторов, пользователей и других участников.
 
-We aim to facilitate the engagement of token holders from each of these categories as part of launching the network.
+Мы стремимся облегчить привлечение держателей токенов каждой из этих категорий в рамках запуска сети.
 
-## General Definitions
+## Общие определения
 
-With great power comes great responsibility. Some important parameters to understand before engaging with Moonbeam's governance include:
+С большей властью приходит большая ответственность. Некоторые важные параметры, которые необходимо понять перед тем, как приступить к управлению Moonbeam, включают:
 
- - **Proposals** — actions or items being proposed by token holders. This need to be seconded by other users in order to move to referendum
- - **Referendum** — when the most seconded proposal is voted on by the community. There can be a maximum of five active referenda at a time unless there is an emergency referendum in progress
- - **Launch period** — how often new public referenda are launched
- - **Voting period** — time token holders have to vote for a referendum (duration of a referendum)
- - **Fast-Track Voting period** — duration for voting for emergency proposals that address critical issues
-- **Voting** — referenda are voted on by token holders on a stake and conviction weighted basis. Convictions refer to the time that token holders wish to lock their tokens when voting: the longer they are locked, the more weight their vote has. Referenda that pass are subject to delayed enactment so that people who disagree with the direction of the decision have time to exit the network
- - **Enactment period** — time between a proposal being approved and enacted (make law). It is also the minimum period necessary to lock funds to propose an action
- - **Lock period** — time (after the proposal enactment) that the tokens of the winning voters are locked. Users can still use this tokens for staking or voting
- - **Cool-off period** - The duration a veto from the technical committee lasts before the proposal may be submitted again 
- - **Delegation** — act of transferring your voting power to another account for up to a certain conviction
+ - **Предложения** — действия или предметы, предлагаемые держателями токенов. Чтобы перейти на референдум, это должно быть поддержано другими пользователями
+ - **Референдум** — голосование сообщества за предложение, которое больше всего поддерживает. Одновременно может быть проведено не более пяти активных референдумов, если только не проводится экстренный референдум
+ - **Период запуска** — периодичность запуска новых публичных референдумов
+ - **Период голосования** — время, в течение которого, держатели токенов должны проголосовать за референдум (продолжительность референдума)
+ - **Период ускоренного голосования** — период голосования при чрезвычайных ситуациях за предложения, которые решают критические вопросы
+ - **Голосование** — референдумы, где держатели токенов голосуют за свои убеждения пропорционально доле стекинга. Убеждения соотноосятся с временем, на которое держатели токенов готовы заблокировать свои токены при голосовании: чем дольше они заблокированы, тем больший вес имеет их голос. Референдумы, которые прошли, могут быть приняты с отсрочкой, чтобы люди, не согласные с направлением решения, успели выйти из сети.
+ - **Период принятия** — время между одобрением предложения и его введением в действие (принятие закона). Это также минимальный период, необходимый для блокировки средств, чтобы предложить действие
+ - **Период блокировки** — время (после принятия предложения), когда токены победивших голосующих блокируются. Пользователи по-прежнему могут использовать эти токены для стекинга или голосования
+ - **Период обдумывания** — срок действия вето, накладываемого Техническим комитетом, до повторной подачи предложения
+ - **Делегирование** — акт передачи вашего права голоса другой учетной записи до принятия определенного решения.
 
-## Principles
+## Принципы
 
-Guiding "soft" principles for engagement with Moonbeam's governance process include:
+Руководящие "мягкие" принципы взаимодействия с процессом управления Moonbeam включают:
 
- - Being inclusive to token holders that want to engage with Moonbeam and that are affected by governance decisions.
- - Favoring token holder engagement, even with views contrary to our own, versus a lack of engagement.
- - A commitment to openness and transparency in the decision-making process.
- - Working to keep the greater good of the network ahead of any personal gain.  
- - Acting at all times as a moral agent that considers the consequences of action (or inaction) from a moral standpoint.
- - Being patient and generous in our interactions with other token holders, but not tolerating abusive or destructive language, actions, and behavior.
+ - Открытость для держателей токенов, которые хотят сотрудничать с Moonbeam и на которых влияют управленческие решения.
+ - Предпочтение вовлеченности держателей токенов, даже если взгляды противоречат нашим собственным, по сравнению с их отсутствием.
+ - Стремление к открытости и прозрачности в процессе принятия решений.
+ - Работать над тем, чтобы общее благо сети было выше личной выгоды. 
+ - Постоянно действовать как моральный деятель, рассматривающий последствия действия (или бездействия) с моральной точки зрения.
+ - Будьте терпеливы и щедры в нашем взаимодействии с другими держателями токенов, но не терпите оскорбительных или деструктивных выражений, действий и поведения.
 
-These points were heavily inspired by Vlad Zamfir’s writings on governance. Refer to his articles, [especially this one](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434).
+Эти моменты во многом были вдохновлены работами Влада Замфира (Vlad Zamfir) об управлении. Обратитесь к его статьям, [особенно этой](https://medium.com/@Vlad_Zamfir/how-to-participate-in-blockchain-governance-in-good-faith-and-with-good-manners-bd4e16846434).
 
-## On-Chain Governance Mechanics
+## Механика on-chain управления
 
-The "hard" governance process for Moonbeam will be driven by an on-chain process and will leverage the Democracy, Council, and Treasury [Substrate frame pallets](/resources/glossary/#substrate-frame-pallets), similar to how Kusama and the Polkadot Relay Chain are governed. The overall intent of these modules are to allow the majority of tokens on the network to determine the outcomes of key decisions around the network. These decision points come in the form of stake-weighted voting on proposed referenda.
+"Жесткий" стиль управления для Moonbeam будет управляться внутрисетевым (on-chain) процессом и будет задействовать [стандартные модули Substrate](/resources/glossary/#substrate-frame-pallets) Демократии, Совета и Казначейства, аналогично тому, как управляются Kusama и Relay Chain Polkadot. Общая цель этих модулей — позволить большинству токенов в сети определять результаты ключевых решений в сети. Эти моменты принятия решений представляют собой взвешенное голосование по предложенным референдумам.
 
-Some of the main components of this governance model include:
+Некоторые из основных компонентов этой модели управления включают:
 
- - **Referendum** — a proposal for a change to the Moonbeam system including values for key parameters, code upgrades, or changes to the governance system itself
- - **Voting** — referenda will be voted on by token holders on a stake-weighted basis. Referenda which pass are subject to delayed enactment such that people that disagree with the direction of the decision have time to exit the network
- - **Council** — a group of elected individuals who have special voting rights within the system. Council members are expected to propose referenda for voting and have an ability to veto publicly-sourced referenda. There are rolling elections for council members where GLMR holders will vote on new or existing council members. The Council is also responsible for electing the technical committee
- - **Technical Committee** — a group of individuals elected by the Council who have special voting rights. As in Polkadot and Kusama, the Technical Committee has the ability to (along with the Council) fast-track emergency referenda voting and implementation in urgent circumstances. A fast-tracked referendum can be created alongside existing active referenda. That is to say, an emergency referendum does not replace currently active referenda
- - **Treasury** — A collection of funds that can be spent by submitting a proposal along with a deposit. Spending proposals must be approved by the council. Rejected proposals will result in the proposer losing their deposit
+ - **Референдум** — предложение об изменении системы Moonbeam, включая значения ключевых параметров, обновления кода или изменения самой системы управления
+ - **Голосование** — референдумы, где участие принимают держатели токенов, в соответствии с количеством застейканных ими токенов. Референдумы, которые прошли, могут быть приняты с отсрочкой, чтобы люди, не согласные с направлением решения, имели время выйти из сети
+ - **Совет** — группа избранных лиц, обладающих особым правом голоса в системе. Предполагается, что члены Совета будут предлагать референдумы для голосования и иметь право вето на референдумы, проводимые из открытых источников. Для членов совета проводятся скользящие выборы, на которых держатели GLMR будут голосовать за новых или существующих членов совета.
+ - **Технический комитет** — группа лиц, избранных Советом и обладающих особым избирательным правом. Как и в случае с Polkadot и Kusama, Технический комитет имеет возможность (вместе с Советом) ускорить голосование и реализацию предложений в экстренных случаях. Референдум в ускоренном режиме может быть проведен наряду с существующими активными референдумами. То есть экстренный референдум не заменяет референдум, действующий в настоящее время. 
+ - **Казначейство** — сбор средств, которые можно потратить, отправив предложение вместе с депозитом. Предложения по расходам должны быть одобрены Советом. Отклоненные предложения приведут к потере депозита.
 
-See [this overview on the Polkadot website](https://polkadot.network/a-walkthrough-of-polkadots-governance/) and [this wiki post](https://wiki.polkadot.network/docs/en/learn-governance) for more details on how these Substrate frame pallets implement on-chain governance.
+Посмотрите этот [обзор на веб-сайте Polkadot](https://polkadot.network/a-walkthrough-of-polkadots-governance/) и эту [публикацию в wiki](https://wiki.polkadot.network/docs/en/learn-governance) для получения дополнительных сведений о том, как эти стандартные модули Substrate реализуют управление в цепочке.
 
-## Voting Rights of the Council and the Technical Committee
+## Право голоса Совета и Технического комитета
 
-This section covers some background information on voting and outlines voting parameters of the protocol as they are set currently. There is a limit to the amount of time in blocks that the technical committee and the council have to vote on motions. Motions may end in fewer blocks if there are already enough votes submitted to determine the outcome. A maximum of {{ networks.moonbase.democracy.max_proposals}} proposals can be open each in the technical committee and in the council.
+В этом разделе приводится справочная информация о процедуре голосования и описаны параметры голосования в протоколе в том виде, в каком они установлены в настоящее время. Существует ограничение на количество времени в блоках, в течение которого Технический комитет и Совет должны проголосовать по предложениям. Предложения могут заканчиваться на меньшем количестве блоков, если для определения результата подано достаточно голосов . Максимальное количество предложений ({{networks.moonbase.democracy.max_proposals}}) может быть открыто как в Техническом комитете, так и в Совете.
 
-Voting parameters are currently set as follows:
+На данный момент установлены следующие параметры голосования:
 
-|             Variable             |     |                         Value                         |
+|             Переменная             |     |                         Значение                         |
 | :------------------------------: | :-: | :---------------------------------------------------: |
-|     Voting Period     |     |     {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)     |
-|        Fast-Track Voting Period        |     |     {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.days}} day)     | | 
-|          Enactment Period           |     |     {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} day)  |
-| Cool-off Period |     |     {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)  |
-|              Minimum Deposit               |     | {{ networks.moonbase.democracy.min_deposit }} GLMR |
+|     Период голосования     |     |     {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)     |
+|        Период ускоренного голосования        |     |     {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.days}} day)     | | 
+|          Период принятия           |     |     {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} day)  |
+| Период обдумывания |     |     {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)  |
+|              Минимальный депозит               |     | {{ networks.moonbase.democracy.min_deposit }} GLMR |
 
-**Voting Rights to Cancel:**
+**Право голоса на отмену:**
 
- * The technical committee may cancel a proposal before it has been passed only by unanimous vote
- * A single technical committee member may veto an inbound council proposal, however, they can only veto it once, and it only lasts for the cool-off period ({{ networks.moonbase.democracy.cool_period.days}} days)
+ * Технический комитет может отменить предложение до того, как оно будет принято, но только при единогласном решении
+ * Один член Технического комитета может наложить вето на входящее предложение Совета, однако он может наложить вето только один раз, и оно длится только в течение периода обдумывания ({{ networks.moonbase.democracy.cool_period.days}} days)
 
-## Try it on Moonbase Alpha
+## Попробуйте на Moonbase Alpha
 
-Currently, in our Moonbase Alpha TestNet, token holders can submit proposals and vote on referenda. To do so, check the following guides:
+В настоящее время в нашей тестовой сети Moonbase Alpha TestNet держатели токенов могут подавать предложения и голосовать на референдумах. Для этого ознакомьтесь со следующими руководствами:
 
- - [Submit a proposal](/governance/proposals/)
- - [Vote on a proposal](/governance/voting/)
+ - [Подать предложение](/governance/proposals/)
+ - [Проголосовать за предложение](/governance/voting/)
 
-The Treasury component has yet to be implemented.
+Компоненты Совета и Казначейства еще не реализованы.
