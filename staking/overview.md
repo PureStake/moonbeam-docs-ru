@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Moonbeam provides staking features where token holders nominate collators with their tokens and earn rewards
+description: Moonbeam предоставляет функции стекинга, когда держатели токенов назначают подборщики своими токенами и зарабатывают вознаграждения.
 ---
 
 # Стейкинг в Moonbeam
