@@ -1,46 +1,47 @@
 ---
 title: Waffle & Mars
-description: Learn how to use Waffle and Mars to write, compile, test, and deploy Ethereum smart contracts on Moonbeam.
+description: Узнайте, как использовать Waffle и Mars для написания, компиляции, тестирования и развертывания смарт-контрактов Ethereum на Moonbeam.
 ---
 
-# Using Waffle & Mars on Moonbeam
+# Использование Waffle & Mars на Moonbeam
 
 ![Waffle and Mars on Moonbeam](/images/waffle-mars/waffle-mars-banner.png)
 
-## Introduction
+## Вступление
 
-[Waffle](https://getwaffle.io/) is a library for compiling and testing smart contracts, and [Mars](https://github.com/EthWorks/Mars) is a deployment manager. Together, Waffle and Mars can be used to write, compile, test, and deploy Ethereum smart contracts. Since Moonbeam is Ethereum compatible, Waffle and Mars can be used to deploy smart contracts to a Moonbeam development node or the Moonbase Alpha TestNet. 
+[Waffle](https://getwaffle.io/) это библиотека для компиляции и тестирования смарт-контрактов, и [Mars](https://github.com/EthWorks/Mars) это менеджер по развертыванию. Waffle и Mars можно использовать вместе для написания, компилирования, тестирования, и создания Ethereum смарт-контрактов. Поскольку Moonbeam совместим с Ethereum, Waffle и Mars можно использовать для развертывания смарт-контрактов на сервере разработки Moonbeam или в Moonbase Alpha TestNet.
 
-Waffle uses minimal dependencies, has syntax that is easy to learn and extend, and provides fast execution times when compiling and testing smart contracts. Furthermore, it is [TypeScript](https://www.typescriptlang.org/) compatible and uses [Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) to make tests easy to read and write. 
+Для работы с Waffle требуются минимальные зависимости, он имеет простой синтаксис, который легко изучить и расширить, а также обеспечивает быстрое выполнение при компиляции и тестировании смарт-контрактов. Кроме того, он совместим с [TypeScript](https://www.typescriptlang.org/) и использует [Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) делая тесты удобными для чтения и записи.
 
-Mars provides a simple, TypeScript compatible framework for creating advanced deployment scripts and staying in sync with state changes. Mars focuses on infrastructure-as-code, allowing developers to specify how their smart contracts should be deployed and then using those specifications to automatically handle state changes and deployments.
+Mars предоставляет простой, совместимый с TypeScript фреймворк для создания расширенных сценариев развертывания и синхронизации с изменениями состояния. Mars использует подход инфраструктура-как-код, позволяя разработчикам определять, как необходимо разворачивать свои смарт-контракты, а затем использовать эти спецификации для автоматической обработки изменений состояния и развертывания.
 
-In this guide, you'll be creating a TypeScript project to write, compile, and test a smart contract using Waffle, then deploy it on to the Moonbase Alpha TestNet using Mars.
-## Checking Prerequisites
+В этом руководстве Вы создадите проект TypeScript, напишите, скомпилируете и протестируете смарт-контракт с помощью Waffle, а затем развернете его в Moonbase Alpha TestNet опять же с помощью Mars.
+
+## Проверка требований
 
 --8<-- 'text/common/install-nodejs.md'
 
-As of writing of this guide, the versions used were 15.12.0 and 7.6.3, respectively.
+На момент написания этого руководства использовались версии 15.12.0 и 7.6.3 соответственно.
 
-Waffle and Mars can be used with a locally running Moonbeam development node, but for the purposes of this guide, you will be deploying to Moonbase Alpha. Therefore, you will need a funded account for development. You can choose to [create an account with MetaMask](/getting-started/testnet/metamask/#creating-a-wallet) or [create an account with PolkadotJS Apps](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). 
+Waffle и Mars можно использовать на лоакльной ноде разработки Moonbeam, но в рамках данного руководства Вы будете выполнять все работы на Moonbase Alpha. Следовательно, для разработки Вам понадобится счет. Вы можете выбрать [создание аккаунта через MetaMask](/getting-started/testnet/metamask/#creating-a-wallet) или [создание аккаунта через PolkadotJS Apps](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). 
 
-Once you've created an account you'll need to export the private key to be used in this guide. Before moving on, ensure your account has funds and, if needed, get `DEV` tokens from the [faucet](/getting-started/testnet/faucet/).
+После того, как Вы создали учетную запись, Вам необходимо будет экспортировать закрытый ключ, который будет использоваться в данном руководстве. Прежде чем двигаться дальше, убедитесь, что на Вашем счету есть средства и, при необходимости, получите `DEV` токены здесь [faucet](/getting-started/testnet/faucet/).
 
-## Create a TypeScript Project with Waffle & Mars
+## Создайте проект TypeScript с помощью Waffle & Mars
 
-To get started, you'll create a TypeScript project and install and configure a few dependencies.
+Для начала Вы создадите проект TypeScript, а также установите и настроите несколько зависимостей.
 
-1. Create the project directory and change to it:
+1. Создайте каталог проекта и перейдите в него:
 ```
 mkdir waffle-mars && cd waffle-mars
 ```
 
-2. Initialize the project. Which will create a `package.json` in the directory:
+2. Выполните инициализацию проекта. Это создаст файл `package.json` в текущем аккаунте:
 ```
 npm init -y
 ```
 
-3. Install the following dependencies:
+3. Установите следующие зависимости:
 ```
 npm install ethereum-waffle ethereum-mars ethers \
 @openzeppelin/contracts typescript ts-node chai \
@@ -57,12 +58,12 @@ npm install ethereum-waffle ethereum-mars ethers \
     - [Mocha](https://github.com/mochajs/mocha) - a testing framework for writing tests alongside Waffle
     - [@types/mocha](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/mocha) - contains the type definitions for mocha
 
-4. Create a [TypeScript configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file:
+4. Создайте файл [конфигурации TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html):
 ```
 touch tsconfig.json
 ```
 
-5. Add a basic TypeScript configuration:
+5. Затем добавьте базовую конфигурацию TypeScript:
 ```
 {
   "compilerOptions": {
@@ -80,17 +81,18 @@ touch tsconfig.json
 }
 ```
 
-Now, you should have a basic TypeScript project with the necessary dependencies to get started building with Waffle and Mars.
-## Add a Contract
+После чего у Вас должен быть базовый проект TypeScript с необходимыми зависимостями, чтобы начать сборку Waffle и Mars.
 
-For this guide, you will create an ERC-20 contract that mints a specified amount of tokens to the contract creator. It's based on the Open Zeppelin ERC-20 template.
+## Добавление контракта
 
-1. Create a directory to store your contracts and a file for the smart contract:
+В этом руководстве Вы создадите контракт ERC-20, с указанным количеством монет для создателя контракта. Он основан на шаблоне Open Zeppelin ERC-20.
+
+1. Создайте каталог для хранения Ваших контрактов и отдельный файл для смарт-контракта:
 ```
 mkdir contracts && cd contracts && touch MyToken.sol
 ```
 
-2. Add the following contract to MyToken.sol:
+2. Добавьте в `MyToken.sol` следующий контракт:
 ```
 pragma solidity ^0.8.0;
 
@@ -105,20 +107,20 @@ contract MyToken is ERC20 {
 }
 ```
 
-In this contract, you are creating an ERC20 token called MyToken with the symbol MYTOK, that allows you, as the contract creator, to mint as many MYTOKs as desired.
+В этом контракте Вы создаете токен ERC20 под названием `MyToken` с символом MYTOK, который позволяет Вам, как создателю контракта, производить столько MYTOK, сколько Вам понадобится.
 
-## Use Waffle to Compile and Test
+## Используйте Waffle для компиляции и тестирования
 
-### Compile with Waffle
+### Компиляция с помощью Waffle
 
-Now that you have written a smart contract, the next step is to use Waffle to compile it. Before diving into compiling your contract, you will need to configure Waffle.
+Теперь, когда Вы написали смарт-контракт, следующим шагом будет его компиляция с помощью Waffle. Прежде чем перейти к процессу компиляции контракта, Вам необходимо настроить Waffle.
 
-1. Go back to the root project directory and create a `waffle.json` file to configure Waffle:
+1. Вернитесь в корневой каталог проекта и создайте файл `waffle.json` для настройки Waffle:
 ```
 cd .. && touch waffle.json
 ```
 
-2. Edit the `waffle.json` to specify compiler configurations, the directory containing your contracts, and more. For this example, we'll use `solcjs` and the Solidity version you used for the contract, which is `0.8.0`:
+2. Отредактируйте файл `waffle.json`, указав конфигурацию компилятора, каталог, содержащий Ваши контракты, и многое другое. В этом примере мы будем использовать `solcjs` и версию Solidity, которую Вы использовали для контракта, то есть` 0.8.0`:
 ```json
 {
   "compilerType": "solcjs", // Specifies compiler to use
@@ -135,14 +137,14 @@ cd .. && touch waffle.json
 }
 ```
 
-3. Add a script to run Waffle in the `package.json`:
+3. Добавьте скрипт для запуска Waffle в `package.json`:
 ```json
 "scripts": {
   "build": "waffle"
 },
 ```
 
-That is all you need to do to configure Waffle, now you're all set to compile the `MyToken` contract using the `build` script:
+Это все, что Вам нужно сделать для настройки Waffle, теперь Вы можете скомпилировать контракт `MyToken` с помощью скрипта `build`:
 
 ```
 npm run build
@@ -150,20 +152,20 @@ npm run build
 
 ![Waffle compiler output](/images/waffle-mars/waffle-mars-1.png)
 
-After compiling your contracts, Waffle stores the JSON output in the `build` directory. The contract in this guide is based on Open Zeppelin's ERC-20 template, so relevant ERC-20 JSON files will appear in the `build` directory too. 
+После компиляции Ваших контрактов, Waffle сохраняет вывод JSON в каталоге `build`. Контракт в этом руководстве основан на шаблоне ERC-20 Open Zeppelin, поэтому соответствующие файлы JSON ERC-20 также появятся в каталоге `build`.
 
-### Test with Waffle
+### Тест с Waffle
 
-Before deploying your contract and sending it off into the wild, you should test it first. Waffle provides an advanced testing framework and has plenty of tools to help you with testing. 
+Перед тем, как развернуть свой контракт и отправить его в "дикую природу", Вы должны сначала протестировать его. Waffle предоставляет расширенную среду тестирования и множество инструментов, которые помогут Вам с тестированием. 
 
-You'll be running tests against the Moonbase Alpha TestNet and will need the corresponding RPC URL to connect to it: `https://rpc.testnet.moonbeam.network`. Since you will be running tests against the TestNet, it might take a couple minutes to run all of the tests. If you want a more efficient testing experience, you can [spin up a Moonbeam development node](/getting-started/local-node/setting-up-a-node/) using [`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options). Running a local Moonbeam development node with the `instant seal` feature is similar to the quick and iterative experience you would get with [Ganache](https://www.trufflesuite.com/ganache).
+Вы будете запускать тесты для Moonbase Alpha TestNet, и для подключения к ней Вам потребуется соответствующий URL-адрес RPC: `https://rpc.testnet.moonbeam.network`. Поскольку Вы будете запускать тесты в TestNet, запуск всех тестов может занять пару минут. Если вам нужен более эффективный опыт тестирования, Вы можете [развернуть среду разработки Moonbeam](/getting-started/local-node/setting-up-a-node/) используя [`instant seal`](/getting-started/local-node/setting-up-a-node/#node-options). Запуск локальной среды разработки Moonbeam с функцией `instant seal` аналогичен быстрому и итеративному опыту, который Вы получили бы с [Ganache](https://www.trufflesuite.com/ganache).
 
-1. Create a directory to contain your tests and a file to test your `MyToken` contract:
+1. Создайте каталог, в котором будут храниться Ваши тесты, и файл для тестирования Вашего контракта `MyToken`:
 ```
 mkdir test && cd test && touch MyToken.test.ts
 ```
 
-2. Open the `MyToken.test.ts` file and setup your test file to use Waffle's Solidity plugin and use Ethers custom JSON-RPC provider to connect to Moonbase Alpha:
+2. Откройте файл `MyToken.test.ts` и настройте свой тестовый файл, чтобы использовать плагин Waffle Solidity и использовать настраиваемый поставщик JSON-RPC Ethers для подключения к Moonbase Alpha:
 ```typescript
 import { use, expect } from 'chai';
 import { Provider } from '@ethersproject/providers';
@@ -189,7 +191,7 @@ describe ('MyToken', () => {
 })
 ```
 
-3. Before each test is run, you'll want to create wallets and connect them to the provider, use the wallets to deploy an instance of the `MyToken` contract, and then call the `initialize` function once with an initial supply of 10 tokens:
+3. Перед запуском каждого теста Вы захотите создать кошелек и подключить его к провайдеру, используйте кошельки для развертывания экземпляра контракта `MyToken`, а затем вызовите функцию `initialize` один раз с первоначальным количеством 10 монет:
 ```typescript
   beforeEach(async () => {
     const PRIVATE_KEY = '<insert-your-private-key-here>'
@@ -210,19 +212,19 @@ describe ('MyToken', () => {
   });
 ```
 
-4. Now you can create your first test. The first test will check your initial balance to ensure you received the initial supply of 10 tokens. However, to follow good testing practices, write a failing test first:
+4. Теперь Вы можете создать свой первый тест. Первый тест проверит Ваш первоначальный баланс, чтобы убедиться, что Вы получили необходимый запас в 10 токенов. Однако, чтобы следовать хорошей практике тестирования, сначала напишите неудачный тест:
 ```typescript
 it('Mints the correct initial balance', async () => {
   expect(await token.balanceOf(wallet.address)).to.equal(1); // This should fail
 });
 ```
 
-5. Before you can run your first test, you'll need to go back to the root direction and add a `.mocharc.json` Mocha configuration file:
+5. Прежде чем Вы сможете запустить свой первый тест, Вам нужно вернуться в корневую директорию и добавить файл конфигурации Mocha `.mocharc.json`:
 ```
 cd .. && touch .mocharc.json
 ```
 
-6. Now edit the `.mocharc.json` file to configure Mocha:
+6. Теперь отредактируйте файл `.mocharc.json`, чтобы настроить Mocha:
 ```json
 {
   "require": "ts-node/register/transpile-only", // Use ts-node to transpile the code for tests
@@ -231,7 +233,7 @@ cd .. && touch .mocharc.json
 }
 ```
 
-7. You'll also need to add a script in the `package.json` to run your tests:
+7. Вам также нужно будет добавить скрипт в `package.json` для запуска Ваших тестов:
 ```json
 "scripts": {
   "build": "waffle",
@@ -239,24 +241,24 @@ cd .. && touch .mocharc.json
 },
 ```
 
-8. You're all set to run the tests, simply use the `test` script you just created and run:
+8. Наконец все готово к запуску тестов, для этого просто используйте только что созданный и исполняемый скрипт `test`:
 ```
 npm run test
 ```
-Please note that it could take a few minutes to process because the tests are running against Moonbase Alpha, but if all worked as expected, you should have one failing test.
+Обратите внимание, что обработка может занять несколько минут, потому что тесты выполняются на Moonbase Alpha, но если все прошло, как и ожидалось, у Вас должен быть один неудачный тест.
 
-9. Next, you can go back and edit the test to check for 10 tokens:
+9. Затем Вы можете вернуться и отредактировать тест, чтобы проверить наличие 10 токенов:
 ```typescript
 it('Mints the correct initial balance', async () => {
   expect(await token.balanceOf(wallet.address)).to.equal(10); // This should pass
 });
 ```
-10. If you run the tests again, you should now see one passing test:
+10. Если Вы снова запустите тесты, Вы должны увидеть один пройденный тест:
 ```
 npm run test
 ```
 
-11. You've tested the ability to mint tokens, next you'll test the ability to transfer the minted tokens. If you want to write a failing test first again that is up to, however the final test should look like this:
+11. Вы проверили способность создавать монеты, затем Вы проверите возможность передачи созданных монет. Если Вы хотите с нуля написать неудачный тест, то окончательный вариант должен выглядеть так:
 ```typescript
 it('Should transfer the correct amount of tokens to the destination account', async () => {
   // Send the destination wallet 7 tokens
@@ -267,7 +269,7 @@ it('Should transfer the correct amount of tokens to the destination account', as
 });
 ```
 
-Congratulations, you should now have two passing tests! Altogether, your test file should look like this:
+Поздравляем, теперь у Вас должно быть два пройденных теста! В целом Ваш тестовый файл должен выглядеть так:
 ```typescript
 import { use, expect } from 'chai';
 import { Provider } from '@ethersproject/providers';
@@ -303,23 +305,23 @@ describe ('MyToken', () => {
 })
 ```
 
-If you want to write more tests on your own, you could consider testing transfers from accounts without any funds or transfers from accounts without enough funds.
+Если Вы хотите написать больше тестов самостоятельно, Вы можете рассмотреть возможность тестирования переводов со счетов без каких-либо средств или переводов со счетов без достаточного количества средств.
 
-## Use Mars to Deploy to Moonbase Alpha
+## Используйте Mars для развертывания на Moonbase Alpha
 
-After you compile your contracts and before deployment, you will have to generate contract artifacts for Mars. Mars uses the contract artifacts for typechecks in deployments. Then you'll need to create a deployment script and deploy the `MyToken` smart contract.
+После компиляции контрактов и перед развертыванием Вам нужно будет сгенерировать артефакты контрактов для Mars. Mars использует артефакты контрактов для проверки типов в процессе развертывания. Затем Вам нужно будет создать сценарий развертывания и развернуть смарт-контракт `MyToken`.
 
-Remember, you will be deploying to Moonbase Alpha and will need to use the TestNet configurations:
+Помните, что Вы будете выполнять развертывание на Moonbase Alpha, и Вам нужно будет использовать конфигурацию TestNet:
 
 --8<-- 'text/testnet/testnet-details.md'
 
-The deployment will be broken up into three sections: [generate artifacts](#generate-artifacts), [create a deployment script](#create-a-deployment-script), and [deploy with Mars](#deploy-with-mars). 
+Развертывание будет разбито на три части: [генерация артифактов](#generate-artifacts), [создание сценария развертывания](#create-a-deployment-script), и [и развёртывание с Mars](#deploy-with-mars). 
 
-### Generate Artifacts
+### Создание артефактов
 
-Artifacts need to be generated for Mars so that typechecks are enabled within deployment scripts. 
+Для Mars необходимо сгенерировать артефакты, чтобы включить проверку типов в сценариях развертывания.
 
-1. Update existing script to run Waffle in the `package.json` to include Mars:
+1. Обновите существующий скрипт для запуска Waffle в `package.json`, чтобы включить Mars:
 ```json
 "scripts": {
   "build": "waffle && mars",
@@ -327,27 +329,26 @@ Artifacts need to be generated for Mars so that typechecks are enabled within de
 },
 ```
 
-2. Generate the artifacts and create the `artifacts.ts` file needed for deployments:
+2. Сгенерируйте артефакты и создайте файл `artifacts.ts`, необходимый для развертывания:
 ```
 npm run build
 ```
 ![Waffle and Mars compiler output](/images/waffle-mars/waffle-mars-2.png)
 
-If you open the `build` directory, you should now see an `artifacts.ts` file containing the artifact data needed for deployments. To continue on with the deployment process, you'll need to write a deployment script. The deployment script will be used to tell Mars which contract to deploy, to what network, and which account is to be used to trigger the deployment.
+Если Вы откроете каталог `build`, Вы должны увидеть файл `artifacts.ts`, содержащий данные об артефактах, необходимые для развертывания. Чтобы продолжить процесс развертывания, Вам необходимо написать сценарий развертывания. Сценарий развертывания будет использоваться, чтобы сообщить Mars, какой контракт разворачивать, в какой сети и какую учетную запись следует использовать для запуска развертывания.
 
-### Create a Deployment Script
+### Создание сценария развертывания
 
-Now you need to configure the deployment for the `MyToken` contract to the Moonbase Alpha TestNet. 
+Теперь Вам нужно настроить развертывание контракта `MyToken` в Moonbase Alpha TestNet.
 
-In this step, you'll create the deployment script which will define how the contract should be deployed. Mars offers a `deploy` function that you can pass options to such as the private key of the account to deploy the contract, the network to deploy to, and more. Inside of the `deploy` function is where the contracts to be deployed are defined. Mars has a `contract` function that accepts the `name`, `artifact`, and `constructorArgs`. This function will be used to deploy the `MyToken` contract with an initial supply of 10 MYTOKs.
+На этом этапе Вы создадите сценарий развертывания, который определит, как следует развертывать контракт. Mars предлагает функцию `deploy`, в которую Вы можете передавать параметры, такие как закрытый ключ учетной записи для создания контракта, сеть для развертывания и многое другое. Внутри функции `deploy` определяются создаваемые контракты. Mars имеет функцию `contract`, которая принимает значения `name`, `artifact` и` constructorArgs`. Эта функция будет использоваться для развертывания контракта `MyToken` с первоначальным количеством 10 MYTOK.
 
-
-1. Create a `src` directory to contain your deployment scripts and create the script to deploy the `MyToken` contract:
+1. Создайте каталог `src` для хранения Ваших сценариев развертывания и создайте сценарий для развертывания контракта` MyToken`:
 ```
 mkdir src && cd src && touch deploy.ts
 ```
 
-2. In `deploy.ts`, use Mars' `deploy` function to create a script to deploy to Moonbase Alpha using your account's private key:
+2. В `deploy.ts` используйте функцию Mars `deploy`, чтобы создать сценарий для развертывания на Moonbase Alpha с использованием закрытого ключа Вашей учетной записи:
 ```javascript
 import { deploy } from 'ethereum-mars';
 
@@ -357,7 +358,7 @@ deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey},(deployer) 
 });
 ```
 
-3. Set up the `deploy` function to deploy the `MyToken` contract created in the previous steps:
+3. Настройте функцию `deploy` для развертывания контракта` MyToken`, созданного на предыдущем этапе:
 ```javascript
 import { deploy, contract } from 'ethereum-mars';
 import { MyToken } from '../build/artifacts';
@@ -368,7 +369,7 @@ deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey}, () => {
 });
 ```
 
-4. Add a deploy script to the `scripts` object in the `package.json`:
+4. Добавьте сценарий развертывания к объекту `scripts` в` package.json`:
 ```json
   "scripts": {
     "build": "waffle && mars",
@@ -377,26 +378,26 @@ deploy({network: 'https://rpc.testnet.moonbeam.network', privateKey}, () => {
   },
 ```
 
-So far, you should have created a deployment script in `deploy.ts` that will deploy the `MyToken` contract to Moonbase Alpha, and added the ability to easily call the script and deploy the contract. 
+Пока что Вы должны были создать сценарий развертывания в `deploy.ts`, который будет развертывать контракт `MyToken` в Moonbase Alpha, и добавить возможность простого вызова сценария и развертывания контракта.
 
-### Deploy with Mars
+### Deploy с использованием Mars
 
-You've configured the deployment, now it's time to actually deploy to Moonbase Alpha. 
+Вы настроили развертывание, теперь пришло время запуска на Moonbase Alpha.
 
-1. Deploy the contract using the script you just created:
+1. Разверните контракт, используя только что созданный скрипт:
 ```
 npm run deploy
 ```
 
-2. In your Terminal, Mars will prompt you to press `ENTER` to send your transaction: 
+2. В вашем терминале Mars Вам будет предложено нажать `ENTER`, чтобы отправить транзакцию:
 ![Mars confirm deployment](/images/waffle-mars/waffle-mars-3.png)
 
-If successful, you should see details about your transaction including it's hash, the block it was included in, and it's address.
+В случае успеха Вы должны увидеть подробную информацию о своей транзакции, включая ее хэш, блок, в который она была включена, и его адрес.
 
 ![Mars deployment output](/images/waffle-mars/waffle-mars-4.png)
 
-Congratulations! You've deployed a contract to Moonbase Alpha using Waffle and Mars!
+Поздравлем! Вы развернули контракт с Moonbase Alpha, используя Waffle и Mars!
 
-## Example Project
+## Пример проекта
 
-If you want to see a completed example of a Waffle and Mars project on Moonbeam, check out the [moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example) created by the team behind Waffle and Mars, EthWorks.
+Если Вы хотите увидеть завершенный пример проекта Waffle и Mars на Moonbeam, ознакомьтесь с [moonbeam-waffle-mars-example](https://github.com/EthWorks/moonbeam-waffle-mars-example) созданным командой разработчиков Waffle, Mars и EthWorks.
