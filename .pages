@@ -1,12 +1,12 @@
 arrange:
   - README.md
-  - overview
-  - getting-started
-  - networks
-  - governance
-  - staking
-  - integrations
-  - dapps-list
-  - node-operators
-  - learn
-  - resources
+  - обзор
+  - начало-работы
+  - сети
+  - управление
+  - стейкниг
+  - интеграции
+  - список-dapps
+  - операторы-нод
+  - обучение
+  - ресурсы
