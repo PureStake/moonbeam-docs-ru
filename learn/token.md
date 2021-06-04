@@ -1,6 +1,6 @@
 ---
 title: Токены
-description: Как и все платформы смарт-контрактов, для функционирования Moonbeam Network потребуется утилити- токен, который называется Glimmer (GLMR) для Polkadot и River (RIVER) для Kusama.
+description: Как и все платформы смарт-контрактов, для функционирования Moonbeam Network потребуется утилити- токен, который называется Glimmer (GLMR) для Polkadot и Moonriver (MOVR) для Kusama.
 ---
 
 # Введение
@@ -20,11 +20,11 @@ Moonbeam это децентрализованная смарт-контракт
 
 Более подробную информацию о Glimmer вы можете найти по этой [ссылке](https://moonbeam.network/networks/moonbeam/glimmer-token/).
 
-## Токен River 
+## Токен Moonriver 
 
-При размещении Moonbeam на Kusama (также называемом Moonriver) этот токен будет называться River, например: “вызов данного смарт-контракта будет стоить 3 River”. Символом токена будет RIVER.
+При размещении Moonbeam на Kusama (также называемом Moonriver) этот токен будет называться Moonriver, например: “вызов данного смарт-контракта будет стоить 3 Moonriver”. Символом токена будет MOVR.
 
-Более подробную информацию о River вы можете найти по этой [ссылке](https://moonbeam.network/networks/moonriver/river-token/).
+Более подробную информацию о Moonriver вы можете найти по этой [ссылке](https://moonbeam.foundation/moonriver-token/).
 
 ## Токен DEV 
 
