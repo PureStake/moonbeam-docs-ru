@@ -1,4 +1,4 @@
-title: TestNet
+title: Тестнет
 arrange:
   - connect.md
   - faucet.md
