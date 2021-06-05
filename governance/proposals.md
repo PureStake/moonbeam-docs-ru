@@ -1,131 +1,131 @@
 ---
-title: Propose an Action
-description: How to send a proposal to be voted on Moonbeam via governance features
+title: Подача предложения
+description: Как подать предложение для голосования в Moonbeam с помощью функций управления
 ---
 
-# Proposals
+# Предложение
 
 ![Governance Moonbeam Banner](/images/governance/governance-proposal-banner.png)
 
-## Introduction
+## Введение
 
-As mentioned in the [governance overview page](/governance/overview/#definitions), a proposal is a submission to the chain in which a token holder suggests for an action to be enacted by the system.
+Как упоминалось на [странице обзора управления](/governance/overview/#definitions), предложение - это отправка в сеть, в которой владелец токена предлагает действие, которое должно быть выполнено системой.
 
-Proposals are one of the core elements of the governance system because they are the main tool for stakeholders to propose actions/changes, which other stakeholders then vote on.
+Предложения являются одним из основных элементов системы управления, поскольку они являются основным инструментом, с помощью которого заинтересованные стороны могут предлагать действия / изменения, за которые затем голосуют другие заинтересованные стороны.
 
-In Moonbeam, users will be able to create, second, and vote on proposals using their H160 address and private key, that is, their regular Ethereum account!
+В Moonbeam пользователи смогут создавать, вторично и голосовать за предложения, используя свой адрес H160 и закрытый ключ, то есть свою обычную учетную запись Ethereum!
 
-With the release of [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), users of the network can now submit proposals for public referenda in the TestNet. This guide outlines the process of how to create a proposal. The steps will go from its creation until it reaches public referenda. You can find a guide on how to vote on a proposal [here](/governance/voting/).
+С выпуском [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), пользователи сети теперь могут вносить предложения на публичные референдумы в TestNet. В этом руководстве описывается процесс создания предложения. Шаги будут идти от его создания до публичного референдума. Здесь Вы можете найти руководство по голосованию за предложение [здесь](/governance/voting/).
 
-More information can be found in Polkadot's Wiki pages related to [Governance](https://wiki.polkadot.network/docs/en/learn-governance#council) and [Participate in Democracy](https://wiki.polkadot.network/docs/en/maintain-guides-democracy).
+Дополнительную информацию можно найти на страницах Wiki Polkadot, посвященных [Управлению](https://wiki.polkadot.network/docs/en/learn-governance#council) и [Участию в Демократии](https://wiki.polkadot.network/docs/en/maintain-guides-democracy).
 
-!!! note
-    This guide was done with a customized version of Moonbeam with short Launch/Enactment periods for demonstration purposes only.
+!!! Примечание
+    Это руководство было составлено с настроенной версией Moonbeam с короткими периодами запуска / введения в действие только для демонстрационных целей.
 
-## Definitions
+## Определения
 
-Some of the key parameters for this guide are the following:
+Вот некоторые из ключевых параметров этого руководства:
 
- - **Proposal** — action or items being proposed by users of the network
- - **Second** — other stakeholders can second (approve) a proposal if they agree with it and want to help it reach public referenda. This requires matching the deposit of the original proposer
- - **Preimage hash** — hash of the proposal to be enacted. The first step to make a proposal is to submit a preimage. The hash is just its identifier. The proposer of the preimage can be different than the user that proposes that preimage as a formal proposal
- - **Minimum preimage deposit** — minimum amount of tokens that the proposer needs to pay when submitting a preimage
- - **Minimum proposal deposit** — minimum amount of tokens that the proposer needs to bond when submitting a proposal. Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever). This is true for tokens bonded by both the proposer and users that second the proposal
- - **Launch period** — how often new public referenda are launched
- - **Cool-off period** — duration (in blocks) in which a proposal may not be re-submitted after being vetoed
+ - **Предложение** — действие или элементы, предлагаемые пользователями сети.
+ - **Поддержка** — другие заинтересованные стороны могут поддержать (одобрить) предложение, если они согласны с ним и хотят помочь ему достичь публичных референдумов. Это требует сопоставления депозита первоначального предложившего
+ - **Предварительный hash** — хеш предложения, которое будет принято. Первый шаг к составлению предложения - это подача прообраза. Хеш - это просто его идентификатор. Автор прообраза может отличаться от пользователя, который предлагает этот прообраз в качестве официального предложения
+ - **Минимальный депозит за прообраз** — минимальное количество токенов, которое предлагающий должен заплатить при отправке прообраза
+ - **Минимальный депозит предложения** — минимальное количество токенов, которое предлагающий должен оплатить при подаче предложения. Токены могут быть заблокированы на неопределенное время, потому что неизвестно, когда предложение может попасть на  референдумом (если вообще). Это верно для токенов, связанных как предлагающим, так и пользователями, которые поддерживают предложение
+ - **Период запуска** — как часто запускаются новые публичные референдумы
+ - **Период принятия** — продолжительность (в блоках), в течение которой предложение не может быть повторно подано после вето
 
-Currently, for Moonbase Alpha:
+В настоящее время для Moonbase Alpha:
 
-|         Variable         |     |                                                          Value                                                          |
+|         Переменная         |     |                                                          Значение                                                          |
 | :----------------------: | :-: | :---------------------------------------------------------------------------------------------------------------------: |
-|      Launch Period       |     | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
-|     Cool-off Period      |     |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
-| Minimum Preimage Deposit |     |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
-| Minimum Proposal Deposit |     |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+|      Период запуска       |     | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
+|     Период принятия      |     |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
+| Минимальный депозит за прообраз |     |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
+| Минимальный депозит предложения |     |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
 
-## Roadmap of a Proposal
+## Дорожная карта предложения
 
 --8<-- 'text/governance/roadmap.md'
 
-## Proposing an Action
+## Предложение о действии
 
-This section goes over the process of creating a proposal, from a preimage until it reaches public referenda. Instead of making a generic example, this guide will actually create a real proposal that will serve as a base for this guide and others.
+В этом разделе рассматривается процесс создания предложения от прообраза до публичного референдума. Вместо того, чтобы делать общий пример, это руководство фактически создаст реальное предложение, которое послужит основой для этого руководства и других.
 
-To make a proposal in the network, you need to use the PolkadotJS Apps interface. To do so, you need import an Ethereum-style account first (H160 address), which you can do following [this guide](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). For this example, three accounts were imported and named with super original names: Alice, Bob, and Charley.
+Чтобы сделать предложение в сети, вам необходимо использовать интерфейс PolkadotJS Apps. Для этого вам нужно сначала импортировать учетную запись в стиле Ethereum (адрес H160), что Вы можете сделать, следуя [этому руководству](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). В этом примере три учетных записи были импортированы и названы супер оригинальными именами: Алиса, Боб, и Чарли.
 
 ![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
 
-The proposal will set Bob's balance to `1500` via governance!
+Предложение установит баланс Боба на 1500 через управление!
 
-### Submitting a Preimage of the Proposal
+### Подача прообраза предложения
 
-The first step is to submit a preimage of the proposal. This is because the storage cost of large preimages can be pretty hefty, as the preimage contains all the information regarding the proposal itself. With this configuration, one account with more funds can submit a preimage and another account can submit the proposal.
+Первый шаг - представить прообраз предложения. Это связано с тем, что стоимость хранения больших прообразов может быть довольно высокой, поскольку прообраз содержит всю информацию, касающуюся самого предложения. При такой конфигурации одна учетная запись с большим количеством средств может отправить прообраз, а другая учетная запись может отправить предложение.
 
-Everything related to governance lives under the "Democracy" tab. Once there, click on the "Submit preimage" button.
+Все, что связано с управлением, находится во вкладке "Democracy". Оказавшись там, нажмите кнопку "Submit preimage" .
 
 ![Submit Preimage](/images/governance/governance-proposal-2.png)
 
-Here, you need to provide the following information:
+Здесь вам необходимо предоставить следующую информацию:
 
- 1. Select the account from which you want to submit the preimage
- 2. Choose the pallet you want to interact with and the dispatchable function (or action) to propose. The action you choose will determine the fields that need to fill in the following steps. In this case, it is the `democracy` pallet and the `setBalance` function
- 3. Set the address of which you want to change the balance
- 4. Set the new balance that this address will hold. To read more about the types of balances, you can visit [this site](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
- 5. Copy the preimage hash. This represents the proposal. You will use this hash when submitting the actual proposal
- 6. Click the "Submit preimage" button and sign the transaction
+ 1. Выберите учетную запись, из которой Вы хотите отправить прообраз
+ 2. Выберите набор модулей, с которым Вы хотите взаимодействовать, и функцию (или действие), которую хотите предложить. Выбранное действие определит поля, которые необходимо заполнить на следующих этапах. В данном случае это набор модулей `democracy` и функция `setBalance`
+ 3. Установите адрес, по которому хотите изменить баланс
+ 4. Установите новый баланс, который будет находится по этому адресу. Чтобы узнать больше о типах балансов, Вы можете [этот сайт](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
+ 5. Скопируйте хэш прообраза. Это представляет собой предложение. Вы будете использовать этот hash при отправке фактического предложения
+ 6. Нажмите кнопку "Submit preimage" и подпишите транзакцию
 
 ![Fill in the Preimage Information](/images/governance/governance-proposal-3.png)
 
-!!! note
-    Make sure you copy the preimage hash, as it is necessary to submit the proposal.
+!!! Примечание
+    Убедитесь, что Вы скопировали хэш прообраза, так как это необходимо для подачи предложения.
 
-Note that the storage cost of the preimage is displayed at the bottom left corner of this window. After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface, but nothing will have changed in the main democracy screen. However, don't worry. If the transaction is confirmed, the preimage has been submitted.
+Обратите внимание, что стоимость хранения прообраза отображается в нижнем левом углу этого окна. После отправки транзакции Вы увидите  подтверждение в правом верхнем углу интерфейса приложений PolkadotJS, но на главном экране демократии ничего не изменится. Однако не волнуйтесь. Если транзакция подтверждена, прообраз отправлен.
 
-### Submitting a Proposal
+### Подача предложения
 
-Once you have committed the preimage (check the previous section), the roadmap's next major milestone is to submit the proposal related to it. To do so, in the main democracy screen, click on "Submit proposal."
+После того как Вы создали предварительный образ (см. предыдущий раздел), следующим важным этапом работы над дорожной картой является подача связанного с ней предложения. Для этого на главном экране демократии нажмите на " Submit proposal".
 
 ![Submit proposal](/images/governance/governance-proposal-4.png)
 
-Here, you need to provide the following information:
+Здесь вам необходимо предоставить следующую информацию:
 
- 1. Select the account from which you want to submit the proposal (in this case, Alice)
- 2. Enter the preimage hash related to the proposal. In this example, it is the hash of the `setBalance` preimage from the previous section
- 3. Set the locked balance. This is the number of tokens the proposer bonds with his proposal. Remember that the proposal with the most amount of tokens locked goes to referendum. The minimum deposit is displayed just below this input tab
- 4. Click the "Submit proposal" button and sign the transaction
+ 1. Выберите учетную запись, с которой Вы хотите подать предложение (в данном случае Алиса)
+ 2. Введите хэш предварительного изображения, связанного с предложением. В данном примере это хэш предварительного изображения `setBalance` из предыдущего раздела
+ 3. Установите баланс блокировки. Это количество токенов, которые предлагающий связывает со своим предложением. Помните, что предложение с наибольшим количеством заблокированных токенов выходит на референдум. Минимальный депозит отображается чуть ниже этой вкладки ввода
+ 4. Нажмите кнопку " Submit proposal" и подпишите транзакцию
 
 ![Fill in the Proposal Information](/images/governance/governance-proposal-5.png)
 
-!!! note
-    Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever).
+!!! Примечание
+    Токены могут быть заблокированы на неопределенный срок, поскольку неизвестно, когда предложение может перейти на референдум (если вообще перейдет).
 
-After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface. You should also see the proposal listed in the "Proposals" section, displaying the proposer and the amounts of tokens locked, and it is now ready to be seconded!
+После отправки транзакции Вы увидите несколько подтверждений в правом верхнем углу интерфейса PolkadotJS Apps. Вы также должны увидеть предложение в разделе " Proposals" с указанием автора предложения и количества заблокированных токенов, и теперь оно готово к поддержке!
 
 ![Proposal listed](/images/governance/governance-proposal-6.png)
 
-### Seconding a Proposal
+### Поддержка предложения
 
-To second a proposal means that you agree with it and want to back it up with your tokens to help it reach public referenda. The amount of tokens to be locked is equal to the proposer's original deposit - no more, no less.
+Поддержка предложения означает, что Вы согласны с ним и хотите подкрепить его своими токенами, чтобы помочь ему выйти на общественный референдум. Количество токенов для блокировки равно первоначальному вкладу автора предложения - не больше и не меньше.
 
-!!! note
-    A single account can second a proposal multiple times. This is by design, as an account could just send tokens to different addresses and use them to second the proposal. What counts is the number of tokens backing up a proposal, not the number of vouches it has received.
+!!! Примечание
+    Одна и та же учетная запись может поддерживать предложение несколько раз. Это сделано специально, так как учетная запись может просто отправить токены на разные адреса и использовать их для поддержки предложения. Важно количество жетонов, поддержавших предложение, а не количество полученных за него поручительств.
 
-This section outlines the steps to second the proposal made in the previous section. To do so, click the "Second" button that is available for each proposal that shows up in the proposals list.
+В этом разделе описаны шаги, которые необходимо предпринять, чтобы повторить предложение, сделанное в предыдущем разделе. Для этого нажмите кнопку " Second", которая доступна для каждого предложения, отображаемого в списке предложений.
 
 ![Proposal listed to Second](/images/governance/governance-proposal-7.png)
 
-Here, you need to provide the following information:
+Здесь вам необходимо предоставить следующую информацию:
 
- 1. Select the account you want to second the proposal with (in this case, Charley)
- 2. Verify the number of tokens required to second the proposal
- 3. Click the "Second" button and sign the transaction
+ 1. Выберите счет, с которого Вы хотите отправить предложение (в данном случае Чарли).
+ 2. Проверить количество жетонов, необходимых для поддержки предложения
+ 3. Нажмите кнопку " Second" и подпишите транзакцию
 
 ![Fill in Second Information](/images/governance/governance-proposal-8.png)
 
-!!! note
-    Tokens might be locked for an indeterminate amount of time because it is unknown when a proposal may become a referendum (if ever)
+!!! Примечание
+    Токены могут быть заблокированы на неопределенное время, поскольку неизвестно, когда предложение может стать референдумом (если вообще станет).
 
-After the transaction is submitted, you will see some confirmations on the top right corner of the PolkadotJS Apps interface. You should also see the proposal listed in the "Proposals" section, displaying the proposer and the amounts of tokens locked and listing the users that have seconded this proposal!
+После отправки транзакции Вы увидите несколько подтверждений в правом верхнем углу интерфейса PolkadotJS Apps. Вы также увидите предложение в разделе " Proposals" с указанием автора предложения и суммы заблокированных токенов, а также список пользователей, поддержавших это предложение!
 
 ![Proposal Seconded](/images/governance/governance-proposal-9.png)
 
