@@ -1,7 +1,7 @@
 title: Ресурсы
 arrange:
-  - code.md
-  - links.md
-  - roadmap.md
-  - glossary.md
-  - code-snippets.md
+  - код.md
+  - ссылки.md
+  - план развития.md
+  - словарь.md
+  - фрагменты-кода.md
