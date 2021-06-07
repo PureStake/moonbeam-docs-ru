@@ -1,5 +1,5 @@
 ---
-title: Connect
+title: Подключение
 description: Сеть Moonbeam TestNet, получившая название Moonbase Alpha, - это самый простой способ начать работу в среде Polkadot. Следуйте этому руководству, чтобы подключиться к TestNet.
 ---
 
