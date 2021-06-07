@@ -1,33 +1,33 @@
 ---
-title: Overview
-description:  Learn how to use OpenZeppelin products on Moonbeam thanks to its Ethereum compatibility features
+title: Обзор
+description:  Узнайте, как использовать продукты OpenZeppelin на платформе Moonbeam благодаря совместимости с Ethereum
 ---
 
 # OpenZeppelin
 
 ![OpenZeppelin Banner](/images/openzeppelin/openzeppelin-banner.png)
 
-## Introduction
+## Введение
 
-OpenZeppelin is well known in the Ethereum developer community as their set of audited smart contracts and libraries are a standard in the industry. For example, most of the tutorials that show developers how to deploy an ERC20 token use OpenZeppelin contracts.
+OpenZeppelin хорошо известен в кругах разработчиков Ethereum, поскольку их ряд проверенных смарт-контрактов и библиотек является стандартом в отрасли. Например, в большинстве учебников, в которых разработчикам рассказывается, как разместить токен ERC20, используются контракты OpenZeppelin.
 
-You can find more information about OpenZeppelin in their [website](https://openzeppelin.com/) or [documentation site](https://docs.openzeppelin.com/openzeppelin/).
+Более подробную информацию о OpenZeppelin можно найти на их [веб-сайте](https://openzeppelin.com/) или [сайте документации](https://docs.openzeppelin.com/openzeppelin/).
 
-As part of its Ethereum compatibility features, OpenZeppelin products can be seamlessly used on Moonbeam. This page will provide information on different OpenZeppelin solutions that you can test.
+В рамках возможностей совместимости с Ethereum продукты OpenZeppelin могут легко использоваться на платформе Moonbeam. На этой странице будет представлена информация о различных решениях OpenZeppelin, которые вы можете протестировать.
 
-## OpenZeppelin on Moonbeam
+## OpenZeppelin на Moonbeam
 
-Currently, the following OpenZeppelin products/solutions work on the different networks available on Moonbeam:
+В настоящее время следующие продукты/решения OpenZeppelin работают в различных сетях, доступных на Moonbeam:
 
-|      **Product**      |     |**Moonbeam Dev Node**|     |**Moonbase Alpha**|
+|      **Продукт**      |     |**Moonbeam Dev Node**|     |**Moonbase Alpha**|
 | :-------------------: | :-: | :-----------------: | :-: | :--------------: |
-| Contracts & Libraries |     |          ✓          |     |         ✓       |
-|    Contract Wizard    |     |          ✓          |     |         ✓       |
+| Контракты и библиотеки |     |          ✓          |     |         ✓       |
+|    Мастер контрактов    |     |          ✓          |     |         ✓       |
 |       Defender        |     |          X          |     |         ✓       |
 
-You will find a corresponding tutorial for each product in the following links:
+В следующих ссылках вы найдете соответствующее руководство по каждому продукту:
 
- - [**Contract Wizard**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) — where you'll find a guide on how to use OpenZeppelin web-based wizard to create different token contracts with different functionalities
- - [**Contracts & Libraries**](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam) — where you'll find tutorials to deploy the most common token contracts using OpenZeppelin's templates: ERC20, ERC721 and ERC1155
- - [**Defender**](/integrations/openzeppelin/defender/) — where you'll find a guide on how to use OpenZeppelin Defender to manage your smart contracts in the Moonbase Alpha TestNet
+ - [**Мастер контрактов**](/integrations/openzeppelin/contracts/#openzeppelin-contract-wizard) — где вы найдете руководство по использованию веб-мастера OpenZeppelin для создания различных токен-контрактов с разными функциональными возможностями
+ - [**Контракты и библиотеки**](/integrations/openzeppelin/contracts/#deploying-openzeppelin-contracts-on-moonbeam) — где вы найдете руководства по размещению наиболее распространенных токен-контрактов с использованием готовых шаблонов OpenZeppelin: ERC20, ERC721 и ERC1155
+ - [**Defender**](/integrations/openzeppelin/defender/) — где вы найдете руководство по использованию OpenZeppelin Defender для управления смарт-контрактами в Moonbase Alpha TestNet
 
