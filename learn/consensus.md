@@ -1,88 +1,89 @@
 ---
-title: Parachain Consensus
-description: Learn about all the parts of Moonbeam's Nimbus consensus framework and how it works as part of the Polkadot's shared security model
+title: Консенсусы Парачейна 
+description: Узнайте обо всех составляющих фреймворка консенсуса Nimbus от Moonbeam и о том, как он работает в рамках модели общей безопасности Polkadot
 ---
 
-# Nimbus Parachain Consensus Framework
+# Парачейн фреймворк консенсуса Nimbus 
 
 ![Moonbeam Consensus Banner](/images/consensus/consensus-banner.png)
 
-## Introduction
+## Введение
 
-Polkadot relies on a [hybrid consensus model](https://wiki.polkadot.network/docs/en/learn-consensus). In such a scheme, the block finality gadget and the block production mechanism are separate. Consequently, parachains only have to worry about producing blocks and rely on the relay chain to validate the state transitions.
+Polkadot основывается на [гибридной модели консенсуса](https://wiki.polkadot.network/docs/en/learn-consensus). В такой схеме механизм завершения блока и механизм производства блоков разделены. Следовательно, парачайны должны заботиться только о производстве блоков и полагаться на relay chain для подтверждения переходов состояния.
 
-At a parachain level, block producers are called [collators](https://wiki.polkadot.network/docs/en/learn-collator). They maintain parachains (such as Moonbeam) by collecting transactions from users and offering blocks to the relay chain [validators](https://wiki.polkadot.network/docs/en/learn-validator).
+На уровне парачейна производители блоков называются [коллаторы](https://wiki.polkadot.network/docs/en/learn-collator). Они поддерживают парачейны (такие как Moonbeam), получая транзакции от пользователей и передавая блоки relay chain [validators](https://wiki.polkadot.network/docs/en/learn-validator).
 
-However, parachains might find the following problems they need to solve in a trustless and decentralized matter (if applicable):
+Однако парачейны могут столкнуться со следующими проблемами, которые им необходимо решить в условиях отсутствия доверия и децентрализации (если это применимо):
 
- - Amongst all of the nodes in the network, which ones are allowed to author blocks?
- - If multiple nodes are allowed, will they be eligible at the same time? Only one? Maybe a few?
+ - Каким нодам  в сети разрешено быть авторами блоков?
+ - Если разрешено несколько нод, будут ли они иметь право на участие одновременно? Только одна? Может быть, несколько?
 
-Enter Nimbus. Nimbus is a framework for building slot-based consensus algorithms on [Cumulus](https://github.com/paritytech/cumulus)-based parachains. It strives to provide standard implementations for the logistical parts of such consensus engines and helpful traits for implementing the elements (filters) that researchers and developers want to customize. These filters can be customizable to define what a block authorship slot is and can be composed, so block authorship is restricted to a subset of collators in multiple steps.
+Предлагаем вашему вниманию Nimbus. Nimbus - это фреймворк для построения алгоритмов консенсуса на основе слотов на [Cumulus](https://github.com/paritytech/cumulus)-базированных парачейнах. Он стремится предоставить стандартные реализации для логистических частей таких механизмов консенсуса и полезные характеристики для реализации элементов (фильтров), которые исследователи и разработчики хотят настроить. Эти фильтры можно настраивать, чтобы определить, что такое слот авторства блока и что из них можно составить, так что авторство блока ограничивается подмножеством коллаторов на нескольких этапах.
 
-For example, Moonbeam uses a two-layer approach. The first layer comprises the parachain staking filter, which helps select an active collator pool among all collator candidates using a staked-based ranking. The second layer adds another filter which narrows down the number of collators to a subset for each slot.
+Например, Moonbeam использует двухуровневый подход. Первый уровень включает в себя фильтр parachain staking, который помогает выбрать активный пул коллаторов среди всех кандидатов на роль коллатора, используя ранжирование на основе staked. Второй уровень добавляет еще один фильтр, который сужает число коллаторов до подмножества для каждого слота.
 
-Notice that Nimbus can only answer which collator(s) are eligible to produce a parachain block in the next available slot. It is the [Cumulus](https://wiki.polkadot.network/docs/en/build-cumulus#docsNav) consensus mechanism that marks this parachain block as best, and ultimately the [BABE](https://wiki.polkadot.network/docs/en/learn-consensus#babe) and [GRANDPA](https://wiki.polkadot.network/docs/en/learn-consensus#grandpa-finality-gadget) hybrid consensus model (of the relay chain) that will include this parachain block in the relay chain and finalize it. Once any relay chain forks are resolved at a relay chain level, that parachain block is deterministically finalized.
+Обратите внимание, что Nimbus может только ответить, какой коллатор(ов) имеет право произвести блок парачейна в следующем доступном слоте. Именно механизм консенсуса [Cumulus](https://wiki.polkadot.network/docs/en/build-cumulus#docsNav) отмечает этот парачейн-блок как лучший, а в конечном итоге гибридная модель консенсуса [BABE](https://wiki.polkadot.network/docs/en/learn-consensus#babe) и [GRANDPA](https://wiki.polkadot.network/docs/en/learn-consensus#grandpa-finality-gadget) (relay chain) включает этот парачейн-блок в relay chain и завершает его. Как только все форки relay chain будут разрешены на уровне relay chain, этот парачейн блок будет окончательно сформирован
 
-The following two sections go over the filtering strategy currently used in Moonbeam.
 
-## Parachain Staking Filtering
+В следующих двух разделах рассматривается стратегия фильтрации, используемая в настоящее время в Moonbeam.
 
-Collators can join the candidate pool by simply bonding some tokens via an extrinsic. Once in the pool, token holders can add to the collator's stake via nomination (also referred to as staking), that is, at a parachain level.
+## Фильтрация парачейн стейкинга  
 
-Parachain staking is the first of the two Nimbus filters applied to the collator candidate pool. It selects the top {{ networks.moonbase.staking.max_collators }} collators in terms of tokens staked in the network, which includes the collator bond and nominations from token holders. This filtered pool is called selected candidates, and selected candidates are renewed every round (which lasts {{ networks.moonbase.staking.round_blocks }} blocks). For a given round, the following diagram describes the parachain staking filtering:
+Коллаторы могут присоединиться к пулу кандидатов, просто связав некоторое количество токенов через extrinsic. Попав в пул, держатели токенов могут увеличить долю коллатора через номинацию (также называемую стейкингом), то есть на уровне парачейна.
+
+Парачейн стейкинг - это первый из двух фильтров Nimbus, применяемых к пулу кандидатов в коллаторы. Он выбирает лучших {{ networks.moonbase.staking.max_collators }} коллаторов с точки зрения количества токенов, размещенных в сети, что включает в себя фонд коллаторов и номинации от держателей токенов. Этот отфильтрованный пул называется отобранными кандидатами, и отобранные кандидаты обновляются каждый раунд (который длится {{ networks.moonbase.staking.round_blocks }} блоков). Для данного раунда следующая диаграмма описывает фильтрацию парачейн стейкинга:
 
 ![Nimbus Parachain Staking Filter](/images/consensus/consensus-images1.png)
 
-From this pool, another filter is applied to retrieve a subset of eligible collators for the next block authoring slot.
+Из этого пула применяется другой фильтр, чтобы отобрать подмножество подходящих коллаторов для следующего слота авторства блока.
 
-If you want to learn more about staking, visit our [staking documentation](/staking/overview/).
+Если вы хотите узнать больше о стейкинге, посетите наш раздел с документацией по [стейкингу](/staking/overview/).
 
-## Fixed Size Subset Filtering
+## Фильтрация подмножеств фиксированного размера
 
-Once the parachain staking filter is applied and the selected candidates are retrieved, a second filter is applied on a block by block basis and helps narrow down the selected candidates to a smaller number of eligible collators for the next block authoring slot.
+После применения фильтра парачейн-стейкинга и получения отобранных кандидатов применяется второй фильтр на основе блока за блоком, который помогает сузить круг отобранных кандидатов до меньшего числа подходящих коллаторов для следующего слота автора блока.
 
-In broad terms, this second filter picks a pseudo-random subset of the previously selected candidates. The eligibility ratio, a tunable parameter, defines the size of this subset.
+В общих чертах, этот второй фильтр выбирает псевдослучайное подмножество ранее отобранных кандидатов. Коэффициент приемлемости, настраиваемый параметр, определяет размер этого подмножества.
 
-A high eligibility ratio results in fewer chances for the network to skip a block production slot, as more collators will be eligible to propose a block for a specific slot. However, only a certain number of validators are assigned to a parachain, meaning that most of these blocks will not be backed by a validator. For those that are, a higher number of backed blocks means that it might take longer for the relay chain to solve any possible forks and return a finalized block. Moreover, this might create an unfair advantage for certain collators that might be able to get their proposed block faster to relay chain validators, securing a higher portion of block rewards (if any).
+Высокий коэффициент соответствия приводит к тому, что сеть имеет меньше шансов пропустить слот для производства блока, так как большее количество коллаторов будет иметь право предложить блок для определенного слота. Однако только определенное количество валидаторов назначается на парачейн , что означает, что большинство этих блоков не будут поддержаны валидатором. Для тех блоков, которые поддерживаются, большее число валидаторов означает, что цепочке передачи данных может потребоваться больше времени, чтобы решить все возможные проблемы и вернуть окончательно сформированный блок. Более того, это может создать несправедливое преимущество для определенных валидаторов, которые смогут быстрее доставить предложенный ими блок валидаторам relay chain, обеспечив себе большую часть вознаграждения за блок (если таковое имеется).
 
-On the contrary, a lower eligibility ratio might provide faster block finalization times and a fairer block production distribution amongst collators. However, if the eligible collators are not able to propose a block (for whatever reason), the network will skip a block, affecting its stability.
+С другой стороны, более низкий коэффициент приемлемости может обеспечить более быстрое время завершения блока и более справедливое распределение производства блоков между коллаторами. Однако, если коллаторы, имеющие право на участие, не смогут предложить блок (по какой-либо причине), сеть пропустит блок, что повлияет на ее стабильность.
 
-Once the size of the subset is defined, collators are randomly selected using a source of entropy. Currently, an internal coin-flipping algorithm is implemented, but this will later be migrated to use the relay chain's [randomness beacon](https://wiki.polkadot.network/docs/en/learn-randomness). Consequently, a new subset of eligible collators is selected for every relay chain block. For a given round and a given block `XYZ`, the following diagram describes the fixed-size subset filtering: 
+После определения размера подмножества коллаторы выбираются случайным образом с использованием источника энтропии. В настоящее время реализован внутренний алгоритм подбрасывания монет, но позже он будет перенесен на использование [маяка случайности] relay chain (https://wiki.polkadot.network/docs/en/learn-randomness). Следовательно, для каждого блока relay chain выбирается новое подмножество подходящих коллаторов. Для данного раунда и данного блока `XYZ` следующая диаграмма описывает фильтрацию подмножества фиксированного размера: 
 
 ![Nimbus Parachain Staking Filter](/images/consensus/consensus-images2.png)
 
-## Why Nimbus?
+## Почему Nimbus?
 
-You might ask yourself: but why Nimbus? Initially, it was not envisioned when Moonbeam was being developed. As Moonbeam progressed, the necessity for a more customizable but straightforward parachain consensus mechanism became clear, as the available methods presented some drawbacks or technical limitations. 
+Вы можете спросить себя: но почему именно Nimbus? Изначально, когда разрабатывался Moonbeam, он не был предусмотрен. По мере развития Moonbeam необходимость в более настраиваемом, но простом механизме консенсуса парачейна стала очевидной, поскольку имеющиеся методы обладали некоторыми недостатками или техническими ограничениями. 
 
-<!-- In the [relay chain provided consensus](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs), each node sees itself as a colator and can propose a parachain candidate block. It is then up to the relay chain to solve any possible forks and finalize a block. 
+<!-- При консенсусе [relay chain provided consensus](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs) каждый узел рассматривает себя в качестве колатора и может предложить блок-кандидат  парачейну. Затем relay chain должна решить все возможные варианты форков и окончательно утвердить блок. 
 
-[AuRa](https://crates.io/crates/sc-consensus-aura) (short for authority-round) consensus mechanism is based on a known list of authorities that take turns to produce blocks in every slot. Each authority can propose only one block per slot and builds on top of the longest chain.-->
+Механизм консенсуса [AuRa](https://crates.io/crates/sc-consensus-aura) (сокращение от authority-round) основан на известном списке авторитетов, которые по очереди предлагают блоки в каждом слоте. Каждый авторитет может предложить только один блок в слот и строится поверх самой длинной цепочки.-->
 
-With Nimbus, writing a parachain consensus engine is as easy as writing a pallet! This simplicity and flexibility is the main value it adds.
+С Nimbus написать механизм консенсуса парачейна так же просто, как написать набор модулей! Эта простота и гибкость - главная ценность, которую он добавляет.
 
-Some technical benefits of Nimbus are considered in the following sections.
+Некоторые технические преимущества Nimbus рассматриваются в следующих разделах.
 
-### Weight and Extra Execution
+### Вес и дополнительное исполнение
 
-Nimbus puts the author-checking execution in a [Substrate pallet](https://substrate.dev/docs/en/knowledgebase/runtime/pallets). At first glance, you might think this adds a higher execution load to a single block compared to doing this check off-chain. But consider this from a validator’s perspective
+Nimbus помещает выполнение проверки автора в [набор модулей Substrate](https://substrate.dev/docs/en/knowledgebase/runtime/pallets). На первый взгляд, можно подумать, что это увеличивает нагрузку на выполнение одного блока по сравнению с проверкой вне цепи. Но подумайте об этом с точки зрения валидатора.
 
-The validators will also have to check the author. By putting the author-checking execution logic in a pallet, the execution time can be benchmarked and quantified with weights. If this execution time is not accounted for, there is the risk of a block exceeding the relay chain WASM execution limit (currently 0.5 seconds).
+Валидаторы также должны будут проверять автора. Если поместить логику выполнения проверки автора в набор модулей, время выполнения можно сопоставить с эталоном и оценить с помощью взвешивания. Если это время выполнения не будет учтено, существует риск того, что блок превысит лимит выполнения WASM relay chain (в настоящее время 0,5 секунды).
 
-In practice, this check will be fast and will most likely not push execution time over the limit. But from a theoretical perspective, accounting for its weight is better for implementation purposes.
+На практике эта проверка будет быстрой и, скорее всего, не приведет к превышению лимита времени выполнения. Но с теоретической точки зрения учет ее веса лучше для целей реализации.
 
-### Reusability
+### Возможность повторного использования
 
-Another benefit of moving the author-checking execution to a pallet, rather than a custom executor, is that one single executor can be reused for any consensus that can be expressed in the Nimbus framework. That is slot-based, signature-sealed algorithms.
+Еще одним преимуществом переноса выполнения проверки автора в набор модулей, а не в пользовательский исполнитель, является то, что один единственный исполнитель может быть повторно использован для любого консенсуса, который может быть выражен в рамках Nimbus. Это алгоритмы, основанные на слотах и заверенные подписью.
 
-For example, the [relay-chain provided consensus](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs), [AuRa](https://crates.io/crates/sc-consensus-aura) and [BABE](https://crates.io/crates/sc-consensus-babe) each have their own custom executor. With Nimbus, these consensus mechanisms can reuse the same executor. The power of reusability is evidenced by the Nimbus implementation of AuRa in less than 100 lines of code.
+Например, [relay-chain provided consensus](https://github.com/paritytech/cumulus/blob/master/client/consensus/relay-chain/src/lib.rs), [AuRa](https://crates.io/crates/sc-consensus-aura) и [BABE](https://crates.io/crates/sc-consensus-babe) имеют каждый свой собственный пользовательский исполнитель. С Nimbus эти механизмы консенсуса могут повторно использовать один и тот же исполнитель. О силе возможности повторного использования свидетельствует реализация AuRa в Nimbus менее чем в 100 строках кода.
 
-### Hot-Swapping Consensus
+### Консенсус горячей замены
 
-Teams building parachains may want to change, tune, or adjust their consensus algorithm from time to time. Without nimbus, swapping consensus would require a client upgrade and hard fork.
+Команды, создающие парачейны, могут время от времени менять, настраивать или корректировать алгоритм консенсуса. Без Nimbus замена консенсуса потребовала бы обновления клиента и хард форк.
 
-With the Nimbus framework, writing a consensus engine is as easy as writing a 
-[Substrate pallet](https://substrate.dev/docs/en/knowledgebase/runtime/pallets). Consequently, swapping consensus is as easy as upgrading a pallet.
+С фреймворком Nimbus написать механизм консенсуса так же просто, как написать 
+[набор модулей Substrate](https://substrate.dev/docs/en/knowledgebase/runtime/pallets). Следовательно, замена консенсуса так же проста, как обновление модулей.
 
-Nonetheless, hot swapping is still bounded by consensus engines (filters) that fit within Nimbus, but it might be helpful for teams that are yet confident on what consensus they want to implement in the long run.
+Тем не менее, горячая замена все еще ограничена механизмами консенсуса (фильтрами), которые укладываются в рамки Nimbus, но это может быть полезно для команд, которые еще не определились с тем, какой консенсус они хотят реализовать в долгосрочной перспективе.
