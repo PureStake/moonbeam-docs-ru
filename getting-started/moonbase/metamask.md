@@ -1,5 +1,5 @@
 ---
-title: Integrate MetaMask
+title: Интеграция MetaMask
 description: Узнайте, как использовать MetaMask с Moonbeam TestNet. Из этого туториала Вы узнаете, как подключить MetaMask, установленную по умолчанию, к Moonbase Alpha.
 ---
 
