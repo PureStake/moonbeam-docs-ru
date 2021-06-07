@@ -1,75 +1,75 @@
 ---
-title: Vote on a Proposal
-description: How to vote on a proposal so that it is enacted or rejected on Moonbeam via governance features
+title: Голосование за предложение
+description: Как проголосовать за предложение, чтобы оно было принято или отклонено в Moonbeam с помощью функций управления
 ---
 
-# Proposals
+# Предложения
 
 ![Governance Moonbeam Banner](/images/governance/governance-voting-banner.png)
 
-## Introduction
+## Введение
 
-Once a proposal reaches public referenda, token holders can vote on it using their own tokens. Two factors defined the weight a vote has: the number of tokens locked and lock duration (called conviction). This is to ensure that there is an economic buy-in to the result to prevent vote-selling. Consequently, the longer you are willing to lock your tokens, the stronger your vote will be weighted. You also have the option of not locking tokens at all, but vote weight is drastically reduced.
+Как только предложение достигнет публичного референдума, держатели токенов могут проголосовать за него, используя свои собственные токены. Два фактора определяли вес голоса: количество заблокированных токенов и продолжительность блокировки (называемая осуждением). Это сделано для того, чтобы обеспечить экономическую поддержку результата, чтобы предотвратить продажу голосов. Следовательно, чем дольше Вы хотите заблокировать свои токены, тем сильнее будет ваш голос. У Вас также есть возможность вообще не блокировать токены, но вес голосования резко снижается.
 
-Referenda are simple, inclusive, and stake-based voting schemes. Each referendum has a proposal associated with it that suggests an action to take place. They have a fixed duration, after which votes are tallied, and the action is enacted if the vote is approved.
+Референдумы — это простые, инклюзивные схемы голосования на основе стекинга. С каждым референдумом связано предложение, в котором предлагается какое-либо действие. Они имеют фиксированную продолжительность, по истечении которой голоса подсчитываются, и действие вступает в силу, если голосование одобрено.
 
-In Moonbeam, users will be able to create, second, and vote on proposals using their H160 address and private key, that is, their regular Ethereum account!
+В Moonbeam пользователи смогут создавать, поддерживать и голосовать за предложения, используя свой адрес H160 и закрытый ключ, то есть свою обычную учетную запись Ethereum!
 
-With the release of [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), users of the network can now submit proposals for public referenda and vote on them. This guide outlines how to vote on a proposal that has reached a public referendum. You can find a guide on how to submit a proposal [here](/governance/proposals/).
+С выпуском  [Moonbase Alpha v6](https://github.com/PureStake/moonbeam/releases/tag/v0.6.0), пользователи сети теперь могут вносить предложения на публичные референдумы и голосовать за них. В этом руководстве рассказывается, как проголосовать за предложение, вынесенное на общественный референдум. Вы можете найти руководство по подаче предложения  [здесь](/governance/proposals/).
 
-More information related to [Governance](https://wiki.polkadot.network/docs/en/learn-governance) and [Participate in Democracy](https://wiki.polkadot.network/docs/en/maintain-guides-democracy) can be found in Polkadot's Wiki pages.
+Дополнительную информацию, касающуюся [Управления](https://wiki.polkadot.network/docs/en/learn-governance) и [Участия в Демократии](https://wiki.polkadot.network/docs/en/maintain-guides-democracy) можно найти на страницах Wiki Polkadot.
 
-!!! note
-    This guide was done with a customized version of Moonbeam with short Launch/Enactment periods for demonstration purposes only.
+!!! Примечание
+    Это руководство было составлено с настроенной версией Moonbeam с короткими периодами запуска / введения в действие только для демонстрационных целей.
 
-## Definitions
+## Определения
 
-Some of the key parameters for this guide are the following:
+Некоторые из ключевых параметров этого руководства следующие:
 
- - **Voting period** — the time token holders have to vote for a referendum (duration of a referendum)
- - **Vote** — a tool used by token holders to either approve or reject a proposal. The weight a vote has is defined by two factors: the number of tokens locked, and lock duration (called conviction)
- - **Turnout** — the total number of voting tokens
- - **Electorate** — the total number of tokens issued in the network
- - **Maximum number of votes** — the maximum number of votes per account
- - **Enactment period** — the time between a proposal being approved and enacted (make law). It is also the minimum locking period when voting
- - **Lock period** — the time (after the proposal's enactment) that tokens of the winning voters are locked. Users can still use these tokens for staking or voting
- - **Delegation** — the act of transferring your voting power to another account for up to a certain conviction
+ - **Период голосования** — время, в течение которого держатели токенов должны проголосовать за референдум (продолжительность референдума)
+ - **Голосование** — инструмент, используемый держателями токенов для одобрения или отклонения предложения. Вес голоса определяется двумя факторами: количеством заблокированных токенов и продолжительностью блокировки (называемой осуждением)
+ - **Явка** — общее количество токенов для голосования
+ - **Электорат** — общее количество токенов, выпущенных в сети
+ - **Максимальное количество голосов** — максимальное количество голосов на учетную запись
+ - **Период принятия** — время между утверждением предложения и его введением в действие (принятие закона). Это также минимальный период блокировки при голосовании
+ - **Период блокировки** — время (после принятия предложения), в течение которого токены победивших избирателей блокируются. Пользователи по-прежнему могут использовать эти токены для ставок или голосования
+ - **Делегирование** — акт передачи вашего права голоса на другую учетную запись до определенного срока
 
-Currently, for Moonbase Alpha:
+В настоящее время для Moonbase Alpha:
 
-|        Variable         |     |                                                         Value                                                         |
+|        Переменная         |     |                                 Значение                                                                           |
 | :---------------------: | :-: | :-------------------------------------------------------------------------------------------------------------------: |
-|       Vote Period       |     |  {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)  |
-|      Enact Period       |     | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
-| Maximum Number of Votes |     |                                      {{ networks.moonbase.democracy.max_votes}}                                       |
+|       Период Голосованя       |     |  {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)  |
+|      Период Принятия        |     | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
+| Максимальное колличество голосов |     |                                      {{ networks.moonbase.democracy.max_votes}}                                       |
 
-## Roadmap of a Proposal
+## Дорожная карта предложения
 
 --8<-- 'text/governance/roadmap.md'
 
-## Voting on a Referendum
+## Голосование на референдуме
 
-This section goes over the process of voting on a referendum. The guide assumes that there is one already taking place, in this case, the one created in [this guide](/governance/proposals/).
+В этом разделе рассматривается процесс голосования на референдуме. В руководстве предполагается, что он уже выполняется, в данном случае созданный в  [этом руководстве](/governance/proposals/).
 
-To vote on a proposal in the network, you need to use the PolkadotJS Apps interface. To do so, you need to import an Ethereum-style account first (H160 address), which you can do by following [this guide](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). For this example, three accounts were imported and named with super original names: Alice, Bob, and Charley.
+Чтобы проголосовать за предложение в сети, вам необходимо использовать интерфейс PolkadotJS Apps. Для этого вам необходимо сначала импортировать учетную запись в стиле Ethereum (адрес H160), что Вы можете сделать, следуя [этому руководству](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). В этом примере три учетных записи были импортированы и названы супер оригинальными именами: Алиса,Боб и Чарли.
 
 ![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
 
-The proposal being voted on will set Bob's balance to `1500` via governance!
+Предложение, по которому проводится голосование, установит баланс Боба на `1500` через управление!
 
-### How to Vote
+### Как проголосовать
 
-Voting on Moonbeam is pretty straightforward. Everything related to governance lives under the "Democracy" tab, where (in the image) you can note that there is a `1`, indicating there is one democracy item pending (either proposals or referenda). Once there, you can view the details of the referendum you want to vote by clicking on the arrow next to the description. The number next to the action and description it is called the referendum index (in this case, it is 0). When ready, click on the "Vote" button.
+Голосовать на Moonbeam довольно просто. Все, что связано с управлением, находится на вкладке «Демократия», где (на изображении) Вы можете отметить цифру 1, указывающую на то, что еще не решен один вопрос о демократии (предложения или референдумы). Оказавшись там, Вы можете просмотреть подробную информацию о референдуме, за который хотите проголосовать, щелкнув стрелку рядом с описанием. Число рядом с действием и его описанием называется индексом референдума (в данном случае это 0). Когда будете готовы, нажмите кнопку «Голосовать».
 
 ![Vote Button](/images/governance/governance-vote-1.png)
 
-Here, you need to provide the following information:
+Здесь вам необходимо предоставить следующую информацию:
 
- 1. Select the account with which you want to vote
- 2. Enter the number of tokens that you want to vote with. These will be locked for the amount of time specified in the next step
- 3. Set the vote conviction, which determines its weight (`vote_weight = tokens * conviction_multiplier`). The conviction multiplier is related to the number of enactment periods the tokens will be locked for. Consequently, the longer you are willing to lock your tokens, the stronger your vote will be weighted. You also have the option of not locking tokens at all, but vote weight is drastically reduced (tokens are still locked during the duration of the referendum)
+ 1. Выберите учетную запись, за которую Вы хотите проголосовать
+ 2. ведите количество токенов, которыми Вы хотите проголосовать. Они будут заблокированы на время, указанное на следующем шаге
+ 3. Установите убежденность голосования, которая определяет его вес (`vote_weight = tokens * conviction_multiplier`). Множитель убеждения связан с количеством периодов вступления в силу, на которые токены будут заблокированы. Следовательно, чем дольше Вы хотите заблокировать свои токены, тем сильнее будет ваш голос. У вас также есть возможность вообще не блокировать токены, но вес голоса резко снижается (токены по-прежнему заблокированы во время референдума)
 
-   | Lock Periods |     | Conviction Multiplier |
+   | Период Блокировки |     | Множитель Осуждения |
    | :----------: | :-: | :-------------------: |
    |      0       |     |          0.1          |
    |      1       |     |           1           |
@@ -79,133 +79,132 @@ Here, you need to provide the following information:
    |      16      |     |           5           |
    |      32      |     |           6           |
 
- 4. Click on "Vote Aye" to approve the proposal or "Vote Nay" to disapprove the proposal, and then sign the transaction
+ 4. Нажмите «Голосовать за», чтобы одобрить предложение, или «Голосуйте против», чтобы отклонить предложение, а затем подпишите транзакцию
 
 ![Vote Submission](/images/governance/governance-vote-2.png)
 
-!!! note
-    The lockup periods shown in the previous image are not to be taken as reference. This guide was done with a customized version of Moonbeam with short Launch/Enactment periods for demonstration purposes only.
+!!! Примечание
+    Периоды блокировки, показанные на предыдущем изображении, не следует воспринимать как справочные. Это руководство было составлено с настроенной версией Moonbeam с короткими периодами запуска / введения в действие только для демонстрационных целей.
 
-In this case, Alice has decided to "Vote Aye" on the proposal with a conviction of `6x`. On the other hand, Charley has decided to "Vote Nay" on the proposal but chose not to lock any tokens (his tokens are only locked during the duration of the referendum), so his conviction was `0.1x`. With such vote distributions, the partial results can be seen in the main "Democracy" tab.
+В этом случае Alice решила «Проголосовать за предложение» с убежденностью в 6 раз. С другой стороны, Charley решил «проголосовать против» по предложению, но решил не блокировать никакие токены (его токены блокируются только на время референдума), поэтому его осуждение было 0,1x. При таком распределении голосов частичные результаты можно увидеть на главной вкладке «Демократия».
 
 ![Vote Information](/images/governance/governance-vote-3.png)
 
-From voting, there are some key takeaways:
+Благодаря голосования можно сделать несколько важных выводов:
 
- - Alice's weighted vote is 10800 units. That is, her 1800 locked tokens multiplied her conviction by x6
- - Charley's weighted vote is 80 units. That is, his 800 tokens with no locking period (only during referendum) made his conviction factor x0.1
- - Both the remaining voting period and time before the proposal is enacted (if passed) are shown on the screen
- - The overall turnout (in percentage) is just 0.21%. This is calculated as the total number of voting tokens (2600) divided by the total amount of tokens in the network (1.22M in this case)
- - Even though the turnout is quite low, the proposal is tentatively approved because of the super-majority approval. More information can be found in [this section](/governance/voting/#positive-turnout-bias)
- - It is important to write down the referendum index, as this is needed to unlock the tokens later when the locking period expires. Currently there is no way to retrieve the referendum index once it has been enacted
+ - Взвешенный голос Алисы составляет 10800 единиц. То есть ее 1800 заблокированных токенов  умножили ее убежденность в 6 раз
+ - Взвешенный голос Чарли составляет 80 единиц. То есть его 800 токенов без периода блокировки (только во время референдума) делали его коэффициент убежденности x0.1
+ - На экране отображаются как оставшийся период голосования, так и время до принятия предложения (если оно принято).
+ - Общая явка (в процентах) составляет всего 0,21%. Это рассчитывается как общее количество токенов для голосования (2600), разделенное на общее количество токенов в сети (в данном случае 1,22 млн)
+ - Несмотря на то, что явка довольно низкая, предложение предварительно одобрено из-за одобрения подавляющим большинством. Более подробную информацию можно найти в [этом разделе](/governance/voting/#positive-turnout-bias)
+ - Важно записать индекс референдума, так как это необходимо для разблокировки токенов позже, когда истечет период блокировки. В настоящее время нет возможности получить индекс референдума после того, как он был принят
 
-After the voting period has expired, the proposal will be visible under the "Dispatch" tab if approved. In here, you can also see the time remaining until the proposal is enacted.
+По истечении периода голосования предложение будет отображаться на вкладке «Отправка», если оно будет одобрено. Здесь Вы также можете увидеть время, оставшееся до принятия предложения.
 
 ![Proposal Enactment](/images/governance/governance-vote-4.png)
 
-Remember that, for this example, the `setBalance` function was used to set Bob's balance to 1500 tokens. Once the enactment period has passed, you can go back to the "Accounts" tab to verify that the proposal was made law.
+Помните, что в этом примере функция `setBalance` использовалась для установки баланса Боба на 1500 токенов. По истечении срока вступления в силу Вы можете вернуться на вкладку «Учетные записи», чтобы убедиться, что предложение было внесено в закон.
 
 ![Proposal Result](/images/governance/governance-vote-5.png)
 
-### Delegate Voting
+### Делегирование голосования
 
-Token holders have the option to delegate their vote to another account whose opinion they trust. The account being delegated does not need to make any particular action. When they vote, the vote weight (that is, tokens times the conviction multiplier chose by the delegator) is added to its vote.
+Держатели токенов могут делегировать свой голос другой учетной записи, мнению которого они доверяют. Делегируемая учетная запись не требует каких-либо действий. Когда они голосуют, вес голоса (то есть количество токенов, умноженное на множитель убежденности, выбранный делегатом) добавляется к его голосу.
 
-To delegate your vote, first, navigate to the "Extrinsics" menu under the "Developers" tab.
+Чтобы делегировать свой голос, сначала перейдите в менюe "Extrinsics" на вкладке "Developers".
 
 ![Extrinsics Menu](/images/governance/governance-vote-6.png)
 
-Here, you need to provide the following information:
+Здесь вам необходимо предоставить следующую информацию:
 
- 1. Select the account from which you want to delegate your vote
- 2. Choose the pallet you want to interact with. In this case, it is the `democracy` pallet
- 3. Choose the extrinsic method to use for the transaction. This will determine the fields that need to fill in the following steps. In this case, it is `delegate` extrinsic
- 4. Select the account to which you want to delegate your vote
- 5. Set the vote conviction, which determines its weight (`vote_weight = tokens * conviction_multiplier`). The conviction multiplier is related to the number of enactment periods the tokens will be locked for. Consequently, the longer you are willing to lock your tokens, the stronger your vote will be weighted. You also have the option of not locking tokens at all, but vote weight is drastically reduced
- 6. Set the number of tokens you want to delegate to the account provided before
- 7. Click the "Submit Transaction" button and sign the transaction
+ 1. Выберите учетную запись, из которой Вы хотите делегировать свой голос
+ 2. Выберите pallet с которым хотите взаимодействовать. В данном случае это `democracy`
+ 3. Выберите внешний метод, который будет использоваться для транзакции. Это определит поля, которые необходимо заполнить в следующих шагах. В этом случае это `delegate`
+ 4. Выберите учетную запись, на которую Вы хотите передать свой голос
+ 5. Установите убежденность голосования, которая определяет его весомость (`vote_weight = tokens * conviction_multiplier`). Множитель убеждения связан с количеством периодов вступления в силу, на которые токены будут заблокированы. Следовательно, чем дольше Вы хотите заблокировать свои токены, тем сильнее будет ваш голос. У вас также есть возможность вообще не блокировать токены, но вес голосования резко снижается
+ 6. Установите количество токенов, которое Вы хотите делегировать в учетную запись, предоставленную ранее
+ 7. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
 ![Extrinsics Transaction for Delegation](/images/governance/governance-vote-7.png)
 
-In this example, Alice delegated a total weight of 1000 (1000 tokens with an x1 conviction factor) to Charley.
+В этом примере Алиса делегировала Чарли общий вес 1000 (1000 токенов с коэффициентом убежденности  x1).
 
-!!! note
-    Another way to delegate votes is under the "Accounts" tab. Click on the three dots of the account from which you want to delegate your vote and fill in the information as before.
+!!! Примечание
+    Другой способ делегировать голоса - на вкладке «Учетные записи». Нажмите на три точки учетной записи, с которой Вы хотите делегировать свой голос, и введите информацию, как и раньше.
 
-Once the account you have delegated your vote to votes, the total vote weight delegated will be allocated to the option that the account selected. For this example, Charley has decided to vote in favor of a proposal that is in public referendum. He voted with a total weight of 800 (800 tokens with an x1 conviction factor). But because Alice delegated 1000 vote weight to him, "Aye" votes total 1800 units.
+После того, как учетная запись, на которую Вы делегировали свой голос, была передана голосам, общий вес делегированного голоса будет распределен для варианта, выбранного учетной записью. В этом примере Чарли решил проголосовать за предложение, вынесенное на публичный референдум. Он проголосовал общим весом 800 (800 токенов с коэффициентом убедительности x1). Но поскольку Алиса делегировала ему вес в 1000 голосов, «Да» всего 1800 единиц.
 
 ![Total Votes with Delegation](/images/governance/governance-vote-8.png)
 
-To remove delegation, repeat the process described before, but select the `undelegate` extrinsic in step 3.
+Чтобы удалить делегирование, повторите процесс, описанный ранее, но выберите внешнюю функцию без делегирования   `undelegate`  на шаге 3.
 
-From vote delegation, there are some key takeaways:
+Из делегирования голосования можно сделать несколько важных выводов:
 
- - If a token holder were to remove the vote delegation during a public referendum where the delegated votes were used, these would be removed from the tally
- - A token holder that delegated votes still has an economic buy-in. This means that if the option the delegator selected were to win, the tokens delegated are locked for the number of lock periods
- - The tokens delegated for voting are no longer part of the token holder's free balance. To read more about the types of balances, you can visit [this site](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
- - A token holder that delegated tokens can't participate in public referendum. First, the token holder must undelegate his vote
- - A token holder that delegated tokens needs to manually unlock his locked tokens after the locking period has expired. For this, it is necessary to know the referendum index
+ - Если владелец токена удалит делегирование голосов во время публичного референдума, на котором использовались делегированные голоса, они будут удалены из подсчета
+ - Держатель токена, который делегировал голоса, по-прежнему имеет экономическую поддержку. Это означает, что если вариант, выбранный делегатом, выиграет, делегированные токены будут заблокированы на количество периодов блокировки
+ - Токены, делегированные для голосования, больше не входят в свободный баланс держателя токенов. Чтобы узнать больше о типах балансов, Вы можете посетить этот [сайт](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)
+ - Держатель токенов, который делегировал их, не может участвовать в публичном референдуме. Во-первых, владелец токена должен отменить делегирование своего голоса.
+ - Владелец токенов, который их делегировал, должен вручную разблокировать свои заблокированные токены после истечения периода блокировки. Для этого необходимо знать индекс референдума
 
-### Unlocking Locked Tokens
+### Разблокировка заблокированных токенов
 
-When token holders vote, the tokens used are locked and cannot be transferred. You can verify if you have any locked tokens in the "Accounts" tab, expanding the address's account details to query. There, you will see different types of balances (you can read more information about each type [here](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)). If you hover over the icon next to "democracy," an information panel will show telling you the current status of your lock. Different lock status includes:
-
- - Locked because of an ongoing referendum, meaning that you've used your tokens and have to wait until the referendum finishes, even if you've voted with a no-lock conviction factor
- - Locked because of the conviction multiplier selected, displaying the number of blocks and time left
- - Lock expired, meaning that you can now get your tokens back
+Когда держатели токенов голосуют, используемые токены блокируются и не могут быть переданы. Вы можете проверить, есть ли у вас заблокированные токены, на вкладке «Учетные записи», развернув данные учетной записи адреса для запроса. Там Вы увидите разные типы балансов (подробнее о каждом из них Вы можете [здесь](https://wiki.polkadot.network/docs/en/build-protocol-info#free-vs-reserved-vs-locked-vs-vesting-balance)). Если Вы наведете курсор на значок рядом с надписью «демократия», отобразится информационная панель, сообщающая вам текущий статус вашего замка. Различные состояния блокировки включают:
+ - Заблокирован из-за продолжающегося референдума, что означает, что Вы использовали свои токенов и должны дождаться завершения референдума, даже если Вы проголосовали с фактором убеждения без блокировки
+ - Заблокировано из-за выбранного множителя убежденности, отображается количество блоков и оставшееся время
+ - Срок действия блокировки истек, что означает, что теперь Вы можете вернуть свои токены
 
 ![Account Lock Status](/images/governance/governance-vote-9.png)
 
-Once the lock is expired, you can request your tokens back. To do so, navigate to the "Extrinsics" menu under the "Developers" tab.
+По истечении срока блокировки Вы можете запросить свои токены обратно. Для этого перейдите в меню "Extrinsics" на вкладке "Developers" .
 
 ![Extrinsics Menu](/images/governance/governance-vote-10.png)
 
-Here, two different extrinsics need to be sent. First, you need to provide the following information:
+Здесь необходимо отправить два разных внешних объекта. Во-первых, вам необходимо предоставить следующую информацию:
 
- 1. Select the account from which you want to recover your tokens
- 2. Choose the pallet you want to interact with. In this case, it is the `democracy` pallet
- 3. Choose the extrinsic method to use for the transaction. This will determine the fields that need to fill in the following steps. In this case, it is `removeVote` extrinsic. This step is necessary to unlock the tokens. This extrinsic can be used as well to remove your vote from a referendum
- 4. Enter the referendum index. This is the number that appeared on the left-hand side in the "Democracy" tab. In this case, it is 0
- 5. Click the "Submit Transaction" button and sign the transaction
+ 1. Выберите учетную запись, из которой Вы хотите восстановить свои токены
+ 2. Выберите набор модулей, с которым хотите взаимодействовать. В данном случае это набор `democracy`
+ 3. Выберите внешний метод, который будет использоваться для транзакции. Это определит поля, которые необходимо заполнить в следующих шагах. В данном случае это `removeVote`. Этот шаг необходим для разблокировки токенов. Этот внешний вид также может быть использован для снятия вашего голоса с референдума.
+ 4. Введите индекс референдума. Это число, которое появилось в левой части вкладки "Democracy". В данном случае это 0
+ 5. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
 ![Remove Vote Extrinsics](/images/governance/governance-vote-11.png)
 
-For the next extrinsic, you need to provide the following information:
+Для следующего внешнего запроса вам необходимо предоставить следующую информацию:
 
- 1. Select the account from which you want to recover your tokens
- 2. Choose the pallet you want to interact with. In this case, it is the `democracy` pallet
- 3. Choose the extrinsic method to use for the transaction. This will determine the fields that need to fill in the following steps. In this case, it is `unlock` extrinsic
- 4. Enter the target account that will receive the unlocked tokens. In this case, the tokens will be returned to Alice
- 5. Click the "Submit Transaction" button and sign the transaction
+ 1. Выберите учетную запись, из которой Вы хотите восстановить свои токены
+ 2. Выберите набор модулей, с которым хотите взаимодействовать. В данном случае это набор `democracy` 
+ 3. Выберите внешний метод, который будет использоваться для транзакции. Это определит поля, которые необходимо заполнить в следующих шагах. В данном случае это `unlock` 
+ 4. Введите целевую учетную запись, которая получит разблокированные токены. В этом случае токены будут возвращены Алисе.
+ 5. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
 ![Unlock Extrinsics](/images/governance/governance-vote-12.png)
 
-Once the transaction goes through, the locked tokens should be unlocked. To double-check, you can go back to the "Accounts" tab and see that, for this example, Alice has her full balance as "transferable."
+После завершения транзакции заблокированные токены должны быть разблокированы. Чтобы еще раз проверить, Вы можете вернуться на вкладку "Accounts"и увидеть, что для этого примера Алиса имеет полный баланс как "transferable."
 
 ![Check Balance](/images/governance/governance-vote-13.png)
 
-## Positive Turnout Bias
+## Положительный сдвиг явки
 
-Public referenda use a positive turnout bias metric, that is, a super-majority approval formula. The equation is the following:
+В публичных референдумах используется показатель смещения положительной явки, то есть формула одобрения большинством голосов. Уравнение следующее:
 
 ![Positive Turnout Bias](/images/governance/governance-vote-bias.png)
 
-Where:
+Где:
 
- - **Approve** — number of "Aye" votes (includes the conviction multiplier)
- - **Against** — number of "Nay" votes (includes the conviction multiplier)
- - **Turnout** — the total number of voting tokens (without including the conviction multiplier)
- - **Electorate** — the total number of tokens issued in the network
+ - **Одобрить** — количество голосов «За» (с учетом множителя убеждения)
+ - **Против** — количество голосов "против" (с учетом множителя убеждения)
+ - **Явка** — общее количество токенов для голосования (без учета множителя убеждения)
+ - **Электорат** — бщее количество токенов, выпущенных в сети
 
-In the previous example, these numbers were:
+В предыдущем примере это были следующие числа:
 
-|  Variable  |     |         Value         |
+|  Переменная  |     |         Значение         |
 | :--------: | :-: | :-------------------: |
-|  Approve   |     |   10800 (1800 x 6)    |
-|  Against   |     |    80 (800 x 0.1)     |
-|  Turnout   |     |   2600 (1800 + 800)   |
-| Electorate |     |         1.22M         |
-| **Result** |     | 1.5 < 9.8 (Aye wins!) |
+|  Одобрить   |     |   10800 (1800 x 6)    |
+|  Против   |     |    80 (800 x 0.1)     |
+|  Явка   |     |   2600 (1800 + 800)   |
+| Єлеторат |     |         1.22M         |
+| **Результат** |     | 1.5 < 9.8 (Да Победили!) |
 
-In short, a heavy super-majority of aye votes is required to approve a proposal at low turnouts, but as turnout increases, it becomes a simple majority.
+Короче говоря, для одобрения предложения при низкой явке требуется подавляющее большинство голосов «за», но по мере увеличения явки оно становится  большинством.
 
