@@ -1,6 +1,6 @@
 ---
-title: Faucet
-description: Узнайте, как использовать автоматический сборщик-бот на Discord, чтобы получить тестовые жетоны для Moonbeam TestNet, получившей название Moonbase Alpha.
+title: Кран
+description: Узнайте, как использовать автоматический сборщик-бот в Discord, чтобы получить тестовые токены для Moonbeam TestNet, получившей название Moonbase Alpha.
 ---
 
 # Альфа-кран Moonbase
