@@ -2,6 +2,7 @@ title: Интеграции
 arrange:
   - bridges
   - ethlibraries
+  - indexers
   - openzeppelin
   - oracles
   - wallets
