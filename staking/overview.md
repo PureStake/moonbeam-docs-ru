@@ -9,7 +9,7 @@ description: Moonbeam предоставляет функции стекинга
 
 ## Вступление
 
-Moonbeam использует механизм производства блоков, основанный на модели  [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/en/learn-consensus) где есть коллаторы и валидаторы. [коллаторы](https://wiki.polkadot.network/docs/en/learn-collator) поддерживают парачейны (в данном случае Moonbeam), собирая транзакции от пользователей и создавая подтверждения состояния перехода для [валидаторов](https://wiki.polkadot.network/docs/en/learn-validator).
+Moonbeam использует механизм производства блоков, основанный на модели  [Polkadot's Proof-of-Stake model](https://wiki.polkadot.network/docs/learn-consensus) где есть коллаторы и валидаторы. [коллаторы](https://wiki.polkadot.network/docs/learn-collator) поддерживают парачейны (в данном случае Moonbeam), собирая транзакции от пользователей и создавая подтверждения состояния перехода для [валидаторов](https://wiki.polkadot.network/docs/learn-validator).
 
 TСортировщики (узлы, которые производят блоки) отбираются на основе их доли в сети. Как раз здесь нам на помощь приходит стейкинг.
 

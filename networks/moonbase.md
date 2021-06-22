@@ -51,14 +51,14 @@ Moonbase Alpha имеет следующую конфигурацию:
         * Поддержка транзакций Ethereum без ChainId
 
 ??? release v5 "_Январь 2021_"      
-    - Добавлена пользовательская версия [Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking) (только для целей тестирования и разработки)
+    - Добавлена пользовательская версия [Staking pallet](https://wiki.polkadot.network/docs/learn-staking) (только для целей тестирования и разработки)
     - Добавлена поддержка запросов ожидающих транзакций, пока они находятся в пуле.
     - Исправлены некоторые проблемы при получении прошлых событий и другие мелкие исправления, связанные с событиями смарт-контрактов.
     - Множественные внутренние улучшения, которые включают оптимизацию времени выполнения EVM, что делает его в 15–50 раз быстрее.
     - Поддержка [modexp](https://docs.klaytn.com/smart-contract/precompiled-contracts#address-0x05-bigmodexp-base-exp-mod) контрактов предварительной компиляции
 
 ??? release v6 "_Февраль 2021_"      
-    - Публичный выпуск пользовательского [Staking pallet](https://wiki.polkadot.network/docs/en/learn-staking). Теперь держатели токенов могут назначать подборщиков и получать вознаграждения.
+    - Публичный выпуск пользовательского [Staking pallet](https://wiki.polkadot.network/docs/learn-staking). Теперь держатели токенов могут назначать подборщиков и получать вознаграждения.
     - Добавлен [Democracy pallet](https://github.com/paritytech/substrate/tree/HEAD/frame/democracy). TДержатели токенов теперь могут [подавать предложения](/governance/proposals/) и [голосовать за них](/governance/voting/)
     - Обновление до последней версии [Frontier RPC](https://github.com/paritytech/frontier), которая увеличивает эффективность выполнения EVM в 5 раз.
     - Лимит газа был увеличен до 15 миллионов на блок и с лимитом 13 миллионов на транзакцию.

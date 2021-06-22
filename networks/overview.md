@@ -32,7 +32,7 @@ description: Обзор сетей, выпуск которых планирую
 
 Moonbeam будет запущен как парачейн в сети Kusama перед размещением в Polkadot MainNet ([подробнее здесь](https://www.purestake.com/news/moonbeam-on-kusama/)). Для этого требуется, чтобы на Кусаме работала функция парачейна.
 
-Мы планируем использовать связанные с парачейном функции, такие как [Crowdloan](https://wiki.polkadot.network/docs/en/learn-crowdloans), [XCMP](https://wiki.polkadot.network/docs/en/learn-crosschain), and [SPREE](https://wiki.polkadot.network/docs/en/learn-spree) на Moonriver по мере того, как эти функции станут доступны.
+Мы планируем использовать связанные с парачейном функции, такие как [Crowdloan](https://wiki.polkadot.network/docs/learn-crowdloans), [XCMP](https://wiki.polkadot.network/docs/learn-crosschain), and [SPREE](https://wiki.polkadot.network/docs/learn-spree) на Moonriver по мере того, как эти функции станут доступны.
 
 ## Moonbeam Polkadot MainNet
 

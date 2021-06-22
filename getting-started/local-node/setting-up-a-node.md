@@ -5,7 +5,7 @@ description: Воспользуйтесь данным руководством,
 
 # Настройка ноды Moonbeam и её подключение к графическому интерфейсу Polkadot JS
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>Вы можете найти весь необходимый код касающейся этого руководства в <a href="{{ config.site_url }}resources/code-snippets/">фрагментах кода</a></div>
 
 ## Вступление
@@ -120,7 +120,7 @@ cd moonbeam
 ```
 
 !!! обратите внимание
-    Для людей, которые на знакомы с Substrate, `--dev` флаг позволяет запустить узел на основе substrate в режиме разработчика с одним узлом в целях тестирования. Вы можете узнать больше о `--dev` режиме в [этом реководстве по Substrate](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact).
+    Для людей, которые на знакомы с Substrate, `--dev` флаг позволяет запустить узел на основе substrate в режиме разработчика с одним узлом в целях тестирования. Вы можете узнать больше о `--dev` режиме в [этом реководстве по Substrate](https://substrate.dev/docs/tutorials/create-your-first-substrate-chain/interact).
 
 Вы должны увидеть следующий вывод, который будет отображать состояние ожидания, до тех пор пока не будут созданы блоки:
 
