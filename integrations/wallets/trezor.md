@@ -1,111 +1,111 @@
 ---
 title: Trezor
-description: This guide walks you through how to use your Trezor hardware wallet to sign transactions in Moonbeam, leveraging its Ethereum compatibility features
+description: В этом руководстве Вы узнаете, как использовать аппаратный кошелек Trezor для подписи транзакций в Moonbeam, используя его функции совместимости с Ethereum.
 ---
 
-# Trezor Hardware Wallet
+# Trezor Аппаратный Кошелек
 
 ![Intro diagram](/images/trezor/trezor-banner.png)
 
-## Introduction
+## Вступление
 
-Hardware wallets provide a safer way to store crypto funds because the private key (used for signing transactions) is stored offline. Trezor offers two hardware wallet solutions at the time of writing: Trezor One and Trezor Model T.
+Аппаратные кошельки обеспечивают более безопасный способ хранения криптовалюты, поскольку закрытый ключ (используемый для подписи транзакций) хранится в автономном режиме. На момент написания данной статьи Trezor предлагает два варианта аппаратных кошельков: Trezor One и Trezor Model T.
 
-Because Moonbeam is fully Ethereum compatible, you can use your Trezor device to sign transactions on Moonbeam!
+Поскольку Moonbeam полностью совместим с Ethereum, Вы можете использовать свое устройство Trezor для подписания транзакций на Moonbeam!
 
-This tutorial shows you how to get started with your Trezor hardware wallet on Moonbase Alpha. The guide only illustrates the steps for a Trezor Model T device, but you can follow along with a Trezor One as well.
+В этом руководстве Вы узнаете, как начать работу с аппаратным кошельком Trezor на Moonbase Alpha. В данном руководстве показаны шаги касающееся только устройства Trezor Model T, но Вы также можете выполнить их с Trezor One.
 
-Please note that your Trezor device will sign transactions in whichever MetaMask network is connected to.
+Обратите внимание, что Ваше устройство Trezor будет подписывать транзакции в той сети, к которой подключен MetaMask.
 
-## Checking Prerequisites
+## Проверка Зависимостей
 
-Before you get started, update [Trezor Suite](https://suite.trezor.io/) to the latest version available. Also, make sure you've your Trezor hardware wallet device running the latest firmware. The Trezor wiki offers tutorials on how to update the firmware of both [Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1) and [Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware) devices.
+Прежде чем начать, обновите [Trezor Suite] (https://suite.trezor.io/) до последней доступной версии. Кроме того, убедитесь, что на Вашем аппаратном кошельке Trezor установлена последняя версия прошивки. На своей вики странице Trezor предлагает инструкции по обновлению прошивки для обеих моделей устройств [Trezor One](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware__T1) и [Trezor Model T](https://wiki.trezor.io/User_manual:Updating_the_Trezor_device_firmware).
 
-At the time of writing, the following versions were used:
+на момент написания статьи использовались следующие версии:
 
  - Trezor Suite 21.5.1
- - Trezor One firmware v1.10.0
- - Trezor Model T firmware v2.4.0
+ - Trezor One версия прошивки v1.10.0
+ - Trezor Model T версия прошивки v2.4.0
 
-In addition, you'll need MetaMask as an intermediary between your Trezor device and Moonbase Alpha. Make sure that your MetaMask is [connected to Moonbase Alpha](/integrations/wallets/metamask/). Please note that your Trezor device will sign transactions in whichever MetaMask network is connected to.
+Кроме того, Вам понадобится MetaMask в качестве посредника между Вашим устройством Trezor и Moonbase Alpha. Убедитесь, что Ваш MetaMask [подключен к Moonbase Alpha](/integrations/wallets/metamask/). Обратите внимание, что Ваше устройство Trezor будет подписывать транзакции в той сети, к которой подключен MetaMask.
 
-## Importing your Trezor Account to MetaMask
+## Импорт Вашей учетной записи Trezor в MetaMask
 
-To get started, you need to have set up a wallet (either standard or a hidden wallet). Once you've connected your Trezor device, unlocked it, and get a wallet setup in Trezor Suite. Next, to import your Trezor Ethereum account to MetaMask, take the following steps:
+Для начала Вам необходимо настроить (стандартный или скрытый) кошелек. После того, как Вы подключили свое Trezor устройство, затем разблокировали его и настроили кошелек в Trezor Suite. После этого, чтобы импортировать Вашу учетную запись Trezor Ethereum в MetaMask, выполните следующие действия:
 
- 1. Click on the top-right logo to expand the menu
- 2. Select "Connect Hardware Wallet"
+ 1. Нажмите на логотип в правом верхнем углу, чтобы раскрыть меню
+ 2. Выберите "Подключить аппаратный кошелек"
 
-![MetaMask Connect Hardware Wallet](/images/ledger/ledger-images1.png)
+![Подключить Аппаратный Кошелек MetaMask](/images/ledger/ledger-images1.png)
 
-Right after, you are prompted to select which hardware wallet you'll like to use in MetaMask. At the moment of writing, only Ledger and Trezor hardware wallets are supported. If you have your Trezor device ready to go, take the following steps:
+Сразу же после этого Вам будет предложено выбрать, какой аппаратный кошелек Вы хотите использовать в MetaMask. На момент написания статьи поддерживаются только аппаратные кошельки Ledger и Trezor. Если Ваше устройство Trezor готово к работе, выполните следующие действия:
 
- 1. Select the Trezor logo
- 2. Click on "Continue"
+ 1. Выберите логотип Trezor
+ 2. Нажмите "Продолжить"
 
-![MetaMask Select Trezor Hardware Wallet](/images/trezor/trezor-images2.png)
+![MetaMask Выбирете Аппаратный Кошелек Trezor](/images/trezor/trezor-images2.png)
 
-After clicking the button, a new tab named `TrezorConnect` should show up, where you'll need to pair your device. This is not required if you've Trezor Suite opened and your device is connected. Here, click on "Pair devices.
+После нажатия кнопки, должна появиться новая вкладка с именем `TrezorConnect`, где Вам нужно будет подключить Ваше устройство. Эти шаги не требуются, если Ваш Trezor Suite открыт и Ваше устройство подключено. Здесь нажмите "Сопряжение устройств"
 
-![Trezor Hardware Wallet Connect Pair Device](/images/trezor/trezor-images3.png)
+![Подключение Аппаратного Кошелька Trezor Сопряжение Устройства](/images/trezor/trezor-images3.png)
 
-On the next screen, take the following steps:
+На следующем экране выполните следующие действия:
 
- 1. Click on "Check for devices." This will open a menu showing which Trezor device (if available) you want to connect to
- 2. Select the Trezor device you want to use
- 3. Click on "Connect"
+ 1. Щелкните "Проверить устройство". Откроется меню, показывающее, к какому устройству Trezor (если доступно) Вы хотите подключиться
+ 2. Выберите устройство Trezor, которое Вы хотите использовать
+ 3. Нажмите "Подключиться"
 
-![Trezor Hardware Wallet Connect Wizard Select and Connect Device](/images/trezor/trezor-images4.png)
+![Выберите Мастер Подключения Аппаратного Кошелька Trezor И Подключите Устройство](/images/trezor/trezor-images4.png)
 
-Once you've your device connected, you need to allow MetaMask to read its public keys. Therefore, click on "Allow once for this session." Optionally, you can also check the "Don't ask me again" box.
+После подключения устройства Вам необходимо разрешить MetaMask читать его открытые ключи. Поэтому нажмите "Разрешить только для этого сеанса". При желании Вы также можете установить флажок "Больше не спрашивать".
 
-![Trezor Hardware Wallet Connect Wizard Allow Read Public Keys](/images/trezor/trezor-images5.png)
+![Мастер Подключения Аппаратного Кошелька Trezor Позволяет Читать Открытые Ключи](/images/trezor/trezor-images5.png)
 
-Next, you are asked if you want to export the public key of your Ethereum account (tab was cropped and labeled as 1 in the following image). Right after, you are prompted with an option to use [Trezor's passphrase option (tab cropped and labeled as 2 in the image). If you want to use the default wallet, just click on "Enter." On the contrary, please follow [Trezor's wiki article for passphrase wallets](https://wiki.trezor.io/Passphrase).
+Затем Вас спросят, хотите ли Вы экспортировать открытый ключ своей учетной записи Ethereum (вкладка была обрезана и отмечена цифрой 1 на следующем изображении). Сразу после этого Вам будет предложено использовать параметр [парольная фраза Trezor (вкладка обрезана и отмечена цифрой 2 на изображении). Если Вы хотите использовать кошелек по умолчанию, просто нажмите "Enter". Или, следуйте [вики-статье Trezor предоставляющией информацию о кошельках с паролями](https://wiki.trezor.io/Passphrase).
 
-![Trezor Hardware Wallet Connect Wizard Allow Export and Passphrase](/images/trezor/trezor-images6.png)
+![Мастер Подключения Аппаратного Кошелька Trezor Разрешить Экспорт И Парольную Фразу](/images/trezor/trezor-images6.png)
 
-If MetaMask was able to connect successfully to your Trezor device, you should see a list of five Ethereum-styled accounts. On the contrary, please double-check that you've properly connected your Trezor device to the computer and it is unlocked. You can also repeat the process with the Trezor Suite app opened.
+Если MetaMask удалось успешно подключиться к Вашему устройству Trezor, Вы должны увидеть список из пяти учетных записей в Ethereum стиле. Также, дважды проверьте, правильно ли Вы подключили устройство Trezor к компьютеру и разблокировано ли оно. Вы также можете повторить процесс с открытым приложением Trezor Suite.
 
-From this list of five Ethereum accounts, take the following steps:
+Из списка пяти учетных записей Ethereum выполните следующие действия:
 
- 1. Select the accounts you would like to import from your Trezor device
- 2. Click on "Unlock"
+ 1. Выберите учетные записи, которые Вы хотите импортировать со своего устройства Trezor.
+ 2. Нажмите "Разблокировать"
 
-![Trezor Select Ethereum Accounts to Import](/images/trezor/trezor-images7.png)
+![Trezor Выберите Учетные Записи Ethereum Для Импорта](/images/trezor/trezor-images7.png)
 
-If you've imported your Trezor Ethereum-styled account successfully, you should see it displayed in the main MetaMask screen like shown in the following image:
+Если Вы успешно импортировали свою учетную запись в стиле Trezor Ethereum, Вы должны увидеть его на главном экране MetaMask, как показано на следующем изображении:
 
-![MetaMask Successfully Imported Trezor Account](/images/trezor/trezor-images8.png)
+![MetaMask Успешно Импортировал Учетную Запись Trezor](/images/trezor/trezor-images8.png)
 
-You've now successfully imported a Moonbeam compatible account from your Trezor device and are now ready to start [signing transactions using your hardware wallet](#signing-a-transaction-using-your-trezor).
+Вы успешно импортировали учетную запись, совместимую с Moonbeam, со своего устройства Trezor и теперь готовы к работе [Подпись Транзакций С Использованием Вашего Аппаратного Кошелька](#signing-a-transaction-using-your-trezor).
 
-## Signing a Transaction Using your Trezor
+## Подпись транзакции с помощью Trezor
 
-If you've successfully [imported your Trezor account to MetaMask](#importing-your-trezor-account-to-metamask), you are ready to sign transactions on Moonbeam using your Trezor device. This tutorial will show you how to send a simple transaction on the Moonbase Alpha TestNet, but it applies to other Moonbeam ecosystem networks.
+Если Вы успешно [импортировали свою учетную запись Trezor в MetaMask](#importing-your-trezor-account-to-metamask), Вы готовы к подписи транзакции на Moonbeam с помощью устройства Trezor. Из этого руководства Вы узнаете, как отправить простую транзакцию в Moonbase Alpha TestNet, но это применимо и к другим сетям экосистемы Moonbeam.
 
-First, make sure your Trezor account is [funded with DEV tokens](/getting-started/moonbase/faucet/). Next, click on the "Send" button.
+Во-первых, убедитесь, что Ваша учетная запись Trezor [содержит DEV токени](/getting-started/moonbase/faucet/). Далее нажмите кнопку "Отправить".
 
-![MetaMask Trezor Account Funded](/images/trezor/trezor-images9.png)
+![Аккаунт MetaMask Trezor профинансирован](/images/trezor/trezor-images9.png)
 
-A `TrezorConnect` tab should pop up, asking permission to read public keys from your device and prepare your Trezor for transaction and data signing. Once you are ready, click on "Allow once for this session." Optionally, you can also check the "Don't ask me again" box.
+Должна появиться вкладка `TrezorConnect` с запросом разрешения на чтение открытых ключей с Вашего устройства и подготовки Trezor к транзакциям и подписи данных. Когда будете готовы, нажмите "Разрешить только для этого сеанса". При желании Вы также можете установить флажок "Больше не спрашивать".
 
-![Trezor Hardware Wallet Allow Read Public Keys and Signing](/images/trezor/trezor-images10.png)
+![Аппаратный Кошелек Trezor Позволяет Читать Открытые Ключи И Выполнять Подпись](/images/trezor/trezor-images10.png)
 
-As you would in a standard transaction, set the recipient address, enter the number of tokens to send, review transaction details and confirm it. This will initiate the transaction signature wizard in your Trezor device. Here, take the following steps:
+Как и в стандартной транзакции, установите адрес получателя, введите количество токенов для отправки, проверьте детали транзакции и подтвердите их. Это запустит мастер подписания транзакции на Вашем устройстве Trezor. Здесь выполните следующие шаги:
 
- 1. Review all transaction details. Please note that the token corresponds to the network MetaMask is connected to. **In this case, it is DEV tokens and not UNKN!**
- 2. Once all details have been checked, hold the button to confirm
+ 1. Просмотрите все детали транзакции. Обратите внимание, что токен соответствует сети, к которой подключен MetaMask. **В данном случае это токены DEV, а не UNKN!**
+ 2. После того, как все детали будут проверены, нажмите кнопку для подтверждения.
 
-!!! note
-    At the time of writing, the token name for all Moonbeam-related networks is always shown as `UNKN`. Please note that the token being handled is the one corresponding to the network MetaMask is connected to.
+!!! Примечание
+    На момент написания статьи имя токена для всех сетей, связанных с Moonbeam, всегда отображается как `UNKN`. Обратите внимание, что обрабатываемый токен - это токен, соответствующий сети, к которой подключен MetaMask.
 
-![Trezor Hardware Wallet Sign Transaction](/images/trezor/trezor-images11.png)
+![Транзакция Подписи Аппаратного Кошелька Trezor](/images/trezor/trezor-images11.png)
 
-Right after you've approved the transaction, MetaMask sends it to the network. Once the transaction is confirmed, it will be displayed as "Send" on MetaMask's main screen.
+Сразу после подтверждения транзакции, MetaMask отправляет ее в сеть. После подтверждения транзакции она будет отображаться как "Отправленная" на основном экране MetaMask.
 
-![MetaMask Trezor Transaction Wizard](/images/trezor/trezor-images12.png)
+![Мастер Транзакций MetaMask Trezor](/images/trezor/trezor-images12.png)
 
-And that is it! You've signed a transaction on Moonbase Alpha using your Trezor hardware wallet. 
+Вот и все! Вы выполнили подпись транзакции на Moonbase Alpha, используя свой аппаратный кошелек Trezor.
 
-The process of interacting with smart contracts using your Trezor device is similar. Make sure to double-check the data being signed on your Trezor device before confirming the transaction.
+Процесс взаимодействия со смарт-контрактами с помощью Вашего устройства Trezor аналогичен. Обязательно проверьте несколько раз данные, подписываемые на Вашем устройстве Trezor, прежде чем подтверждать транзакцию.
