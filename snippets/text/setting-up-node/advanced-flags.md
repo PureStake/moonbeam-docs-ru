@@ -1,22 +1,22 @@
-With the release of Moonbase Alpha v7, nodes also provide access to some non-standard RPC methods, which allow developers to inspect and debug transactions during runtime. Currently, two features are available:
+С выходом Moonbase Alpha v7 ноды также предоставляют доступ к некоторым нестандартным методам RPC, которые позволяют разработчикам проверять и отлаживать транзакции во время выполнения. В настоящее время доступны две функции:
 
- - Geth debug API: more specifically, the `debug_traceTransaction` method. This will attempt to run the transaction in the same manner as it was executed. You can read more about this RPC method in [this link](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction)
- - OpenEthereum trace module: more specifically, the `trace_filter` method. This returns the trace matching a specific filter provided as input to the RPC call. You can read more about this RPC method in [this link](https://openethereum.github.io/JSONRPC-trace-module#trace_filter)
+ - Geth debug API: более подробно, метод `debug_traceTransaction`. Он попытается запустить транзакцию в том же виде, в котором она была выполнена. Подробнее об этом методе RPC можно прочитать по [этой ссылке](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
+ - Модуль трассировки OpenEthereum: более подробно о методе `trace_filter`. Он возвращает трассировку, соответствующую определенному фильтру, предоставленному в качестве входных данных для вызова RPC. Подробнее об этом методе RPC можно прочитать по [этой ссылке](https://openethereum.github.io/JSONRPC-trace-module#trace_filter).
 
-The features mentioned above can be activated using the following flags:
+Перечисленные выше возможности могут быть активированы с помощью следующих флагов:
 
  - `--ethapi=debug`: enables the Geth debug API for the `debug_traceTransaction` RPC call
  - `--ethapi=trace`: enables the OpenEthereum trace module for the `trace_filter` RPC call
 
-!!! note
-    Debug/Trace features are still being actively developed. Because these requests are very CPU-demanding, it is recommended to run the node with the `--execution=Native` flag. This will use the native runtime included as part of the node executable instead of the Wasm binary stored on-chain.
+!!! примечание
+    Функции отладки/отслеживания все еще активно разрабатываются. Поскольку эти запросы очень требовательны к процессору, рекомендуется запускать ноду с флагом `--execution=Native`. Это позволит использовать родную среду обработки, включенную в исполняемый файл ноды, вместо бинарного файла Wasm, хранящегося в цепи.
 
-You can combine both flags when running a node. 
+Вы можете совмещать оба флага при запуске ноды. 
 
-By default, the maximum number of trace entries a single request of `trace_filter` is allowed to return is `500`. A request exceeding this limit will return an error. You can set a different maximum limit with the following flag:
+По умолчанию максимальное количество записей трассировки, которое может вернуть один запрос `trace_filter`, равно `500`. Запрос, превышающий этот лимит, вернет ошибку. Вы можете установить другой максимальный предел с помощью следующего флага:
 
- - `--ethapi-trace-max-count <uint>`: sets the maximum number of trace entries to be returned by the node
+ - `--ethapi-trace-max-count <uint>`: устанавливает максимальное количество записей трассировки, возвращаемых нодой
 
-Blocks processed by requests are temporarily stored on cache for a certain amount of time (default is `300` seconds), after which they are deleted. You can set a different time for deletion with the following flag:
+Блоки, обрабатываемые запросами, временно хранятся в кэше в течение определенного времени (по умолчанию `300` секунд), после чего удаляются. Вы можете установить другое время удаления с помощью следующего флага:
 
- - `-ethapi-trace-cache-duration <uint>`: sets the duration (in seconds) after which the cache of `trace_filter,` for a given block, is discarded
+ - `-ethapi-trace-cache-duration <uint>`: устанавливает продолжительность (в секундах), после которой кэш `trace_filter,` для данного блока, будет удален
