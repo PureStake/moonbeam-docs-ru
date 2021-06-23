@@ -64,7 +64,7 @@ git clone https://github.com/PureStake/moonlotto-subgraph \
 npx graph codegen --output-dir src/types/
 ```
 
-!!! note
+!!! Примечание
     Для создания типов необходимо, чтобы файлы ABI были определены в файле  `subgraph.yaml`. В этом экземпляре репозитория уже присутствует файл, но обычно он создается после компиляции контракта. Дополнительную информацию Вы можете найти в [репозитории Moonlotto](https://github.com/PureStake/moonlotto-subgraph).
 
 Вы можете выполнить команду `codegen` с помощью `yarn codegen`. 
@@ -234,7 +234,7 @@ export function handlePlayerJoined(event: PlayerJoined): void {
  - Зайдите в личный кабинет для получения "access token"
  - Создайте свой Subgraph с помощью кнопки Add Subgraph на сайте Graph Explorer. Запишите название Subgraph
 
-!!! note
+!!! Примечание
     Все шаги можно найти по [этой ссылке](https://thegraph.com/docs/deploy-a-subgraph).
  
 Если Вы используете локальную ноду The Graph, Вы можете создать свой Subgraph, выполнив следующую команду:

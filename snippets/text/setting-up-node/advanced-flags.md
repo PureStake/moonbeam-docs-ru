@@ -8,7 +8,7 @@ The features mentioned above can be activated using the following flags:
  - `--ethapi=debug`: enables the Geth debug API for the `debug_traceTransaction` RPC call
  - `--ethapi=trace`: enables the OpenEthereum trace module for the `trace_filter` RPC call
 
-!!! note
+!!! Примечание
     Debug/Trace features are still being actively developed. Because these requests are very CPU-demanding, it is recommended to run the node with the `--execution=Native` flag. This will use the native runtime included as part of the node executable instead of the Wasm binary stored on-chain.
 
 You can combine both flags when running a node. 
