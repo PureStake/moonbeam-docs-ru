@@ -1,15 +1,15 @@
-Tokens on Moonbase Alpha, named DEV, will be issued on demand. Currently, there are two ways you can get access to this token: through a Discord bot, or manually.
+Токены Moonbase Alpha под названием DEV будут выдаваться по запросу. В настоящее время есть два способа получить доступ к этому токену: через бота Discord или вручную.
 
 ### Discord - Mission Control
 
-To request tokens automatically, we've created a Discord bot (named Mission Control :sunglasses:) that will automatically send a maximum of 10 DEV tokens every 24 hours (per Discord user) when you enter your address. You can check it out on our [Discord channel](https://discord.gg/PfpUATX). For more information, please visit [this site](/getting-started/testnet/faucet/).
+Для автоматического запроса токенов мы создали Discord-бота (под названием Mission Control :sunglasses:), который будет автоматически отправлять максимум 10 токенов DEV каждые 24 часа (на одного пользователя Discord), когда вы введете свой адрес. Вы можете проверить его на нашем [Discord канале](https://discord.gg/PfpUATX). Для получения дополнительной информации, пожалуйста, посетите [этот сайт](/getting-started/testnet/faucet/).
  
-Under the category "Miscellaneous", you will find our AlphaNet bot channel. Enter the following message, replacing `<enter-address-here->` with your H160 address:
+В категории " Miscellaneous" вы найдете наш канал бота AlphaNet. Введите следующее сообщение, заменив `<enter-address-here->` на свой адрес H160:
  
 ```
 !faucet send <enter-address-here->
 ```
 
-### Manual Procedure
+### Ручная процедура
 
-For token requests of more than the limited account allowed by our Discord bot, contact a moderator directly via our [Discord channel](https://discord.gg/PfpUATX). We are happy to provide the tokens needed to test your applications.
+Для запроса токенов в количестве большем, чем позволяет наш Discord-бот, свяжитесь с модератором напрямую через наш [Discord-канал](https://discord.gg/PfpUATX). Мы будем рады предоставить токены, необходимые для тестирования ваших приложений.
