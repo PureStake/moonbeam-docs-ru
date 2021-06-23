@@ -1,9 +1,9 @@
-An Oracle node has a set of job IDs, where each corresponds to a task that can be requested by a user, for example, fetch a price feed. To do so, the user needs to send a request through a contract, we'll name it the _Client_ contract, passing in the following information:
+Нода Оракула имеет набор идентификаторов операций, каждый из которых соответствует заданию, которое может быть запрошено пользователем, например, получить фид цены. Для этого пользователь должен послать запрос через контракт, назовем его _Client_, передав следующую информацию:
 
- - Oracle address: address of the contract deployed by the Oracle node
- - Job ID: task to be executed
- - Payment: payment in LINK tokens that the Oracle will receive for fulfiling the request
+ - Адрес Оракула: адрес контракта, развернутого на ноде Оракула.
+ - ID задания: задание, которое должно быть выполнено
+ - Оплата: оплата в токенах LINK, которую получит Оракул за выполнение запроса.
 
-This request actually sends a _transferAndCall_ to the LINK token contract, which handles the payment and relays the request to the Oracle contract. Here, an event is emited with the request, which is picked up by the Oracle node. Next, the node fetches the necessary data and executes the _fulfilOracleRequest_ function, which executes a callback that stores the requested information in the Client contract. The following diagram explains this workflow.
+Этот запрос фактически посылает _transferAndCall_ контракту с токенами LINK, который обрабатывает платеж и передает запрос контракту Оракула. Здесь вместе с запросом происходит событие, которое получает нода Оракула. Далее нода получает необходимые данные и выполняет функцию _fulfilOracleRequest_, которая реализует обратный вызов, сохраняющий запрошенную информацию в контракте Клиента. Следующая диаграмма объясняет этот процесс.
 
 ![Basic Request Diagram](/images/chainlink/chainlink-basicrequest.png)
