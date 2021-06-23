@@ -1,1 +1,1 @@
-The examples in this guide assumes you have a MacOS or Ubuntu 18.04-based environment and will need to be adapted accordingly for Windows.
+Примеры в этом руководстве предполагают, что у вас есть операционная система MacOS или Ubuntu 18.04, и их необходимо адаптировать для Windows.
