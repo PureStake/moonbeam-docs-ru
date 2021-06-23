@@ -15,7 +15,7 @@ MetaMask можно использовать для подключения к Mo
 
 В этом руководстве описаны все шаги для подключения MetaMask к автономной ноде Moonbeam для отправки токенов между учетными записями. Если Вы еще не настроили собственную ноду, обратитесь к [этому руководству](/getting-started/local-node/setting-up-a-node/), или следуйте инструкции в [репозитории Github](https://github.com/PureStake/moonbeam/).
 
-!!! Примечание
+!!! примечание 
     Это руководство было создано с использованием тега {{ networks.development.build_tag}}, который основан на {{ networks.moonbase.version }} версии [Moonbase Alpha](https://github.com/PureStake/moonbeam/releases/tag/{{ networks.moonbase.version }}). Платформа Moonbeam и компоненты [Frontier](https://github.com/paritytech/frontier), которые используются для совместимости Ethereum на основе Substrate, все еще находятся в стадии активной разработки. 
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
@@ -83,6 +83,6 @@ Moonbase Alpha TestNet:
 
 ![Нода Moonbeam](/images/metamask/using-metamask-9.png)
 
-!!! Примечание
+!!! примечание 
     Если Вы в конечном итоге сбросите свою ноду с помощью команды Substrate purge-chain, Вам нужно будет сбросить свою учетную запись MetaMask genesis, используя Настройки -> Дополнительно -> Сбросить учетную запись. Это очистит историю транзакций из Ваших учетных записей и сбросит одноразовый номер. Убедитесь, что Вы не стираете все, что хотите сохранить!
  

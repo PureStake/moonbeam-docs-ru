@@ -15,7 +15,7 @@ description: Узнайте как создавать и отправлять т
  - [Ethers.js](https://docs.ethers.io/)
  - [Web3.py](https://web3py.readthedocs.io/)
 
-!!! Примечание
+!!! примечание 
     --8<-- 'text/common/assumes-mac-or-ubuntu-env.md'
 
 ## Проверка предварительных условий

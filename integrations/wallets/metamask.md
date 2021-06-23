@@ -19,7 +19,7 @@ description: В этом руководстве Вы узнаете, как по
     <a href="#" class="md-button connectMetaMask">Connect MetaMask</a>
 </div>
 
-!!! Примечание
+!!! примечание 
     Вы увидите всплывающее окно MetaMask с запросом разрешения на добавление Moonbase Alpha в качестве настраиваемой сети. Как только вы утвердите разрешения, MetaMask переключит Вашу текущую сеть на Moonbase Alpha.
 
 Узнайте [как интегрировать кнопку Connect MetaMask](#integrate-metamask-into-a-dapp) в Ваши DApps, чтобы пользователи могли подключаться к Moonbase Alpha простым нажатием кнопки.

@@ -15,7 +15,7 @@ description: Узнайте, как использовать MetaMask с Moonbea
     <a href="#" class="md-button connectMetaMask">Connect MetaMask</a>
 </div>
 
-!!! Примечание:
+!!! примечание :
     Появится всплывающее окно MetaMask с запросом разрешения на добавление Moonbase Alpha в качестве настраиваемой сети. Как только вы утвердите разрешения, MetaMask переключит вашу текущую сеть на Moonbase Alpha.
 ## Создание кошелька
 
