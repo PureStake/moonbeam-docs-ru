@@ -49,7 +49,7 @@ Moonbase Alpha TestNet:
 Если Вас интересует более подробное пошаговое руководство, Вы можете перейти к нашим подробным руководствам:
 
  - MetaMask для [автономной ноды Moonbeam](/getting-started/local-node/using-metamask/)
- - MetaMask для [Moonbase Alpha](/getting-started/testnet/metamask/)
+ - MetaMask для [Moonbase Alpha](/getting-started/moonbase/metamask/)
 
 ## Интегрируйте MetaMask в DApp
 

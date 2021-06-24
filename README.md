@@ -36,7 +36,7 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 В настоящее время есть два способа как начать работу на  Moonbeam: 
 
  - Создать свой собственный экземпляр Moonbeam как [отдельный узел](/getting-started/local-node/setting-up-a-node/)
- - [Подключится](/getting-started/testnet/connect/) к тестовой сети [Moonbase Alpha TestNet](/networks/testnet/)
+ - [Подключится](/getting-started/moonbase/connect/) к тестовой сети [Moonbase Alpha TestNet](/networks/moonbase/)
 
 ### Кошельки
 

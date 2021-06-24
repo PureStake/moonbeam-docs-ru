@@ -9,7 +9,7 @@ description: В этом руководстве вы узнаете, как по
 
 ## Вступление
 
-MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) что теперь он поддерживает тестовую сеть [Moonbase Alpha TestNet](/networks/testnet/). Это означает, что теперь Вы можете взаимодействовать с Moonbase Alpha, используя ещё один кошелек помимо MetaMask.
+MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) что теперь он поддерживает тестовую сеть [Moonbase Alpha TestNet](/networks/moonbase/). Это означает, что теперь Вы можете взаимодействовать с Moonbase Alpha, используя ещё один кошелек помимо MetaMask.
 
 В этом руководстве мы рассмотрим, как настроить MathWallet для подключения к нашей “TestNet” сети. Мы также представим краткий пример использования MathWallet в качестве поставщика Web3 услуг для других инструментов, таких как [Remix](/integrations/remix/).
 

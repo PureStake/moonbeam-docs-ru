@@ -30,4 +30,4 @@ Moonbeam это децентрализованная смарт-контракт
 
 В нашем Moonbeam TestNet (также называемом Moonbase Alpha) токен называется DEV. Этот токен можно приобрести свободно, поскольку его единственная цель — стимулировать разработку и тестирование на Moonbase Alpha.
 
-Вы можете получить доступ к токенам DEV через наш [кран](https://docs.moonbeam.network/getting-started/testnet/faucet/).
+Вы можете получить доступ к токенам DEV через наш [кран](https://docs.moonbeam.network/getting-started/moonbase/faucet/).

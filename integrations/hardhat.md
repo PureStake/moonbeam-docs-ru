@@ -21,8 +21,8 @@ Hardhat — это среда разработки Ethereum, которая по
 
 Кроме того, Вам также понадобится следующее:
 
- - Установить MetaMask и [подключиться к Moonbase](/getting-started/testnet/metamask/)
- - Иметь учетную запись с денежными средствами, которые Вы можете получить от [Mission Control](/getting-started/testnet/faucet/)
+ - Установить MetaMask и [подключиться к Moonbase](/getting-started/moonbase/metamask/)
+ - Иметь учетную запись с денежными средствами, которые Вы можете получить от [Mission Control](/getting-started/moonbase/faucet/)
 
 Как только все требования будут выполнены, Вы будете готовы производить блоки с помощью Hardhat.
 
@@ -102,7 +102,7 @@ contract Box {
 
 Давайте изменим наш конфигурационный файл Hardhat, чтобы можно было скомпилировать и разместить этот контракт на Moonbase Alpha.
 
-Создайте учетную запись MetaMask (если вы еще не сделали этого), [подключитесь к Moonbase Alpha](/getting-started/testnet/metamask/), и пополните ее через [Mission Control](/getting-started/testnet/faucet/). Мы будем использовать приватный ключ учетной записи, созданной для размещения контракта.
+Создайте учетную запись MetaMask (если вы еще не сделали этого), [подключитесь к Moonbase Alpha](/getting-started/moonbase/metamask/), и пополните ее через [Mission Control](/getting-started/moonbase/faucet/). Мы будем использовать приватный ключ учетной записи, созданной для размещения контракта.
 
 Начнем с установки [ethers плагина](https://hardhat.org/plugins/nomiclabs-hardhat-ethers.html), который добавит библиотеку [ethers.js][/integrations/ethers/] позволяющую Вам легко взаимодействовать с блокчейном. Мы можем установить плагин `ethers` запустив:
 

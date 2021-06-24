@@ -11,8 +11,8 @@ description: Используйте функцию публикации-подп
 ## Проверка предварительных условий
 Примеры в этом руководстве работают в среде Ubuntu 18.04. Также Вам понадобится следующее:
 
- - Иметь установленный и [подключённый к Moonbase](/getting-started/testnet/metamask/) Metamask кошелёк
- - Иметь учетную запись с денежными средствами. Вы можете получить их от [Mission Control](/getting-started/testnet/faucet/)
+ - Иметь установленный и [подключённый к Moonbase](/getting-started/moonbase/metamask/) Metamask кошелёк
+ - Иметь учетную запись с денежными средствами. Вы можете получить их от [Mission Control](/getting-started/moonbase/faucet/)
  - Разместить свой собственный токен ERC-20 на Moonbase. Вы можете сделать это, следуя нашему [Remix справочнику](/getting-started/local-node/using-remix/), сначала привязав MetaMask к Moonbase
 
 --8<-- 'text/common/install-nodejs.md'

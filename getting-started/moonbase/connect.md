@@ -13,4 +13,4 @@ description: Сеть Moonbeam TestNet, получившая название Mo
 
 ## Получить Токены
 
-Чтобы начать разработку Moonbase Alpha, вы можете получить токены DEV из нашего [крана](/getting-started/testnet/faucet/).
+Чтобы начать разработку Moonbase Alpha, вы можете получить токены DEV из нашего [крана](/getting-started/moonbase/faucet/).

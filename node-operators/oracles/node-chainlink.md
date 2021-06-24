@@ -30,7 +30,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
  - Moonbase Alpha WSS EndPoint: `wss://wss.testnet.moonbeam.network`
  - Moonbase Alpha ChainId: `1287`
  - LINK Token в Moonbase Alpha: `0xa36085F69e2889c224210F603D836748e7dC0088`
- - Получите токены Moonbase Alpha через [наш кран](/getting-started/testnet/faucet/)
+ - Получите токены Moonbase Alpha через [наш кран](/getting-started/moonbase/faucet/)
 
 ## Приступаем к работе
 
@@ -46,7 +46,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
 Основные требования:
 
  - Докер для запуска контейнеров нод Postgres DB и ChainLink. Для получения дополнительной информации по установке докера, пожалуйста, посетите [эту страницу](https://docs.docker.com/get-docker/)
- - Учетная запись с денежными средствами. Вы можете создать ее с помощью [Metamask](/integrations/wallets/metamask/), который можно пополнить через [этот кран](https://docs.moonbeam.network/getting-started/testnet/faucet/)
+ - Учетная запись с денежными средствами. Вы можете создать ее с помощью [Metamask](/integrations/wallets/metamask/), который можно пополнить через [этот кран](https://docs.moonbeam.network/getting-started/moonbase/faucet/)
  - Доступ к Remix IDE на случай, если Вы захотите использовать его для размещения контракта Oracle. Вы можете найти более подробную информацию о Remix на Moonbeam [здесь](/integrations/remix/)
 
 ## Настройка ноды
@@ -134,7 +134,7 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 ![вход в Chainlink](/images/chainlink/chainlinknode-image2.png)
 
-Перейдите на "Configuration Page" и скопируйте адрес ноды. Используйте [кран Moonbeam](https://docs.moonbeam.network/getting-started/testnet/faucet/) для пополнения.
+Перейдите на "Configuration Page" и скопируйте адрес ноды. Используйте [кран Moonbeam](https://docs.moonbeam.network/getting-started/moonbase/faucet/) для пополнения.
 
 ![адрес Chainlink](/images/chainlink/chainlinknode-image3.png)
 
