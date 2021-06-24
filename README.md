@@ -44,6 +44,8 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
  - [MetaMask](/integrations/wallets/metamask/)
  - [MathWallet](/integrations/wallets/mathwallet/)
+ - [Ledger](/integrations/wallets/ledger/)
+ - [Trezor](/integrations/wallets/trezor/)
 
 Однако любой кошелек, который работает с пользовательской сетью Ethereum, должен также работать и с Moonbeam!
 
@@ -57,7 +59,8 @@ Moonbeam также будет парачейном в сети Polkadot. Это
  - [Web3.js](/integrations/ethlibraries/web3js/)
  - [Ethers.js](/integrations/ethlibraries/etherjs/)
  - [Web3.py](/integrations/ethlibraries/web3py/)
- - [The Graph](/integrations/thegraph/)
+ - [The Graph](/integrations/indexers/thegraph/)
+ - [Covalent API](/integrations/indexers/covalent/)
  - [Debug API & Trace Module](/integrations/debug-trace/)
 
  Хотите, чтобы здесь был добавлен еще один инструмент Ethereum? [Дайте нам знать!](https://discord.gg/PfpUATX)
