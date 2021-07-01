@@ -1,46 +1,48 @@
 ---
-title: Телеметрия
-description: Как запустить телеметрию для полной Парачейн ноды для Сети Moonbeam
+title: Telemetry
+description: How to run telemetry for a full Parachain node for the Moonbeam Network
 ---
 
-# Телеметрия для полной ноды
+# Telemetry for a Full Node
 
 ![Telemetry Moonbeam Banner](/images/fullnode/telemetry-banner.png)
 
-## Вступление
+## Introduction
 
-С выходом Moonbase Alpha v6 вы можете запустить ноду, которая подключается к Moonbase Alpha TestNet. Пошаговое руководство можно найти в  [этой инструкции](/node-operators/networks/full-node/).
+Since Moonbase Alpha v6, and the recent launch of Moonriver, you can spin up a node that connects to the Moonbase Alpha TestNet or Moonriver on Kusama. You can check those steps in [this tutorial](/node-operators/networks/full-node/).
 
-Это руководство предоставит необходимые шаги для запуска сервера телеметрии для вашей Moonbase Alpha ноды.
+This guide will provide the necessary steps to enable the telemetry server for your Moonbeam-based node.
 
-!!! примечание 
-    Шаги, описанные в этом руководстве, предназначены для варианта телеметрии, отличного от стандартной телеметрии Polkadot, активированной по умолчанию (вы можете запускать ноды) без телеметрии, используя флаг `--no-telemetry`). Шаги, описанные в этом руководстве, обязательны только для узлов коллатора.
+!!! note
+    The steps described in this guide are for a telemetry instance different than the standard Polkadot telemetry enabled by default (you can run nodes with no telemetry by using the `--no-telemetry` flag). The steps described in this guide are mandatory only for collator nodes.
 
-## Сводка экспортера телеметрии
+## Telemetry Exporter Summary
 
-Moonbeam будет запускать сервер телеметрии, который собирает метрики Prometheus со всех нод парачейна Moonbeam в сети. Такой запуск будет помощью для нас на этапе разработки.  
+Moonbeam will run a telemetry server that collects Prometheus metrics from all the Moonbeam parachain nodes on the network. Running this will be a great help to us during our development phase.  
 
-Экспортер метрик может работать как сопроводительный файл, либо как локальный двоичный файл, если вы используете виртуальную машину. Он будет отправлять данные на наши серверы, поэтому вам не нужно включать какие-либо входящие порты для этого сервиса.
+The metrics exporter can run either as a Kubernetes sidecar, or as a local binary if you are running a VM. It will push data out to our servers, so you do not have to enable any incoming ports for this service.
 
-Мы используем сервис под названием [Gantree Node Watchdog](https://github.com/gantree-io/gantree-node-watchdog) to upload telemetry automatically.  для автоматической загрузки телеметрии. После включения телеметрии вы также можете получить доступ к серверу Prometheus / Grafana из приложения [Gantree App](https://app.gantree.io/).  В репозитории GitHub есть подробные инструкции. Если вам нужна дополнительная информация, тут краткая инструкция для быстрого старта.
+We are using a service called [Gantree Node Watchdog](https://github.com/gantree-io/gantree-node-watchdog) to upload telemetry automatically.  Once you enable telemetry, you can also access a Prometheus/Grafana server from the [Gantree App](https://app.gantree.io/).  There are detailed instructions on the GitHub repository. If you need more info, here is a quick start. 
 
-На данный момент нам нужно запустить две “сторожевые” ноды: одна для Relay Chain, другая для парачейна. Все это будет обновлено в следующем выпуске.
+For now, we need to run two node watchdogs, one for the parachain and one for the relay chain.  This will be updated in a future release. 
 
- Если Вам понадобится помощь, звяжитесь с нами в [Discord](https://discord.gg/FQXm74UQ7V) или в [Gantree Discord](https://discord.gg/N95McPjHZ2). 
+For help, contact our [Discord server](https://discord.gg/FQXm74UQ7V) or the [Gantree Discord](https://discord.gg/N95McPjHZ2). 
  
-## Проверка предварительных условий
+## Checking Prerequisites
 
-Перед тем как использовать это руководство, Вам необходимо:
+Before following this tutorial, you need to:
 
- 1. Войти в [https://app.gantree.io](https://app.gantree.io) и создать учетную запись.  Перейдите к ключам API и скопируйте свой ключ API.
- 
- 2. Запросить ключ PCK на нашем [Discord сервере](https://discord.gg/FQXm74UQ7V)
+ 1. Log in to [https://app.gantree.io](https://app.gantree.io) and create an account.  Navigate to API keys and copy your API key. 
+ 2. Request a PCK key in our [Discord server](https://discord.gg/FQXm74UQ7V)
+
+
+ You can use the same PCK key for all of our Moonbeam-based networks, which currently includes Moonbase Alpha and Moonriver.
    
-## Экспортер телеметрии с Docker
+## Telemetry Exporter with Docker
 
-Мы запустим два экземпляра “сторожевых” нод Gantree с помощью Docker: одна для Relay Chain, другая для парачейна.  
+We will run two instances of the Gantree node watchdog using Docker: one for the parachain and one for the relay chain.  
 
-### Необходимая информация о конфигурации
+### Required Configuration Information
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -48,9 +50,9 @@ Moonbeam будет запускать сервер телеметрии, кот
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### Инструкции
+### Instructions
 
-Сначала склонируйте клиентский репозиторий мониторинга экземпляров и создайте образ докера:
+First, clone the instance monitoring client repository and build the docker image:
 
 ```
 git clone https://github.com/gantree-io/gantree-node-watchdog
@@ -62,44 +64,46 @@ docker build .
 docker images
 ```
 
-Затем запустим докер-контейнер (“сторожевая” нода  парачейна Gantree). Обратите внимание, что вам необходимо заменить следующие поля:
+Run the docker container (parachain Gantree node watchdog). Note that you need to replace the following fields:
 
-  - `IMAGE-NAME` тем, что было получено на предыдущем шаге
-  - `YOUR-API-KEY` тем, что предоставленно на  [https://app.gantree.io](https://app.gantree.io)
+  - `IMAGE-NAME` with the one fetched in the previous step
+  - `YOUR-API-KEY` with the one provided by [https://app.gantree.io](https://app.gantree.io)
   - `YOUR-SERVER-NAME`
-  - `YOUR-PCK-KEY` тем, что запрошено в нашем Discord
+  - `YOUR-PCK-KEY` with the one requested in our Discord server (you can use the same one for all Moonbeam-based networks).
+
+The `PROJECT_ID` will always be set to `moonbeam`, regardless of what network you are connected to. The `CLIENT_ID` should contain your company name so we can easily identify you on the Prometheus/Grafana dashboard.
 
 ```
 docker run -it --network="host" \
 -e GANTREE_NODE_WATCHDOG_API_KEY="YOUR-API-KEY" \
--e GANTREE_NODE_WATCHDOG_PROJECT_ID="moonbase-alpha" \
+-e GANTREE_NODE_WATCHDOG_PROJECT_ID="moonbeam" \
 -e GANTREE_NODE_WATCHDOG_CLIENT_ID="YOUR-SERVER-NAME-parachain" \
 -e GANTREE_NODE_WATCHDOG_PCKRC="YOUR-PCK-KEY" \
 -e GANTREE_NODE_WATCHDOG_METRICS_HOST="http://127.0.0.1:9615" \
 --name gantree_watchdog_parachain IMAGE-NAME
 ```
 
-Теперь нам нужно запустить “сторожевую” ноду парачейна Gantree. Обратите внимание, что вам нужно заменить ту же информацию, что и на предыдущем шаге.
+Now, we need to run the relay Gantree node watchdog. Note that you need to replace the same information as in the previous step.
 
 ```
 docker run -it --network="host" \
 -e GANTREE_NODE_WATCHDOG_API_KEY="YOUR-API-KEY" \
--e GANTREE_NODE_WATCHDOG_PROJECT_ID="moonbase-alpha" \
+-e GANTREE_NODE_WATCHDOG_PROJECT_ID="moonbeam" \
 -e GANTREE_NODE_WATCHDOG_CLIENT_ID="YOUR-SERVER-NAME-relay" \
 -e GANTREE_NODE_WATCHDOG_PCKRC="YOUR-PCK-KEY" \
 -e GANTREE_NODE_WATCHDOG_METRICS_HOST="http://127.0.0.1:9616" \
 --name gantree_watchdog_relay IMAGE-NAME
 ```
 
-Вы должны увидеть ожидание подготовки в журналах. По завершении вы можете войти в [https://app.gantree.io](https://app.gantree.io) и выбрать сети. Вы увидите ссылку `View Monitoring Dashboard` на свою настраиваемую панель мониторинга Prometheus / Grafana, которую вы можете настроить в соответствии с вашими предпочтениями.  
+You should see "waiting for provisioning" in the logs. If it is your first time running Gantree, it will wait until you log back into the portal and click "provision dashboard" to switch to "provisioning". This switch can take a few minutes. Once it's complete, you can log into the [https://app.gantree.io](https://app.gantree.io) and select networks. You will see a `View Monitoring Dashboard` link to your custom Prometheus / Grafana dashboard which you can customize to your needs.  
 
-Когда все заработает, вы можете обновить команды для работы в режиме daemon.  Удалите `-it` and add `-d` в приведенной выше команде.  
+Once things are working well, you can update the commands to run in daemon mode.  Remove `-it` and add `-d` to the command above.  
 
-## Экспортер телеметрии с Systemd
+## Telemetry Exporter with Systemd
 
-Мы запустим два экземпляра сторожевых нод Gantree: одна для цепочки реле, другая для парачейна.  
+We will run two instances of the Gantree node watchdog: one for the parachain and one for the relay chain.  
 
-### Необходимая информация о конфигурации
+### Required Configuration Information
 
 - GANTREE_NODE_WATCHDOG_API_KEY
 - GANTREE_NODE_WATCHDOG_PROJECT_ID
@@ -107,52 +111,54 @@ docker run -it --network="host" \
 - GANTREE_NODE_WATCHDOG_PCKRC
 - GANTREE_NODE_WATCHDOG_METRICS_HOST
 
-### Инструкции
+### Instructions
 
-Во-первых, нам нужно загрузить двоичный код сторожевой ноды Gantree со страницы выпуска  [release page](https://github.com/gantree-io/gantree-node-watchdog/releases), и извлечь ее в папку, например `/usr/local/bin`.
+First, we need to download the Gantree node watchdog binary from the [release page](https://github.com/gantree-io/gantree-node-watchdog/releases), and extract it to a folder, for example, `/usr/local/bin`.
 
-Далее создадим две папки для файлов конфигурации:
+Next, let's create two folders for the configuration files:
 
 ```
 mkdir -p /var/lib/gantree/parachain
 mkdir -p /var/lib/gantree/relay
 ```
 
-Теперь нам нужно сгенерировать файлы конфигурации, поместить каждый файл в папки, созданные на предыдущем шаге. Обратите внимание, что вам необходимо заменить следующие поля:
+Now, we need to generate the configuration files, place each in the folders created in the previous step. Note that you need to replace the following fields:
 
-  - `YOUR-API-KEY` тем, что предоставленно [https://app.gantree.io](https://app.gantree.io)
+  - `YOUR-API-KEY` with the one provided by [https://app.gantree.io](https://app.gantree.io)
   - `YOUR-SERVER-NAME`
-  - `YOUR-PCK-KEY` тем, что запрошено в нашем Discord
+  - `YOUR-PCK-KEY` with the one requested in our Discord server
 
-Парачейн:
+The `project_id` will always be set to `moonbeam`, regardless of what network you are connected to. The `client_id` should contain your company name so we can easily identify you on the Prometheus/Grafana dashboard.
+
+Parachain:
 
 ```
 # Contents of /var/lib/gantree/parachain/.gnw_config.json
 {
   "api_key": "YOUR-API-KEY",
-  "project_id": "moonbase-alpha",
+  "project_id": "moonbeam",
   "client_id": "YOUR-SERVER-NAME-parachain",
   "pckrc": "YOUR-PCK-KEY",
   "metrics_host": "http://127.0.0.1:9615"
 }
 ```
 
-Встроенная Relay Chain:
+Embedded relay chain:
 
 ```
 # Contents of /var/lib/gantree/relay/.gnw_config.json
 {
   "api_key": "YOUR-API-KEY",
-  "project_id": "moonbase-alpha",
+  "project_id": "moonbeam",
   "client_id": "YOUR-SERVER-NAME-relay",
   "pckrc": "YOUR-PCK-KEY",
   "metrics_host": "http://127.0.0.1:9616"
 }
 ```
 
-Следующим шагом будет создание файла конфигурации systemd:
+The next step is to generate your systemd configuration file.
 
-Парачейн:
+Parachain:
 
 ```
 # Contents of /etc/systemd/system/gantree-parachain.service
@@ -171,7 +177,7 @@ ExecStart=/usr/local/bin/gantree_node_watchdog
 WantedBy=multi-user.target
 ```
 
-Встроенная Relay Chain:
+Embedded relay chain:
 
 ```
 # Contents of /etc/systemd/system/gantree-relay.service
@@ -190,7 +196,7 @@ ExecStart=/usr/local/bin/gantree_node_watchdog
 WantedBy=multi-user.target
 ```
 
-Мы почти на месте! Теперь давайте включим и запустим службы systemd, просмотрим журналы на наличие ошибок:
+We are almost there! Now, let's enable and start the systemd services, monitor logs for errors:
 
 ```
 sudo systemctl enable gantree-parachain
@@ -200,8 +206,4 @@ sudo systemctl enable gantree-relay
 sudo systemctl start gantree-relay && journalctl -f -u gantree-relay
 ```
 
-Вы должны увидеть ожидание подготовки в журналах. По завершении вы можете войти в  [https://app.gantree.io](https://app.gantree.io) и выбрать сети. Вы увидите `View Monitoring Dashboard` на свою настраиваемую панель мониторинга Prometheus / Grafana, которую вы можете настроить в соответствии со своими предпочтениями.  
-
-## Обратная связь
-
-Если у вас есть какие-либо отзывы о запуске полной ноды с телеметрией или о любой другой теме, связанной с Moonbeam, свяжитесь с нами через наш официальный [Discord](https://discord.com/invite/PfpUATX).
+You should see waiting for provisioning in the logs.  Once it's complete, you can log into the [https://app.gantree.io](https://app.gantree.io) and select networks. You will see a `View Monitoring Dashboard` link to your custom Prometheus / Grafana dashboard which you can customize to your needs.  
