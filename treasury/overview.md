@@ -1,59 +1,59 @@
 ---
-title: Overview
-description: As a Polkadot parachain, Moonbeam will use an on-chain treasury controlled by council members, that allows for stakeholders to submit proposals to further the network.
+title: Обзор
+description: Как парачейн Polkadot, Moonbeam будет использовать внутрисетевое казначейство, контролируемое членами совета, что позволит заинтересованным сторонам вносить предложения по развитию сети.
 ---
 
-# Treasury in Moonbeam
+# Казначейство в Moonbeam
 
 ![Treasury Moonbeam Banner](/images/treasury/treasury-overview-banner.png)
 
-## Introduction
+## Введение
 
-A treasury is an on-chain managed collection of funds. Moonbeam will have a community treasury for supporting network initiatives to further the network. This treasury will be funded by a percentage of transaction fees of the network and will be managed by the Council.
+Казначейство - это фонд средств, управляемый внутри сети. Moonbeam будет содержать казначейство сообщества для поддержки инициатив сети, направленных на ее развитие. Это казначейство будет финансироваться за счет процента от транзакционных сборов сети и будет управляться Советом.
 
-Each Moonbeam-based network will have it's own treasury. In other words, the Moonbase Alpha TestNet, Moonshadow on Westend, Moonriver on Kusama, and Moonbeam on Polkadot will each have their own respective treasury. 
+Каждая сеть на базе Moonbeam будет иметь свою собственное казначейство Другими словами, Moonbase Alpha TestNet, Moonshadow на Westend, Moonriver на Kusama и Moonbeam на Polkadot будут иметь свою собственную казну.
 
-## General Definitions
+## Основные определения
 
-Some important terminology to understand in regards to treasuries:
+Некоторые важные термины, которые необходимо понимать в отношении казначейства:
 
-- **Council** — a group of elected individuals that control how treasury funds will be spent
-- **Proposal** — a plan or suggestion to further the network that is put forth by stakeholders to be approved by the council
-- **Proposal bond** — a deposit equal to a percentage of the total proposal spend amount
-- **Proposal bond minimum** — minimum amount for a proposal bond. This amount must be paid as the bond if it is higher than the deposit percentage
-- **Spend period** — the amount of days, in blocks, during which the treasury funds as many proposals as possible without exceeding the maximum
-- **Maximum approved proposals** — the maximum amount of proposals that can wait in the spending queue
+- **Совет** - группа избранных лиц, которые контролируют, как будут расходоваться казенные средства
+- **Предложение** - план или предложение по развитию сети, выдвигаемое заинтересованными лицами для утверждения советом
+- **Взнос за предложение** - депозит, равный проценту от общей суммы расходов на предложение
+- **Минимальный взнос за предложения** - минимальная сумма для внесения взноса за предложение. Эта сумма должна быть внесена в качестве залога, если она превышает процент залога
+- **Период расходования средств** - количество дней в блоках, в течение которых казначейство финансирует максимально возможное количество предложений, не превышая максимальную сумму
+- **Максимум одобренных предложений** - максимальное количество предложений, которые могут ждать в очереди на расходование средств
 
-Currently, the Treasury values are as follows:
+В настоящее время показатели Казначейства выглядят следующим образом:
 
 === "Moonbase Alpha"
-    |             Variable             |     |                                                             Value                                                      |
+    |             Переменная             |     |                                                             Значение                                                      |
     | :------------------------------: | :-: | :--------------------------------------------------------------------------------------------------------------------: |
-    |           Proposal bond          |     |                            {{ networks.moonbase.treasury.proposal_bond }}% of the proposed spend                       |
-    |       Proposal bond minimum      |     |                                  {{ networks.moonbase.treasury.proposal_bond_min }} DEV                              |
-    |           Spend period           |     |  {{ networks.moonbase.treasury.spend_period_blocks }} blocks ({{ networks.moonbase.treasury.spend_period_days}} days)  |
-    |     Maximum approved proposals   |     |                                  {{ networks.moonbase.treasury.max_approved_proposals }}                               |
-    |     % of transaction fees allocated   |     |                                  {{ networks.moonbase.treasury.tx_fees_allocated }}                               |
+    |           Взнос за предложение          |     |                            {{ networks.moonbase.treasury.proposal_bond }}% предлагаемых расходов                       |
+    |       Минимальный взнос за предложения      |     |                                  {{ networks.moonbase.treasury.proposal_bond_min }} DEV                              |
+    |           Период расходования средств           |     |  {{ networks.moonbase.treasury.spend_period_blocks }} блоков ({{ networks.moonbase.treasury.spend_period_days}} days)  |
+    |     Максимум одобренных предложений   |     |                                  {{ networks.moonbase.treasury.max_approved_proposals }}                               |
+    |     % распределение комиссионных за транзакции   |     |                                  {{ networks.moonbase.treasury.tx_fees_allocated }}                               |
 
 === "Moonriver"
-    |             Variable             |     |                                                             Value                                                      |
+    |             Переменная             |     |                                                             Значение                                                      |
     | :------------------------------: | :-: | :--------------------------------------------------------------------------------------------------------------------: |
-    |           Proposal bond          |     |                            {{ networks.moonriver.treasury.proposal_bond }}% of the proposed spend                       |
-    |       Proposal bond minimum      |     |                                  {{ networks.moonriver.treasury.proposal_bond_min }} MOVR                              |
-    |           Spend period           |     |  {{ networks.moonriver.treasury.spend_period_blocks }} blocks ({{ networks.moonriver.treasury.spend_period_days}} days)  |
-    |     Maximum approved proposals   |     |                                  {{ networks.moonriver.treasury.max_approved_proposals }}                               |
-     |     % of transaction fees allocated   |     |                                  {{ networks.moonriver.treasury.tx_fees_allocated }}                               |
+    |           Взнос за предложение          |     |                            {{ networks.moonriver.treasury.proposal_bond }}% предлагаемых расходов                       |
+    |       Минимальный взнос за предложения      |     |                                  {{ networks.moonriver.treasury.proposal_bond_min }} MOVR                              |
+    |           Период расходования средств           |     |  {{ networks.moonriver.treasury.spend_period_blocks }} блоков ({{ networks.moonriver.treasury.spend_period_days}} days)  |
+    |     Максимум одобренных предложений   |     |                                  {{ networks.moonriver.treasury.max_approved_proposals }}                               |
+     |     % распределение комиссионных за транзакции   |     |                                  {{ networks.moonriver.treasury.tx_fees_allocated }}                               |
 
-## Community Treasury
+## Казначейство сообщества
 
-To fund the Treasury, a percentage of each block's transactions fees will be allocated to it. The remaining percentage of the fees are burned (check table above). The Treasury allows stakeholders to submit spending proposals to be reviewed and voted on by the Council. These spending proposals should include initiatives to further the network or boost network engagement. Some network initiatives could include funding integrations or collaborations, community events, network outreach, and more. 
+Для финансирования Казначейства выделяется процент от комиссий за транзакции каждого блока. Оставшийся процент от комиссий сжигается (см. таблицу выше). Казначейство позволяет заинтересованным сторонам подавать предложения по расходам, которые будут рассмотрены и проголосованы Советом. Эти предложения по расходам должны включать инициативы по развитию сети или повышению эффективности ее работы. Некоторые инициативы сети могут включать в себя финансирование интеграции или сотрудничества, общественные мероприятия, работу с сетью и многое другое. 
 
-To deter spam, proposals must be submitted with a deposit, also known as a proposal bond.The proposal bond needs to be higher than the minimum amount, known as the proposal bond minimum, which can be changed by a governance proposal. So, any token holder that has enough tokens to cover the deposit can submit a proposal. If the proposer doesn't have enough funds to cover the deposit, the extrinsic will fail due to insufficient funds, but transaction fees will still be deducted. 
+Чтобы предотвратить спам, предложения должны подаваться с депозитом, также известным как взнос за предложение. Взнос за предложения должен быть выше минимальной суммы, известной как минимум взноса за предложение, который может быть изменен с помощью предложения руководства. Таким образом, любой держатель токенов, у которого достаточно токенов для покрытия суммы взноса, может подать предложение. Если у подающего предложение не хватает средств для покрытия депозита, предложение будет отклонено из-за недостаточного количества средств, но комиссия за транзакцию все равно будет списана. 
 
-Once a proposal has been submitted, is subject to governance, and the council votes on it. If the proposal gets rejected, the deposit will be lost and transfered to the treasury pot. If approved by the council, the proposal enters a queue to be placed into a spend period. If the spending queue happens to contain the number of maximum approved proposals, the proposal submission will fail similarly to how it would if the proposer's balance is too low.
+После того, как предложение подано, оно проходит процедуру управления, и совет голосует за него. Если предложение будет отклонено, депозит будет аннулирован и переведен в казначейский банк. Если предложение одобрено советом, оно попадает в очередь на расходование средств. Если в очереди на расходование находится максимальное количество одобренных предложений, подача предложения будет отклонена, аналогично тому, как это происходит в случае слишком низкого взноса инициатора предложения.
 
-Once the proposal is in a spend period, the funds will get distributed to the beneficiary and the original deposit will be returned to the proposer. If the treasury runs out of funds, the remaining approved proposals will remain in storage until the next spend period when the Treasury has enough funds again.
+Как только предложение окажется в периоде расходования, средства будут распределены среди участников, а первоначальный депозит будет возвращен инициатору. Если у казначейства заканчиваются средства, остальные одобренные предложения остаются на хранении до следующего периода расходования, когда у казначейства снова будет достаточно средств.
 
-The happy path for a treasury proposal is shown in the following diagram:
+Успешный процесс прохождения предложения казначейства показан на следующей диаграмме:
 
 ![Treasury Proposal Happy Path Diagram](/images/treasury/treasury-proposal-roadmap.png)
