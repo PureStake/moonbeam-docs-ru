@@ -1,53 +1,53 @@
 ---
-title: Compile the Binary
-description: How to compile the Moonbeam binary to run a full Parachain node, gain access to RPC endpoints, and produce blocks, for the Moonbeam Network.
+title: Скомпилируйте бинарный файл
+description: Как скомпилировать бинарный файл Moonbeam для запуска полного узла Parachain, получения доступа к конечным точкам RPC и создания блоков для сети Moonbeam.
 ---
 
-# Compile the Moonbeam Binary
+# Скомпилируйте бинарный файл Moonbeam
 
 ![Full Node Moonbeam Banner](/images/fullnode/compile-binary-banner.png)
 
-## Introduction
+## Вступление
 
-There are several ways to get started running a full node on the Moonbeam network. This guide goes through the process of compiling the Moonbeam binary from Rust source code. For a more general overview of running nodes, or to get started with Docker, check out the [Run a Node](/node-operators/networks/full-node) page of our documentation.
+Есть несколько способов запустить полный узел в сети Moonbeam. В этом руководстве рассматривается процесс компиляции бинарного файла Moonbeam из исходного кода Rust. Чтобы получить более общий обзор работающих узлов или начать работу с Docker, ознакомьтесь с [Запуск Ноды](/node-operators/networks/full-node) страница нашей документации.
 
-This guide is meant for people with experience compiling [Substrate](https://substrate.dev/) based blockchain nodes. A parachain node is similar to a typical Substrate node, but there are some differences. A Substrate parachain node will is a bigger build because it contains code to run the parachain itself, as well as code to sync the relay chain, and facilitate communication between the two. As such, this build is quite large and may take over 30 min and require 32GB of memory.
+Это руководство предназначено для людей с опытом составления [Substrate](https://substrate.dev/) на основе узлов блокчейна. Узел парачейна похож на типичный узел Substrate, но есть некоторые отличия. Узел парачейна Substrate будет более крупной сборкой, потому что он содержит код для запуска самого парачейна, а также код для синхронизации цепочки реле и облегчения связи между ними. Таким образом, эта сборка довольно велика, может занять более 30 минут и потребовать 32 ГБ памяти.
 
-## Compiling the Binary
+## Компиляция бинарного файла
 
-The following commands will build the latest release of the Moonbeam parachain.
+Следующие команды построят последнюю версию парачейна Moonbeam.
 
-First, let's start by cloning the moonbeam repo.
+Во-первых, давайте начнем с клонирования репозитория Moonbeam.
 
 ```
 git clone https://github.com/PureStake/moonbeam
 cd moonbeam
 ```
 
-Let's check out the latest release:
+Давайте посмотрим на последний выпуск:
 
 ```
 git checkout tags/$(git tag | tail -1)
 ```
 
-Next, install a Substrate development environment, including Rust, by executing:
+Затем установите среду разработки Substrate, включая Rust, выполнив:
 
 ```
 --8<-- 'code/setting-up-node/substrate.md'
 ```
 
-Lastly, build parachain binary:
+Наконец, создайте бинарный файл парачейна:
 
 ```
 cargo build --release
 ```
 
-![Compiling Binary](/images/fullnode/compile-binary1.png)
+![Компиляция бинарого файла](/images/fullnode/compile-binary1.png)
 
-If a _cargo not found error_ shows up in the terminal, manually add Rust to your system path or restart your system:
+Если в терминале появляется _cargo not found error_, вручную добавьте Rust в системный путь или перезапустите систему:
 
 ```
 --8<-- 'code/setting-up-node/cargoerror.md'
 ```
 
-Now you can use the Moonbeam binary to [run a systemd service](/node-operators/networks/full-node/#running-the-systemd-service).
+Теперь вы можете использовать бинарный файл Moonbeam для [запуска службы systemd](/node-operators/networks/full-node/#running-the-systemd-service).
