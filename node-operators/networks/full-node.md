@@ -1,32 +1,32 @@
 ---
-title: Run a Node
-description: How to run a full Parachain node for the Moonbeam Network to have your RPC Endpoint or produce blocks
+title: Запуск Ноды
+description: Как запустить полноценную Parachain ноду для сети Moonbeam, для получения собственного RPC узла или для создания блоков.
 ---
 
-# Run a Node on Moonbeam
+# Запуск Moonbeam Узла
 
 ![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
 
-## Introduction
+## Вступление
 
-Running a full node on a Moonbeam-based network allows you to connect to the network, sync with a bootnode, obtain local access to RPC endpoints, author blocks on the parachain, and more.
+Запуск полноценного узла в сети на основе Moonbeam даёт возможность подключения к сети, выполнять синхронизацию с загрузочным узлом, получить локальный доступ к RPC узлам, создавать авторские блоки на парачейне и многое другое.
 
-There are multiple deployments of Moonbeam, including the Moonbase Alpha TestNet, Moonriver on Kusama, and eventually there will be Moonbeam on Polkadot. Here's how these environments are named and their corresponding [chain specification file](https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec) names:
+Есть несколько вариантов реализации Moonbeam, в том числе Moonbase Alpha TestNet, Moonriver на Кусаме, и в конечном итоге Moonbeam появится на Polkadot. Вот названия этих окружений и соответствующие им имена [файл спецификации цепочки] (https://substrate.dev/docs/en/knowledgebase/integrate/chain-spec):
 
-|    Network     |     | Hosted By |     |   Chain Name    |
+|    Сеть        |     | Хостинг   |     |   Имя цепи      |
 | :------------: | :-: | :-------: | :-: | :-------------: |
 | Moonbase Alpha |     | PureStake |     |    {{ networks.moonbase.chain_spec }}     |
 |   Moonriver    |     |  Kusama   |     |    {{ networks.moonriver.chain_spec }}    |
 |    Moonbeam    |     | Polkadot  |     | _not available_ |
 
-This guide is meant for people with experience compiling [Substrate](https://substrate.dev/) based blockchain nodes. A parachain node is similar to a typical Substrate node, but there are some differences. A Substrate parachain node will is a bigger build because it contains code to run the parachain itself, as well as code to sync the relay chain, and facilitate communication between the two. As such, this build is quite large and may take over 30 min and require 32GB of memory.
+Это руководство предназначено для людей с опытом компиляции узлов блокчейна на основе [Substrate](https://substrate.dev/). Узел парачейна похож на типичный узел Substrate, но имеет некоторые отличия. Узел парачейна Substrate ялвяется более сложным в сборке, потому что он содержит код для запуска самого парачейна, а также код синхронизации цепи для передачи данных, что в свою очередь упрощает связь между ними. Таким образом, данная сборка довольно объёмная, поэтому может занять более 30 минут и потребовать 32ГБ оперативной памяти.
 
-!!! note
-    Moonbase Alpha is still considered an Alphanet, and as such _will not_ have 100% uptime. The parachain _will_ be purged from time to time. During the development of your application, make sure you implement a method to redeploy your contracts and accounts to a fresh parachain quickly. Chain purges will be announced via our [Discord channel](https://discord.gg/PfpUATX) at least 24 hours in advance.
+!!! примечание
+    Moonbase Alpha по-прежнему считается Alphanet, и поэтому _не будет иметь_ 100% времени безотказной работы. Парачейн _будет_ время от времени очищаться. Во время разработки Вашего приложения, убедитесь, что Вы реализовали метод быстрого переноса Ваших контрактов и учетных записей в новый парачейн. Об очистке цепи будет объявлено на нашем [канале Discord](https://discord.gg/PfpUATX) как минимум за 24 часа.
 
-## Requirements
+## Требования
 
-The minimum specs recommended to run a node are shown in the following table. For our Kusama and Polkadot MainNet deployments, disk requirements will be higher as the network grows.
+Минимальные характеристики, рекомендуемые для запуска узла, показаны в следующей таблице. Для создная MainNet на Kusama и Polkadot требования к дискам будут выше по мере роста сети.
 
 === "Moonbase Alpha"
     |  Component   |     | Requirement                                                                                                                |
