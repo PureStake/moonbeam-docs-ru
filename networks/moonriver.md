@@ -56,7 +56,7 @@ _Обновлено 9 июля 2021 года_
     |              Раунд               | {{ networks.moonriver.staking.round_blocks }} blocks ({{     networks.moonriver.staking.round_hours }} hours) |
     |          Продолжительность размещения бондов           |                             {{ networks.moonriver.staking.    bond_lock }} раундов                             |
 
-_*Подробнее о [деноминации токенов](#token-denominations)_
+_*Подробнее о [деноминации токенов](#Номиналы-токенов)_
 
 ## Начало работы
 
