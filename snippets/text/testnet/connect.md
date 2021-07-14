@@ -43,3 +43,11 @@ wss://wss.testnet.moonbeam.network
 ### Идентификатор цепи
 
 Для Moonbase Alpha TestNet идентификатор цепи:  `1287`.
+
+### Relay Chain
+
+Для подключения к Relay Chain Moonbase Alpha, управляемой PureStake, можно использовать следующую конечную точку WS Endpoint:
+
+```
+wss://wss-relay.testnet.moonbeam.network
+```
