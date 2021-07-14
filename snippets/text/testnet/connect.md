@@ -46,7 +46,7 @@ wss://wss.testnet.moonbeam.network
 
 ### Relay Chain
 
-To connect to the Moonbase Alpha relay chain, managed by PureStake, you can use the following WS Endpoint:
+Для подключения к Relay Chain Moonbase Alpha, управляемой PureStake, можно использовать следующую конечную точку WS Endpoint:
 
 ```
 wss://wss-relay.testnet.moonbeam.network

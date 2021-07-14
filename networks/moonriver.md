@@ -1,80 +1,80 @@
 ---
 title: Moonriver
-description: An overview of the current configuration of the Moonbeam deployment on Kusama, Moonriver, and information on how to start building on it using Solidity.
+description: Обзор текущей конфигурации внедрения Moonbeam на Kusama, Moonriver и информация о том, как начать создавать на ее основе, используя Solidity.
 ---
 
 # Moonriver
 
-_Updated July 9th, 2021_
+_Обновлено 9 июля 2021 года_
 
-## Goal
+## Цель
 
-In June 2021, Moonriver first launched as a parachain on the Kusama network. Moonriver is a sister network of Moonbeam, and provides an environment to test new code under real economic conditions. Developers now have access to start experimenting and building on an incentivized canary network connected to Kusama. 
+В июне 2021 года Moonriver впервые был запущен как парачейн в сети Kusama. Moonriver является дочерней сетью Moonbeam и предоставляет среду для тестирования нового кода в реальных экономических условиях. Теперь у разработчиков есть возможность начать экспериментировать и создавать в стимулируемой канареечной сети, подключенной к Kusama.
 
-In order to collect as much feedback as possible and provide fast issue resolution, we have set up a [Discord with a dedicated Moonriver channel](https://discord.gg/5TaUvbRvgM).
+Чтобы собрать как можно больше отзывов и обеспечить быстрое решение вопросов, мы создали [Discord с выделенным каналом Moonriver](https://discord.gg/5TaUvbRvgM).
 
-## Initial Configurations
+## Первоначальные конфигурации
 
-Moonriver is scheduled to follow a [5-phase launch process](https://moonbeam.network/networks/moonriver/launch/). Currently, Moonriver is in Phase 0 of the launch process and has the following configurations:
+Запуск Moonriver запланирован согласно [5-фазному процессу запуска] (https://moonbeam.network/networks/moonriver/launch/). В настоящее время Moonriver находится в фазе 0 запуска и имеет следующие конфигурации:
 
-- Runs as a parachain connected to the Kusama relay chain
-- Has an active set of {{ networks.moonriver.staking.max_collators }} collators, all hosted by PureStake on behalf of the Moonbeam Foundation. There will be an initial collator election in Phase 1 to expand the collator set to parties outside of the Moonbeam team
-- There are two RPC endpoints (hosted by PureStake). People can run full nodes to access their own private RPC endpoints
+- Работает как парачейн, подключенный к Relay Chain Кусамы.
+- Имеет активный набор {{ networks.moonriver.staking.max_collators }} коллаторов, размещенных PureStake от имени Moonbeam Foundation. На фазе 1 будут проведены выборы коллаторов, чтобы расширить набор коллаторов для сторон, не входящих в команду Moonbeam.
+- Есть две конечные точки RPC (размещенные PureStake). Люди могут запускать полные ноды для доступа к своим собственным частным конечным точкам RPC
 
 ![Moonriver Diagram](/images/moonriver/moonriver-diagram.png)
 
-Some important variables/configurations to note include:
+Некоторые важные переменные/конфигурации, на которые следует обратить внимание, включают:
 
-=== "General"
-    |       Variable        |                                               Value                                           |
+=== "Общие"
+    |       Переменные        |                                               Значение                                           |
     |:---------------------:|    :-----------------------------------------------------------------------------------------:|
-    |   Minimum gas price   | {{ networks.moonriver.min_gas_price }} Gsed*  |
-    |   Target block time   |          {{ networks.moonriver.block_time }} seconds (expected to be 6     seconds)           |
-    |    Block gas limit    |         {{ networks.moonriver.gas_block }} (expected to increase by at     least 4x)          |
-    | Transaction gas limit |           {{ networks.moonriver.gas_tx }} (expected to increase by at     least 4x)           |
-    |     RPC endpoint      |                             {{ networks.moonriver.rpc_url }}    }                              |
-    |     WSS endpoint      |                             {{ networks.moonriver.wss_url }}                              |
+    |   Минимальная цена за газ   | {{ networks.moonriver.min_gas_price }} Gsed*  |
+    |   Время  до целевого блока   |          {{ networks.moonriver.block_time }} секунд  (ожидается 6          секунд)           |
+    |    Лимит газа для блока    |         {{ networks.moonriver.gas_block }} (ожидается увеличение по меньшей мере в    4 раза)          |
+    | Лимит газа на транзакцию |           {{ networks.moonriver.gas_tx }} (ожидается увеличение по меньшей мере в      4 раза)           |
+    |     RPC конечная точка      |                             {{ networks.moonriver.rpc_url }}    }                              |
+    |     WSS конечная точка      |                             {{ networks.moonriver.wss_url }}                              |
 
-=== "Governance"
-    |         Variable         |                                                                  Value                                                              |
+=== "Управление"
+    |         Переменные         |                                                                  Значение                                                              |
     |:------------------------:|    :---------------------------------------------------------------------------------------------------    ----------------------------:|
-    |      Voting Period       |      {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{     networks.moonriver.democracy.vote_period.days}} days)      |
-    | Fast-Track Voting Period | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{     networks.moonriver.democracy.fast_vote_period.days}} days) |
-    |     Enactment Period     |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{     networks.moonriver.democracy.enact_period.days}} day)      |
-    |     Cool-off Period      |      {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{     networks.moonriver.democracy.cool_period.days}} days)      |
-    |     Minimum Deposit      |                                       {{ networks.moonriver.democracy.    min_deposit }} MOVR                                       |
-    |      Maximum Votes       |                                          {{ networks.moonriver.    democracy.max_votes }}                                           |
-    |    Maximum Proposals     |                                        {{ networks.moonriver.democracy.    max_proposals }}                                         |
+    |      Период Голосования       |      {{ networks.moonriver.democracy.vote_period.blocks}} блоки ({{     networks.moonriver.democracy.vote_period.days}} days)      |
+    | Ускоренный период голосования | {{ networks.moonriver.democracy.fast_vote_period.blocks}} блоки ({{     networks.moonriver.democracy.fast_vote_period.days}} days) |
+    |     Период вступления в силу    |     {{ networks.moonriver.democracy.enact_period.blocks}} блоки ({{     networks.moonriver.democracy.enact_period.days}} days)      |
+    |     Период ожидания      |      {{ networks.moonriver.democracy.cool_period.blocks}} блоки ({{     networks.moonriver.democracy.cool_period.days}} days)      |
+    |     Минимальный Депозит      |                                       {{ networks.moonriver.democracy.    min_deposit }} MOVR                                       |
+    |      Максимум Голосов       |                                          {{ networks.moonriver.    democracy.max_votes }}                                           |
+    |    Муксимум предложений     |                                        {{ networks.moonriver.democracy.    max_proposals }}                                         |
 
-=== "Staking"
-    |             Variable             |                                                       Value                                                   |
+=== "Стекинг"
+    |             Переменные             |                                                       Значения                                                   |
     |:--------------------------------:|    :---------------------------------------------------------------------------------------------------    ------:|
-    |     Minimum nomination stake     |                           {{ networks.moonriver.staking.    min_nom_stake }} tokens                           |
-    |        Minimum nomination        |                           {{ networks.moonriver.staking.    min_nom_amount}} tokens                           |
-    | Maximum nominators per collators |                             {{ networks.moonriver.staking.    max_nom_per_col }}                              |
-    | Maximum collators per nominator  |                             {{ networks.moonriver.staking.    max_col_per_nom }}                              |
-    |              Round               | {{ networks.moonriver.staking.round_blocks }} blocks ({{     networks.moonriver.staking.round_hours }} hours) |
-    |          Bond duration           |                             {{ networks.moonriver.staking.    bond_lock }} rounds                             |
+    |     Минимальная доля стекинга     |                           {{ networks.moonriver.staking.    min_nom_stake }} токенов                           |
+    |       Минимальная номинация        |                           {{ networks.moonriver.staking.    min_nom_amount}} токенов                           |
+    | Максимум номинаций на коллатора |                             {{ networks.moonriver.staking.    max_nom_per_col }}                              |
+    | Максимальное количество коллаторов на одного номинанта  |                             {{ networks.moonriver.staking.    max_col_per_nom }}                              |
+    |              Раунд               | {{ networks.moonriver.staking.round_blocks }} blocks ({{     networks.moonriver.staking.round_hours }} hours) |
+    |          Продолжительность размещения бондов           |                             {{ networks.moonriver.staking.    bond_lock }} раундов                             |
 
-_*Read more about [token denominations](#token-denominations)_
+_*Подробнее о [деноминации токенов](#token-denominations)_
 
-## Get Started
+## Начало работы
 
 --8<-- 'text/moonriver/connect.md'
 
-## Telemetry
+## Телеметрия
 
-You can see current Moonriver telemetry information visiting [this link](https://telemetry.polkadot.io/#list/Moonriver).
+Текущую информацию о телеметрии Moonriver можно посмотреть по [этой ссылке] (https://telemetry.polkadot.io/#list/Moonriver).
 
-## Tokens
+## Токены
 
-The tokens on Moonriver will also be called Moonriver (MOVR). Check out the Moonbeam Foundation site for more information on the [Moonriver token](https://moonbeam.foundation/moonriver-token/). 
+Токены на Moonriver также будут называться Moonriver (MOVR). Посетите сайт Moonbeam Foundation для получения дополнительной информации о [токене Moonriver](https://moonbeam.foundation/moonriver-token/). 
 
-### Token Denominations
+### Номиналы токенов
 
-The smallest unit of Moonriver is called a Sediment (Sed). It takes 10^18 Sediment to make one Moonriver. The denominations are as follows:
+Самая маленькая единица Moonriver называется Sediment (Sed). Для получения одного Moonriver требуется 10^18 Sediment. Номиналы следующие:
 
-|      Unit      |   Moonriver (MOVR)   |        Sediment (Sed)         |
+|      Еденица      |   Moonriver (MOVR)   |        Sediment (Sed)         |
 |:--------------:|:--------------------:|:-----------------------------:|
 | Sediment (Sed) | 0.000000000000000001 |               1               |
 |    Kilosed     |  0.000000000000001   |             1,000             |
@@ -87,11 +87,11 @@ The smallest unit of Moonriver is called a Sediment (Sed). It takes 10^18 Sedime
 
 ## Proof of Stake
 
-Over the course of the 5-phase Moonriver launch, the network will progressively be updated to a fully decentralized Proof of Stake network. For a breakdown of what will occur during each phase, check out the [Network Launch Status](https://moonbeam.network/networks/moonriver/launch/) page.
+В течение 5 этапов запуска Moonriver сеть будет постепенно обновляться до полностью децентрализованной сети Proof of Stake. Подробную информацию о том, что будет происходить на каждом этапе, можно найти на странице [Статус запуска сети](https://moonbeam.network/networks/moonriver/launch/).
 
-In Phase 1, there will be an initial collator election and the active collator set will start at 32 collators. Once governance is enabled in Phase 2, the number of collators in the active set will be subject to governance. The active set will consist of the top collators by stake, including nominations.
+На фазе 1 будут проведены первоначальные выборы коллаторов, количество активных коллаторов составит 32 участника. После включения управления на фазе 2 количество коллаторов в активном наборе будет зависеть от управления. Активный набор будет состоять из лучших коллаторов по стекингу, включая номинации.
 
-## Limitations
+## Ограничения
 
-Some [precompiles](https://docs.klaytn.com/smart-contract/precompiled-contracts) are yet to be included. You can check a list of supported precompiles [here](/integrations/precompiles/). However, all built-in functions are available.
+Некоторые [прекомпиляции](https://docs.klaytn.com/smart-contract/precompiled-contracts) еще не включены. Список поддерживаемых прекомпиляций можно посмотреть [здесь](/integrations/precompiles/). Тем не менее, все встроенные функции доступны.
 
