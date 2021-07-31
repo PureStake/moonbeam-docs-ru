@@ -6,11 +6,11 @@ description: Следуйте этому руководству, чтобы уз
 
 ![Intro diagram](/images/integrations/integrations-ethersjs-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 Библиотека [ethers.js](https://docs.ethers.io/) предоставляет набор инструментов для взаимодействия с нодами Ethereum с помощью JavaScript, аналогичных web3.js. Moonbeam имеет API-интерфейс, подобный Ethereum, который полностью совместим с вызовами JSON RPC в стиле Ethereum. Поэтому разработчики могут использовать эту совместимость и использовать библиотеку ethers.js для взаимодействия с нодой Moonbeam, как если бы они делали это в Ethereum. Вы можете узнать больше о ethers.js в этом [посте блога](https://medium.com/l4-media/announcing-ethers-js-a-web3-alternative-6f134fdd06f3).
 
-## Установите Ethers.js с помощью Moonbeam
+## Установите Ethers.js с помощью Moonbeam {: #setup-ethersjs-with-moonbeam } 
 
 Чтобы начать работу с библиотекой ethers.js, установите ее с помощью следующей команды:
 
@@ -48,6 +48,6 @@ Moonbase Alpha TestNet:
  - ChainId: `1287`
  - NETWORK_NAME: `moonbase-alpha`
 
-## Пошаговые инструкции
+## Пошаговые инструкции {: #stepbystep-tutorials } 
 
 Если Вас интересует более подробное пошаговое руководство, Вы можете перейти к нашим конкретным руководствам по использованию ethers.js на Moonbeam для [отправки транзакции](/getting-started/local-node/send-transaction/) или [развертывания контракта](/getting-started/local-node/deploy-contract/).

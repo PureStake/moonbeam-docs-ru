@@ -6,11 +6,11 @@ description: Следуйте этому руководству, чтобы уз
 
 ![Intro diagram](/images/integrations/integrations-web3py-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 [Web3.py](https://web3py.readthedocs.io/) это набор библиотек, которые позволяют разработчикам взаимодействовать с нодами Ethereum, используя протоколы HTTP, IPC или WebSocket с JavaScript. Moonbeam имеет API-интерфейс, подобный Ethereum, который полностью совместим с вызовами JSON RPC в стиле Ethereum. Поэтому разработчики могут использовать эту совместимость и использовать библиотеку web3.py для взаимодействия с нодой Moonbeam, как если бы они делали это в Ethereum.
 
-## Настройтка Web3.py с помощью Moonbeam
+## Настройтка Web3.py с помощью Moonbeam {: #setup-web3py-with-moonbeam } 
 
 Чтобы начать работу с библиотекой web3.py, нам сначала нужно установить ее, используя следующую команду:
 
@@ -31,7 +31,7 @@ web3 = Web3(Web3.HTTPProvider('RPC_URL'))
  - Нода Moonbeam: `http://127.0.0.1:9933`
  - Moonbase Alpha TestNet: `https://rpc.testnet.moonbeam.network`
 
-## Пошаговые инструкции
+## Пошаговые инструкции {: #stepbystep-tutorials } 
 
 Если вас интересует более подробное пошаговое руководство, перейдите к нашим конкретным руководствам по использованию web3.py на Moonbeam для [отправки транзакции](/getting-started/local-node/send-transaction/) или [развертывания контракта.](/getting-started/local-node/deploy-contract/).
 

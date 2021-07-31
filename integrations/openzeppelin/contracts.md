@@ -7,7 +7,7 @@ description:  Узнайте, как легко создавать общие к
 
 ![Баннер контрактов OpenZeppelin](/images/openzeppelin/ozcontracts-banner.png)
 
-## Введение
+## Введение {: #introduction } 
 
 Контракты и библиотеки OpenZeppelin стали стандартом в отрасли. Они помогают разработчикам свести к минимуму риски, поскольку их открытые исходные шаблоны кода проверены в действии для Ethereum и других блокчейнов. Их код включает наиболее используемые варианты реализации стандартов и дополнений ERC и часто встречается в руководствах и инструкциях сообщества.
 
@@ -15,7 +15,7 @@ description:  Узнайте, как легко создавать общие к
 
 Это руководство состоит из двух разделов. В первом разделе описывается Мастер контрактов OpenZeppelin - отличный онлайн-инструмент, который поможет вам создавать смарт-контракты с использованием кода OpenZeppelin. Второй раздел содержит пошаговое руководство по установке этих контрактов на Moonbeam.
 
-## Мастер контрактов OpenZeppelin
+## Мастер контрактов OpenZeppelin {: #openzeppelin-contract-wizard } 
 
 Компания OpenZeppelin разработала интерактивный веб-инструмент для создания контрактов, который, вероятно, является самым простым и быстрым способом написания смарт-контракта с использованием кода OpenZeppelin. Инструмент называется Contracts Wizard, и вы можете найти его на их [сайте в разделе документация](https://docs.openzeppelin.com/contracts/4.x/wizard).
 
@@ -40,7 +40,7 @@ description:  Узнайте, как легко создавать общие к
 
 После того как вы настроите свой контракт со всеми параметрами и функциями, вам останется только скопировать и вставить код в файл контракта.
 
-## Установка контрактов OpenZeppelin на Moonbeam
+## Установка контрактов OpenZeppelin на Moonbeam {: #deploying-openzeppelin-contracts-on-moonbeam } 
 
 В этом разделе описаны шаги по установке контрактов OpenZeppelin на Moonbeam. В нем рассматриваются следующие контракты:
 
@@ -50,13 +50,15 @@ description:  Узнайте, как легко создавать общие к
 
 Весь код контрактов был получен с помощью OpenZeppelin [Contract Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard).
  
-### Проверка предварительных условий
+### Проверка предварительных условий {: #checking-prerequisites } 
+
+The steps described in this section assume you have [MetaMask](https://metamask.io/) installed and connected to the Moonbase Alpha TestNet. Contract deployment is done using the [Remix IDE](https://remix.ethereum.org/) via the "Injected Web3" environment. You can find corresponding tutorials in the following links:
 
 Действия, описанные в этом разделе, подразумевают, что у вас есть [MetaMask](https://metamask.io/) установлен и подключен к сети Moonbase Alpha TestNet. Установка контракта выполняется с помощью [Remix IDE](https://remix.ethereum.org/) через среду "Injected Web3". Соответствующие руководства можно найти по следующим ссылкам:
  - [Взаимодействие с Moonbeam с помощью MetaMask](/integrations/wallets/metamask/)
  - [Взаимодействие с Moonbeam с помощью Remix](/integrations/remix/)
 
-### Размещение токена ERC20
+### Размещение токена ERC20 {: #deploying-an-erc20-token } 
 
 В данном примере токен ERC20 будет размещен на Moonbase Alpha. Финальный используемый код сочетает в себе различные контракты из OpenZeppelin:
 
@@ -112,7 +114,7 @@ contract MyToken is ERC20, Ownable {
 
 Вот и все! Вы установили контракт на токен ERC20, используя контракты и библиотеки OpenZeppelin. Далее вы можете взаимодействовать с вашим контрактом токенов через Remix или добавить его в MetaMask.
 
-### Размещение токена ERC721
+### Размещение токена ERC721 {: #deploying-an-erc721-token } 
 
 В данном примере токен ERC721 будет размещен на Moonbase Alpha. В финальном коде используются различные контракты из OpenZeppelin:
 
@@ -177,7 +179,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
 Вот и все! Вы разместили контракт на токен ERC721, используя контракты и библиотеки OpenZeppelin. Далее вы можете взаимодействовать с вашим токен-контрактом через Remix или добавить его в MetaMask.
 
-### Размещение токена ERC1155
+### Размещение токена ERC1155 {: #deploying-an-erc1155-token } 
 
 В данном примере токен ERC1155 будет развернут на Moonbase Alpha. Используемый финальный код объединяет различные контракты из OpenZeppelin:
 

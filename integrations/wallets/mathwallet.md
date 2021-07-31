@@ -7,13 +7,13 @@ description: В этом руководстве вы узнаете, как по
  
 ![Intro banner](/images/mathwallet/mathwallet-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) что теперь он поддерживает тестовую сеть [Moonbase Alpha TestNet](/networks/moonbase/). Это означает, что теперь Вы можете взаимодействовать с Moonbase Alpha, используя ещё один кошелек помимо MetaMask.
 
 В этом руководстве мы рассмотрим, как настроить MathWallet для подключения к нашей “TestNet” сети. Мы также представим краткий пример использования MathWallet в качестве поставщика Web3 услуг для других инструментов, таких как [Remix](/integrations/remix/).
 
-## Подключение MathWallet к Moonbeam
+## Подключение MathWallet к Moonbeam {: #connect-mathwallet-to-moonbeam } 
 
 В этой части мы рассмотрим процесс подключения MathWallet к Moonbase Alpha.
 
@@ -35,7 +35,7 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
 
 ![Wallet Connected to Moonbase Alpha](/images/mathwallet/mathwallet-images-4.png)
 
-## Добавление кошелька
+## Добавление кошелька {: #adding-a-wallet } 
 
 Теперь, когда MathWallet подключен к Moonbase Alpha, мы можем создать кошелек, чтобы получить учетную запись и начать взаимодействие с TestNet. В настоящее время есть три способа добавить кошелек:
 
@@ -43,7 +43,7 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
  - Импортировать существующий кошелек с помощью мнемонического или закрытого ключа
  - Подключить аппаратный кошелек (_пока не поддерживается_)
 
-### Создание кошелька
+### Создание кошелька {: #create-a-wallet } 
 
 Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Создать кошелек».
 
@@ -53,7 +53,7 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
 
 ![MathWallet wallet created](/images/mathwallet/mathwallet-images-6.png)
 
-### Импортирование кошелька
+### Импортирование кошелька {: #import-a-wallet } 
 
 Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Импортировать кошелек».
 
@@ -67,7 +67,7 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
 
 ![MathWallet imported wallet](/images/mathwallet/mathwallet-images-9.png)
 
-## Использование MathWallet
+## Использование MathWallet {: #using-mathwallet } 
 
 MathWallet служит поставщиком Web3 в таких инструментах, как [Remix](/integrations/remix/). Подключив MathWallet к Moonbase Alpha, Вы можете развертывать контракты так, так же как используя MetaMask, вместо этого подписывая транзакции с помощью MathWallet.
 

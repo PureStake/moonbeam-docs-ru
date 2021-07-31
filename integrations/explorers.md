@@ -6,7 +6,7 @@ description: Обзор доступных в настоящее время об
 
 ![Обозреватель Блоков](/images/explorers/explorers-banner.png)
 
-## Введение 
+## Введение {: #introduction } 
 
 Обозреватель блоков можно рассматривать как поисковые системы для блокчейна. Они позволяют пользователям находить информацию о балансах, контрактах и транзакциях. Более продвинутые "обозреватели" блоков даже предлагают возможности индексации, которые позволяют им предоставить полный набор информации, о токенах в сети ERC20. Они могут даже предлагать API службы для доступа к ним через внешние службы.
 
@@ -15,9 +15,9 @@ description: Обзор доступных в настоящее время об
 !!! примечание 
     Если Вы используете Brave Browser и Ваш проводник не подключается к экземпляру Moonbeam, на который Вы ссылаетесь, попробуйте отключить Brave Shield.
 
-## Ethereum API
+## Ethereum API {: #ethereum-api } 
 
-### Expedition (Dev Node - TestNet)
+### Expedition (Dev Node - TestNet) {: #expedition-dev-node-testnet } 
 
 Используя эту [ссылку](https://moonbeam-explorer.netlify.app/) Вы можете найти версию [Expedition](https://github.com/etclabscore/expedition).
 
@@ -29,7 +29,7 @@ description: Обзор доступных в настоящее время об
 
 ![Обозреватель Expedition](/images/explorers/explorers-images-1.png)
 
-### Blockscout (TestNet)
+### Blockscout (TestNet) {: #blockscout-testnet } 
 
 Blockscout предоставляет пользователям простой в использовании интерфейс для проверки и подтверждения транзакций в блокчейнах EVM, включая Moonbeam. Это дает Вам возможность искать транзакции, просматривать аккаунты, балансы и проверять смарт контракты. Более подробную информацию Вы можете найти в [документации Blockscout](https://docs.blockscout.com/).
 
@@ -45,9 +45,9 @@ Blockscout предлагает следующие основные функци
 
 ![Обозреватель Blockscout](/images/explorers/explorers-images-2.png)
 
-## Substrate API
+## Substrate API {: #substrate-api } 
 
-### PolkadotJS (Dev Node - TestNet)
+### PolkadotJS (Dev Node - TestNet) {: #polkadotjs-dev-node-testnet } 
 
 Polkadot JS Apps использует конечную точку WebSocket для взаимодействия с сетью. Чтобы подключить его к автономной ноде Moonbeam, Вы можете выполнить действия, описанные [в этом руководстве](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node). Порт по умолчанию - `9944`.
 
@@ -57,7 +57,7 @@ Polkadot JS Apps использует конечную точку WebSocket дл
 
 ![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
 
-### Subscan
+### Subscan {: #subscan } 
 
 Subscan предоставляет возможности обозревателя блокчейнов для цепочек на основе Substrate. Он способен анализировать стандартные или настраиваемые модули. Например, это полезно для отображения информации, которая касается стейкинга, управления, EVM "модулей". Данный код полностью открыт и его можно найти [здесь](https://github.com/itering/subscan-essentials).
 

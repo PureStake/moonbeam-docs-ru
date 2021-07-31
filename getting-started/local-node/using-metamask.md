@@ -9,7 +9,7 @@ description: В этом руководстве Вы узнаете, как вз
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>
 Вы можете найти весь необходимый код касающийся этого руководства в <a href="{{ config.site_url }}resources/code-snippets/">code snippets page</a></div>
 
-## Введение
+## Введение {: #introduction } 
 
 MetaMask можно использовать для подключения к Moonbeam через Moonbase Alpha TestNet или через автономную ноду Moonbeam, работающую локально.
 
@@ -21,7 +21,7 @@ MetaMask можно использовать для подключения к Mo
 
 Вы можете взаимодействовать с Moonbeam двумя способами: используя конечные точки RPC Substrate или конечные точки RPC, совместимые с Web3. Последние конечные точки в настоящее время обслуживаются тем же сервером RPC, что и RPC Substrate. В этом руководстве мы будем использовать конечные точки Web3 RPC для взаимодействия с Moonbeam.
 
-## Установка расширения Metamask
+## Установка расширения Metamask {: #install-the-metamask-extension } 
 
 Во-первых, мы начнем с установки [MetaMask](https://metamask.io/) по умолчанию из магазина Chrome. После загрузки, установки и инициализации расширения следуйте руководству «Начало работы». Там Вам нужно создать кошелек, установить пароль и сохранить секретную фразу (это дает прямой доступ к вашим средствам, поэтому обязательно храните их в безопасном месте). После завершения мы импортируем учетную запись разработчика:
 
@@ -41,7 +41,7 @@ MetaMask можно использовать для подключения к Mo
 
 ![MetaMask отображает ваш новый Account 2](/images/metamask/using-metamask-3.png)
 
-## Подключение к локальной ноде Moonbeam
+## Подключение к локальной ноде Moonbeam {: #connecting-metamask-to-moonbeam } 
 
 MetaMask можно настроить для подключения к локальной ноде или к Moonbase Alpha TestNet.
 
@@ -63,7 +63,7 @@ Moonbase Alpha TestNet:
 
 ![Баланс вашей учтеонй записи Moonbeam 1207925.8196](/images/metamask/using-metamask-5.png)
 
-## Инициализация перевода
+## Инициализация перевода {: #initiating-a-transfer } 
 
 Давайте попробуем отправить несколько токенов с помощью MetaMask.
 

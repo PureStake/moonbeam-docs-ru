@@ -7,7 +7,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
 
 ![Chainlink Moonbeam](/images/chainlink/chainlinknode-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 Для предоставления данных смарт-контрактов, работающих на Moonbeam может быть использован оракул, как открытая сеть, не требующая дополнительных разрешений.
 
@@ -16,13 +16,13 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
 !!! примечание 
     Примеры приведены только в демонстрационных целях. Управление паролями **ДОЛЖНО** отвечать стандартам безопасности, а сами пароли никогда не должны храниться в простых текстовых файлах. В данных примерах используется среда на базе Ubuntu 18.04, но включены также и примеры для macOS. Это руководство предназначено только для разработки, не используйте его для продакшена.
 
-## Базовая модель запроса
+## Базовая модель запроса {: #basic-request-model } 
 
 Прежде чем мы приступим к началу работы, важно понять основы "базовой модели запроса".
 
 --8<-- 'text/chainlink/chainlink-brm.md'
 
-## Продвинутые пользователи
+## Продвинутые пользователи {: #advanced-users } 
 
 Если Вы знакомы с запуском нод Chainlink Oracle, эта информация поможет Вам быстро начать работу с Moonbase Alpha TestNet:
 
@@ -32,7 +32,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
  - LINK Token в Moonbase Alpha: `0xa36085F69e2889c224210F603D836748e7dC0088`
  - Получите токены Moonbase Alpha через [наш кран](/getting-started/moonbase/faucet/)
 
-## Приступаем к работе
+## Приступаем к работе {: #getting-started } 
 
 В этом руководстве будет описан процесс настройки ноды Oracle. Его можно кратко представить следующим образом:
 
@@ -49,7 +49,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
  - Учетная запись с денежными средствами. Вы можете создать ее с помощью [Metamask](/integrations/wallets/metamask/), который можно пополнить через [этот кран](https://docs.moonbeam.network/getting-started/moonbase/faucet/)
  - Доступ к Remix IDE на случай, если Вы захотите использовать его для размещения контракта Oracle. Вы можете найти более подробную информацию о Remix на Moonbeam [здесь](/integrations/remix/)
 
-## Настройка ноды
+## Настройка ноды {: #node-setup } 
 
 Во-первых, давайте создадим новый каталог для размещения всех необходимых файлов. Например:
 
@@ -126,7 +126,7 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 ![логи Docker](/images/chainlink/chainlinknode-image1.png)
 
-## Настройка контракта
+## Настройка контракта {: #contract-setup } 
 
 Когда нода Oracle запущена, давайте настроим смарт-контракт.
 
@@ -163,7 +163,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 ![Авторизация ноды Chainlink Oracle](/images/chainlink/chainlinknode-image5.png)
 
-## Создание Job на ноде Oracle
+## Создание Job на ноде Oracle {: #create-job-on-the-oracle-node } 
 
 Последним шагом настройки Оракула Chainlink является создание Job. Ссылаясь на [официальную документацию Chainlink](https://docs.chain.link/docs/job-specifications):
 
@@ -206,7 +206,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 Вот и все! Вы полностью настроили ноду Chainlink Oracle, работающую на Moonbase Alpha.
 
-## Test the Oracle
+## Test the Oracle {: #test-the-oracle } 
 
 Чтобы убедиться, что Oracle работает и отвечает на запросы, то следуйте нашему руководству [с использованием Oracle](/integrations/oracles/chainlink/). Основная идея состоит в том, чтобы разместить клиентский контракт, который обращается к Oracle, а Oracle записывает запрошенные данные в хранилище контракта.
 

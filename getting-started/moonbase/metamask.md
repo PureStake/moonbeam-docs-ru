@@ -5,7 +5,7 @@ description: Узнайте, как использовать MetaMask с Moonbea
 
 # Подключение MetaMask к Moonbase Alpha
 
-## Вступление
+## Вступление {: #introduction } 
 
 В этом руководстве описаны шаги, необходимые для подключения MetaMask к Moonbase Alpha. В отличие от нашего предыдущего руководства по MetaMask, это намного проще, потому что вам не нужно подключаться к локальному работающему узлу Moonbeam. Прыгнем прямо в это.
 
@@ -27,7 +27,7 @@ description: Узнайте, как использовать MetaMask с Moonbea
 
 ![MetaMask2](/images/testnet/testnet-metamask2.png)
 
-## Подключение к Moonbase Alpha
+## Подключение к Moonbase Alpha {: #connecting-to-moonbase-alpha } 
 
 После того как Вы закончите создание или импорт кошелька, Вы увидите основной интерфейс MetaMask. Здесь щелкните в правом верхнем углу логотипа и перейдите в Настройки(Settings).
 
