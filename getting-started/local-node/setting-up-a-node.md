@@ -208,7 +208,7 @@ cd moonbeam
 ./target/release/moonbeam --dev --execution=Native --ethapi=debug,trace
 ```
 
-## Предварительно профинансированные счета разработки {: #prefunded-development-accounts } 
+## Предварительно профинансированные счета разработки {: #pre-funded-development-accounts } 
 
 Ваш узел разработки Moonbeam поставляется с десятью предварительно профинансированными учетными записями для разработки. Адреса взяты из substrate в виде мнемоник фраз:
 

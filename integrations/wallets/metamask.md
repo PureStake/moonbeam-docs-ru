@@ -44,7 +44,7 @@ Moonbase Alpha TestNet:
 
 --8<-- 'text/testnet/testnet-details.md'
 
-## Пошаговые инструкции {: #stepbystep-tutorials } 
+## Пошаговые инструкции {: #step-by-step-tutorials } 
 
 Если Вас интересует более подробное пошаговое руководство, Вы можете перейти к нашим подробным руководствам:
 

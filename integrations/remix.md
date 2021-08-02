@@ -38,7 +38,7 @@ contract SimpleContract{
 
 ![Взаимодействовать с контрактом](/images/remix/integrations-remix-2.png)
 
-## Пошаговые инструкции {: #stepbystep-tutorials } 
+## Пошаговые инструкции {: #step-by-step-tutorials } 
 
 Если Вас интересует более подробные пошаговые инструкции, перейдите к нашим руководствам по использованию [Remix на автономной ноде Moonbeam](/getting-started/local-node/using-remix/). Эти шаги также можно адаптировать для размещения на Moonbase Alpha TestNet [подключив к ней MetaMask](/getting-started/moonbase/metamask/).
 

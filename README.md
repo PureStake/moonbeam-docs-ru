@@ -82,22 +82,22 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 ---
 
 ## Как взаимодействовать с сообществом Moonbeam? {: #how-to-engage-with-the-moonbeam-community }
-### :fontawesome-brands-discord:  Discord {: #:fontawesome-brands-discord-discord } 
+### :fontawesome-brands-discord:  Discord {: #fontawesome-brands-discord-discord } 
 Инструкции к нашей TestNet и другие темы, посвященных разработке, можно найти на нашем [Discord канале](https://discord.gg/PfpUATX).
 
-### :moonbeam-element:  Element {: #:moonbeam-element-element } 
+### :moonbeam-element:  Element {: #moonbeam-element-element } 
 Технические обсуждения и поддержка приветствуются в нашей комнате Element (ранее Riot), которую можно найти [здесь](https://app.element.io/#/room/#moonbeam:matrix.org).
 
-### :fontawesome-brands-telegram-plane:  Telegram {: #:fontawesome-brands-telegram-plane-telegram } 
+### :fontawesome-brands-telegram-plane:  Telegram {: #fontawesome-brands-telegram-plane-telegram } 
 Общую информацию и другие нетехнические темы можно обсудить в нашей группе Telegram [здесь](https://t.me/Moonbeam_Official).
 
-### :fontawesome-brands-twitter:  Twitter {: #:fontawesome-brands-twitter-twitter }
+### :fontawesome-brands-twitter:  Twitter {: #fontawesome-brands-twitter-twitter }
 Следите за нашими обновлениями в Twitter: [@MoonbeamNetwork](https://twitter.com/MoonbeamNetwork).
 
-### :fontawesome-brands-youtube:  YouTube {: #:fontawesome-brands-youtube-youtube }
+### :fontawesome-brands-youtube:  YouTube {: #fontawesome-brands-youtube-youtube }
 Для получения видеоуроков и сопутствующего контента подпишитесь на наш канал YouTube [здесь](https://www.youtube.com/c/MoonbeamNetwork).
 
-### :fontawesome-solid-envelope:  Новости {: #:fontawesome-solid-envelope-newsletter } 
+### :fontawesome-solid-envelope:  Новости {: #fontawesome-solid-envelope-newsletter } 
 Мы отправляем ежемесячный информационный бюллетень с обновлениями проектов, на которые вы можете подписаться [здесь](https://moonbeam.network/newsletter/).
 
 ## О сайте {: #about-this-site } 

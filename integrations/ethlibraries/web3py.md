@@ -31,7 +31,7 @@ web3 = Web3(Web3.HTTPProvider('RPC_URL'))
  - Нода Moonbeam: `http://127.0.0.1:9933`
  - Moonbase Alpha TestNet: `https://rpc.testnet.moonbeam.network`
 
-## Пошаговые инструкции {: #stepbystep-tutorials } 
+## Пошаговые инструкции {: #step-by-step-tutorials } 
 
 Если вас интересует более подробное пошаговое руководство, перейдите к нашим конкретным руководствам по использованию web3.py на Moonbeam для [отправки транзакции](/getting-started/local-node/send-transaction/) или [развертывания контракта.](/getting-started/local-node/deploy-contract/).
 
