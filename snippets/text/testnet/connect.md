@@ -1,4 +1,4 @@
-### HTTPS DNS
+### HTTPS DNS {: #https-dns } 
 
 Чтобы подключиться к Moonbase Alpha через HTTPS просто укажите своему провайдеру следующий RPC DNS:
 
@@ -32,7 +32,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 Любой кошелек Ethereum должен иметь возможность генерировать действительный адрес для Moonbeam (например, [MetaMask](https://metamask.io/)).
 
-### WSS DNS
+### WSS DNS {: #wss-dns } 
 
 Для подключений через WebSocket вы можете использовать следующий DNS:
 
@@ -40,11 +40,11 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 wss://wss.testnet.moonbeam.network
 ```
 
-### Идентификатор цепи
+### Идентификатор цепи {: #chain-id } 
 
 Для Moonbase Alpha TestNet идентификатор цепи:  `1287`.
 
-### Relay Chain
+### Relay Chain {: #relay-chain } 
 
 Для подключения к Relay Chain Moonbase Alpha, управляемой PureStake, можно использовать следующую конечную точку WS Endpoint:
 
