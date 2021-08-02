@@ -156,7 +156,7 @@ cd moonbeam
  
 Тем не менее, используя все возможности Ethereum RPC Moonbeam, Вы также можете использовать [MetaMask](/getting-started/local-node/using-metamask/) для проверки баланса этого адреса. Кроме того, Вы также можете использовать другие инструменты разработки, такие как [Remix](/getting-started/local-node/using-remix/) и [Truffle](/getting-started/local-node/using-truffle/).
 
-## Общие команды, флаги и параметры {: #common-commands,-flags-and-options } 
+## Общие команды, флаги и параметры {: #common-commands-flags-and-options } 
 
 ### Очистка цепи {: #purging-the-chain } 
 
