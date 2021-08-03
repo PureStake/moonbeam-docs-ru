@@ -8,7 +8,7 @@ description: Воспользуйтесь данным руководством,
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p_0OAHSlHNM' frameborder='0' allowfullscreen></iframe></div>
 <style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>Вы можете найти весь необходимый код касающейся этого руководства в <a href="{{ config.site_url }}resources/code-snippets/">фрагментах кода</a></div>
 
-## Вступление
+## Вступление {: #introduction } 
 
 В этом руководстве описаны шаги, по созданию ноды для тестирования совместимости с Ethereum и функциональности Moonbeam.
 
@@ -22,7 +22,7 @@ description: Воспользуйтесь данным руководством,
 
 Есть два способа запустить узел Moonbeam: Вы можете использовать [докер для запуска предварительно созданного бинарного файла](#Запуск-Moonbeam-с-ипользованием-Docker) или Вы можете [скомпилировать бинарный файл локально](#Запуск-Moonbeam-из-исходного-кода) и самостоятельно настроить узел для разработки. Использование Docker - это быстрый и удобный способ для того чтобы начать работу, так как Вам не нужно устанавливать Substrate и все зависимости, и Вы также можете пропустить процесса создание ноды вручную. Это потребует от Вас [установить докер](https://docs.docker.com/get-docker/). С другой стороны, если Вы решите, пройти процесс создания собственного узла для разработки, это может занять около 30 минут или больше в зависимости от Вашего оборудования.
 
-## Запуск Moonbeam с ипользованием Docker
+## Запуск Moonbeam с ипользованием Docker {: #getting-started-with-docker } 
 
 Использование Docker позволяет развернуть ноду за считанные секунды. После того, как Вы установили Docker, Вы можете выполнить следующую команду, чтобы загрузить необходимый образ:
 
@@ -74,7 +74,7 @@ purestake/moonbeam \
 
 Чтобы продолжить изучение, Вам не нужен будет следующий раздел, так как Вы уже создали узел с помощью Docker. Вы можете перейти к [Подключение приложений Polkadot JS к локальному узлу Moonbeam](#Подключение-приложений-Polkadot-JS-к-локальному-узлу-Moonbeam).
 
-## Запуск Moonbeam из исходного кода
+## Запуск Moonbeam из исходного кода {: #getting-started-with-the-binary-file } 
 
 !!! примечание  внимание
     Если Вы знаете, что делаете, Вы можете напрямую загрузить предварительно скомпилированные бинарные файлы, поставляемые к каждому выпуску, на [Moonbeam-release page](https://github.com/PureStake/moonbeam/releases). Данные файлы не будут работать во всех системах. Например, двоичные файлы работают только в Linux x86-64 версиях и с определенными версиями зависимостей. Самый безопасный способ обеспечить совместимость - это скомпилировать бинарный файл непосредственно в той системе, в которой будет происходить запуск ноды.
@@ -131,7 +131,7 @@ cd moonbeam
 ```
 ./target/release/moonbeam --help
 ```
-## Подключение приложений Polkadot JS к локальному узлу Moonbeam
+## Подключение приложений Polkadot JS к локальному узлу Moonbeam {: #connecting-polkadot-js-apps-to-a-local-moonbeam-node } 
 
 Узел разработки - это узел на основе substrate, поэтому Вы можете взаимодействовать с ним, используя стандартные инструменты substrate. Ниже представлены два RPC адреса, которые Вы можете использовать для подключения: 
 
@@ -150,15 +150,15 @@ cd moonbeam
 
 ![Select Local Node](/images/setting-up-a-node/setting-up-node-7.png)
 
-## Запрос состояния учетной записи
+## Запрос состояния учетной записи {: #querying-account-state } 
 
 С выпуском [Moonbase Alpha v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/), Moonbeam теперь работает в формате единой учетной записи, который представляет собой H160 в стиле Ethereum и теперь также поддерживается в приложениях Polkadot JS. Чтобы проверить баланс адреса, вы можете просто импортировать свою учетную запись на вкладку «Учетные записи»(Accounts tab). Вы можете найти более подробную информацию в секции [Единые учетные записи](/learn/unified-accounts/).
  
 Тем не менее, используя все возможности Ethereum RPC Moonbeam, Вы также можете использовать [MetaMask](/getting-started/local-node/using-metamask/) для проверки баланса этого адреса. Кроме того, Вы также можете использовать другие инструменты разработки, такие как [Remix](/getting-started/local-node/using-remix/) и [Truffle](/getting-started/local-node/using-truffle/).
 
-## Общие команды, флаги и параметры
+## Общие команды, флаги и параметры {: #common-commands-flags-and-options } 
 
-### Очистка цепи
+### Очистка цепи {: #purging-the-chain } 
 
 При запуске узла с помощью бинарного файла, данные хранятся в директории, которая обычно расположена в `~/.local/shared/moonbeam/chains/development/db`. If you want to start a fresh instance of the node, you can either delete the content of the folder, or run the following command inside the `moonbeam` folder:
 
@@ -169,7 +169,7 @@ cd moonbeam
 Это приведет к удалению папки с данными, обратите внимание, что с этого момента все данные цепочки потеряны.
 
 Если Вы использовали Docker, в этом случае папка данных связана с самим контейнером Docker.
-### Флаги узлов
+### Флаги узлов {: #node-flags } 
 
 Флаги не принимают аргументы, чтобы использовать флаг, добавьте его в конец команды. Например:
 
@@ -183,7 +183,7 @@ cd moonbeam
 - `--rpc-external`: Прослушивать все RPC интерфейсы
 - `--ws-external`: Прослушивать все Websocket интерфейсы 
 
-### Параметры узла
+### Параметры узла {: #node-options } 
 
 Опции принимают аргумент справа от опции. Например:
 
@@ -198,7 +198,7 @@ cd moonbeam
 
 Чтобы получить полный список всех флагов и параметров, для Вашей Moonbeam ноды, добавьте в конце команды `--help`.
 
-## Расширенные флаги и параметры
+## Расширенные флаги и параметры {: #advanced-flags-and-options } 
 
 --8<-- 'text/setting-up-node/advanced-flags.md'
 
@@ -208,7 +208,7 @@ cd moonbeam
 ./target/release/moonbeam --dev --execution=Native --ethapi=debug,trace
 ```
 
-## Предварительно профинансированные счета разработки
+## Предварительно профинансированные счета разработки {: #pre-funded-development-accounts } 
 
 Ваш узел разработки Moonbeam поставляется с десятью предварительно профинансированными учетными записями для разработки. Адреса взяты из substrate в виде мнемоник фраз:
 

@@ -6,13 +6,13 @@ description: Следуйте этому краткому руководству
 
 ![Вступительная диаграмма](/images/polkadotjs/polkadotjs-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 С [выходом обновления v3](https://www.purestake.com/news/moonbeam-network-upgrades-account-structure-to-match-ethereum/) для Moonbase Alpha TestNet мы внесли значительные обновления в базовую систему учетных записей на Moonbeam, заменив учетные записи и ключи в стиле Substrate, на учетные записи и ключи в стиле Ethereum.
 
 Интерфейс Polkadot JS Apps также был обновлен, так что он поддерживает собственные адреса H160 и ключи ECDSA. Итак, в этом руководстве мы проверим эту новую интеграцию учетных записей в стиле Ethereum на сайте Polkadot JS Apps.
 
-## Подключение к Moonbase Alpha
+## Подключение к Moonbase Alpha {: #connecting-to-moonbase-alpha } 
 
 Для начала нам нужно подключить его к Moonbase Alpha TestNet, нажав на логотип в левом верхнем углу и выбрав Moonbase Alpha (в разделе "Тестовые сети").
 
@@ -22,7 +22,7 @@ description: Следуйте этому краткому руководству
 
 ![Подключение к Moonbase Alpha](/images/polkadotjs/polkadotjs-app2.png)
 
-## Создание или импорт счета H160
+## Создание или импорт счета H160 {: #creating-or-importing-an-h160-account } 
 
 Рассмотрим, как можно создать новую учетную запись или импортировать уже существующую учетную запись MetaMask в Polkadot JS Apps. Сначала перейдите в раздел Account и нажмите на кнопку Add account.
 
@@ -51,7 +51,7 @@ description: Следуйте этому краткому руководству
 
 ![Подключение к Moonbase Alpha](/images/polkadotjs/polkadotjs-app6.png)
 
-## Отправка транзакций через Substrate’s API
+## Отправка транзакций через Substrate’s API {: #sending-a-transaction-through-substrates-api } 
 
 Теперь продемонстрируем потенциал схемы "Unified Accounts" от Moonbeam, сделав трансфер через Substrate API с помощью приложения Polkadot JS Apps. Помните, что мы взаимодействуем с Substrate по адресу H160 в стиле Ethereum. Для этого мы импортировали другую учетную запись под названием Charley с 5 `DEV` монетами.
 

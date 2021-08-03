@@ -5,7 +5,7 @@ description: Для того чтобы было легче начать раб�
 
 # Фрагменты кода
 
-## Настройка локальной ноды Moonbeam
+## Настройка локальной ноды Moonbeam {: #setting-up-a-local-moonbeam-node } 
 
 **Выполните клонирование “moonbeam-tutorials” репозитория:**
 
@@ -50,17 +50,17 @@ cd moonbeam
 ./target/release/moonbeam-development --dev -lerror
 ```
 
-## Учетная запись Genesis
+## Учетная запись Genesis {: #genesis-account } 
 
 --8<-- 'text/metamask-local/dev-account.md'
 
-## Учетная запись Development
+## Учетная запись Development {: #development-accounts } 
 
 --8<-- 'code/setting-up-node/dev-accounts.md'
 
 --8<-- 'code/setting-up-node/dev-testing-account.md'
 
-## MetaMask
+## MetaMask {: #metamask } 
 
 **Детали ноды Moonbeam Development:**
 

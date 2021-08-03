@@ -18,7 +18,7 @@ description: Данный сайт предоставляет документа
 
 ---
 
-## Что такое Moonbeam? 
+## Что такое Moonbeam? {: #what-is-moonbeam } 
 
 Moonbeam - это блокчейн, ориентированный на разработчиков, которые стремятся обеспечить совместимость с существующим набором инструментов и с сетью разработчиков Ethereum, предоставляя полную реализацию EVM, API-интерфейса, совместимым с Web3, и мосты, которые соединяют Moonbeam с существующими сетями Ethereum.
 
@@ -29,16 +29,16 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
 ---
 
-## Как начать работу с Moonbeam
+## Как начать работу с Moonbeam {: #how-to-get-started-with-moonbeam }
 
-### Сети
+### Сети {: #networks } 
 
 В настоящее время есть два способа как начать работу на  Moonbeam: 
 
  - Создать свой собственный экземпляр Moonbeam как [отдельный узел](/getting-started/local-node/setting-up-a-node/)
  - [Подключится](/getting-started/moonbase/connect/) к тестовой сети [Moonbase Alpha TestNet](/networks/moonbase/)
 
-### Кошельки
+### Кошельки {: #wallets } 
 
 В настоящее время мы протестировали Moonbeam со следующими кошельками:
 
@@ -49,7 +49,7 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
 Однако любой кошелек, который работает с пользовательской сетью Ethereum, должен также работать и с Moonbeam!
 
-### Инструменты:
+### Инструменты: {: #tools } 
 
 Благодаря функциям совместимости Moonbeam с Ethereum вы можете использовать инструменты разработки, которые Вы знаете и который Вам больше всего подходит:
 
@@ -65,7 +65,7 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
  Хотите, чтобы здесь был добавлен еще один инструмент Ethereum? [Дайте нам знать!](https://discord.gg/PfpUATX)
 
-### Оракулы
+### Оракулы {: #oracles } 
 
  У нас также есть несколько Оракулов, которые могут служить источником данных для Ваших смарт-контрактов:
 
@@ -73,7 +73,7 @@ Moonbeam также будет парачейном в сети Polkadot. Это
  - [Band Protocol](/integrations/oracles/band-protocol/)
  - [Razor Network](/integrations/oracles/razor-network/)
 
-### Мосты
+### Мосты {: #bridges } 
 
 В настоящее время у нас есть полностью функционирующая реализация моста, который соединяет тестовую сеть Ethereum Kovan и Moonbase Alpha:
 
@@ -81,25 +81,24 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
 ---
 
-## Как взаимодействовать с сообществом Moonbeam? 
-
-### :fontawesome-brands-discord:  Discord  
+## Как взаимодействовать с сообществом Moonbeam? {: #how-to-engage-with-the-moonbeam-community }
+### :fontawesome-brands-discord:  Discord {: #fontawesome-brands-discord-discord } 
 Инструкции к нашей TestNet и другие темы, посвященных разработке, можно найти на нашем [Discord канале](https://discord.gg/PfpUATX).
 
-### :moonbeam-element:  Element  
+### :moonbeam-element:  Element {: #moonbeam-element-element } 
 Технические обсуждения и поддержка приветствуются в нашей комнате Element (ранее Riot), которую можно найти [здесь](https://app.element.io/#/room/#moonbeam:matrix.org).
 
-### :fontawesome-brands-telegram-plane:  Telegram  
+### :fontawesome-brands-telegram-plane:  Telegram {: #fontawesome-brands-telegram-plane-telegram } 
 Общую информацию и другие нетехнические темы можно обсудить в нашей группе Telegram [здесь](https://t.me/Moonbeam_Official).
 
-### :fontawesome-brands-twitter:  Twitter  
+### :fontawesome-brands-twitter:  Twitter {: #fontawesome-brands-twitter-twitter }
 Следите за нашими обновлениями в Twitter: [@MoonbeamNetwork](https://twitter.com/MoonbeamNetwork).
 
-### :fontawesome-brands-youtube:  YouTube  
+### :fontawesome-brands-youtube:  YouTube {: #fontawesome-brands-youtube-youtube }
 Для получения видеоуроков и сопутствующего контента подпишитесь на наш канал YouTube [здесь](https://www.youtube.com/c/MoonbeamNetwork).
 
-### :fontawesome-solid-envelope:  Новости  
+### :fontawesome-solid-envelope:  Новости {: #fontawesome-solid-envelope-newsletter } 
 Мы отправляем ежемесячный информационный бюллетень с обновлениями проектов, на которые вы можете подписаться [здесь](https://moonbeam.network/newsletter/).
 
-## О сайте 
+## О сайте {: #about-this-site } 
 Этот сайт создан с использованием [mkdocs](https://www.mkdocs.org/) и основан на содержании репозитория moonbeam-docs, который находится [на :fontawesome-brands-github: GitHub](https://github.com/PureStake/moonbeam-docs).

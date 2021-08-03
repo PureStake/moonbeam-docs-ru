@@ -7,7 +7,7 @@ description:  Узнайте, как использовать Geth Debug API и 
 
 ![Full Node Moonbeam Banner](/images/debugtrace/debugtrace-banner.png)
 
-## Вступление
+## Вступление {: #introduction } 
 
 Geth Дебаг API и модуль трассировки OpenEthereum обеспечивают нестандартные RPC методы для более глубокого понимания обработки транзакций.
 
@@ -20,7 +20,7 @@ Geth Дебаг API и модуль трассировки OpenEthereum обес
  - **Автономная нода Moonbeam** — запустите собственную копию Moonbeam в своей приватной среде. Для этого следуйте [этому руководству](/getting-started/local-node/setting-up-a-node/). Обязательно проверьте расширенные настройки [секции флагов](/getting-started/local-node/setting-up-a-node/#advanced-flags-and-options)
  - **Moonbase Alpha node** — запустите полную версию TestNet ноды и получите доступ к вашим приватным конечным точкам. Для этого следуйте [этому руководству](/node-operators/networks/full-node/). Обязательно проверьте расширенные настройки [advanced flags section](/node-operators/networks/full-node/#advanced-flags-and-options)
 
-## Geth Дебаг API
+## Geth Дебаг API {: #geth-debug-api } 
 
 RPC имплементация `debug_traceTransaction` следует [данному Geth гайдлайну по дебагу API](https://geth.ethereum.org/docs/rpc/ns-debug#debug_tracetransaction).
 
@@ -32,7 +32,7 @@ RPC имплементация `debug_traceTransaction` следует [данн
 
 На данный момент, трассировка транзакций на базе JavaScript не поддерживается.
 
-## Модуль Трассировки
+## Модуль Трассировки {: #trace-module } 
 
 RPC имплементация `trace_filter` следует [данному OpenEthereum гайдлайну Модуля Трассировки.](https://openethereum.github.io/JSONRPC-trace-module#trace_filter).
 
@@ -45,7 +45,7 @@ RPC имплементация `trace_filter` следует [данному Ope
  - **after** — oодин ввод: офсет (`uint`), по умолчанию - `0`. Номер офсет трассировки (или начальный номер)
  - **count** — один ввод: количество трассировок (`uint`). Количество отображаемых трассировок в пакете
 
-## Попробуем на Moonbase Alpha
+## Попробуем на Moonbase Alpha {: #try-it-on-moonbase-alpha } 
 
 Как говорилось ранее, для использования обеих функций Вам необходимо запустить `debug` и `trace` флаги на Вашей ноде. В данном примере мы используем полную ноду Moonbase Alpha с RPC HTTP конечной точкой в `http://127.0.0.1:9933`. Если у Вас запущена нода Вы должны увидеть аналогичный лог в терминале:
 

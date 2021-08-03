@@ -1,4 +1,4 @@
-### HTTPS DNS
+### HTTPS DNS {: #https-dns } 
 
 Чтобы подключиться к Moonriver через HTTPS просто укажите своему провайдеру следующий RPC DNS:
 
@@ -32,7 +32,7 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 
 Любой кошелек Ethereum должен иметь возможность генерировать действительный адрес для Moonbeam (например, [MetaMask](https://metamask.io/)).
 
-### WSS DNS
+### WSS DNS {: #wss-dns } 
 
 Для подключений через WebSocket вы можете использовать следующий DNS:
 
@@ -40,6 +40,6 @@ const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
 wss://wss.moonriver.moonbeam.network
 ```
 
-### Chain ID
+### Chain ID {: #chain-id } 
 
 Для Moonriver идентификатор цепи: `1285`
