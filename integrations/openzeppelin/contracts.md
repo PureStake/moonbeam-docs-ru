@@ -19,6 +19,9 @@ description:  Узнайте, как легко создавать общие к
 
 Компания OpenZeppelin разработала интерактивный веб-инструмент для создания контрактов, который, вероятно, является самым простым и быстрым способом написания смарт-контракта с использованием кода OpenZeppelin. Инструмент называется Contracts Wizard, и вы можете найти его на их [сайте в разделе документация](https://docs.openzeppelin.com/contracts/4.x/wizard).
 
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/l8RTwu6hGpY' frameborder='0' allowfullscreen></iframe></div>
+<style>.caption { font-family: Open Sans, sans-serif; font-size: 0.9em; color: rgba(170, 170, 170, 1); font-style: italic; letter-spacing: 0px; position: relative;}</style><div class='caption'>In this video, we use Open Zeppelin Wizard to deploy an ERC-20 token to Moonbase Alpha</a></div>
+
 В настоящее время Мастер контрактов поддерживает следующие стандарты ERC:
 
  - [**ERC20**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) — стандарт взаимозаменяемых токенов, который соответствует требованиям [EIP-20](https://eips.ethereum.org/EIPS/eip-20). Взаимозаменяемость означает, что все токены эквивалентны и взаимозаменяемы, то есть имеют одинаковую стоимость. Одним из типичных примеров взаимозаменяемых жетонов являются фиатные валюты, где каждая купюра равного номинала имеет одинаковую стоимость.
@@ -73,7 +76,7 @@ The steps described in this section assume you have [MetaMask](https://metamask.
  2. Убедитесь, что файл был создан успешно. Кликните по файлу, чтобы открыть его в текстовом редакторе
  3. Напишите свой смарт-контракт с помощью редактора файлов. Для данного примера был использован следующий код:
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -129,7 +132,7 @@ contract MyToken is ERC20, Ownable {
 
 Далее вам нужно будет написать смарт-контракт и скомпилировать его. Для данного примера используется следующий код:
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -193,7 +196,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
 Как показано в примере с [ERC20-токеном](#deploying-an-erc20-token), вам нужно будет написать смарт-контракт и скомпилировать его. Для данного примера используется следующий код:
 
-```sol
+```solidity
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";

@@ -52,16 +52,59 @@ description: Руководство, которое показывает, как
 
 Здесь укажите следующую информацию:
 
- 1. Выберите палет для взаимодействия. В данном случае это `parachainStaking`
- 2. Выберите состояние для запроса. В данном случае это `selectedCandidates` или `candidatePool`
- 3. Отправьте запрос состояния, нажав кнопку  "+"
+ 1. Head to the "Developer" tab 
+ 2. Click on "Chain State"
+ 3. Choose the pallet to interact with. In this case, it is the `parachainStaking` pallet
+ 4. Choose the state to query. In this case, it is the `selectedCandidates` or `candidatePool` state
+ 5. Send the state query by clicking on the "+" button
 
 Каждый extrinsic ответ дает свой ответ:
 
  - **selectedCandidates** — возвращает текущий активный набор коллаторов, то есть {{ networks.moonbase.staking.max_collators }} лучших коллаторов по общему количеству поставленных токенов (включая номинации).
  - **candidatePool** — возвращает в текущий список все коллаторы, в том числе те, которых нет в активном наборе.
 
-![Staking Account](/images/staking/staking-stake-11.png)
+![Staking Account](/images/staking/staking-stake-2.png)
+
+## Get the Collator Nominator Count {: #get-the-collator-nominator-count }
+
+First, you need to get the `collator_nominator_count` as you'll need to submit this parameter in a later transaction. To do so, you'll have to run the following JavaScript code snippet from within [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js):
+
+```js
+// Simple script to get collator_nominator_count
+// Remember to replace COLLATOR_ADDRESS with the address of desired collator.
+const collatorAccount = 'COLLATOR_ADDRESS'; 
+const collatorInfo = await api.query.parachainStaking.collatorState2(collatorAccount);
+console.log(collatorInfo.toHuman()["nominators"].length);
+```
+
+ 1. Head to the "Developer" tab 
+ 2. Click on "JavaScript"
+ 3. Copy the code from the previous snippet and paste it inside the code editor box 
+ 4. (Optional) Click the save icon and set a name for the code snippet, for example, "Get collator_nominator_count". This will save the code snippet locally
+ 5. Click on the run button. This will execute the code from the editor box
+ 6. Copy the result, as you'll need it when initiating a nomination
+
+![Get collator nominator count](/images/staking/staking-stake-3.png)
+
+## Get your Number of Existing Nominations {: #get-your-number-of-existing-nominations }
+If you've never made a nomination from your address you can skip this section. However, if you're unsure how many existing nominations you have, you'll want to run the following JavaScript code snippet to get `nomination_count` from within [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/js):
+
+```js
+// Simple script to get your number of existing nominations.
+// Remember to replace YOUR_ADDRESS_HERE with your nominator address.
+const yourNominatorAccount = 'YOUR_ADDRESS_HERE'; 
+const nominatorInfo = await api.query.parachainStaking.nominatorState(yourNominatorAccount);
+console.log(nominatorInfo.toHuman()["nominations"].length);
+```
+
+ 1. Head to the "Developer" tab 
+ 2. Click on "JavaScript"
+ 3. Copy the code from the previous snippet and paste it inside the code editor box 
+ 4. (Optional) Click the save icon and set a name for the code snippet, for example, "Get existing nominations". This will save the code snippet locally
+ 5. Click on the run button. This will execute the code from the editor box
+ 6. Copy the result, as you'll need it when initiating a nomination
+
+![Get existing nomination count](/images/staking/staking-stake-4.png)
 
 ## Как номинировать коллатора {: #how-to-nominate-a-collator } 
 
@@ -78,7 +121,7 @@ description: Руководство, которое показывает, как
 
 В настоящее время все, что связано со стейкингом необходимо получить через меню «Внешние компоненты» на вкладке «Разработчик»:
 
-![Staking Account](/images/staking/staking-stake-1.png)
+![Staking Account](/images/staking/staking-stake-5.png)
 
 Чтобы проверить номинацию, Вы можете перейти в «Состояние цепочки» на вкладке «Разработчик».
 
@@ -87,24 +130,29 @@ description: Руководство, которое показывает, как
  3. Выберите внешний метод, который будет использоваться для транзакции. Это определит поля, которые необходимо заполнить в следующих шагах. В данном случае это `nominate`
  4. Укажите адрес коллатора которого Вы хотите номинировать. В данном случае это `{{ networks.moonbase.staking.collators.address1 }}`
  5. Укажите количество токенов которые Вы хотите застейкать.
- 6. Нажмите кнопку «Отправить транзакцию» и подпишите транзакцию.
+ 6. Input the `collator_nominator_count` you [retrieved above from the JavaScript console](/staking/stake/#get-the-collator-nominator-count)
+ 7. Input the `nomination_count` [you retrieved from the Javascript console](/staking/stake/#get-your-number-of-existing-nominations). This is `0` if you haven't yet nominated a collator
+ 8. Click the "Submit Transaction" button and sign the transaction
 
-![Staking Join Nominators Extrinsics](/images/staking/staking-stake-2.png)
+![Staking Join Nominators Extrinsics](/images/staking/staking-stake-6.png)
+
+!!! note
+    The parameters used in steps 6 and 7 are for gas estimation purposes and do not need to be exact. However, they should not be lower than the actual values. 
 
 После подтверждения транзакции Вы можете подтвердить свою новую номинацию в опции «Состояние чейна» на вкладке «Разработчик»:
 
 Чтобы проверить номинацию, Вы можете перейти в «Состояние цепочки» на вкладке «Разработчик».
 
-![Staking Account and Chain State](/images/staking/staking-stake-3.png)
+![Staking Account and Chain State](/images/staking/staking-stake-7.png)
 
 Здесь укажите следующую информацию:
 
  1. Выберите палет с которым хотите взаимодействовать. В данном случае это `parachainStaking` 
- 2. Выберите состояние для запроса. В данном случае это `nominators`
- 3. Не забудьте отключить ползунок “включить параметр”.
+ 2. Choose the state to query. In this case, it is the `nominatorState`
+ 3. Make sure to enable the "include option" slider
  4. Отправьте запрос состояния, нажав кнопку «+»
 
-![Staking Chain State Query](/images/staking/staking-stake-4.png)
+![Staking Chain State Query](/images/staking/staking-stake-8.png)
 
 В ответе Вы должны увидеть свою учетную запись (в данном случае учетную запись Алисы) со списком номинаций. Каждая номинация содержит целевой адрес коллатора и сумму.
 
@@ -124,7 +172,7 @@ description: Руководство, которое показывает, как
  4. Задайте адрес подборщика, из которого Вы хотите удалить свою кандидатуру. В данном случае это `{{ networks.moonbase.staking.collators.address2 }}`
  5. Нажмите кнопку «Отправить транзакцию» и подпишите транзакцию.
 
-![Staking Revoke Nomination Extrinsic](/images/staking/staking-stake-7.png)
+![Staking Revoke Nomination Extrinsic](/images/staking/staking-stake-9.png)
 
 После подтверждения транзакции Вы можете убедиться, что Ваша номинация была удалена, в опции «Состояние чейна» на вкладке «Разработчик».
 
@@ -132,16 +180,16 @@ description: Руководство, которое показывает, как
 
  1. Выберите палет, с которой хотите взаимодействовать. В данном случае это `parachainStaking`
  2. Выберите состояние для запроса. В данном случае это `nominatorState`
- 3. Обязательно отключите ползунок “Включить параметры”.
+ 3. Make sure to enable the "include options" slider
  4. Отправьте запрос состояния, нажав кнопку "+".
 
-![Staking Revoke Nomination Cain State](/images/staking/staking-stake-8.png)
+![Staking Revoke Nomination Chain State](/images/staking/staking-stake-8.png)
 
 В ответе вы должны увидеть свою учетную запись (в данном случае учетную запись Алисы) со списком номинаций. Каждая номинация содержит целевой адрес коллатора и сумму.
 
 Как упоминалось ранее, Вы также можете удалить все текущие номинации с помощью функции `leaveNominators` (на шаге 3 инструкций "Extrinsics"). Этот extrinsic не требует ввода:
 
-![Staking Leave Nominatiors Extrinsic](/images/staking/staking-stake-9.png)
+![Staking Leave Nominatiors Extrinsic](/images/staking/staking-stake-10.png)
 
 После подтверждения транзакции Ваша учетная запись не должна быть указана в списке номинаторов при запросе, и у Вас не должно быть зарезервированного баланса (связанного с размещением ставок).
 
@@ -153,4 +201,4 @@ description: Руководство, которое показывает, как
 
 В предыдущем примере Алиса была вознаграждена `0.0044`токенов после двух раундов выплат: 
 
-![Staking Reward Example](/images/staking/staking-stake-10.png)
+![Staking Reward Example](/images/staking/staking-stake-1.png)

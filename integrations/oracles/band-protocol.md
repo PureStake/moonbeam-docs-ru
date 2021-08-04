@@ -41,7 +41,7 @@ description: Как использовать данные запроса от Or
  - Последняя обновленная база: последний раз, когда обновлялась базовая цена (с эпохи UNIX)
  - Последнее обновление котировки: последний раз, когда котировочная цена была обновлена ​​(с эпохи UNIX)
  
-```
+```js
 struct ReferenceData {
    uint256 rate; 
    uint256 lastUpdatedBase; 
@@ -59,7 +59,7 @@ struct ReferenceData {
 
 Следующий код смарт-контракта предоставляет несколько простых примеров контракта `StdReference` и функции `getReferenceData`  они не предназначены для производства. Интерфейс `IStdReference.sol` определяет структуру ReferenceData и функции, доступные для выполнения запросов.
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -93,7 +93,7 @@ interface IStdReference {
 
 При развертывании функции конструктора требуется адрес контракта агрегатора для целевой сети.
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -153,7 +153,7 @@ contract DemoOracle {
 
 Мы развернули контракт, доступный в Moonbase Alpha TestNet (по адресу `0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) поэтому Вы можете легко проверить информацию, поступающую из оракула Band Protocol. Для этого вам понадобится следующий интерфейсный контракт:
 
-```sol
+```solidity
 pragma solidity 0.6.11;
 pragma experimental ABIEncoderV2;
 
@@ -195,7 +195,7 @@ getReferenceData(['BTC/USD', 'BTC/ETH', 'ETH/EUR'])
 
 Затем он возвращает объект массива со следующей структурой:
 
-```
+```js
 [
   {
     pair: 'BTC/USD',
