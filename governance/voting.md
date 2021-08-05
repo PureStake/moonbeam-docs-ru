@@ -35,13 +35,24 @@ description: Как проголосовать за предложение, чт
  - **Период блокировки** — время (после принятия предложения), в течение которого токены победивших избирателей блокируются. Пользователи по-прежнему могут использовать эти токены для ставок или голосования
  - **Делегирование** — акт передачи вашего права голоса на другую учетную запись до определенного срока
 
-В настоящее время для Moonbase Alpha:
+=== "Moonbase Alpha"
 
-|        Переменная         |     |                                 Значение                                                                           |
-| :---------------------: | :-: | :-------------------------------------------------------------------------------------------------------------------: |
-|       Период Голосованя       |     |  {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)  |
-|      Период Принятия        |     | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
-| Максимальное колличество голосов |     |                                      {{ networks.moonbase.democracy.max_votes}}                                       |
+    |        Переменная         |     |                                 Значение                                                                           |
+    | :---------------------: | :-: | :-------------------------------------------------------------------------------------------------------------------: |
+    |       Период Голосованя       |     |  {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)  |
+    |      Период Принятия        |     | {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} days) |
+    | Максимальное колличество голосов |     |                                      {{ networks.moonbase.democracy.max_votes}}                                       |
+
+=== "Moonriver"
+
+    |        Variable         |  |                                                          Value                                                          |
+    |:-----------------------:|::|:-----------------------------------------------------------------------------------------------------------------------:|
+    |      Enact Period       |  | {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}} days) |
+    | Maximum Number of Votes |  |                                       {{ networks.moonriver.democracy.max_votes}}                                       |
+    |       Vote Period       |  |  {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}} days)  |
+
+
+This guide will show you how to vote on a referendum on Moonbase Alpha.
 
 ## Дорожная карта предложения {: #roadmap-of-a-proposal } 
 

@@ -34,14 +34,24 @@ description: Как подать предложение для голосова�
  - **Период запуска** — как часто запускаются новые публичные референдумы
  - **Период принятия** — продолжительность (в блоках), в течение которой предложение не может быть повторно подано после вето
 
-В настоящее время для Moonbase Alpha:
+=== "Moonbase Alpha"
 
-|         Переменная         |     |                                                          Значение                                                          |
-| :----------------------: | :-: | :---------------------------------------------------------------------------------------------------------------------: |
-|      Период запуска       |     | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
-|     Период принятия      |     |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
-| Минимальный депозит за прообраз |     |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
-| Минимальный депозит предложения |     |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+    |         Переменная         |     |                                                          Значение                                                          |
+    | :----------------------: | :-: | :---------------------------------------------------------------------------------------------------------------------: |
+    |      Период запуска       |     | {{ networks.moonbase.democracy.launch_period.blocks}} blocks ({{ networks.moonbase.democracy.launch_period.days}} days) |
+    |     Период принятия      |     |   {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)   |
+    | Минимальный депозит за прообраз |     |                                 {{ networks.moonbase.democracy.min_preim_deposit}} DEV                                  |
+    | Минимальный депозит предложения |     |                                    {{ networks.moonbase.democracy.min_deposit}} DEV                                     |
+
+=== "Moonriver"
+    |         Variable         |  |                                                           Value                                                           |
+    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------:|
+    |      Launch Period       |  | {{ networks.moonriver.democracy.launch_period.blocks}} blocks ({{ networks.moonriver.democracy.launch_period.days}} days) |
+    |     Cool-off Period      |  |   {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)   |
+    | Minimum Preimage Deposit |  |                                  {{ networks.moonriver.democracy.min_preim_deposit}} MOVR                                 |
+    | Minimum Proposal Deposit |  |                                     {{ networks.moonriver.democracy.min_deposit}} MOVR                                    |
+
+This guide will show you how to submit a proposal on Moonbase Alpha.
 
 ## Дорожная карта предложения {: #roadmap-of-a-proposal } 
 

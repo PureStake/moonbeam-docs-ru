@@ -29,9 +29,9 @@ const web3 = new Web3('RPC_URL');
 
 В зависимости от того, к какой сети вы хотите подключиться, вы можете установить для `RPC_URL` следующие значения:
 
- -Нода Moonbeam: `http://127.0.0.1:9933`
- - Moonbase Alpha TestNet: `https://rpc.testnet.moonbeam.network`
-
+ - Нода Moonbeam: `{{ networks.development.rpc_url }}`
+ - Moonbase Alpha TestNet: `{{ networks.moonbase.rpc_url }}`
+ - Moonriver: `{{ networks.moonriver.rpc_url }}`
 ## Пошаговые инструкции {: #step-by-step-tutorials } 
 
 сли вас интересует более подробное пошаговое руководство, перейдите к нашим конкретным руководствам по использованию web3.js на Moonbeam для [отправки транзакции](/getting-started/local-node/send-transaction/) или [развертывания контракта](/getting-started/local-node/deploy-contract/).

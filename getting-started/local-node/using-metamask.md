@@ -47,13 +47,29 @@ MetaMask можно настроить для подключения к лока
 
 Чтобы подключить MetaMask к Moonbeam, перейдите в Настройки -> Сети -> Добавить сеть. Здесь Вы можете настроить, к какой сети Вы хотите подключить MetaMask, используя следующие конфигурации сети:
 
-Нода Moonbeam:
+=== "Нода Moonbeam"
 
---8<-- 'text/metamask-local/development-node-details.md'
+    - Network Name: `Moonbeam Dev`
+    - RPC URL: `{{ networks.development.rpc_url }}`
+    - ChainID: `{{ networks.development.chain_id }}`
+    - Symbol (Optional): `DEV`
+    - Block Explorer (Optional): `{{ networks.development.block_explorer }}`
 
-Moonbase Alpha TestNet:
+=== "Moonbase Alpha TestNet"
 
---8<-- 'text/testnet/testnet-details.md'
+    - Network Name: `Moonbase Alpha`
+    - RPC URL: `{{ networks.moonbase.rpc_url }}`
+    - ChainID: `{{ networks.moonbase.chain_id }}`
+    - Symbol (Optional): `DEV`
+    - Block Explorer (Optional): `{{ networks.moonbase.block_explorer }}`
+
+=== "Moonriver"
+
+    - Network Name: `Moonriver`
+    - RPC URL: `{{ networks.moonriver.rpc_url }}`
+    - ChainID: `{{ networks.moonriver.chain_id }}`
+    - Symbol (Optional): `MOVR`
+    - Block Explorer (Optional): `{{ networks.moonriver.block_explorer }}`
 
 Для целей этого руководства давайте подключим MetaMask к нашей локальной ноде Moonbeam.
 

@@ -5,7 +5,7 @@ description: Данный сайт предоставляет документа
 
 # Добро пожаловать в Moonbeam
 
-![Main Page Banner](/images/main-banner.png)
+![Main Page Banner](/images/main-banner.png)Currently, there are a few ways you can start building on Moonbeam:
 
 **Note: this website was translated by members of the Ambassadors program and is part of a community-led effort. The team would like to express his gratitude towards these great Ambassadors that translated all the content: Andrey (AndyPolo), Anton (AntonM), Cugut Alexei (GameOver), Lina K. (Lyn#2616), Mikhail (Mike K), and Oksana (Oksana#9601). If you want to contribute to this translation, please visit the following [GitHub repository](https://github.com/PureStake/moonbeam-docs-ru).**
 
@@ -33,11 +33,11 @@ Moonbeam также будет парачейном в сети Polkadot. Это
 
 ### Сети {: #networks } 
 
-В настоящее время есть два способа как начать работу на  Moonbeam: 
+Currently, there are a few ways you can start building on Moonbeam: 
 
  - Создать свой собственный экземпляр Moonbeam как [отдельный узел](/getting-started/local-node/setting-up-a-node/)
  - [Подключится](/getting-started/moonbase/connect/) к тестовой сети [Moonbase Alpha TestNet](/networks/moonbase/)
-
+ - [Connect](/getting-started/moonriver/connect/) to [Moonriver](/networks/moonriver/)
 ### Кошельки {: #wallets } 
 
 В настоящее время мы протестировали Moonbeam со следующими кошельками:

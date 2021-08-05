@@ -19,16 +19,27 @@ TСортировщики (узлы, которые производят бло�
 
 --8<-- 'text/staking/staking-definitions.md'
 
-Currently, for Moonbase Alpha:
+=== "Moonbase Alpha"
 
-|             Переменная           |     |                                                  Значение                                               |
-| :------------------------------: | :-: | :-----------------------------------------------------------------------------------------------------: |
-|     Минимальная доля номинирования     |     |                          {{ networks.moonbase.staking.min_nom_stake }} tokens                           |
-|        Минимальная номинация         |     |                          {{ networks.moonbase.staking.min_nom_amount}} tokens                           |
-| Максимальное количество номинаторов на сортировщика  |     |                             {{ networks.moonbase.staking.max_nom_per_col }}                             |
-| Максимум сортировщиков на номинанта |     |                             {{ networks.moonbase.staking.max_col_per_nom }}                             |
-|              Раунд               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
-|          Длительность бонда      |     |                            {{ networks.moonbase.staking.bond_lock }} rounds                             |
+  |             Переменная           |     |                                                  Значение                                               |
+  | :------------------------------: | :-: | :-----------------------------------------------------------------------------------------------------: |
+  |     Минимальная доля номинирования     |     |                          {{ networks.moonbase.staking.min_nom_stake }} tokens                           |
+  |        Минимальная номинация         |     |                          {{ networks.moonbase.staking.min_nom_amount}} tokens                           |
+  | Максимальное количество номинаторов на сортировщика  |     |                             {{ networks.moonbase.staking.max_nom_per_col }}                             |
+  | Максимум сортировщиков на номинанта |     |                             {{ networks.moonbase.staking.max_col_per_nom }}                             |
+  |              Раунд               |     | {{ networks.moonbase.staking.round_blocks }} blocks ({{ networks.moonbase.staking.round_hours }} hours) |
+  |          Длительность бонда      |     |                            {{ networks.moonbase.staking.bond_lock }} rounds                             |
+
+=== "Moonriver"
+
+    |             Variable             |  |                                                   Value                                                   |
+    |:--------------------------------:|::|:---------------------------------------------------------------------------------------------------------:|
+    |     Minimum nomination stake     |  |                           {{ networks.moonriver.staking.min_nom_stake }} MOVR                             |
+    |        Minimum nomination        |  |                           {{ networks.moonriver.staking.min_nom_amount}} MOVR                             |
+    | Maximum nominators per collators |  |                             {{ networks.moonriver.staking.max_nom_per_col }}                              |
+    | Maximum collators per nominator  |  |                             {{ networks.moonriver.staking.max_col_per_nom }}                              |
+    |              Round               |  | {{ networks.moonriver.staking.round_blocks }} blocks ({{ networks.moonriver.staking.round_hours }} hours) |
+    |          Bond duration           |  |                             {{ networks.moonriver.staking.bond_lock }} rounds                             |
 
 ## Распределение вознаграждений {: #reward-distribution } 
 
@@ -52,7 +63,7 @@ Currently, for Moonbase Alpha:
 
 Где доля соответствует количеству токенов, которые вложены каждым номинатором, относительно общей доли этого сортировщика.
 
-## Попробуйте на Moonbase Alpha {: #try-it-on-moonbase-alpha } 
+## Try it out {: #try-it-out} 
 
 В Moonbase Alpha TestNet холдеры токенов могут стейкать и получать вознаграждения (чтобы ознакомиться с системой, поскольку токен не имеет реальной стоимости).
 

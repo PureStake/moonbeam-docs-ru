@@ -15,10 +15,10 @@ _Обновлено 9 июля 2021 года_
 
 ## Первоначальные конфигурации {: #initial-configurations } 
 
-Запуск Moonriver запланирован согласно [5-фазному процессу запуска] (https://moonbeam.network/networks/moonriver/launch/). В настоящее время Moonriver находится в фазе 0 запуска и имеет следующие конфигурации:
+Moonriver is scheduled to follow a [5-phase launch process](https://moonbeam.network/networks/moonriver/launch/). Currently, Moonriver is in Phase 3 of the launch process and has the following configurations:
 
 - Работает как парачейн, подключенный к Relay Chain Кусамы.
-- Имеет активный набор {{ networks.moonriver.staking.max_collators }} коллаторов, размещенных PureStake от имени Moonbeam Foundation. На фазе 1 будут проведены выборы коллаторов, чтобы расширить набор коллаторов для сторон, не входящих в команду Moonbeam.
+- Has an active set of {{ networks.moonriver.staking.max_collators }} collators
 - Есть две конечные точки RPC (размещенные PureStake). Люди могут запускать полные ноды для доступа к своим собственным частным конечным точкам RPC
 
 ![Moonriver Diagram](/images/moonriver/moonriver-diagram.png)
@@ -89,7 +89,7 @@ _*Подробнее о [деноминации токенов](#_6)_
 
 В течение 5 этапов запуска Moonriver сеть будет постепенно обновляться до полностью децентрализованной сети Proof of Stake. Подробную информацию о том, что будет происходить на каждом этапе, можно найти на странице [Статус запуска сети](https://moonbeam.network/networks/moonriver/launch/).
 
-На фазе 1 будут проведены первоначальные выборы коллаторов, количество активных коллаторов составит 32 участника. После включения управления на фазе 2 количество коллаторов в активном наборе будет зависеть от управления. Активный набор будет состоять из лучших коллаторов по стекингу, включая номинации.
+In Phase 1, there was an initial collator election to fill the active collator set with parties outside of the Moonbeam team. The number of collators in the active set will be subject to governance. The active set will consist of the top collators by stake, including nominations.
 
 ## Ограничения {: #limitations } 
 

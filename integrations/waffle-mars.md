@@ -311,9 +311,7 @@ describe ('MyToken', () => {
 
 После компиляции контрактов и перед развертыванием Вам нужно будет сгенерировать артефакты контрактов для Mars. Mars использует артефакты контрактов для проверки типов в процессе развертывания. Затем Вам нужно будет создать сценарий развертывания и развернуть смарт-контракт `MyToken`.
 
-Помните, что Вы будете выполнять развертывание на Moonbase Alpha, и Вам нужно будет использовать конфигурацию TestNet:
-
---8<-- 'text/testnet/testnet-details.md'
+Remember, you will be deploying to Moonbase Alpha and will need to use the TestNet RPC URL: `{{ networks.moonbase.rpc_url }}`.
 
 Развертывание будет разбито на три части: [генерация артифактов](#generate-artifacts), [создание сценария развертывания](#create-a-deployment-script), и [и развёртывание с Mars](#deploy-with-mars). 
 

@@ -7,7 +7,7 @@ description: Узнайте, как использовать MetaMask с Moonbea
 
 ## Вступление {: #introduction } 
 
-В этом руководстве описаны шаги, необходимые для подключения MetaMask к Moonbase Alpha. В отличие от нашего предыдущего руководства по MetaMask, это намного проще, потому что вам не нужно подключаться к локальному работающему узлу Moonbeam. Прыгнем прямо в это.
+This guide outlines the steps needed to connect MetaMask to Moonbase Alpha. In contrast to the MetaMask guide for a Moonbeam development node, this is much simpler because you don't need to connect to a local running Moonbeam node. Let's jump right into it.
 
 Если у вас уже установлена MetaMask, вы можете легко подключить MetaMask к тестовой сети Moonbase Alpha:
 
@@ -17,15 +17,8 @@ description: Узнайте, как использовать MetaMask с Moonbea
 
 !!! примечание :
     Появится всплывающее окно MetaMask с запросом разрешения на добавление Moonbase Alpha в качестве настраиваемой сети. Как только вы утвердите разрешения, MetaMask переключит вашу текущую сеть на Moonbase Alpha.
-## Создание кошелька {: #creating-a-wallet }
 
-После установки [MetaMask](https://metamask.io), программа установки автоматически откроет новую окно с приветствием. Нажмите «Начать»(Get Started), чтобы начать процесс установки.
-
-![MetaMask1](/images/testnet/testnet-metamask1.png)
-
-При появлении запроса Вам будет предоставлена возможность импортировать кошелек с использованием Seed фразы восстановления. Для этого варианта создайте новый кошелек.
-
-![MetaMask2](/images/testnet/testnet-metamask2.png)
+--8<-- 'text/common/create-metamask-wallet.md'
 
 ## Подключение к Moonbase Alpha {: #connecting-to-moonbase-alpha } 
 
@@ -39,8 +32,12 @@ description: Узнайте, как использовать MetaMask с Moonbea
 
 десь введите следующую информацию и нажмите Сохранить(Save):
 
---8<-- 'text/testnet/testnet-details.md'
-
+  - Network Name: `Moonbase Alpha`
+  - RPC URL: `{{ networks.moonbase.rpc_url }}`
+  - ChainID: `{{ networks.moonbase.chain_id }}`
+  - Symbol (Optional): `DEV`
+  - Block Explorer: `{{ networks.moonbase.block_explorer }}`
+  
 ![MetaMask5](/images/testnet/testnet-metamask5.png)
 
 Вот и все! Вы успешно подключили MetaMask к Moonbeam TestNet, Moonbase.

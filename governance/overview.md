@@ -28,6 +28,26 @@ Moonbeam — это децентрализованная сеть, кото�
  - **Период обдумывания** — срок действия вето, накладываемого Техническим комитетом, до повторной подачи предложения
  - **Делегирование** — акт передачи вашего права голоса другой учетной записи до принятия определенного решения.
 
+=== "Moonbase Alpha"
+
+    |         Variable         |  |                                                              Value                                                              |
+    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------:|
+    |      Voting Period       |  |       {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)       |
+    | Fast-Track Voting Period |  | {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.hours}} hours) |
+    |     Enactment Period     |  |      {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} day)       |
+    |     Cool-off Period      |  |       {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)       |
+    |     Minimum Deposit      |  |                                        {{ networks.moonbase.democracy.min_deposit }} DEV                                        |
+
+=== "Moonriver"
+
+    |         Variable         |  |                                                              Value                                                              |
+    |:------------------------:|::|:-------------------------------------------------------------------------------------------------------------------------------:|
+    |      Voting Period       |  |      {{ networks.moonriver.democracy.vote_period.blocks}} blocks ({{ networks.moonriver.democracy.vote_period.days}} days)      |
+    | Fast-Track Voting Period |  | {{ networks.moonriver.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonriver.democracy.fast_vote_period.days}} day)  |
+    |     Enactment Period     |  |     {{ networks.moonriver.democracy.enact_period.blocks}} blocks ({{ networks.moonriver.democracy.enact_period.days}} day)      |
+    |     Cool-off Period      |  |      {{ networks.moonriver.democracy.cool_period.blocks}} blocks ({{ networks.moonriver.democracy.cool_period.days}} days)      |
+    |     Minimum Deposit      |  |                                       {{ networks.moonriver.democracy.min_deposit }} MOVR                                       |
+
 ## Принципы {: #principles } 
 
 Руководящие "мягкие" принципы взаимодействия с процессом управления Moonbeam включают:
@@ -59,22 +79,12 @@ Moonbeam — это децентрализованная сеть, кото�
 
 В этом разделе приводится справочная информация о процедуре голосования и описаны параметры голосования в протоколе в том виде, в каком они установлены в настоящее время. Существует ограничение на количество времени в блоках, в течение которого Технический комитет и Совет должны проголосовать по предложениям. Предложения могут заканчиваться на меньшем количестве блоков, если для определения результата подано достаточно голосов . Максимальное количество предложений ({{networks.moonbase.democracy.max_proposals}}) может быть открыто как в Техническом комитете, так и в Совете.
 
-На данный момент установлены следующие параметры голосования:
-
-|             Переменная             |     |                         Значение                         |
-| :------------------------------: | :-: | :---------------------------------------------------: |
-|     Период голосования     |     |     {{ networks.moonbase.democracy.vote_period.blocks}} blocks ({{ networks.moonbase.democracy.vote_period.days}} days)     |
-|        Период ускоренного голосования        |     |     {{ networks.moonbase.democracy.fast_vote_period.blocks}} blocks ({{ networks.moonbase.democracy.fast_vote_period.days}} day)     | | 
-|          Период принятия           |     |     {{ networks.moonbase.democracy.enact_period.blocks}} blocks ({{ networks.moonbase.democracy.enact_period.days}} day)  |
-| Период обдумывания |     |     {{ networks.moonbase.democracy.cool_period.blocks}} blocks ({{ networks.moonbase.democracy.cool_period.days}} days)  |
-|              Минимальный депозит               |     | {{ networks.moonbase.democracy.min_deposit }} GLMR |
-
 **Право голоса на отмену:**
 
  * Технический комитет может отменить предложение до того, как оно будет принято, но только при единогласном решении
  * Один член Технического комитета может наложить вето на входящее предложение Совета, однако он может наложить вето только один раз, и оно длится только в течение периода обдумывания ({{ networks.moonbase.democracy.cool_period.days}} days)
 
-## Попробуйте на Moonbase Alpha {: #try-it-on-moonbase-alpha } 
+## Try it out {: #try-it-out } 
 
 В настоящее время в нашей тестовой сети Moonbase Alpha TestNet держатели токенов могут подавать предложения и голосовать на референдумах. Для этого ознакомьтесь со следующими руководствами:
 
