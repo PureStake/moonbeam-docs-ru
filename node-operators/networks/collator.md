@@ -38,6 +38,18 @@ Moonbeam использует [Nimbus Parachain Consensus Framework](/learn/cons
 
 Коллаторам необходимо иметь минимум {{ networks.moonbase.staking.collator_min_stake }} DEV, чтобы считаться соответствующим требованиям (стать кандидатом). В активный набор попадут только лучшие {{ networks.moonbase.staking.max_collators }} коллаторы по номинальной ставке. 
 
+=== "Moonbase Alpha"
+    |     Переменная        |                       Значение                          |
+    |:---------------------:|:-------------------------------------------------------:|
+    | Количество облигаций  | {{ networks.moonbase.staking.collator_bond_min }} DEV   |
+    | Количество участников | {{ networks.moonbase.staking.max_collators }} коллаторы |
+
+=== "Moonriver"
+    |     Переменная         |                       Значение                           |
+    |:----------------------:|:--------------------------------------------------------:|
+    | Количество облигаций   | {{ networks.moonriver.staking.collator_bond_min }} MOVR  |
+    | Количество участников  | {{ networks.moonriver.staking.max_collators }} коллаторы |
+
 ### Учетная запись PolkadotJS {: #account-in-polkadotjs } 
 
 У коллатора есть учетная запись, связанная с его деятельностью. Этот аккаунт сопоставляется с ID автора для идентификации его как производителя блоков и отправки выплат от вознаграждений за блоки. 
