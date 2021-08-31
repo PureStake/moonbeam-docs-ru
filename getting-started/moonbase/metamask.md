@@ -12,7 +12,7 @@ description: Узнайте, как использовать MetaMask с Moonbea
 Если у вас уже установлена MetaMask, вы можете легко подключить MetaMask к тестовой сети Moonbase Alpha:
 
 <div class="button-wrapper">
-    <a href="#" class="md-button connectMetaMask">Connect MetaMask</a>
+    <a href="#" class="md-button connectMetaMask" value="moonbase">Connect MetaMask</a>
 </div>
 
 !!! примечание :
