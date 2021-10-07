@@ -5,7 +5,7 @@ description: Как парачейн Polkadot Moonbeam будет использ
 
 # Управление (Governance) в Moonbeam
 
-![Governance Moonbeam Banner](/images/governance/governance-overview-banner.png)
+![Governance Moonbeam Banner](/images/learn/features/governance/governance-overview-banner.png)
 
 ## Вступление {: #introduction } 
 

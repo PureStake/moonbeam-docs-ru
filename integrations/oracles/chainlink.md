@@ -5,7 +5,7 @@ description: Как использовать данные запроса от Or
 
 # Chainlink Oracle
 
-![Chainlink Moonbeam Banner](/images/chainlink/chainlink-banner.png)
+![Chainlink Moonbeam Banner](/images/builders/integrations/oracles/chainlink/chainlink-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -115,7 +115,7 @@ interface ChainlinkInterface {
 
 После создания файла и компиляции контракта перейдите на вкладку "Deploy and Run Transactions", введите адрес Клиентского контракта и нажмите кнопку "At Address". Убедитесь, что Вы установили "Environment" в "Injected Web3" для подключения к Moonbase Alpha. Это создаст экземпляр Клиентского контракта, с которым Вы сможете взаимодействовать. Используйте функцию `requestPrice()` для запроса данных соответствующего Job ID. После подтверждения транзакции нужно подождать, пока не завершится весь процесс, указанный ранее. Мы можем проверить цену с помощью функции `currentPrice()`.
 
-![Chainlink Basic Request on Moonbase Alpha](/images/chainlink/chainlink-image1.png)
+![Chainlink Basic Request on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-1.png)
 
 Если у Вас есть какая-то конкретная пара, которую Вы хотите, чтобы мы включили в список, не стесняйтесь обращаться к нам через наш [Discord server](https://discord.com/invite/PfpUATX).
 
@@ -144,7 +144,7 @@ interface ChainlinkInterface {
 
 Конечный пользователь может получать прайс-фиды с помощью read-only операций через Потребительский контракт, ссылаясь на правильный интерфейс агрегатора (Прокси-контракт). Прокси выступает в качестве промежуточного программного обеспечения для предоставления Потребителю наиболее актуального Агрегатора для конкретного прайс-фида.
 
-![Price Feed Diagram](/images/chainlink/chainlink-pricefeed.png)
+![Price Feed Diagram](/images/builders/integrations/oracles/chainlink/chainlink-price-feed.png)
 
 ### Протестируйте это в Moonbase Alpha {: #try-it-on-moonbase-alpha } 
 
@@ -198,7 +198,7 @@ interface ConsumerV3Interface {
 
 Это создаст экземпляр Потребительского контракта, с которым Вы сможете взаимодействовать. Используйте функцию `getLatestPrice()` для запроса данных соответствующего прайс-фида.
 
-![Chainlink Price Feeds on Moonbase Alpha](/images/chainlink/chainlink-image2.png)
+![Chainlink Price Feeds on Moonbase Alpha](/images/builders/integrations/oracles/chainlink/chainlink-2.png)
 
 Обратите внимание, что для получения реальной цены необходимо учитывать десятичные дроби прайс-фида, доступные при вызове метода `decimals()`.
 

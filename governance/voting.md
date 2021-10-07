@@ -5,7 +5,7 @@ description: Как проголосовать за предложение, чт
 
 # Предложения
 
-![Governance Moonbeam Banner](/images/governance/governance-voting-banner.png)
+![Governance Moonbeam Banner](/images/tokens/governance/voting/voting-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -53,7 +53,7 @@ description: Как проголосовать за предложение, чт
 
 Чтобы проголосовать за предложение в сети, вам необходимо использовать интерфейс PolkadotJS Apps. Для этого вам необходимо сначала импортировать учетную запись в стиле Ethereum (адрес H160), что Вы можете сделать, следуя [этому руководству](/integrations/wallets/polkadotjs/#creating-or-importing-an-h160-account). В этом примере три учетных записи были импортированы и названы супер оригинальными именами: Алиса,Боб и Чарли.
 
-![Accounts in PolkadotJS](/images/governance/governance-proposal-1.png)
+![Accounts in PolkadotJS](/images/tokens/governance/proposals/proposals-1.png)
 
 Предложение, по которому проводится голосование, установит баланс Боба на `1500` через управление!
 
@@ -61,7 +61,7 @@ description: Как проголосовать за предложение, чт
 
 Голосовать на Moonbeam довольно просто. Все, что связано с управлением, находится на вкладке «Демократия», где (на изображении) Вы можете отметить цифру 1, указывающую на то, что еще не решен один вопрос о демократии (предложения или референдумы). Оказавшись там, Вы можете просмотреть подробную информацию о референдуме, за который хотите проголосовать, щелкнув стрелку рядом с описанием. Число рядом с действием и его описанием называется индексом референдума (в данном случае это 0). Когда будете готовы, нажмите кнопку «Голосовать».
 
-![Vote Button](/images/governance/governance-vote-1.png)
+![Vote Button](/images/legacy/governance/governance-vote-1.png)
 
 Здесь вам необходимо предоставить следующую информацию:
 
@@ -81,14 +81,14 @@ description: Как проголосовать за предложение, чт
 
  4. Нажмите «Голосовать за», чтобы одобрить предложение, или «Голосуйте против», чтобы отклонить предложение, а затем подпишите транзакцию
 
-![Vote Submission](/images/governance/governance-vote-2.png)
+![Vote Submission](/images/legacy/governance/governance-vote-2.png)
 
 !!! примечание 
     Периоды блокировки, показанные на предыдущем изображении, не следует воспринимать как справочные. Это руководство было составлено с настроенной версией Moonbeam с короткими периодами запуска / введения в действие только для демонстрационных целей.
 
 В этом случае Alice решила «Проголосовать за предложение» с убежденностью в 6 раз. С другой стороны, Charley решил «проголосовать против» по предложению, но решил не блокировать никакие токены (его токены блокируются только на время референдума), поэтому его осуждение было 0,1x. При таком распределении голосов частичные результаты можно увидеть на главной вкладке «Демократия».
 
-![Vote Information](/images/governance/governance-vote-3.png)
+![Vote Information](/images/legacy/governance/governance-vote-3.png)
 
 Благодаря голосования можно сделать несколько важных выводов:
 
@@ -101,11 +101,11 @@ description: Как проголосовать за предложение, чт
 
 По истечении периода голосования предложение будет отображаться на вкладке «Отправка», если оно будет одобрено. Здесь Вы также можете увидеть время, оставшееся до принятия предложения.
 
-![Proposal Enactment](/images/governance/governance-vote-4.png)
+![Proposal Enactment](/images/tokens/governance/voting/vote-5.png)
 
 Помните, что в этом примере функция `setBalance` использовалась для установки баланса Боба на 1500 токенов. По истечении срока вступления в силу Вы можете вернуться на вкладку «Учетные записи», чтобы убедиться, что предложение было внесено в закон.
 
-![Proposal Result](/images/governance/governance-vote-5.png)
+![Proposal Result](/images/legacy/governance/governance-vote-5.png)
 
 ### Делегирование голосования {: #delegate-voting } 
 
@@ -113,7 +113,7 @@ description: Как проголосовать за предложение, чт
 
 Чтобы делегировать свой голос, сначала перейдите в менюe "Extrinsics" на вкладке "Developers".
 
-![Extrinsics Menu](/images/governance/governance-vote-6.png)
+![Extrinsics Menu](/images/tokens/governance/voting/vote-6.png)
 
 Здесь вам необходимо предоставить следующую информацию:
 
@@ -125,7 +125,7 @@ description: Как проголосовать за предложение, чт
  6. Установите количество токенов, которое Вы хотите делегировать в учетную запись, предоставленную ранее
  7. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
-![Extrinsics Transaction for Delegation](/images/governance/governance-vote-7.png)
+![Extrinsics Transaction for Delegation](/images/tokens/governance/voting/vote-7.png)
 
 В этом примере Алиса делегировала Чарли общий вес 1000 (1000 токенов с коэффициентом убежденности  x1).
 
@@ -134,7 +134,7 @@ description: Как проголосовать за предложение, чт
 
 После того, как учетная запись, на которую Вы делегировали свой голос, была передана голосам, общий вес делегированного голоса будет распределен для варианта, выбранного учетной записью. В этом примере Чарли решил проголосовать за предложение, вынесенное на публичный референдум. Он проголосовал общим весом 800 (800 токенов с коэффициентом убедительности x1). Но поскольку Алиса делегировала ему вес в 1000 голосов, «Да» всего 1800 единиц.
 
-![Total Votes with Delegation](/images/governance/governance-vote-8.png)
+![Total Votes with Delegation](/images/tokens/governance/voting/vote-9.png)
 
 Чтобы удалить делегирование, повторите процесс, описанный ранее, но выберите внешнюю функцию без делегирования   `undelegate`  на шаге 3.
 
@@ -153,11 +153,11 @@ description: Как проголосовать за предложение, чт
  - Заблокировано из-за выбранного множителя убежденности, отображается количество блоков и оставшееся время
  - Срок действия блокировки истек, что означает, что теперь Вы можете вернуть свои токены
 
-![Account Lock Status](/images/governance/governance-vote-9.png)
+![Account Lock Status](/images/tokens/governance/voting/vote-10.png)
 
 По истечении срока блокировки Вы можете запросить свои токены обратно. Для этого перейдите в меню "Extrinsics" на вкладке "Developers" .
 
-![Extrinsics Menu](/images/governance/governance-vote-10.png)
+![Extrinsics Menu](/images/tokens/governance/voting/vote-11.png)
 
 Здесь необходимо отправить два разных внешних объекта. Во-первых, вам необходимо предоставить следующую информацию:
 
@@ -167,7 +167,7 @@ description: Как проголосовать за предложение, чт
  4. Введите индекс референдума. Это число, которое появилось в левой части вкладки "Democracy". В данном случае это 0
  5. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
-![Remove Vote Extrinsics](/images/governance/governance-vote-11.png)
+![Remove Vote Extrinsics](/images/tokens/governance/voting/vote-12.png)
 
 Для следующего внешнего запроса вам необходимо предоставить следующую информацию:
 
@@ -177,17 +177,17 @@ description: Как проголосовать за предложение, чт
  4. Введите целевую учетную запись, которая получит разблокированные токены. В этом случае токены будут возвращены Алисе.
  5. Нажмите кнопку "Submit Transaction" и подпишите транзакцию
 
-![Unlock Extrinsics](/images/governance/governance-vote-12.png)
+![Unlock Extrinsics](/images/tokens/governance/voting/vote-13.png)
 
 После завершения транзакции заблокированные токены должны быть разблокированы. Чтобы еще раз проверить, Вы можете вернуться на вкладку "Accounts"и увидеть, что для этого примера Алиса имеет полный баланс как "transferable."
 
-![Check Balance](/images/governance/governance-vote-13.png)
+![Check Balance](/images/tokens/governance/voting/vote-14.png)
 
 ## Положительный сдвиг явки {: #positive-turnout-bias } 
 
 В публичных референдумах используется показатель смещения положительной явки, то есть формула одобрения большинством голосов. Уравнение следующее:
 
-![Positive Turnout Bias](/images/governance/governance-vote-bias.png)
+![Positive Turnout Bias](/images/tokens/governance/voting/vote-bias.png)
 
 Где:
 

@@ -5,7 +5,7 @@ description: Moonbeam предоставляет функции стекинга
 
 # Стейкинг в Moonbeam
 
-![Staking Moonbeam Banner](/images/staking/staking-overview-banner.png)
+![Staking Moonbeam Banner](/images/learn/features/staking/staking-overview-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -42,13 +42,13 @@ Currently, for Moonbase Alpha:
 
 С математической точки зрения, для сортировщиков награда будет выглядеть так:
 
-![Staking Collator Reward](/images/staking/staking-overview-1.png)
+![Staking Collator Reward](/images/learn/features/staking/staking-overview-1.png)
 
 Где доля соответствует количеству токенов, которые вложены сортировщиком, относительно общего количества токенов сортировщика (учитывая номинации).
 
 Для каждого номинатора награда будет выглядеть так:
 
-![Staking Nominator Reward](/images/staking/staking-overview-2.png)
+![Staking Nominator Reward](/images/learn/features/staking/staking-overview-2.png)
 
 Где доля соответствует количеству токенов, которые вложены каждым номинатором, относительно общей доли этого сортировщика.
 

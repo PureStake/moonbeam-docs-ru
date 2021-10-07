@@ -6,4 +6,4 @@
 
 Этот запрос фактически посылает _transferAndCall_ контракту с токенами LINK, который обрабатывает платеж и передает запрос контракту Оракула. Здесь вместе с запросом происходит событие, которое получает нода Оракула. Далее нода получает необходимые данные и выполняет функцию _fulfilOracleRequest_, которая реализует обратный вызов, сохраняющий запрошенную информацию в контракте Клиента. Следующая диаграмма объясняет этот процесс.
 
-![Basic Request Diagram](/images/chainlink/chainlink-basicrequest.png)
+![Basic Request Diagram](/images/builders/integrations/oracles/chainlink/chainlink-basic-request.png)

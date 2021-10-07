@@ -5,7 +5,7 @@ description:  Узнайте, как использовать Geth Debug API и 
 
 # Дебаг API & Модуль Трассировки
 
-![Full Node Moonbeam Banner](/images/debugtrace/debugtrace-banner.png)
+![Full Node Moonbeam Banner](/images/builders/tools/debug-trace/debug-trace-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -49,7 +49,7 @@ RPC имплементация `trace_filter` следует [данному Ope
 
 Как говорилось ранее, для использования обеих функций Вам необходимо запустить `debug` и `trace` флаги на Вашей ноде. В данном примере мы используем полную ноду Moonbase Alpha с RPC HTTP конечной точкой в `http://127.0.0.1:9933`. Если у Вас запущена нода Вы должны увидеть аналогичный лог в терминале:
 
-![Debug API](/images/debugtrace/debugtrace-images1.png)
+![Debug API](/images/builders/tools/debug-trace/debug-trace-1.png)
 
 Например, для вызова `debug_traceTransaction` Вы можете сделать следующий JSON RPC запрос в терминале (в данном примере для хэша`0x04978f83e778d715eb074352091b2159c0689b5ae2da2554e8fe8e609ab463bf`):
 
@@ -65,7 +65,7 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
 
 На что нода ответит пошаговым воспроизведением информации о транзакции (ответ немного обрезан т.к. он достаточно длинный):
 
-![Запуск ноды Trace Debug](/images/debugtrace/debugtrace-images2.png)
+![Запуск ноды Trace Debug](/images/builders/tools/debug-trace/debug-trace-2.png)
 
 Для вызова `trace_filter` Вы можете сделать следующий JSON RPC запрос в терминале (в данном примере стоит фильтрация от блока 20000 до 25000, для транзакций где получателем является `0x4E0078423a39EfBC1F8B5104540aC2650a756577`, запрос начнется с нулевого офсета и предоставит первые 20 трассировок):
 
@@ -80,5 +80,5 @@ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d \
 
 На что нода ответит информацией трассировки, соответствующей заданному фильтру (ответ немного обрезан т.к. он достаточно длинный).
 
-![Запуск ноды Trace Filter](/images/debugtrace/debugtrace-images3.png)
+![Запуск ноды Trace Filter](/images/builders/tools/debug-trace/debug-trace-3.png)
 

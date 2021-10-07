@@ -5,7 +5,7 @@ description: Данный сайт предоставляет документа
 
 # Добро пожаловать в Moonbeam
 
-![Main Page Banner](/images/main-banner.png)
+![Main Page Banner](/images/learn/platform/main-banner.png)
 
 **Note: this website was translated by members of the Ambassadors program and is part of a community-led effort. The team would like to express his gratitude towards these great Ambassadors that translated all the content: Andrey (AndyPolo), Anton (AntonM), Cugut Alexei (GameOver), Lina K. (Lyn#2616), Mikhail (Mike K), and Oksana (Oksana#9601). If you want to contribute to this translation, please visit the following [GitHub repository](https://github.com/PureStake/moonbeam-docs-ru).**
 

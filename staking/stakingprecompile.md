@@ -5,7 +5,7 @@ description: Демонстрации интерфейса прекомпиля�
 
 # Прекомпиляция Стейкинга
 
-![Staking Moonbeam Banner](/images/staking/staking-precompile-banner.png)
+![Staking Moonbeam Banner](/images/tokens/staking/precompiles/precompile-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -52,13 +52,13 @@ description: Демонстрации интерфейса прекомпиля�
 1. Получите копию [StakingInterface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol).
 2. Скопируйте и вставьте содержимое файла в файл Remix с именем StakingInterface.sol
 
-![Copying and Pasting the Staking Interface into Remix](/images/staking/staking-precompile-1.png)
+![Copying and Pasting the Staking Interface into Remix](/images/tokens/staking/precompiles/precompile-1.png)
 
 ### Компиляция Контракта {: #compile-the-contract } 
 1. Перейдите на вкладку Compile, вторую сверху.
 2. Скомпилируйте [Staking Interface.sol](https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol)
 
-![Compiling StakingInteface.sol](/images/staking/staking-precompile-2.png)
+![Compiling StakingInteface.sol](/images/tokens/staking/precompiles/precompile-2.png)
 
 ### Доступ к контракту {: #access-the-contract } 
 1. Перейдите на вкладку " Deploy and Run" (Развертывание и запуск), расположенную непосредственно под вкладкой "Compile" (Компиляция) в Remix. **Примечание**: здесь мы не развертываем контракт, вместо этого мы получаем доступ к уже развернутому предварительно скомпилированному контракту.
@@ -66,7 +66,7 @@ description: Демонстрации интерфейса прекомпиля�
 3. Убедитесь, что в выпадающем списке Contract выбран "ParachainStaking - StakingInterface.sol". Поскольку это прекомпилированный контракт, нет необходимости его развертывать, вместо этого мы укажем адрес прекомпиляции в поле "At Address".
 4. Укажите адрес прекомпиляции Staking: `{{networks.moonbase.staking.precompile_address}} и нажмите "At Address".
 
-![Provide the address](/images/staking/staking-precompile-3.png)
+![Provide the address](/images/tokens/staking/precompiles/precompile-3.png)
 
 ### Номинирование Коллатора {: #nominate-a-collator } 
 В данном примере мы будем номинировать коллатора. Номинаторы - это держатели токенов, которые стейкают свои токены, через конкретных коллаторов. Номинатором может стать любой пользователь, имеющий на свободном балансе минимальное количество токенов {{networks.moonbase.staking.min_nom_stake}}.
@@ -76,7 +76,7 @@ description: Демонстрации интерфейса прекомпиля�
 3. Укажите сумму для номинации в WEI. Существует минимальное количество токенов `{{networks.moonbase.staking.min_nom_stake}} для номинации, поэтому наименьшая сумма в WEI составляет `5000000000000000000`.
 4. Нажмите "transact" и подтвердите транзакцию в Metamask
 
-![Nominate a Collator](/images/staking/staking-precompile-4.png)
+![Nominate a Collator](/images/tokens/staking/precompiles/precompile-4.png)
 
 ### Проверка номинации {: #verify-nomination } 
 Чтобы убедиться, что ваша номинация прошла успешно, вы можете проверить состояние сети в Polkadot.js Apps. Сначала добавьте адрес вашего Мetamask в [адресную книгу в Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/addresses). Если вы уже выполнили этот шаг, вы можете перейти к следующему разделу.
@@ -87,7 +87,7 @@ description: Демонстрации интерфейса прекомпиля�
 3. Добавьте свой адрес Metamask
 4. Укажите псевдоним для учетной записи
 
-![Add to Address Book](/images/staking/staking-precompile-5.png)
+![Add to Address Book](/images/tokens/staking/precompiles/precompile-5.png)
 
 #### Проверить сведения о номинации {: #verify-nominator-state } 
 1. Чтобы проверить, что ваша номинация прошла успешно, зайдите на [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/chainstate) и перейдите в раздел Developer -> Chain State.
@@ -95,9 +95,9 @@ description: Демонстрации интерфейса прекомпиля�
 3. Выберите запрос "nominatorState"
 4. Нажмите кнопку "Plus" для получения результатов и проверки вашей номинации
 
-![Verify Nomination](/images/staking/staking-precompile-6.png)
+![Verify Nomination](/images/tokens/staking/precompiles/precompile-6.png)
 
 ### Аннулирование номинации {: #revoking-a-nomination } 
 Чтобы отозвать номинацию и получить свои токены обратно, вызовите метод `revoke_nomination`, указав тот же адрес, с которого вы начали номинацию. Для подтверждения вы можете еще раз проверить состояние номинации на Polkadot.js Apps.
 
-![Revoke Nomination](/images/staking/staking-precompile-7.png)
+![Revoke Nomination](/images/tokens/staking/precompiles/precompile-7.png)

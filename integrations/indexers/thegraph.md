@@ -5,7 +5,7 @@ description: Создавайте API с использованием прото
 
 # Использование The Graph на Moonbeam
 
-![The Graph на Moonbeam](/images/thegraph/thegraph-banner.png)
+![The Graph на Moonbeam](/images/builders/integrations/indexers/the-graph/the-graph-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -268,7 +268,7 @@ npx graph deploy <username>/<subgraphName> \
 
 Логи предыдущей команды должны выглядеть примерно так:
 
-![Размещенный The Graph](/images/thegraph/thegraph-images1.png)
+![Размещенный The Graph](/images/builders/integrations/indexers/the-graph/the-graph-1.png)
 
 DApps теперь могут использовать конечные точки Subgraph для извлечения данных, проиндексированных протоколом The Graph.
 

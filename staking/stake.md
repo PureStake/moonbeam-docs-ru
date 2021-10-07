@@ -5,7 +5,7 @@ description: Руководство, которое показывает, как
 
 # Как застейкать свои токены
 
-![Staking Moonbeam Banner](/images/staking/staking-stake-banner.png)
+![Staking Moonbeam Banner](/images/tokens/staking/stake/stake-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -48,7 +48,7 @@ description: Руководство, которое показывает, как
 
 Перед тем, как начать ставку токенов, важно получить список коллаторов, доступных в сети. Для этого перейдите в «Состояние чейна» на вкладке «Разработчик».
 
-![Staking Account](/images/staking/staking-stake-10.png)
+![Staking Account](/images/tokens/staking/stake/stake-10.png)
 
 Здесь укажите следующую информацию:
 
@@ -61,7 +61,7 @@ description: Руководство, которое показывает, как
  - **selectedCandidates** — возвращает текущий активный набор коллаторов, то есть {{ networks.moonbase.staking.max_collators }} лучших коллаторов по общему количеству поставленных токенов (включая номинации).
  - **candidatePool** — возвращает в текущий список все коллаторы, в том числе те, которых нет в активном наборе.
 
-![Staking Account](/images/staking/staking-stake-11.png)
+![Staking Account](/images/legacy/staking/staking-stake-11.png)
 
 ## Как номинировать коллатора {: #how-to-nominate-a-collator } 
 
@@ -78,7 +78,7 @@ description: Руководство, которое показывает, как
 
 В настоящее время все, что связано со стейкингом необходимо получить через меню «Внешние компоненты» на вкладке «Разработчик»:
 
-![Staking Account](/images/staking/staking-stake-1.png)
+![Staking Account](/images/tokens/staking/stake/stake-1.png)
 
 Чтобы проверить номинацию, Вы можете перейти в «Состояние цепочки» на вкладке «Разработчик».
 
@@ -89,13 +89,13 @@ description: Руководство, которое показывает, как
  5. Укажите количество токенов которые Вы хотите застейкать.
  6. Нажмите кнопку «Отправить транзакцию» и подпишите транзакцию.
 
-![Staking Join Nominators Extrinsics](/images/staking/staking-stake-2.png)
+![Staking Join Nominators Extrinsics](/images/tokens/staking/stake/stake-2.png)
 
 После подтверждения транзакции Вы можете подтвердить свою новую номинацию в опции «Состояние чейна» на вкладке «Разработчик»:
 
 Чтобы проверить номинацию, Вы можете перейти в «Состояние цепочки» на вкладке «Разработчик».
 
-![Staking Account and Chain State](/images/staking/staking-stake-3.png)
+![Staking Account and Chain State](/images/tokens/staking/stake/stake-3.png)
 
 Здесь укажите следующую информацию:
 
@@ -104,7 +104,7 @@ description: Руководство, которое показывает, как
  3. Не забудьте отключить ползунок “включить параметр”.
  4. Отправьте запрос состояния, нажав кнопку «+»
 
-![Staking Chain State Query](/images/staking/staking-stake-4.png)
+![Staking Chain State Query](/images/tokens/staking/stake/stake-4.png)
 
 В ответе Вы должны увидеть свою учетную запись (в данном случае учетную запись Алисы) со списком номинаций. Каждая номинация содержит целевой адрес коллатора и сумму.
 
@@ -124,7 +124,7 @@ description: Руководство, которое показывает, как
  4. Задайте адрес подборщика, из которого Вы хотите удалить свою кандидатуру. В данном случае это `{{ networks.moonbase.staking.collators.address2 }}`
  5. Нажмите кнопку «Отправить транзакцию» и подпишите транзакцию.
 
-![Staking Revoke Nomination Extrinsic](/images/staking/staking-stake-7.png)
+![Staking Revoke Nomination Extrinsic](/images/tokens/staking/stake/stake-7.png)
 
 После подтверждения транзакции Вы можете убедиться, что Ваша номинация была удалена, в опции «Состояние чейна» на вкладке «Разработчик».
 
@@ -135,13 +135,13 @@ description: Руководство, которое показывает, как
  3. Обязательно отключите ползунок “Включить параметры”.
  4. Отправьте запрос состояния, нажав кнопку "+".
 
-![Staking Revoke Nomination Cain State](/images/staking/staking-stake-8.png)
+![Staking Revoke Nomination Cain State](/images/tokens/staking/stake/stake-8.png)
 
 В ответе вы должны увидеть свою учетную запись (в данном случае учетную запись Алисы) со списком номинаций. Каждая номинация содержит целевой адрес коллатора и сумму.
 
 Как упоминалось ранее, Вы также можете удалить все текущие номинации с помощью функции `leaveNominators` (на шаге 3 инструкций "Extrinsics"). Этот extrinsic не требует ввода:
 
-![Staking Leave Nominatiors Extrinsic](/images/staking/staking-stake-9.png)
+![Staking Leave Nominatiors Extrinsic](/images/tokens/staking/stake/stake-9.png)
 
 После подтверждения транзакции Ваша учетная запись не должна быть указана в списке номинаторов при запросе, и у Вас не должно быть зарезервированного баланса (связанного с размещением ставок).
 
@@ -153,4 +153,4 @@ description: Руководство, которое показывает, как
 
 В предыдущем примере Алиса была вознаграждена `0.0044`токенов после двух раундов выплат: 
 
-![Staking Reward Example](/images/staking/staking-stake-10.png)
+![Staking Reward Example](/images/tokens/staking/stake/stake-10.png)

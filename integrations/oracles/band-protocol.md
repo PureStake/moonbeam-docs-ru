@@ -4,7 +4,7 @@ description: Как использовать данные запроса от Or
 ---
 # Оракул Band Protocol
 
-![Band Protocol Moonbeam Diagram](/images/band/band-banner.png)
+![Band Protocol Moonbeam Diagram](/images/builders/integrations/oracles/band/band-banner.png)
 
 ## Вступление {: #introduction }
 У разработчиков есть два способа получить цены из инфраструктуры Oracle . С одной стороны, они могут использовать смарт-контракты Band на Moonbeam. При этом они получают доступ к данным, которые находятся в цепочке и обновляются либо через регулярные промежутки времени, либо когда проскальзывание цены превышает целевое значение (разное для каждого токена). С другой стороны, разработчики могут использовать вспомогательную библиотеку Javascript, которая использует конечную точку API для извлечения данных с использованием функций, аналогичных функциям смарт-контрактов, но эта реализация полностью обходит блокчейн. Это может быть полезно, если Вашему интерфейсу DApp требуется прямой доступ к данным.
@@ -173,11 +173,11 @@ interface TestInterface {
 
 После создания файла и компиляции контракта перейдите на вкладку «Развертывание и выполнение транзакций», введите адрес контракта (`0xf15c870344c1c02f5939a5C4926b7cDb90dEc655`) и нажмите «At Address». Убедитесь, что вы установили «Environment» на «Injected Web3», чтобы Вы подключились к Moonbase Alpha.
 
-![Band Protocol Remix deploy](/images/band/band-demo1.png)
+![Band Protocol Remix deploy](/images/builders/integrations/oracles/band/band-demo-1.png)
 
 Это создаст экземпляр демонстрационного контракта, с которым Вы можете взаимодействовать. Используйте функции `getPrice()` и `getMultiPrices()` для запроса данных соответствующей пары.
 
-![Band Protocol Remix check price](/images/band/band-demo2.png)
+![Band Protocol Remix check price](/images/builders/integrations/oracles/band/band-demo-2.png)
 
 ## BandChain.js вспомогательная библиотека Javascript {: #bandchainjs-javascript-helper-library } 
 
@@ -237,6 +237,6 @@ queryData();
 Мы можем выполнить этот код с помощью ноды, и следующий вывод `dataQuery` должен выглядеть следующим образом:
 
 
-![Band Protocol JavaScript Library](/images/band/band-console.png)
+![Band Protocol JavaScript Library](/images/builders/integrations/oracles/band/band-console.png)
 
 Обратите внимание, что по сравнению с запросом, выполненным с помощью смарт-контрактов, результат отображается непосредственно в правильных единицах.

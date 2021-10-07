@@ -5,7 +5,7 @@ description: Узнайте, как использовать Waffle и Mars дл
 
 # Использование Waffle & Mars на Moonbeam
 
-![Waffle and Mars on Moonbeam](/images/waffle-mars/waffle-mars-banner.png)
+![Waffle and Mars on Moonbeam](/images/builders/interact/waffle-mars/waffle-mars-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -150,7 +150,7 @@ cd .. && touch waffle.json
 npm run build
 ```
 
-![Waffle compiler output](/images/waffle-mars/waffle-mars-1.png)
+![Waffle compiler output](/images/builders/interact/waffle-mars/waffle-mars-1.png)
 
 После компиляции Ваших контрактов, Waffle сохраняет вывод JSON в каталоге `build`. Контракт в этом руководстве основан на шаблоне ERC-20 Open Zeppelin, поэтому соответствующие файлы JSON ERC-20 также появятся в каталоге `build`.
 
@@ -333,7 +333,7 @@ describe ('MyToken', () => {
 ```
 npm run build
 ```
-![Waffle and Mars compiler output](/images/waffle-mars/waffle-mars-2.png)
+![Waffle and Mars compiler output](/images/builders/interact/waffle-mars/waffle-mars-2.png)
 
 Если Вы откроете каталог `build`, Вы должны увидеть файл `artifacts.ts`, содержащий данные об артефактах, необходимые для развертывания. Чтобы продолжить процесс развертывания, Вам необходимо написать сценарий развертывания. Сценарий развертывания будет использоваться, чтобы сообщить Mars, какой контракт разворачивать, в какой сети и какую учетную запись следует использовать для запуска развертывания.
 
@@ -390,11 +390,11 @@ npm run deploy
 ```
 
 2. В вашем терминале Mars Вам будет предложено нажать `ENTER`, чтобы отправить транзакцию:
-![Mars confirm deployment](/images/waffle-mars/waffle-mars-3.png)
+![Mars confirm deployment](/images/builders/interact/waffle-mars/waffle-mars-3.png)
 
 В случае успеха Вы должны увидеть подробную информацию о своей транзакции, включая ее хэш, блок, в который она была включена, и его адрес.
 
-![Mars deployment output](/images/waffle-mars/waffle-mars-4.png)
+![Mars deployment output](/images/builders/interact/waffle-mars/waffle-mars-4.png)
 
 Поздравлем! Вы развернули контракт с Moonbase Alpha, используя Waffle и Mars!
 

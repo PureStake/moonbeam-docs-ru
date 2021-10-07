@@ -5,7 +5,7 @@ description:  Узнайте, как использовать OpenZeppelin Defen
 
 # Defender OpenZeppelin
 
-![OpenZeppelin Defender Banner](/images/openzeppelin/ozdefender-banner.png)
+![OpenZeppelin Defender Banner](/images/builders/tools/openzeppelin/oz-defender-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -77,7 +77,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
 
 После того как у вас есть учетная запись OpenZeppelin Defender, войдите в [Приложение Defender](https://defender.openzeppelin.com/). На главном экране, с MetaMask [подключенным к Moonbase Alpha](/getting-started/moonbase/metamask/) нажмите на кнопку "Connect wallet" в правом верхнем углу:
 
-![Подключение OpenZeppelin Defender](/images/openzeppelin/ozdefender-images1.png)
+![Подключение OpenZeppelin Defender](/images/builders/tools/openzeppelin/oz-defender-1.png)
 
 В случае успешного завершения вы увидите свой адрес и сообщение " Connected to Moonbase Alpha".
 
@@ -96,11 +96,11 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  5. Проверьте, правильно ли были определены функции контракта.
  6. После проверки всей информации нажмите на кнопку " Add".
 
-![OpenZeppelin Defender Admin Добавить контракт](/images/openzeppelin/ozdefender-images2.png)
+![OpenZeppelin Defender Admin Добавить контракт](/images/builders/tools/openzeppelin/oz-defender-2.png)
 
 Если все было успешно импортировано, вы должны увидеть свой контракт на главном экране компонента Admin:
 
-![OpenZeppelin Defender Admin Contract Added](/images/openzeppelin/ozdefender-images3.png)
+![OpenZeppelin Defender Admin Contract Added](/images/builders/tools/openzeppelin/oz-defender-3.png)
 
 ### Создание предложения по контракту {: #create-a-contract-proposal } 
 
@@ -115,7 +115,7 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  1. Нажмите на кнопку " New proposal", чтобы увидеть все доступные варианты
  2. Нажмите на " Pause" (Пауза)
 
-![OpenZeppelin Defender Admin Contract New Pause Proposal](/images/openzeppelin/ozdefender-images4.png)
+![OpenZeppelin Defender Admin Contract New Pause Proposal](/images/builders/tools/openzeppelin/oz-defender-4.png)
 
 Откроется страница предложения, где необходимо заполнить все детали, касающиеся предложения. В данном примере вам необходимо предоставить следующую информацию:
 
@@ -124,22 +124,22 @@ contract PausableBox is Initializable, PausableUpgradeable, OwnableUpgradeable {
  3. Описание предложения. Здесь вы должны указать как можно больше подробностей для других участников/управляющих контрактом (если используется кошелек MultiSig)
  4. Нажмите " Create pause proposal"
 
-![OpenZeppelin Defender Admin Contract Pause Proposal Details](/images/openzeppelin/ozdefender-images5.png)
+![OpenZeppelin Defender Admin Contract Pause Proposal Details](/images/builders/tools/openzeppelin/oz-defender-5.png)
 
 После успешного создания предложения оно должно появиться в списке на панели администратора контракта.
 
-![OpenZeppelin Defender Admin Contract Proposal List](/images/openzeppelin/ozdefender-images6.png)
+![OpenZeppelin Defender Admin Contract Proposal List](/images/builders/tools/openzeppelin/oz-defender-6.png)
 
 ### Одобрение предложения по контракту {: #approve-a-contract-proposal } 
 
 После создания предложения по контракту следующим шагом будет его одобрение и исполнение. Для этого перейдите к предложению и нажмите " Approve and Execute". 
 
-![OpenZeppelin Defender Admin Contract Proposal Pause Approve](/images/openzeppelin/ozdefender-images7.png)
+![OpenZeppelin Defender Admin Contract Proposal Pause Approve](/images/builders/tools/openzeppelin/oz-defender-7.png)
 
 
 Это инициирует транзакцию, которая должна быть подписана с помощью MetaMask, после чего состояние предложения должно измениться на " Executed ( подтверждение)". Как только транзакция будет обработана, статус должен показать " Executed".
 
-![OpenZeppelin Defender Admin Contract Proposal Pause Executed](/images/openzeppelin/ozdefender-images8.png)
+![OpenZeppelin Defender Admin Contract Proposal Pause Executed](/images/builders/tools/openzeppelin/oz-defender-8.png)
 
 Вы также видите, что статус контракта изменился с " Running" на "Paused". Отлично! Теперь вы знаете, как использовать компонент Admin для управления смарт-контрактами. 
  
