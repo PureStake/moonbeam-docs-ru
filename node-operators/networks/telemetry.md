@@ -5,7 +5,7 @@ description: Как запустить телеметрию для полноц�
 
 # Телеметрия для полноценного узла
 
-![Telemetry Moonbeam Banner](/images/fullnode/telemetry-banner.png)
+![Telemetry Moonbeam Banner](/images/node-operators/networks/telemetry-banner.png)
 
 ## Вступление {: #introduction } 
 

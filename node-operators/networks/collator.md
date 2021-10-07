@@ -5,7 +5,7 @@ description: Инструкции о том, как стать коллатор�
 
 # Запуск коллатора на Moonbeam
 
-![Collator Moonbeam Banner](/images/fullnode/collator-banner.png)
+![Collator Moonbeam Banner](/images/node-operators/networks/collators/collator-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -49,7 +49,7 @@ Moonbeam использует [Nimbus Parachain Consensus Framework](/learn/cons
 
 Как только вы импортировали аккаунт H160 в PolkadotJS, вы должны увидеть его на вкладке "Accounts". Убедитесь, что у вас под рукой есть публичный адрес (`PUBLIC_KEY`), так как он необходим для настройки [deploy your full node](/node-operators/networks/full-node/) с параметрами collation.
 
-![Account in PolkadotJS](/images/fullnode/collator-polkadotjs1.png)
+![Account in PolkadotJS](/images/node-operators/networks/collators/collator-polkadotjs-1.png)
 
 ## Стать кандидатом в коллаторы {: #become-a-collator-candidate } 
 
@@ -70,7 +70,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  5. Нажмите на кнопку выполнить. Это приведет к выполнению кода из окна редактора.
  6. Скопируйте результат, так как он понадобится вам при присоединении к пулу кандидатов
 
-![Get Number of Candidates](/images/fullnode/collator-polkadotjs2.png)
+![Get Number of Candidates](/images/node-operators/networks/collators/collator-polkadotjs-2.png)
 
 ### Присоединяйтесь к пулу кандидатов {: #join-the-candidate-pool } 
 
@@ -86,7 +86,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
  7. Установите количество кандидатов в качестве размера пула кандидатов. Чтобы узнать, как получить это значение, ознакомьтесь с [этим разделом](#get-the-size-of-the-candidate-pool).
  8. Отправьте транзакцию. Следуйте указаниям мастера и подпишите транзакцию, используя пароль, который вы установили для учетной записи
 
-![Join Collators pool PolkadotJS](/images/fullnode/collator-polkadotjs3.png)
+![Join Collators pool PolkadotJS](/images/node-operators/networks/collators/collator-polkadotjs-3.png)
 
 !!! Примечание
     Названия функций и минимальные требования к залогу могут быть изменены в будущих версиях.
@@ -103,7 +103,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 Сначала убедитесь, что у вас [запущен нода коллатора](/node-operators/networks/full-node/) и вы открыли порты RPC. После запуска ноды коллатора ваш терминал должен вывести похожие записи:
 
-![Collator Terminal Logs](/images/fullnode/collator-terminal1.png)
+![Collator Terminal Logs](/images/node-operators/networks/collators/collator-terminal-1.png)
 
 Далее, сессионные ключи могут быть изменены путем отправки RPC вызова на конечную точку HTTP с методом `author_rotateKeys`. Для справки, если конечная точка HTTP вашего коллатора находится на порту `9933`, вызов JSON-RPC может выглядеть следующим образом:
 
@@ -120,7 +120,7 @@ curl http://127.0.0.1:9933 -H \
 
 Нода коллатора должна ответить соответствующим открытым ключом нового идентификатора автора (ключ сессии).
 
-![Collator Terminal Logs RPC Rotate Keys](/images/fullnode/collator-terminal2.png)
+![Collator Terminal Logs RPC Rotate Keys](/images/node-operators/networks/collators/collator-terminal-2.png)
 
 Обязательно запишите этот открытый ключ идентификатора автора. Далее он будет сопоставлен с адресом H160 в формате Ethereum, на который выплачиваются вознаграждения за блоки.
 
@@ -152,11 +152,11 @@ curl http://127.0.0.1:9933 -H \
  6. Введите идентификатор автора. В данном случае он был получен через RPC вызов `author_rotateKeys` в предыдущем разделе
  7. Нажмите на кнопку " Submit Transaction".
 
-![Author ID Mapping to Account Extrinsic](/images/fullnode/collator-polkadotjs4.png)
+![Author ID Mapping to Account Extrinsic](/images/node-operators/networks/collators/collator-polkadotjs-4.png)
 
 Если операция прошла успешно, на вашем экране появится уведомление о подтверждении. В противном случае убедитесь, что вы присоединились к [пулу кандидатов](#become-a-collator-candidate).
 
-![Author ID Mapping to Account Extrinsic Successful](/images/fullnode/collator-polkadotjs5.png)
+![Author ID Mapping to Account Extrinsic Successful](/images/node-operators/networks/collators/collator-polkadotjs-5.png)
 
 ### Проверка сопоставлений {: #checking-the-mappings } 
 
@@ -169,6 +169,6 @@ curl http://127.0.0.1:9933 -H \
  5. Укажите ID автора для запроса. Оптимально, вы можете отключить ползунок для получения всех отображений. 
  6. Нажмите на кнопку "+", чтобы отправить вызов RPC
 
-![Author ID Mapping Chain State](/images/fullnode/collator-polkadotjs6.png)
+![Author ID Mapping Chain State](/images/node-operators/networks/collators/collator-polkadotjs-6.png)
 
 Вы должны увидеть аккаунт H160, связанный с предоставленным ID автора. Если ID автора не был указан, это вернет все отображения, хранящиеся в цепи.

@@ -74,7 +74,7 @@ module.exports = {
 truffle run moonbeam install
 ```
 
-![Загрукза Docker](/images/truffle/using-truffle-1.png)
+![Загрукза Docker](/images/builders/interact/truffle/truffle-2.png)
 
 После загрузки мы можем приступить к запуску ноды с помощью следующей команды:
 
@@ -84,7 +84,7 @@ truffle run moonbeam start
 
 Вы увидите сообщение о том, что нода запущена, а затем обе доступные конечные точки.
 
-![Запущенная локальная нода Moonbeam](/images/truffle/using-truffle-2.png)
+![Запущенная локальная нода Moonbeam](/images/builders/interact/truffle/truffle-3.png)
 
 Когда Вы закончите использовать ноду Moonbeam, Вы можете запустить следующие команды, чтобы остановить ее и удалить образ Docker:
 
@@ -93,7 +93,7 @@ truffle run moonbeam stop && \
 truffle run moonbeam remove
 ```
 
-![Остановленная локальная нода Moonbeam](/images/truffle/using-truffle-3.png)
+![Остановленная локальная нода Moonbeam](/images/builders/interact/truffle/truffle-4.png)
 
 ## Файл контракта {: #the-contract-file } 
 
@@ -138,7 +138,7 @@ truffle compile
 
 В случае успеха, Вы должны увидеть следующее:
 
-![Успешная компилляция Truffle](/images/truffle/using-truffle-4.png)
+![Успешная компилляция Truffle](/images/builders/interact/truffle/truffle-6.png)
 
 Теперь мы готовы разместить скомпилированные контракты. Это можно сделать с помощью следующей команды:
 
@@ -148,7 +148,7 @@ truffle migrate --network dev
 
 В случае успеха, Вы увидите действия по размещению, включая адрес размещенного контракта:
 
-![Успешное размещение контракта](/images/truffle/using-truffle-5.png)
+![Успешное размещение контракта](/images/builders/interact/truffle/truffle-7.png)
 
 После того, как Вы выполните руководство по использованию [MetaMask](/getting-started/local-node/using-metamask/) и [Remix](/getting-started/local-node/using-remix/), Вы сможете получить адрес размещенного контракта и загрузить его в MetaMask или Remix.
 

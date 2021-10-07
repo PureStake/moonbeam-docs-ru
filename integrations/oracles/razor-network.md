@@ -4,7 +4,7 @@ description: Как использовать данные запрос от Razo
 ---
 # Оракул сети Razor
 
-![Razor Network Moonbeam Diagram](/images/razor/razor-banner.png)
+![Razor Network Moonbeam Diagram](/images/builders/integrations/oracles/razor/razor-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -131,11 +131,11 @@ interface Razor {
 
 После создания файла и компиляции контракта перейдите на вкладку «Deploy and Run Transactions», введите адрес контракта (`{{ networks.moonbase.razor.bridge_address }}`), и нажмите "At Address." Убедитесь, что Вы установили "Environment" на "Injected Web3" чтобы Вы подключились к Moonbase Alpha (через провайдера Web3 кошелька). 
 
-![Razor Remix deploy](/images/razor/razor-demo1.png)
+![Razor Remix deploy](/images/builders/integrations/oracles/razor/razor-demo-1.png)
 
 Это создаст экземпляр демонстрационного контракта, с которым Вы можете взаимодействовать. Используйте функции `getPrice()` и `getMultiPrices()` для запроса данных соответствующей пары.
 
-![Razor check price](/images/razor/razor-demo2.png)
+![Razor check price](/images/builders/integrations/oracles/razor/razor-demo-2.png)
 
 ## Contact Us {: #contact-us } 
 Если у Вас есть фидбек относительно реализации Razor Network Oracle в Vашем проекте или по любой другой теме, связанной с Moonbeam, не стесняйтесь обращаться к нам через наш официальный [Сервер Discord](https://discord.com/invite/PfpUATX).

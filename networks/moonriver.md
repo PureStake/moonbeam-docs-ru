@@ -21,7 +21,7 @@ _Обновлено 9 июля 2021 года_
 - Имеет активный набор {{ networks.moonriver.staking.max_collators }} коллаторов, размещенных PureStake от имени Moonbeam Foundation. На фазе 1 будут проведены выборы коллаторов, чтобы расширить набор коллаторов для сторон, не входящих в команду Moonbeam.
 - Есть две конечные точки RPC (размещенные PureStake). Люди могут запускать полные ноды для доступа к своим собственным частным конечным точкам RPC
 
-![Moonriver Diagram](/images/moonriver/moonriver-diagram.png)
+![Moonriver Diagram](/images/learn/platform/networks/moonriver-diagram.png)
 
 Некоторые важные переменные/конфигурации, на которые следует обратить внимание, включают:
 

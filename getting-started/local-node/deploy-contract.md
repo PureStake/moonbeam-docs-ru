@@ -5,7 +5,7 @@ description: Узнайте как разместить немодифициро
 
 # Использование библиотек Ethereum для размещения Smart-контрактов на Moonbeam
 
-![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
+![Ethereum Libraries Integrations Moonbeam](/images/builders/interact/eth-libraries/web3-libraries-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -370,13 +370,13 @@ In the second section, a contract instance is created with `web3.eth.Contract()`
 Это разместит контракт и вернет адрес:
 
 === "Web3.js"
-    ![Разместить контракт Web3js](/images/deploycontract/contract-deploy-web3js.png)
+    ![Разместить контракт Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-web3js.png)
 
 === "Ethers.js"
-    ![Разместить контракт Etherjs](/images/deploycontract/contract-deploy-ethers.png)
+    ![Разместить контракт Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-ethers.png)
 
 === "Web3.py"
-    ![Разместить контракт Web3py](/images/deploycontract/contract-deploy-web3py.png)
+    ![Разместить контракт Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-deploy-web3py.png)
 
 Затем запустите _increment.\*_ файл. Вы можете использовать файл get для проверки значения числа, хранящегося в контракте, до и после его увеличения:
 
@@ -414,13 +414,13 @@ In the second section, a contract instance is created with `web3.eth.Contract()`
 Это отобразит значение до транзакции increment, хэш транзакции и значение после:
 
 === "Web3.js"
-    ![Увеличить контракт Web3js](/images/deploycontract/contract-increment-web3js.png)
+    ![Увеличить контракт Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-web3js.png)
 
 === "Ethers.js"
-    ![Увеличить контракт Etherjs](/images/deploycontract/contract-increment-ethers.png)
+    ![Увеличить контракт Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-ethers.png)
 
 === "Web3.py"
-    ![Увеличить контракт Web3py](/images/deploycontract/contract-increment-web3py.png)
+    ![Увеличить контракт Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-increment-web3py.png)
 
 Наконец, запустите файл сброса. Еще раз, Вы можете использовать файл get для проверки значения числа, хранящегося в контракте, до и после его сброса:
 
@@ -457,11 +457,11 @@ In the second section, a contract instance is created with `web3.eth.Contract()`
 Это отобразит значение до сброса, хэш транзакции и значение после:
 
 === "Web3.js"
-    ![Сбросить Contract Web3js](/images/deploycontract/contract-reset-web3js.png)
+    ![Сбросить Contract Web3js](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-web3js.png)
 
 === "Ethers.js"
-    ![Сбросить Contract Etherjs](/images/deploycontract/contract-reset-ethers.png)
+    ![Сбросить Contract Etherjs](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-ethers.png)
 
 === "Web3.py"
-    ![Сбросить Contract Web3py](/images/deploycontract/contract-reset-web3py.png)
+    ![Сбросить Contract Web3py](/images/builders/interact/eth-libraries/deploy-contract/contract-reset-web3py.png)
 

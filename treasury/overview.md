@@ -5,7 +5,7 @@ description: Как парачейн Polkadot, Moonbeam будет исполь�
 
 # Казначейство в Moonbeam
 
-![Treasury Moonbeam Banner](/images/treasury/treasury-overview-banner.png)
+![Treasury Moonbeam Banner](/images/learn/features/treasury/treasury-overview-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -56,4 +56,4 @@ description: Как парачейн Polkadot, Moonbeam будет исполь�
 
 Успешный процесс прохождения предложения казначейства показан на следующей диаграмме:
 
-![Treasury Proposal Happy Path Diagram](/images/treasury/treasury-proposal-roadmap.png)
+![Treasury Proposal Happy Path Diagram](/images/learn/features/treasury/treasury-proposal-roadmap.png)

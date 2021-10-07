@@ -5,7 +5,7 @@ description: Используйте Hardhat для компиляции, раз�
 
 # Разработка на Moonbeam с помощью Hardhat
 
-![Hardhat Create Project](/images/hardhat/hardhat-banner.png)
+![Hardhat Create Project](/images/builders/interact/hardhat/hardhat-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -61,7 +61,7 @@ npx hardhat
 
 После выполнения команды выберите `Создать пустой hardhat.config.js` файл:
 
-![Hardhat Create Project](/images/hardhat/hardhat-images-1.png)
+![Hardhat Create Project](/images/builders/interact/hardhat/hardhat-1.png)
 
 ## Файл контракта {: #the-contract-file } 
 
@@ -169,7 +169,7 @@ module.exports = {
 npx hardhat compile
 ```
 
-![Hardhat Contract Compile](/images/hardhat/hardhat-images-2.png)
+![Hardhat Contract Compile](/images/builders/interact/hardhat/hardhat-2.png)
 
 После компиляции создается каталог `artifacts` он содержит байт-код и метаданные контракта, которые являются файлами `.json`. Хорошей идеей будет добавить этот каталог в Ваш `.gitignore`.
 
@@ -219,7 +219,7 @@ main()
 
 Через несколько секунд контракт будет размещен, и Вы увидите адрес в терминале.
 
-![Hardhat Contract Deploy](/images/hardhat/hardhat-images-3.png)
+![Hardhat Contract Deploy](/images/builders/interact/hardhat/hardhat-3.png)
 
 Поздравляем, контракт заработал! Сохраните адрес, так как мы будем использовать его для взаимодействия с этим экземпляром контракта на следующем шаге.
 
@@ -253,7 +253,7 @@ await box.store(5)
 
 Транзакция будет подписана Вашей учетной записью Moonbase и передана в сеть. Результат должен выглядеть примерно так:
 
-![Transaction output](/images/hardhat/hardhat-images-4.png)
+![Transaction output](/images/builders/interact/hardhat/hardhat-4.png)
 
 Обратите внимание на свой адрес с пометкой  `from`, адрес контракта и передаваемые `данные`. Теперь давайте получим это значение, выполнив:
 

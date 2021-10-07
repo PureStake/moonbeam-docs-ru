@@ -5,7 +5,7 @@ description: Как запустить полноценную Parachain ноду
 
 # Запуск Moonbeam Узла
 
-![Full Node Moonbeam Banner](/images/fullnode/fullnode-banner.png)
+![Full Node Moonbeam Banner](/images/node-operators/networks/full-node/full-node-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -188,7 +188,7 @@ description: Как запустить полноценную Parachain ноду
 
 Как только Docker извлечет необходимые образы, Ваш полноценный узел Moonbeam (или Moonriver) запустится, будет показано большое количество информации, такой как спецификация цепи, имя узла, роль, статус генезиса и многое другое:
 
-![Запуск Полноценного Узла](/images/fullnode/fullnode-docker1.png)
+![Запуск Полноценного Узла](/images/node-operators/networks/full-node/full-node-docker-1.png)
 
 !!! примечание
     Если Вы хотите запустить конечную RPC точку, для подключения polkadot.js.org или для запуска собственного приложения, используйте флаги `--unsafe-rpc-external` и/или `--unsafe-ws-external` для запуска полноценного узла с внешним доступом к RPC портам.  Более подробную информацию можно получить, выполнив команду `moonbeam --help`.  
@@ -204,7 +204,7 @@ docker run -p {{ networks.relay_chain.p2p }}:{{ networks.relay_chain.p2p }} -p {
 
 Во время процесса синхронизации Вы увидите сообщения как от встроенной цепи передачи данных, так и от парачейна (без тега). Эти сообщения отображают блок назначения (текущее состояние сети) и лучший блок (синхронизированное состояние локального узла).
 
-![Полноценный запуск узла](/images/fullnode/fullnode-docker2.png)
+![Полноценный запуск узла](/images/node-operators/networks/full-node/full-node-docker-2.png)
 
 !!! примечание
     Полная синхронизация встроенной цепи передачи Kusama займет несколько дней. Убедитесь, что Ваша система соответствует [требованиям](#требования). 
@@ -462,7 +462,7 @@ systemctl start moonbeam.service
 systemctl status moonbeam.service
 ```
 
-![Service Status](/images/fullnode/fullnode-binary1.png)
+![Service Status](/images/node-operators/networks/full-node/full-node-binary-1.png)
 
 Вы также можете проверить журнал событий, выполнив:
 
@@ -470,7 +470,7 @@ systemctl status moonbeam.service
 journalctl -f -u moonbeam.service
 ```
 
-![Service Logs](/images/fullnode/fullnode-binary2.png)
+![Service Logs](/images/node-operators/networks/full-node/full-node-binary-2.png)
 
 ## Дополнительные флаги и параметры {: #advanced-flags-and-options } 
 

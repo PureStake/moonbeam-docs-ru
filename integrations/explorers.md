@@ -4,7 +4,7 @@ description: Обзор доступных в настоящее время об
 ---
 # Обозреватель Блоков
 
-![Обозреватель Блоков](/images/explorers/explorers-banner.png)
+![Обозреватель Блоков](/images/builders/tools/explorers/explorers-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -27,7 +27,7 @@ description: Обзор доступных в настоящее время об
  2. Выберите пункт "Development", если у Вас есть нода, работающая по следующему адресу `http://localhost:9933` (по умолчанию RPC узел Moonbeam, запущен с опцией `--dev`flag). Вы также можете вернуться в режим "Moonbase Alpha".
  3. В случае если вы хотите подключиться к определенному RPC URL-адресу выберите «Custom RPC» и введите URL-адрес. Например, `http://localhost:9937`
 
-![Обозреватель Expedition](/images/explorers/explorers-images-1.png)
+![Обозреватель Expedition](/images/builders/tools/explorers/explorers-1.png)
 
 ### Blockscout (TestNet) {: #blockscout-testnet } 
 
@@ -43,7 +43,7 @@ Blockscout предлагает следующие основные функци
 
 Экземпляр Blockscout, работающий против Moonbase Alpha TestNet, можно найти по [этой ссылке](https://moonbase-blockscout.testnet.moonbeam.network/).
 
-![Обозреватель Blockscout](/images/explorers/explorers-images-2.png)
+![Обозреватель Blockscout](/images/builders/tools/explorers/explorers-2.png)
 
 ## Substrate API {: #substrate-api } 
 
@@ -51,11 +51,11 @@ Blockscout предлагает следующие основные функци
 
 Polkadot JS Apps использует конечную точку WebSocket для взаимодействия с сетью. Чтобы подключить его к автономной ноде Moonbeam, Вы можете выполнить действия, описанные [в этом руководстве](/getting-started/local-node/setting-up-a-node/#connecting-polkadot-js-apps-to-a-local-moonbeam-node). Порт по умолчанию - `9944`.
 
-![Polkadot JS Local Node](/images/explorers/explorers-images-3.png)
+![Polkadot JS Local Node](/images/builders/tools/explorers/explorers-3.png)
 
 Для просмотра и взаимодействия с уровнем Substrate Moonbase Alpha, воспользуйтесь следующей [ссылкой](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fwss.testnet.moonbeam.network#/explorer). Это приложение Polkadot JS, ссылающееся на TestNet. Более подробную информацию Вы можете найти на этой странице](/integrations/wallets/polkadotjs/).
 
-![Polkadot JS Moonbase Alpha](/images/explorers/explorers-images-4.png)
+![Polkadot JS Moonbase Alpha](/images/builders/tools/explorers/explorers-4.png)
 
 ### Subscan {: #subscan } 
 
@@ -63,5 +63,5 @@ Subscan предоставляет возможности обозревател
 
 Используя [эту ссылку](https://moonbase.subscan.io/) Вы можете найти экземпляр Subscan, работающий с Moonbase Alpha TestNet.
 
-![Subscan Moonbase Alpha](/images/explorers/explorers-images-5.png)
+![Subscan Moonbase Alpha](/images/builders/tools/explorers/explorers-5.png)
 

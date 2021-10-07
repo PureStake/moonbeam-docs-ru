@@ -32,7 +32,7 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 
 Последние строки журнала событий в консоли должен выглядеть так:
 
-![Docker - imaged pulled](/images/setting-up-a-node/setting-up-node-1.png)
+![Docker - imaged pulled](/images/builders/get-started/moonbeam-dev/moonbeam-dev-1.png)
 
 После загрузки Docker-образа следующим шагом будет его запуск.
 
@@ -62,7 +62,7 @@ docker pull purestake/moonbeam:{{ networks.development.build_tag }}
 Данная команда запустит узел разработки Moonbeam в режиме локального тестирования, таким образом блоки создаются мгновенно по мере получения транзакций.
 В случае положительного результата Вы должны увидеть вывод, отражающий режим ожидания для создания новых блоков:
 
-![Docker - вывод показывает создаваемые блоки](/images/setting-up-a-node/setting-up-node-2.png)
+![Docker - вывод показывает создаваемые блоки](/images/builders/get-started/moonbeam-dev/moonbeam-dev-2.png)
 
 Для получения дополнительной информации о некоторых флагах и параметрах, использованных в примере, ознакомьтесь с [общими флагами и параметрами](#Общие-команды-флаги-и-параметры). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
 
@@ -111,7 +111,7 @@ cd moonbeam
 
 Вот как должен выглядеть процесс окончания сборки:
 
-![End of build output](/images/setting-up-a-node/setting-up-node-3.png)
+![End of build output](/images/builders/get-started/moonbeam-dev/moonbeam-dev-3.png)
 
 Затем Вам необходимо будет запустить узел в режиме разработки, используя следующую команду:
 
@@ -124,7 +124,7 @@ cd moonbeam
 
 Вы должны увидеть следующий вывод, который будет отображать состояние ожидания, до тех пор пока не будут созданы блоки:
 
-![Output shows blocks being produced](/images/setting-up-a-node/setting-up-node-4.png)
+![Output shows blocks being produced](/images/builders/get-started/moonbeam-dev/moonbeam-dev-4.png)
 
 Для получения дополнительной информации о некоторых флагах и параметрах, которые использовались в примерах, посетите страницу [Общие флаги и Опции](#common-flags-and-options). Если Вы хотите увидеть полный список всех флагов, параметров и sub-команд, откройте меню справки, выполнив:
 
@@ -140,15 +140,15 @@ cd moonbeam
 
 Начнем с подключения к нему с помощью Polkadot JS Apps. Откройте браузер: [https://polkadot.js.org/apps/#/explorer](https://polkadot.js.org/apps/#/explorer). Откроется приложение Polkadot JS Apps, которое автоматически подключается к Polkadot MainNet.
 
-![Polkadot JS Apps](/images/setting-up-a-node/setting-up-node-5.png)
+![Polkadot JS Apps](/images/builders/get-started/moonbeam-dev/moonbeam-dev-5.png)
 
 Щелкните в верхнем левом углу, чтобы открыть меню для настройки сетей, а затем перейдите вниз, чтобы открыть меню «Разработка» (Development sub-menu). ам вы должны переключить опцию «Локальная нода»(Local Node), которая указывает приложениям Polkadot JS на `ws://127.0.0.1:9944`. Затем нажмите кнопку «Переключить»(Switch), и сайт должен подключиться к вашей ноде Moonbeam.
 
-![Select Local Node](/images/setting-up-a-node/setting-up-node-6.png)
+![Select Local Node](/images/builders/get-started/moonbeam-dev/moonbeam-dev-6.png)
 
 При подключении Polkadot JS Apps Вы увидите ноду Moonbeam, создающую блоки.
 
-![Select Local Node](/images/setting-up-a-node/setting-up-node-7.png)
+![Select Local Node](/images/builders/get-started/moonbeam-dev/moonbeam-dev-7.png)
 
 ## Запрос состояния учетной записи {: #querying-account-state } 
 

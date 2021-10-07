@@ -5,7 +5,7 @@ description:  Узнайте, как использовать продукты O
 
 # OpenZeppelin
 
-![OpenZeppelin Banner](/images/openzeppelin/openzeppelin-banner.png)
+![OpenZeppelin Banner](/images/builders/tools/openzeppelin/openzeppelin-banner.png)
 
 ## Введение {: #introduction } 
 

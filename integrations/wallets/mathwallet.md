@@ -5,7 +5,7 @@ description: В этом руководстве вы узнаете, как по
 
 # Взаимодействие с Moonbeam при помощи MathWallet
  
-![Intro banner](/images/mathwallet/mathwallet-banner.png)
+![Intro banner](/images/tokens/connect/mathwallet/mathwallet-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -21,19 +21,19 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
 
 Установив расширение для браузера, откройте его и установите пароль.
 
-![Установите пароль кошелька](/images/mathwallet/mathwallet-images-1.png)
+![Установите пароль кошелька](/images/tokens/connect/mathwallet/mathwallet-1.png)
 
 Затем давайте включим Moonbase Alpha в разделе «Настройки» (значок шестеренки вверху справа) -> Сети -> Ethereum.
 
-![Enable Moonbase Alpha](/images/mathwallet/mathwallet-images-2.png)
+![Enable Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-2.png)
 
 И, наконец, на главном экране нажмите Switch Network и выберите Moonbase Alpha.
 
-![Connect to Moonbase Alpha](/images/mathwallet/mathwallet-images-3.png)
+![Connect to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-3.png)
 
 Теперь у Вас есть MathWallet, подключенный к Moonbase Alpha TestNet! Ваш кошелек должен выглядеть так:
 
-![Wallet Connected to Moonbase Alpha](/images/mathwallet/mathwallet-images-4.png)
+![Wallet Connected to Moonbase Alpha](/images/tokens/connect/mathwallet/mathwallet-4.png)
 
 ## Добавление кошелька {: #adding-a-wallet } 
 
@@ -47,25 +47,25 @@ MathWallet [анонсировал](https://mathwallet.org/moonbeam-wallet/en/) 
 
 Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Создать кошелек».
 
-![MathWallet create a wallet](/images/mathwallet/mathwallet-images-5.png)
+![MathWallet create a wallet](/images/tokens/connect/mathwallet/mathwallet-5.png)
 
 Установите и подтвердите имя кошелька. Затем убедитесь, что Вы безопасно сохранили “мнемоник фразу”, поскольку она обеспечивает прямой доступ к вашим средствам. После завершения процесса Вы должны увидеть новый созданный кошелек с соответствующим публичным адресом.
 
-![MathWallet wallet created](/images/mathwallet/mathwallet-images-6.png)
+![MathWallet wallet created](/images/tokens/connect/mathwallet/mathwallet-6.png)
 
 ### Импортирование кошелька {: #import-a-wallet } 
 
 Чтобы создать новый кошелек, щелкните значок :heavy_plus_sign: рядом с «Moonbase Alpha» и выберите «Импортировать кошелек».
 
-![MathWallet import a wallet](/images/mathwallet/mathwallet-images-7.png)
+![MathWallet import a wallet](/images/tokens/connect/mathwallet/mathwallet-7.png)
 
 Затем выберите вариант импорта с использованием мнемонического или закрытого ключа. Для первого варианта введите мнемоническую фразу (каждое слово через пробел). Для второго варианта введите закрытый ключ (либо с префиксом `0x`, либо без него, оба варианта рабочие).
 
-![MathWallet private key or mnemonic import](/images/mathwallet/mathwallet-images-8.png)
+![MathWallet private key or mnemonic import](/images/tokens/connect/mathwallet/mathwallet-8.png)
 
 После нажатия кнопки «Далее» задайте имя кошелька, на этом импорт кошелька завершён! Вы должны увидеть импортированный кошелек со связанным публичным адресом.
 
-![MathWallet imported wallet](/images/mathwallet/mathwallet-images-9.png)
+![MathWallet imported wallet](/images/tokens/connect/mathwallet/mathwallet-9.png)
 
 ## Использование MathWallet {: #using-mathwallet } 
 
@@ -73,7 +73,7 @@ MathWallet служит поставщиком Web3 в таких инструм
 
 Например, в Remix, при развертывании смарт-контракта, убедитесь, что Вы выбрали опцию «Injected Web3» в меню «Environment». Если у Вас подключен MathWallet, вы увидите идентификатор цепочки TestNet чуть ниже поля (_1287_) а также вашу учетную запись MathWallet, введенную в Remix. При отправке транзакции Вы должны увидеть подобное всплывающее окно от MathWallet:
 
-![MathWallet sign transaction](/images/mathwallet/mathwallet-images-10.png)
+![MathWallet sign transaction](/images/tokens/connect/mathwallet/mathwallet-10.png)
 
 Нажимая «Принять», Вы подписываете эту транзакцию, и контракт будет развернут на Moonbase Alpha TestNet.
 

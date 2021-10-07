@@ -7,4 +7,4 @@
  - На референдуме держатели токенов голосуют "За" или "Против" по предложению, блокируя токены. Вес голоса определяется двумя факторами: количеством заблокированных токенов и периодом блокировки.
  - Если предложение принято, оно вводится в действие через определенный промежуток времени
 
-![Proposal Roadmap](/images/governance/governance-proposal-roadmap.png)
+![Proposal Roadmap](/images/tokens/governance/proposals/governance-proposal-roadmap.png)

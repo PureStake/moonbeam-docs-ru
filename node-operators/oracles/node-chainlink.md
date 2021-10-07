@@ -5,7 +5,7 @@ description: Как настроить ноду Chainlink Oracle для Moonbeam
 
 # Запуск ноды Chainlink Oracle на Moonbeam
 
-![Chainlink Moonbeam](/images/chainlink/chainlinknode-banner.png)
+![Chainlink Moonbeam](/images/node-operators/oracle-nodes/chainlink/chainlink-node-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -124,7 +124,7 @@ docker ps #Containers Running
 docker logs --tail 50 {container_id} #Logs progressing
 ```
 
-![логи Docker](/images/chainlink/chainlinknode-image1.png)
+![логи Docker](/images/node-operators/oracle-nodes/chainlink/chainlink-node-1.png)
 
 ## Настройка контракта {: #contract-setup } 
 
@@ -132,11 +132,11 @@ docker logs --tail 50 {container_id} #Logs progressing
 
 Во-первых, нам нужно получить адрес, который нода Оракула будет использовать для отправки транзакций и записи данных в чейн. Чтобы получить адрес, войдите в [пользовательский интерфейс ноды ChainLink](http://localhost:6688/) (расположенный по адресу `http://localhost:6688/`) используя учетные данные из файла `.api`.
 
-![вход в Chainlink](/images/chainlink/chainlinknode-image2.png)
+![вход в Chainlink](/images/node-operators/oracle-nodes/chainlink/chainlink-node-2.png)
 
 Перейдите на "Configuration Page" и скопируйте адрес ноды. Используйте [кран Moonbeam](https://docs.moonbeam.network/getting-started/moonbase/faucet/) для пополнения.
 
-![адрес Chainlink](/images/chainlink/chainlinknode-image3.png)
+![адрес Chainlink](/images/node-operators/oracle-nodes/chainlink/chainlink-node-3.png)
 
 Затем нам нужно разместить контракт Oracle, который является промежуточным ПО между чейном и нодой. Контракт отдает событие со всей необходимой информацией, которая считывается нодой Oracle. Затем нода выполняет запрос и записывает запрашиваемые данные в контракт вызывающего.
 
@@ -150,7 +150,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 После компиляции контракта перейдите на вкладку "Deploy and Run Transactions", введите адрес LINK токена и разместите контракт. После размещения скопируйте адрес контракта.
 
-![размещение Oracle с использованием Remix](/images/chainlink/chainlinknode-image4.png)
+![размещение Oracle с использованием Remix](/images/node-operators/oracle-nodes/chainlink/chainlink-node-4.png)
 
 Теперь, мы должны связать ноду Oracle со смарт-контрактом. Нода может отлавливать запросы, отправленные в определенный контракт Oracle, но только авторизованные (или связанные) ноды могут выполнить запрос с предоставлением результата.
 
@@ -161,7 +161,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 Для этого мы можем использовать экземпляр контракта, развернутого на Remix, и проверить, авторизована ли нода Oracle с помощью функции `getAuthorizationStatus()`, передав адрес ноды Oracle.
 
-![Авторизация ноды Chainlink Oracle](/images/chainlink/chainlinknode-image5.png)
+![Авторизация ноды Chainlink Oracle](/images/node-operators/oracle-nodes/chainlink/chainlink-node-5.png)
 
 ## Создание Job на ноде Oracle {: #create-job-on-the-oracle-node } 
 
@@ -171,7 +171,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 
 Рассматривая Оракул как сервис API, Job здесь будет одной из функций, которую мы можем вызвать, и которая вернет результат. Чтобы создать нашу первую Job, перейдите в разделы [Jobs вашей ноды](http://localhost:6688/jobs) и нажмите на "New Job."
 
-![Jobs ноды Chainlink](/images/chainlink/chainlinknode-image6.png)
+![Jobs ноды Chainlink](/images/node-operators/oracle-nodes/chainlink/chainlink-node-6.png)
 
 Затем вставьте следующий JSON. Это создаст Job, которая запросит текущую цену ETH в долларах США. Убедитесь, что Вы ввели свой адрес контракта Oracle (`YOUR_ORACLE_CONTRACT_ADDRESS`).
 
@@ -202,7 +202,7 @@ import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/Ora
 }
 ```
 
-![Chainlink New Job JSON Blob](/images/chainlink/chainlinknode-image7.png)
+![Chainlink New Job JSON Blob](/images/node-operators/oracle-nodes/chainlink/chainlink-node-7.png)
 
 Вот и все! Вы полностью настроили ноду Chainlink Oracle, работающую на Moonbase Alpha.
 

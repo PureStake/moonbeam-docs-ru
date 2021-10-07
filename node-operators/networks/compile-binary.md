@@ -5,7 +5,7 @@ description: Как скомпилировать бинарный файл Moonb
 
 # Скомпилируйте бинарный файл Moonbeam
 
-![Full Node Moonbeam Banner](/images/fullnode/compile-binary-banner.png)
+![Full Node Moonbeam Banner](/images/node-operators/networks/compile-binary/compile-binary-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -42,7 +42,7 @@ git checkout tags/$(git tag | tail -1)
 cargo build --release
 ```
 
-![Компиляция бинарого файла](/images/fullnode/compile-binary1.png)
+![Компиляция бинарого файла](/images/node-operators/networks/compile-binary/compile-binary-1.png)
 
 Если в терминале появляется _cargo not found error_, вручную добавьте Rust в системный путь или перезапустите систему:
 

@@ -4,7 +4,7 @@ description: Следуйте этому руководству, чтобы уз
 ---
 # Библиотека JavaScript Ethers.js
 
-![Intro diagram](/images/integrations/integrations-ethersjs-banner.png)
+![Intro diagram](/images/builders/tools/eth-libraries/ethersjs-banner.png)
 
 ## Вступление {: #introduction } 
 

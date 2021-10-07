@@ -5,7 +5,7 @@ description: Создание API с использованием протоко
 
 # Запуск ноды Graph на Moonbeam
 
-![The Graph Node on Moonbeam](/images/thegraph/thegraphnode-banner.png)
+![The Graph Node on Moonbeam](/images/node-operators/indexer-nodes/the-graph/the-graph-node-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -48,7 +48,7 @@ git clone https://github.com/graphprotocol/graph-node/ \
 
 В конце выполнения предыдущей команды Вы должны увидеть примерно следующее:
 
-![Graph Node setup](/images/thegraph/thegraphnode-images1.png)
+![Graph Node setup](/images/node-operators/indexer-nodes/the-graph/the-graph-node-1.png)
 
 После того, как все настроено, Вам нужно изменить "среду Ethereum" внутри файла `docker-compose.yml`, чтобы он ссылался на ноду, на котором Вы запускаете непосредственно узел Graph. Обратите внимание, что файл `setup.sh` определяет IP-адрес Вашего сервера и записывает его значение, поэтому Вам нужно будет соответствующим образом изменить его.
 
@@ -105,10 +105,10 @@ services:
 docker-compose up
 ```
 
-![Graph Node compose up](/images/thegraph/thegraphnode-images2.png)
+![Graph Node compose up](/images/node-operators/indexer-nodes/the-graph/the-graph-node-2.png)
 
 Через некоторое время Вы должны увидеть информацию, связанную с синхронизацией Graph ноды с последним доступным блоком в сети:
 
-![Graph Node logs](/images/thegraph/thegraphnode-images3.png)
+![Graph Node logs](/images/node-operators/indexer-nodes/the-graph/the-graph-node-3.png)
 
 На этом всё! Теперь у Вас есть Graph нода, работающая с Moonbase Alpha TestNet. Не стесняйтесь адаптировать этот пример и к узлу разработки Moonbeam.

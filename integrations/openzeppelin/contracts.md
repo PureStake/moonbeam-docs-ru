@@ -5,7 +5,7 @@ description:  Узнайте, как легко создавать общие к
 
 # Контракты и библиотеки OpenZeppelin
 
-![Баннер контрактов OpenZeppelin](/images/openzeppelin/ozcontracts-banner.png)
+![Баннер контрактов OpenZeppelin](/images/builders/interact/oz-remix/oz-contracts-banner.png)
 
 ## Введение {: #introduction } 
 
@@ -36,7 +36,7 @@ description:  Узнайте, как легко создавать общие к
  4. **Контроль доступа** — список всех доступных [механизмов контроля доступа](https://docs.openzeppelin.com/contracts/4.x/access-control) для каждого стандарта токенов
  5. **Интерактивное отображение кода** — показывает код смарт-контракта с конфигурацией, заданной пользователем
 
-![Мастер контрактов OpenZeppelin](/images/openzeppelin/ozwizard-images1.png)
+![Мастер контрактов OpenZeppelin](/images/builders/interact/oz-remix/oz-wizard-1.png)
 
 После того как вы настроите свой контракт со всеми параметрами и функциями, вам останется только скопировать и вставить код в файл контракта.
 
@@ -92,7 +92,7 @@ contract MyToken is ERC20, Ownable {
 
 Этот смарт-контракт на токены ERC20 был создан с помощью [Мастера Контрактов](#openzeppelin-contract-wizard), установив предварительную сумму в `1000` токенов и активировав функцию `Mintable`.
 
-![Начало работы с Remix](/images/openzeppelin/ozcontracts-images1.png)
+![Начало работы с Remix](/images/builders/interact/oz-remix/oz-contracts-1.png)
 
 После того как ваш смарт-контракт написан, вы можете скомпилировать его, выполнив следующие действия:
 
@@ -100,7 +100,7 @@ contract MyToken is ERC20, Ownable {
  2. Нажмите на кнопку компиляции
  3. Кроме того, вы можете выбрать функцию " Auto compile ".
 
-![Компиляция контракта ERC20 с помощью Remix](/images/openzeppelin/ozcontracts-images2.png)
+![Компиляция контракта ERC20 с помощью Remix](/images/builders/interact/oz-remix/oz-contracts-2.png)
 
 Когда контракт создан, вы готовы к его внедрению, выполнив следующие действия: 
 
@@ -110,7 +110,7 @@ contract MyToken is ERC20, Ownable {
  4. Если все готово, нажмите на кнопку " Deploy". Просмотрите информацию о транзакции в MetaMask и подтвердите ее
  5. Через несколько секунд транзакция должна быть подтверждена, и вы увидите свой контракт в разделе " Deployed Contracts ".
 
-![Размещение контракта ERC721 с помощью Remix](/images/openzeppelin/ozcontracts-images3.png)
+![Размещение контракта ERC721 с помощью Remix](/images/builders/interact/oz-remix/oz-contracts-3.png)
 
 Вот и все! Вы установили контракт на токен ERC20, используя контракты и библиотеки OpenZeppelin. Далее вы можете взаимодействовать с вашим контрактом токенов через Remix или добавить его в MetaMask.
 
@@ -175,7 +175,7 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
  3. Если все готово, нажмите на кнопку " Deploy". Просмотрите информацию о транзакции в MetaMask и подтвердите ее
  4. Через несколько секунд транзакция должна быть подтверждена, и вы увидите свой контракт в разделе " Deployed Contracts ".
 
-![Размещение контракта ERC721 с помощью Remix](/images/openzeppelin/ozcontracts-images4.png)
+![Размещение контракта ERC721 с помощью Remix](/images/builders/interact/oz-remix/oz-contracts-4.png)
 
 Вот и все! Вы разместили контракт на токен ERC721, используя контракты и библиотеки OpenZeppelin. Далее вы можете взаимодействовать с вашим токен-контрактом через Remix или добавить его в MetaMask.
 
@@ -237,6 +237,6 @@ contract MyToken is ERC1155, Ownable, Pausable {
  3. Если все готово, нажмите на кнопку " Deploy". Просмотрите информацию о транзакции в MetaMask и подтвердите ее
  4. Через несколько секунд транзакция должна быть подтверждена, и вы увидите свой контракт в разделе " Deployed Contracts ".
 
-![Размещение контракта ERC1155 с помощью Remix](/images/openzeppelin/ozcontracts-images5.png)
+![Размещение контракта ERC1155 с помощью Remix](/images/builders/interact/oz-remix/oz-contracts-5.png)
 
 Вот и все! Вы разместили контракт токена ERC1155, используя контракты и библиотеки OpenZeppelin. Теперь вы можете взаимодействовать с вашим контрактом токенов через Remix.

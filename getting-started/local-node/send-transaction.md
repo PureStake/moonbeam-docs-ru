@@ -5,7 +5,7 @@ description: Узнайте как создавать и отправлять т
 
 # Использование библиотек Ethereum для отправки транзакций в сети Moonbeam
 
-![Ethereum Libraries Integrations Moonbeam](/images/sendtx/web3-libraries-banner.png)
+![Ethereum Libraries Integrations Moonbeam](/images/builders/interact/eth-libraries/web3-libraries-banner.png)
 
 ## Вступление {: #introduction } 
 
@@ -219,11 +219,11 @@ npm init --yes
 И на последок еще раз проверьте баланс, чтобы убедиться, что перевод прошел успешно. Выполнение должно выглядеть так:
 
 === "Web3.js"
-    ![Send Tx Web3js](/images/sendtx/sendtx-web3js.png)
+    ![Send Tx Web3js](/images/builders/interact/eth-libraries/send-tx/sendtx-web3js.png)
 
 === "Ethers.js"
-    ![Send Tx Etherjs](/images/sendtx/sendtx-ethers.png)
+    ![Send Tx Etherjs](/images/builders/interact/eth-libraries/send-tx/sendtx-ethers.png)
 
 === "Web3.py"
-    ![Send Tx Web3py](/images/sendtx/sendtx-web3py.png)
+    ![Send Tx Web3py](/images/builders/interact/eth-libraries/send-tx/sendtx-web3py.png)
 
